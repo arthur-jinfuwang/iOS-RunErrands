@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  MapViewController.h
 //  RunErrands
 //
 //  Created by Jinfu Wang on 2015/7/20.
@@ -7,9 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SlideNavigationController.h"
 
-@interface ViewController : UIViewController
-
+@interface MapViewController : UIViewController <SlideNavigationControllerDelegate>
 
 @end
-
