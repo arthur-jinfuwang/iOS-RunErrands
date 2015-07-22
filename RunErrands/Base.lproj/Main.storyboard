@@ -8,7 +8,7 @@
         <!--Map View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="MapViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MapViewController" id="BYZ-38-t0r" customClass="MapViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -33,7 +33,56 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1805" y="319"/>
+            <point key="canvasLocation" x="2583" y="254"/>
+        </scene>
+        <!--Open View Controller-->
+        <scene sceneID="x1S-Ej-cMx">
+            <objects>
+                <viewController id="6XY-lY-f9h" customClass="openViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="dxr-Cm-qjS"/>
+                        <viewControllerLayoutGuide type="bottom" id="k8C-TX-22C"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="AMT-IZ-JFh">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uoN-CR-l2E">
+                                <rect key="frame" x="0.0" y="-72" width="600" height="600"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="uoN-CR-l2E" secondAttribute="trailing" constant="-16" id="OZ5-Xe-3sE"/>
+                            <constraint firstItem="uoN-CR-l2E" firstAttribute="top" secondItem="AMT-IZ-JFh" secondAttribute="topMargin" id="kSG-yQ-dJS"/>
+                            <constraint firstItem="k8C-TX-22C" firstAttribute="top" secondItem="uoN-CR-l2E" secondAttribute="bottom" id="uX4-e3-ezg"/>
+                            <constraint firstItem="uoN-CR-l2E" firstAttribute="leading" secondItem="AMT-IZ-JFh" secondAttribute="leadingMargin" constant="-16" id="vYK-6L-NiU"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="OZ5-Xe-3sE"/>
+                                <exclude reference="kSG-yQ-dJS"/>
+                                <exclude reference="vYK-6L-NiU"/>
+                                <exclude reference="uX4-e3-ezg"/>
+                            </mask>
+                        </variation>
+                        <variation key="widthClass=compact">
+                            <mask key="constraints">
+                                <include reference="OZ5-Xe-3sE"/>
+                                <include reference="kSG-yQ-dJS"/>
+                                <include reference="vYK-6L-NiU"/>
+                                <include reference="uX4-e3-ezg"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <navigationItem key="navigationItem" id="QMF-qG-ozp"/>
+                    <connections>
+                        <outlet property="openanimation" destination="uoN-CR-l2E" id="nbD-JI-5bU"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Na8-HS-G0l" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1878" y="254"/>
         </scene>
         <!--Left Menu Table View Controller-->
         <scene sceneID="iRz-8f-hZW">
@@ -59,7 +108,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tX6-68-DLh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="42" y="319"/>
+            <point key="canvasLocation" x="-362" y="560"/>
         </scene>
         <!--Slide Navigation Controller-->
         <scene sceneID="Dou-dh-ZQ0">
@@ -70,12 +119,12 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="P7X-0Z-qKY"/>
+                        <segue destination="6XY-lY-f9h" kind="relationship" relationship="rootViewController" id="TEJ-BI-vYM"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MMf-gj-JCH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1018" y="319"/>
+            <point key="canvasLocation" x="1175" y="254"/>
         </scene>
     </scenes>
 </document>

@@ -27,6 +27,17 @@
 		BD7B817C1B5D248D00067D29 /* SlideNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = BD7B81741B5D248D00067D29 /* SlideNavigationController.m */; };
 		BD7B817F1B5D2A9600067D29 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BD7B817E1B5D2A9600067D29 /* MapViewController.m */; };
 		BD7B81821B5D2DCE00067D29 /* LeftMenuTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BD7B81811B5D2DCE00067D29 /* LeftMenuTableViewController.m */; };
+		EA2943991B5DF1110054DBD6 /* screen@2x(1).png in Resources */ = {isa = PBXBuildFile; fileRef = EA29438F1B5DF1110054DBD6 /* screen@2x(1).png */; };
+		EA29439A1B5DF1110054DBD6 /* screen@2x(2).png in Resources */ = {isa = PBXBuildFile; fileRef = EA2943901B5DF1110054DBD6 /* screen@2x(2).png */; };
+		EA29439B1B5DF1110054DBD6 /* screen@2x(3).png in Resources */ = {isa = PBXBuildFile; fileRef = EA2943911B5DF1110054DBD6 /* screen@2x(3).png */; };
+		EA29439C1B5DF1110054DBD6 /* screen@2x(4).png in Resources */ = {isa = PBXBuildFile; fileRef = EA2943921B5DF1110054DBD6 /* screen@2x(4).png */; };
+		EA29439D1B5DF1110054DBD6 /* screen@2x(5).png in Resources */ = {isa = PBXBuildFile; fileRef = EA2943931B5DF1110054DBD6 /* screen@2x(5).png */; };
+		EA29439E1B5DF1110054DBD6 /* screen@2x(6).png in Resources */ = {isa = PBXBuildFile; fileRef = EA2943941B5DF1110054DBD6 /* screen@2x(6).png */; };
+		EA29439F1B5DF1110054DBD6 /* screen@2x(7).png in Resources */ = {isa = PBXBuildFile; fileRef = EA2943951B5DF1110054DBD6 /* screen@2x(7).png */; };
+		EA2943A01B5DF1110054DBD6 /* screen@2x(8).png in Resources */ = {isa = PBXBuildFile; fileRef = EA2943961B5DF1110054DBD6 /* screen@2x(8).png */; };
+		EA2943A11B5DF1110054DBD6 /* screen@2x(9).png in Resources */ = {isa = PBXBuildFile; fileRef = EA2943971B5DF1110054DBD6 /* screen@2x(9).png */; };
+		EA2943A21B5DF1110054DBD6 /* screen@2x(10).png in Resources */ = {isa = PBXBuildFile; fileRef = EA2943981B5DF1110054DBD6 /* screen@2x(10).png */; };
+		EA2943A81B5E06A50054DBD6 /* openViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA2943A71B5E06A50054DBD6 /* openViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -74,6 +85,18 @@
 		BD7B817E1B5D2A9600067D29 /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
 		BD7B81801B5D2DCE00067D29 /* LeftMenuTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeftMenuTableViewController.h; sourceTree = "<group>"; };
 		BD7B81811B5D2DCE00067D29 /* LeftMenuTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeftMenuTableViewController.m; sourceTree = "<group>"; };
+		EA29438F1B5DF1110054DBD6 /* screen@2x(1).png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "screen@2x(1).png"; sourceTree = "<group>"; };
+		EA2943901B5DF1110054DBD6 /* screen@2x(2).png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "screen@2x(2).png"; sourceTree = "<group>"; };
+		EA2943911B5DF1110054DBD6 /* screen@2x(3).png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "screen@2x(3).png"; sourceTree = "<group>"; };
+		EA2943921B5DF1110054DBD6 /* screen@2x(4).png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "screen@2x(4).png"; sourceTree = "<group>"; };
+		EA2943931B5DF1110054DBD6 /* screen@2x(5).png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "screen@2x(5).png"; sourceTree = "<group>"; };
+		EA2943941B5DF1110054DBD6 /* screen@2x(6).png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "screen@2x(6).png"; sourceTree = "<group>"; };
+		EA2943951B5DF1110054DBD6 /* screen@2x(7).png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "screen@2x(7).png"; sourceTree = "<group>"; };
+		EA2943961B5DF1110054DBD6 /* screen@2x(8).png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "screen@2x(8).png"; sourceTree = "<group>"; };
+		EA2943971B5DF1110054DBD6 /* screen@2x(9).png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "screen@2x(9).png"; sourceTree = "<group>"; };
+		EA2943981B5DF1110054DBD6 /* screen@2x(10).png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "screen@2x(10).png"; sourceTree = "<group>"; };
+		EA2943A61B5E06A50054DBD6 /* openViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = openViewController.h; sourceTree = "<group>"; };
+		EA2943A71B5E06A50054DBD6 /* openViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = openViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -130,8 +153,11 @@
 				BD7B81811B5D2DCE00067D29 /* LeftMenuTableViewController.m */,
 				BD7B817D1B5D2A9600067D29 /* MapViewController.h */,
 				BD7B817E1B5D2A9600067D29 /* MapViewController.m */,
+				EA2943A61B5E06A50054DBD6 /* openViewController.h */,
+				EA2943A71B5E06A50054DBD6 /* openViewController.m */,
 				BD7B813F1B5D1FA900067D29 /* Main.storyboard */,
 				BD7B81421B5D1FA900067D29 /* Images.xcassets */,
+				EA2D963E1B5E752200C18197 /* picture */,
 				BD7B81441B5D1FA900067D29 /* LaunchScreen.xib */,
 				BD7B81351B5D1FA900067D29 /* Supporting Files */,
 			);
@@ -200,6 +226,23 @@
 				BD7B81721B5D248D00067D29 /* menu-button@2x.png */,
 			);
 			path = Assets;
+			sourceTree = "<group>";
+		};
+		EA2D963E1B5E752200C18197 /* picture */ = {
+			isa = PBXGroup;
+			children = (
+				EA29438F1B5DF1110054DBD6 /* screen@2x(1).png */,
+				EA2943901B5DF1110054DBD6 /* screen@2x(2).png */,
+				EA2943911B5DF1110054DBD6 /* screen@2x(3).png */,
+				EA2943921B5DF1110054DBD6 /* screen@2x(4).png */,
+				EA2943931B5DF1110054DBD6 /* screen@2x(5).png */,
+				EA2943941B5DF1110054DBD6 /* screen@2x(6).png */,
+				EA2943951B5DF1110054DBD6 /* screen@2x(7).png */,
+				EA2943961B5DF1110054DBD6 /* screen@2x(8).png */,
+				EA2943971B5DF1110054DBD6 /* screen@2x(9).png */,
+				EA2943981B5DF1110054DBD6 /* screen@2x(10).png */,
+			);
+			name = picture;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -283,10 +326,20 @@
 			buildActionMask = 2147483647;
 			files = (
 				BD7B817A1B5D248D00067D29 /* menu-button.png in Resources */,
+				EA29439B1B5DF1110054DBD6 /* screen@2x(3).png in Resources */,
 				BD7B81411B5D1FA900067D29 /* Main.storyboard in Resources */,
+				EA2943A11B5DF1110054DBD6 /* screen@2x(9).png in Resources */,
 				BD7B81461B5D1FA900067D29 /* LaunchScreen.xib in Resources */,
+				EA29439A1B5DF1110054DBD6 /* screen@2x(2).png in Resources */,
+				EA2943A01B5DF1110054DBD6 /* screen@2x(8).png in Resources */,
+				EA2943A21B5DF1110054DBD6 /* screen@2x(10).png in Resources */,
+				EA29439F1B5DF1110054DBD6 /* screen@2x(7).png in Resources */,
+				EA29439E1B5DF1110054DBD6 /* screen@2x(6).png in Resources */,
 				BD7B817B1B5D248D00067D29 /* menu-button@2x.png in Resources */,
 				BD7B81431B5D1FA900067D29 /* Images.xcassets in Resources */,
+				EA2943991B5DF1110054DBD6 /* screen@2x(1).png in Resources */,
+				EA29439C1B5DF1110054DBD6 /* screen@2x(4).png in Resources */,
+				EA29439D1B5DF1110054DBD6 /* screen@2x(5).png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -314,6 +367,7 @@
 				BD7B81381B5D1FA900067D29 /* main.m in Sources */,
 				BD7B81791B5D248D00067D29 /* SlideNavigationContorllerAnimatorSlideAndFade.m in Sources */,
 				BD7B81781B5D248D00067D29 /* SlideNavigationContorllerAnimatorSlide.m in Sources */,
+				EA2943A81B5E06A50054DBD6 /* openViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -510,6 +564,7 @@
 				BD7B81571B5D1FAA00067D29 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		BD7B81581B5D1FAA00067D29 /* Build configuration list for PBXNativeTarget "RunErrandsTests" */ = {
 			isa = XCConfigurationList;
@@ -518,6 +573,7 @@
 				BD7B815A1B5D1FAA00067D29 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
