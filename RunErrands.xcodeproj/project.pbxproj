@@ -26,7 +26,7 @@
 		BD7B817B1B5D248D00067D29 /* menu-button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BD7B81721B5D248D00067D29 /* menu-button@2x.png */; };
 		BD7B817C1B5D248D00067D29 /* SlideNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = BD7B81741B5D248D00067D29 /* SlideNavigationController.m */; };
 		BD7B817F1B5D2A9600067D29 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BD7B817E1B5D2A9600067D29 /* MapViewController.m */; };
-		BD7B81821B5D2DCE00067D29 /* LeftMenuTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BD7B81811B5D2DCE00067D29 /* LeftMenuTableViewController.m */; };
+		BDDFD2501B5F9DCE005D481E /* LeftMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BDDFD24F1B5F9DCE005D481E /* LeftMenuViewController.m */; };
 		EA2943991B5DF1110054DBD6 /* screen@2x(1).png in Resources */ = {isa = PBXBuildFile; fileRef = EA29438F1B5DF1110054DBD6 /* screen@2x(1).png */; };
 		EA29439A1B5DF1110054DBD6 /* screen@2x(2).png in Resources */ = {isa = PBXBuildFile; fileRef = EA2943901B5DF1110054DBD6 /* screen@2x(2).png */; };
 		EA29439B1B5DF1110054DBD6 /* screen@2x(3).png in Resources */ = {isa = PBXBuildFile; fileRef = EA2943911B5DF1110054DBD6 /* screen@2x(3).png */; };
@@ -83,8 +83,8 @@
 		BD7B81741B5D248D00067D29 /* SlideNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SlideNavigationController.m; sourceTree = "<group>"; };
 		BD7B817D1B5D2A9600067D29 /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
 		BD7B817E1B5D2A9600067D29 /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
-		BD7B81801B5D2DCE00067D29 /* LeftMenuTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeftMenuTableViewController.h; sourceTree = "<group>"; };
-		BD7B81811B5D2DCE00067D29 /* LeftMenuTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeftMenuTableViewController.m; sourceTree = "<group>"; };
+		BDDFD24E1B5F9DCE005D481E /* LeftMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeftMenuViewController.h; sourceTree = "<group>"; };
+		BDDFD24F1B5F9DCE005D481E /* LeftMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeftMenuViewController.m; sourceTree = "<group>"; };
 		EA29438F1B5DF1110054DBD6 /* screen@2x(1).png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "screen@2x(1).png"; sourceTree = "<group>"; };
 		EA2943901B5DF1110054DBD6 /* screen@2x(2).png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "screen@2x(2).png"; sourceTree = "<group>"; };
 		EA2943911B5DF1110054DBD6 /* screen@2x(3).png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "screen@2x(3).png"; sourceTree = "<group>"; };
@@ -149,10 +149,10 @@
 				BD7B81631B5D248D00067D29 /* Source */,
 				BD7B81391B5D1FA900067D29 /* AppDelegate.h */,
 				BD7B813A1B5D1FA900067D29 /* AppDelegate.m */,
-				BD7B81801B5D2DCE00067D29 /* LeftMenuTableViewController.h */,
-				BD7B81811B5D2DCE00067D29 /* LeftMenuTableViewController.m */,
 				BD7B817D1B5D2A9600067D29 /* MapViewController.h */,
 				BD7B817E1B5D2A9600067D29 /* MapViewController.m */,
+				BDDFD24E1B5F9DCE005D481E /* LeftMenuViewController.h */,
+				BDDFD24F1B5F9DCE005D481E /* LeftMenuViewController.m */,
 				EA2943A61B5E06A50054DBD6 /* openViewController.h */,
 				EA2943A71B5E06A50054DBD6 /* openViewController.m */,
 				BD7B813F1B5D1FA900067D29 /* Main.storyboard */,
@@ -358,7 +358,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				BD7B817C1B5D248D00067D29 /* SlideNavigationController.m in Sources */,
-				BD7B81821B5D2DCE00067D29 /* LeftMenuTableViewController.m in Sources */,
 				BD7B81761B5D248D00067D29 /* SlideNavigationContorllerAnimatorScale.m in Sources */,
 				BD7B81771B5D248D00067D29 /* SlideNavigationContorllerAnimatorScaleAndFade.m in Sources */,
 				BD7B817F1B5D2A9600067D29 /* MapViewController.m in Sources */,
@@ -367,6 +366,7 @@
 				BD7B81381B5D1FA900067D29 /* main.m in Sources */,
 				BD7B81791B5D248D00067D29 /* SlideNavigationContorllerAnimatorSlideAndFade.m in Sources */,
 				BD7B81781B5D248D00067D29 /* SlideNavigationContorllerAnimatorSlide.m in Sources */,
+				BDDFD2501B5F9DCE005D481E /* LeftMenuViewController.m in Sources */,
 				EA2943A81B5E06A50054DBD6 /* openViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

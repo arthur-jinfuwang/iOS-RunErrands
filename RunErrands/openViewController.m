@@ -8,6 +8,8 @@
 
 #import "openViewController.h"
 #import "MapViewController.h"
+#import "SlideNavigationController.h"
+
 @interface openViewController ()
 
 @end
@@ -41,23 +43,29 @@
     
     [self.openanimation startAnimating];
     
-
-    
     
     //跳轉到下個頁面
+    /*
     MapViewController * viewController = [self.storyboard instantiateViewControllerWithIdentifier:@"MapViewController"];
     [self presentViewController:viewController animated:YES completion:nil];
+ */
+   
+    //跳轉到下個頁面
+    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle: nil];
     
+    UIViewController *vc ;
     
+    vc = [mainStoryboard instantiateViewControllerWithIdentifier: @"MapViewController"];
     
+    [[SlideNavigationController sharedInstance] switchToViewController:vc withCompletion:nil ];
 
-    
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
 
 /*
 #pragma mark - Navigation
