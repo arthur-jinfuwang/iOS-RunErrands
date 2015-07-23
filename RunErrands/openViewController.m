@@ -44,6 +44,18 @@
     [self.openanimation startAnimating];
     
     
+   [self performSelector:@selector(timernextstep) withObject:nil afterDelay:1.6];
+
+    
+}
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
+- (void) timernextstep{
+    
     //跳轉到下個頁面
     /*
     MapViewController * viewController = [self.storyboard instantiateViewControllerWithIdentifier:@"MapViewController"];
