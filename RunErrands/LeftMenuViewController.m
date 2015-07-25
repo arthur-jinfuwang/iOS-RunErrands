@@ -14,6 +14,11 @@
 #import "SlideNavigationContorllerAnimatorSlideAndFade.h"
 
 @interface LeftMenuViewController ()
+{
+    NSArray *viewArray;
+    NSArray *viewControllerArroy;
+}
+
 
 @end
 
@@ -31,6 +36,22 @@
     // Do any additional setup after loading the view.
     
     self.tableView.separatorColor = [UIColor lightGrayColor];
+    
+    viewArray = [NSArray arrayWithObjects:
+                 @"接案",
+                 @"發案",
+                 @"追蹤",
+                 @"訊息",
+                 @"設定",
+                 @"登入",nil];
+    viewControllerArroy = [NSArray arrayWithObjects:
+                           @"MapViewController",
+                           @"PostCastViewController",
+                           @"FollowTableViewController",
+                           @"MessageTableViewController",
+                           @"SettingViewController",
+                           @"LoginViewController",nil];
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -42,7 +63,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 4;
+    return viewArray.count;
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
@@ -61,24 +82,7 @@
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"leftMenuCell"];
     
-    switch (indexPath.row)
-    {
-        case 0:
-            cell.textLabel.text = @"Home";
-            break;
-            
-        case 1:
-            cell.textLabel.text = @"Profile";
-            break;
-            
-        case 2:
-            cell.textLabel.text = @"Friends";
-            break;
-            
-        case 3:
-            cell.textLabel.text = @"Sign Out";
-            break;
-    }
+    cell.textLabel.text = viewArray[indexPath.row];
     
     cell.backgroundColor = [UIColor clearColor];
     
@@ -87,10 +91,13 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"MainStoryboard_iPhone"
+    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main"
                                                              bundle: nil];
     
     UIViewController *vc ;
+    vc = [mainStoryboard instantiateViewControllerWithIdentifier: viewControllerArroy[indexPath.row]];
+    
+
 /*
     switch (indexPath.row)
     {
@@ -112,11 +119,10 @@
             return;
             break;
     }
+  */
     
-    [[SlideNavigationController sharedInstance] popToRootAndSwitchToViewController:vc
-                                                             withSlideOutAnimation:self.slideOutAnimationEnabled
-                                                                     andCompletion:nil];
- */
+    [[SlideNavigationController sharedInstance] popToRootAndSwitchToViewController:vc withSlideOutAnimation:self.slideOutAnimationEnabled andCompletion:nil];
+
 }
 
 
