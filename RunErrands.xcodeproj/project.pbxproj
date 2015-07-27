@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BD337CB81B65FF5900D8E9F9 /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BD337CB71B65FF5900D8E9F9 /* RegisterViewController.m */; };
 		BD7B81381B5D1FA900067D29 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BD7B81371B5D1FA900067D29 /* main.m */; };
 		BD7B813B1B5D1FA900067D29 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BD7B813A1B5D1FA900067D29 /* AppDelegate.m */; };
 		BD7B81411B5D1FA900067D29 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BD7B813F1B5D1FA900067D29 /* Main.storyboard */; };
@@ -57,6 +58,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		BD337CB61B65FF5900D8E9F9 /* RegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterViewController.h; sourceTree = "<group>"; };
+		BD337CB71B65FF5900D8E9F9 /* RegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterViewController.m; sourceTree = "<group>"; };
 		BD7B81321B5D1FA900067D29 /* RunErrands.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RunErrands.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BD7B81361B5D1FA900067D29 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BD7B81371B5D1FA900067D29 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -169,10 +172,12 @@
 				BD7B813A1B5D1FA900067D29 /* AppDelegate.m */,
 				BDDFD24E1B5F9DCE005D481E /* LeftMenuViewController.h */,
 				BDDFD24F1B5F9DCE005D481E /* LeftMenuViewController.m */,
-				BD8040341B637E1400B1DCC1 /* LoginViewController.h */,
 				BD80403D1B6390A600B1DCC1 /* SettingViewController.h */,
 				BD80403E1B6390A600B1DCC1 /* SettingViewController.m */,
+				BD8040341B637E1400B1DCC1 /* LoginViewController.h */,
 				BD8040351B637E1400B1DCC1 /* LoginViewController.m */,
+				BD337CB61B65FF5900D8E9F9 /* RegisterViewController.h */,
+				BD337CB71B65FF5900D8E9F9 /* RegisterViewController.m */,
 				BD80403A1B638C7A00B1DCC1 /* MessageTableViewController.h */,
 				BD80403B1B638C7A00B1DCC1 /* MessageTableViewController.m */,
 				BD8040371B63840600B1DCC1 /* FollowTableViewController.h */,
@@ -405,6 +410,7 @@
 				BD7B81381B5D1FA900067D29 /* main.m in Sources */,
 				BD8BF4601B6115D60020FBAA /* CaseListTableViewController.m in Sources */,
 				BD7B81791B5D248D00067D29 /* SlideNavigationContorllerAnimatorSlideAndFade.m in Sources */,
+				BD337CB81B65FF5900D8E9F9 /* RegisterViewController.m in Sources */,
 				BD7B81781B5D248D00067D29 /* SlideNavigationContorllerAnimatorSlide.m in Sources */,
 				BDDFD2501B5F9DCE005D481E /* LeftMenuViewController.m in Sources */,
 				EA2943A81B5E06A50054DBD6 /* openViewController.m in Sources */,

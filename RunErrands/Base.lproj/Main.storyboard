@@ -89,23 +89,63 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sSp-2y-eW2">
+                                <rect key="frame" x="272" y="108" width="56" height="30"/>
+                                <state key="normal" title="Go Map">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="Ky8-dS-vnj" kind="show" id="C6V-7b-eYo"/>
+                                </connections>
+                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="發案" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LJR-gY-uCd">
-                                <rect key="frame" x="283" y="72" width="34" height="21"/>
+                                <rect key="frame" x="283" y="72" width="34" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="sSp-2y-eW2" firstAttribute="top" secondItem="LJR-gY-uCd" secondAttribute="bottom" constant="15.5" id="FfP-vp-LGt"/>
                             <constraint firstAttribute="centerX" secondItem="LJR-gY-uCd" secondAttribute="centerX" id="b5l-OQ-hNK"/>
                             <constraint firstItem="LJR-gY-uCd" firstAttribute="top" secondItem="iye-Sh-jeJ" secondAttribute="bottom" constant="8" id="usI-RA-8qk"/>
+                            <constraint firstAttribute="centerX" secondItem="sSp-2y-eW2" secondAttribute="centerX" id="vsV-uU-ij4"/>
                         </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="s5f-nr-xpY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1861" y="1752"/>
+            <point key="canvasLocation" x="1861" y="1845"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="5Nw-xH-3jb">
+            <objects>
+                <viewController id="Ky8-dS-vnj" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="fh9-NH-fKf"/>
+                        <viewControllerLayoutGuide type="bottom" id="v7G-BU-PYL"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="MH4-AB-8Cm">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="RUh-Nw-vax">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                            </mapView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="v7G-BU-PYL" firstAttribute="top" secondItem="RUh-Nw-vax" secondAttribute="bottom" id="4VX-JL-ESI"/>
+                            <constraint firstItem="RUh-Nw-vax" firstAttribute="leading" secondItem="MH4-AB-8Cm" secondAttribute="leadingMargin" constant="-16" id="BQ0-tF-NJA"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="RUh-Nw-vax" secondAttribute="trailing" constant="-16" id="hlN-Vr-Iuk"/>
+                            <constraint firstItem="RUh-Nw-vax" firstAttribute="top" secondItem="MH4-AB-8Cm" secondAttribute="topMargin" id="ybK-vB-ewQ"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="LHf-wh-uDU" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1861" y="2677"/>
         </scene>
         <!--Message Table View Controller-->
         <scene sceneID="5S5-Lr-Tdj">
@@ -148,7 +188,7 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="設定" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6r2-OA-kX5">
                                 <rect key="frame" x="283" y="72" width="34" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
@@ -176,14 +216,25 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="登入" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XjD-zZ-VTx">
-                                <rect key="frame" x="283" y="72" width="34" height="21"/>
+                                <rect key="frame" x="283" y="72" width="34" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4uM-dt-HnE">
+                                <rect key="frame" x="285" y="495" width="30" height="30"/>
+                                <state key="normal" title="註冊">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="Aix-ra-ibn" kind="show" id="uKd-Wd-KXG"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstAttribute="centerX" secondItem="4uM-dt-HnE" secondAttribute="centerX" id="VFN-be-A1D"/>
+                            <constraint firstItem="CMm-1u-Upx" firstAttribute="top" secondItem="4uM-dt-HnE" secondAttribute="bottom" constant="75" id="X84-2B-gKP"/>
                             <constraint firstAttribute="centerX" secondItem="XjD-zZ-VTx" secondAttribute="centerX" id="dCi-dZ-3zG"/>
                             <constraint firstItem="XjD-zZ-VTx" firstAttribute="top" secondItem="sEh-AI-gf6" secondAttribute="bottom" constant="8" id="kFN-fY-cVM"/>
                         </constraints>
@@ -192,6 +243,36 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="48r-Ap-Vfe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4982" y="992"/>
+        </scene>
+        <!--Register View Controller-->
+        <scene sceneID="cMj-lJ-cqs">
+            <objects>
+                <viewController id="Aix-ra-ibn" customClass="RegisterViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="OWT-rU-U01"/>
+                        <viewControllerLayoutGuide type="bottom" id="A04-Tq-dXL"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="YAT-IZ-6aC">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="註冊" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jD7-ro-0SE">
+                                <rect key="frame" x="283" y="72" width="34" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="jD7-ro-0SE" firstAttribute="top" secondItem="OWT-rU-U01" secondAttribute="bottom" constant="8" id="Cts-vw-NdF"/>
+                            <constraint firstAttribute="centerX" secondItem="jD7-ro-0SE" secondAttribute="centerX" id="uUi-cq-Aih"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="b2H-tz-hwH" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4982" y="1746"/>
         </scene>
         <!--Follow Table View Controller-->
         <scene sceneID="3Kl-5q-wRB">
