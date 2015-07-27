@@ -19,6 +19,9 @@
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="GIa-JO-mNv">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <connections>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="YG2-Yk-o13"/>
+                                </connections>
                             </mapView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -36,10 +39,13 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="theMapView" destination="GIa-JO-mNv" id="FkX-Gy-Hp9"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="909" y="984"/>
+            <point key="canvasLocation" x="909" y="830"/>
         </scene>
         <!--Case List Table View Controller-->
         <scene sceneID="EwJ-E2-i3W">
@@ -75,7 +81,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dIS-Sz-nmL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="909" y="1845"/>
+            <point key="canvasLocation" x="909" y="1691"/>
         </scene>
         <!--Post Cast View Controller-->
         <scene sceneID="p5X-AI-7Rf">
@@ -334,7 +340,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KQg-vr-ofb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1876" y="1853"/>
+            <point key="canvasLocation" x="1876" y="1699"/>
         </scene>
         <!--Case Details Table View Controller-->
         <scene sceneID="jdY-2r-aXo">
@@ -485,8 +491,8 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="QqX-jx-IWm"/>
-        <segue reference="ybq-Ux-EmN"/>
+        <segue reference="hFi-3l-ee4"/>
+        <segue reference="FES-Lo-JZM"/>
         <segue reference="Taw-Pu-oyh"/>
     </inferredMetricsTieBreakers>
 </document>

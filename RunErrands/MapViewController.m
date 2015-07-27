@@ -10,7 +10,13 @@
 #import <MapKit/MapKit.h>
 #import <CoreLocation/CoreLocation.h>
 
-@interface MapViewController ()
+@interface MapViewController ()<MKMapViewDelegate, CLLocationManagerDelegate>
+{
+    CLLocationManager *locationManager;
+    BOOL isFirstLocationReceived;
+}
+
+@property (weak, nonatomic) IBOutlet MKMapView *theMapView;
 
 @end
 
@@ -20,7 +26,19 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
+    locationManager = [CLLocationManager new];
+    // Ask user's permission
+    if ([locationManager respondsToSelector:@selector(requestWhenInUseAuthorization)]) {
+        [locationManager requestWhenInUseAuthorization];
     }
+    // Prepare locationManaage
+    locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+    locationManager.activityType = CLActivityTypeOther;
+    locationManager.delegate = self;
+    [locationManager startUpdatingLocation];
+    _theMapView.userTrackingMode = MKUserTrackingModeFollow;
+    
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -30,6 +48,47 @@
 - (BOOL)slideNavigationControllerShouldDisplayLeftMenu
 {
     return YES;
+}
+
+#pragma mark - CLLocationManager Delegate Methods
+
+- (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations{
+    CLLocation *currentLocation = locations.lastObject;
+    
+    NSLog(@"Current Location: %.6f,%.6f", currentLocation.coordinate.latitude, currentLocation.coordinate.longitude);
+    
+    if (isFirstLocationReceived == false) {
+        MKCoordinateRegion region = _theMapView.region;
+        region.center = currentLocation.coordinate;
+        region.span.latitudeDelta = 0.001;
+        region.span.longitudeDelta = 0.001;
+        
+        [_theMapView setRegion:region animated:true];
+        isFirstLocationReceived = true;
+        
+        // Add Annotation
+        CLLocationCoordinate2D coordicate = currentLocation.coordinate;
+        coordicate.longitude += 0.0005;
+        coordicate.latitude += 0.0005;
+        
+        //MKPointAnnotation *annotation = [MKPointAnnotation new];
+        MKPointAnnotation *annotation = [MKPointAnnotation new];
+
+        
+        annotation.coordinate = coordicate;
+        annotation.title = @"肯德基";
+        annotation.subtitle = @"真好吃!🍗";
+        
+        [_theMapView addAnnotation: annotation];
+        
+    }
+}
+
+- (MKAnnotationView*) mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation{
+    if (annotation == mapView.userLocation)
+        return nil;
+    MKPinAnnotationView *resultView = (MKPinAnnotationView*)[mapView dequeueReusableAnnotationViewWithIdentifier:@"Store"];
+    return resultView;
 }
 
 /*
