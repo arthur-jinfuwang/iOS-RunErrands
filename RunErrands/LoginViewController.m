@@ -25,12 +25,7 @@
         
         NSLog(@"已登入");
         
-        UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle: nil];
         
-        UIViewController *lc ;
-        
-        lc = [mainStoryboard instantiateViewControllerWithIdentifier: @"MapViewController"];
-        [[SlideNavigationController sharedInstance] switchToViewController:lc withCompletion:nil ];
         
         //轉至其它畫面...
         
@@ -53,10 +48,19 @@
              }];
             
         }];
+        UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle: nil];
+        UIViewController *lc ;
+        
+        lc = [mainStoryboard instantiateViewControllerWithIdentifier: @"MapViewController"];
+        [[SlideNavigationController sharedInstance] switchToViewController:lc withCompletion:nil ];
+        
+
+        
         
         NSLog(@"not");
     }
-
+    
+    
     
     
 }
@@ -68,6 +72,7 @@
     if ([FBSDKAccessToken currentAccessToken]) {
         // User is logged in, do work such as go to next view controller.
         NSLog(@"已登入");
+        
     }else{
         NSLog(@"未登入");
     }
