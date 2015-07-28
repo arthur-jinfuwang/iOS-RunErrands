@@ -8,7 +8,10 @@
 
 #import <UIKit/UIKit.h>
 #import "SlideNavigationContorllerAnimator.h"
+#import <FBSDKCoreKit/FBSDKCoreKit.h>
 
 @interface LoginViewController : UIViewController <SlideNavigationControllerDelegate>
+
+
 
 @end

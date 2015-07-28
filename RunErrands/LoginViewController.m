@@ -7,16 +7,71 @@
 //
 
 #import "LoginViewController.h"
+#import <FBSDKCoreKit/FBSDKCoreKit.h>
+#import <FBSDKLoginKit/FBSDKLoginKit.h>
 
 @interface LoginViewController ()
 
 @end
 
 @implementation LoginViewController
+- (IBAction)FaceookLoginBtn:(id)sender {
+    
+    FBSDKLoginManager *loginManager = [[FBSDKLoginManager alloc] init];
+    
+    if ([FBSDKAccessToken currentAccessToken]) {
+        // User is logged in, do work such as go to next view controller.
+        
+        
+        NSLog(@"已登入");
+        
+        UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle: nil];
+        
+        UIViewController *lc ;
+        
+        lc = [mainStoryboard instantiateViewControllerWithIdentifier: @"MapViewController"];
+        [[SlideNavigationController sharedInstance] switchToViewController:lc withCompletion:nil ];
+        
+        //轉至其它畫面...
+        
+        
+
+        
+    }else{
+        
+        //未登入
+        
+        [loginManager logInWithReadPermissions:@[@"public_profile",@"email",@"user_friends"] handler:^(FBSDKLoginManagerLoginResult *result, NSError *error) {
+            
+            NSLog(@"%@",[[[result grantedPermissions]allObjects]description]);
+            
+            [[[FBSDKGraphRequest alloc] initWithGraphPath:@"me" parameters:@{@"fields":@"email,name,gender,locale"}]
+             startWithCompletionHandler:^(FBSDKGraphRequestConnection *connection, NSDictionary *results, NSError *error) {
+                 NSLog(@"%@",results);
+                 NSLog(@"%@",[results objectForKey:@"email"]);
+                 
+             }];
+            
+        }];
+        
+        NSLog(@"not");
+    }
+
+    
+    
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    if ([FBSDKAccessToken currentAccessToken]) {
+        // User is logged in, do work such as go to next view controller.
+        NSLog(@"已登入");
+    }else{
+        NSLog(@"未登入");
+    }
+
 }
 
 - (void)didReceiveMemoryWarning {
