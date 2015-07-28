@@ -60,18 +60,17 @@
     if (isFirstLocationReceived == false) {
         MKCoordinateRegion region = _theMapView.region;
         region.center = currentLocation.coordinate;
-        region.span.latitudeDelta = 0.001;
-        region.span.longitudeDelta = 0.001;
+        region.span.latitudeDelta = 0.1;
+        region.span.longitudeDelta = 0.1;
         
         [_theMapView setRegion:region animated:true];
         isFirstLocationReceived = true;
         
         // Add Annotation
         CLLocationCoordinate2D coordicate = currentLocation.coordinate;
-        coordicate.longitude += 0.0005;
-        coordicate.latitude += 0.0005;
+        coordicate.longitude += 0.005;
+        coordicate.latitude += 0.005;
         
-        //MKPointAnnotation *annotation = [MKPointAnnotation new];
         MKPointAnnotation *annotation = [MKPointAnnotation new];
 
         
@@ -85,9 +84,26 @@
 }
 
 - (MKAnnotationView*) mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation{
+    
     if (annotation == mapView.userLocation)
         return nil;
+    
     MKPinAnnotationView *resultView = (MKPinAnnotationView*)[mapView dequeueReusableAnnotationViewWithIdentifier:@"Store"];
+    
+    
+    if(resultView == nil)
+    {
+        resultView = [[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"Store"];
+    }else{
+        resultView.annotation = annotation;
+        
+    }
+    
+    resultView.canShowCallout = true;
+    resultView.animatesDrop = true;
+    resultView.pinColor = MKPinAnnotationColorGreen;
+    
+    
     return resultView;
 }
 
