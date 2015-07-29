@@ -19,7 +19,7 @@
     NSArray *viewControllerArroy;
 }
 
-
+@property (strong,nonatomic) UIView * headerView;
 @end
 
 @implementation LeftMenuViewController
@@ -52,6 +52,10 @@
                            @"SettingViewController",
                            @"LoginViewController",nil];
     
+    
+    //讀取標題的區域
+    self.headerView = [[[NSBundle mainBundle] loadNibNamed:@"HeaderView" owner:nil options:nil] lastObject];
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -68,14 +72,16 @@
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
-    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(100, 0, self.tableView.frame.size.width, 20)];
-    view.backgroundColor = [UIColor clearColor];
-    return view;
+//    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(100, 0, self.tableView.frame.size.width, 0)];
+    //view.backgroundColor = [UIColor clearColor];
+//    view.backgroundColor = [UIColor greenColor];
+//    return view;
+    return self.headerView;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
-    return 20;
+    return 150;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath

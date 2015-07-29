@@ -48,6 +48,8 @@
 		EA2943A11B5DF1110054DBD6 /* screen@2x(9).png in Resources */ = {isa = PBXBuildFile; fileRef = EA2943971B5DF1110054DBD6 /* screen@2x(9).png */; };
 		EA2943A21B5DF1110054DBD6 /* screen@2x(10).png in Resources */ = {isa = PBXBuildFile; fileRef = EA2943981B5DF1110054DBD6 /* screen@2x(10).png */; };
 		EA2943A81B5E06A50054DBD6 /* openViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA2943A71B5E06A50054DBD6 /* openViewController.m */; };
+		EA89746B1B68D37B00C0DEC3 /* HeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA89746A1B68D37B00C0DEC3 /* HeaderView.xib */; };
+		EA89746E1B68D39200C0DEC3 /* HeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = EA89746D1B68D39200C0DEC3 /* HeaderView.m */; };
 		EAC0A0081B67CD8000C0A89A /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAC0A0061B67CD8000C0A89A /* FBSDKCoreKit.framework */; };
 		EAC0A0091B67CD8000C0A89A /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAC0A0071B67CD8000C0A89A /* FBSDKLoginKit.framework */; };
 		EAC0A00B1B67D68500C0A89A /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAC0A00A1B67D68500C0A89A /* FBSDKShareKit.framework */; };
@@ -130,6 +132,9 @@
 		EA2943981B5DF1110054DBD6 /* screen@2x(10).png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "screen@2x(10).png"; sourceTree = "<group>"; };
 		EA2943A61B5E06A50054DBD6 /* openViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = openViewController.h; sourceTree = "<group>"; };
 		EA2943A71B5E06A50054DBD6 /* openViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = openViewController.m; sourceTree = "<group>"; };
+		EA89746A1B68D37B00C0DEC3 /* HeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HeaderView.xib; sourceTree = "<group>"; };
+		EA89746C1B68D39200C0DEC3 /* HeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HeaderView.h; sourceTree = "<group>"; };
+		EA89746D1B68D39200C0DEC3 /* HeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HeaderView.m; sourceTree = "<group>"; };
 		EAC0A0061B67CD8000C0A89A /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
 		EAC0A0071B67CD8000C0A89A /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
 		EAC0A00A1B67D68500C0A89A /* FBSDKShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKShareKit.framework; sourceTree = "<group>"; };
@@ -218,6 +223,9 @@
 				EA2943A61B5E06A50054DBD6 /* openViewController.h */,
 				EA2943A71B5E06A50054DBD6 /* openViewController.m */,
 				BD7B813F1B5D1FA900067D29 /* Main.storyboard */,
+				EA89746A1B68D37B00C0DEC3 /* HeaderView.xib */,
+				EA89746C1B68D39200C0DEC3 /* HeaderView.h */,
+				EA89746D1B68D39200C0DEC3 /* HeaderView.m */,
 				BD7B81421B5D1FA900067D29 /* Images.xcassets */,
 				EA2D963E1B5E752200C18197 /* picture */,
 				BD7B81441B5D1FA900067D29 /* LaunchScreen.xib */,
@@ -395,6 +403,7 @@
 				BD7B817A1B5D248D00067D29 /* menu-button.png in Resources */,
 				EA29439B1B5DF1110054DBD6 /* screen@2x(3).png in Resources */,
 				BD7B81411B5D1FA900067D29 /* Main.storyboard in Resources */,
+				EA89746B1B68D37B00C0DEC3 /* HeaderView.xib in Resources */,
 				EA2943A11B5DF1110054DBD6 /* screen@2x(9).png in Resources */,
 				BD7B81461B5D1FA900067D29 /* LaunchScreen.xib in Resources */,
 				EA29439A1B5DF1110054DBD6 /* screen@2x(2).png in Resources */,
@@ -429,6 +438,7 @@
 				BD3618EB1B67E35200A13CA9 /* SetLocationViewController.m in Sources */,
 				BD80403F1B6390A600B1DCC1 /* SettingViewController.m in Sources */,
 				BD7B81771B5D248D00067D29 /* SlideNavigationContorllerAnimatorScaleAndFade.m in Sources */,
+				EA89746E1B68D39200C0DEC3 /* HeaderView.m in Sources */,
 				BD80403C1B638C7A00B1DCC1 /* MessageTableViewController.m in Sources */,
 				BD337CBB1B66312E00D8E9F9 /* ResumeViewController.m in Sources */,
 				BD7B817F1B5D2A9600067D29 /* MapViewController.m in Sources */,

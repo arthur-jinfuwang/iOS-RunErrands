@@ -25,7 +25,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    
+    [self.navigationController setNavigationBarHidden:NO];
     locationManager = [CLLocationManager new];
     // Ask user's permission
     if ([locationManager respondsToSelector:@selector(requestWhenInUseAuthorization)]) {

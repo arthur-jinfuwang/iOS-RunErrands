@@ -22,6 +22,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
+    [self.navigationController setNavigationBarHidden:YES];
     
     NSMutableArray *array = [[NSMutableArray alloc]init];
     [array addObject:[UIImage imageNamed:@"screen@2x(1).png"]];
