@@ -124,10 +124,10 @@
             </objects>
             <point key="canvasLocation" x="2938" y="1699"/>
         </scene>
-        <!--View Controller-->
+        <!--Set Location View Controller-->
         <scene sceneID="5Nw-xH-3jb">
             <objects>
-                <viewController id="Ky8-dS-vnj" sceneMemberID="viewController">
+                <viewController id="Ky8-dS-vnj" customClass="SetLocationViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="fh9-NH-fKf"/>
                         <viewControllerLayoutGuide type="bottom" id="v7G-BU-PYL"/>
@@ -148,6 +148,9 @@
                             <constraint firstItem="RUh-Nw-vax" firstAttribute="top" secondItem="MH4-AB-8Cm" secondAttribute="topMargin" id="ybK-vB-ewQ"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="theMapView" destination="RUh-Nw-vax" id="Lgf-eS-Eg3"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LHf-wh-uDU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

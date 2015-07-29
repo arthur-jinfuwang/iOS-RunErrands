@@ -10,6 +10,7 @@
 		BD337CB81B65FF5900D8E9F9 /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BD337CB71B65FF5900D8E9F9 /* RegisterViewController.m */; };
 		BD337CBB1B66312E00D8E9F9 /* ResumeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BD337CBA1B66312E00D8E9F9 /* ResumeViewController.m */; };
 		BD337CBE1B66321A00D8E9F9 /* CaseDetailsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BD337CBD1B66321A00D8E9F9 /* CaseDetailsTableViewController.m */; };
+		BD3618EB1B67E35200A13CA9 /* SetLocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BD3618EA1B67E35200A13CA9 /* SetLocationViewController.m */; };
 		BD7B81381B5D1FA900067D29 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BD7B81371B5D1FA900067D29 /* main.m */; };
 		BD7B813B1B5D1FA900067D29 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BD7B813A1B5D1FA900067D29 /* AppDelegate.m */; };
 		BD7B81411B5D1FA900067D29 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BD7B813F1B5D1FA900067D29 /* Main.storyboard */; };
@@ -66,6 +67,8 @@
 		BD337CBA1B66312E00D8E9F9 /* ResumeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResumeViewController.m; sourceTree = "<group>"; };
 		BD337CBC1B66321A00D8E9F9 /* CaseDetailsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CaseDetailsTableViewController.h; sourceTree = "<group>"; };
 		BD337CBD1B66321A00D8E9F9 /* CaseDetailsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CaseDetailsTableViewController.m; sourceTree = "<group>"; };
+		BD3618E91B67E35200A13CA9 /* SetLocationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SetLocationViewController.h; sourceTree = "<group>"; };
+		BD3618EA1B67E35200A13CA9 /* SetLocationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SetLocationViewController.m; sourceTree = "<group>"; };
 		BD7B81321B5D1FA900067D29 /* RunErrands.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RunErrands.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BD7B81361B5D1FA900067D29 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BD7B81371B5D1FA900067D29 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -194,6 +197,8 @@
 				BD8BF45F1B6115D50020FBAA /* CaseListTableViewController.m */,
 				BD337CBC1B66321A00D8E9F9 /* CaseDetailsTableViewController.h */,
 				BD337CBD1B66321A00D8E9F9 /* CaseDetailsTableViewController.m */,
+				BD3618E91B67E35200A13CA9 /* SetLocationViewController.h */,
+				BD3618EA1B67E35200A13CA9 /* SetLocationViewController.m */,
 				BD7B817D1B5D2A9600067D29 /* MapViewController.h */,
 				BD7B817E1B5D2A9600067D29 /* MapViewController.m */,
 				BD8BF4611B61551E0020FBAA /* PostCastViewController.h */,
@@ -409,6 +414,7 @@
 			files = (
 				BD7B817C1B5D248D00067D29 /* SlideNavigationController.m in Sources */,
 				BD7B81761B5D248D00067D29 /* SlideNavigationContorllerAnimatorScale.m in Sources */,
+				BD3618EB1B67E35200A13CA9 /* SetLocationViewController.m in Sources */,
 				BD80403F1B6390A600B1DCC1 /* SettingViewController.m in Sources */,
 				BD7B81771B5D248D00067D29 /* SlideNavigationContorllerAnimatorScaleAndFade.m in Sources */,
 				BD80403C1B638C7A00B1DCC1 /* MessageTableViewController.m in Sources */,
