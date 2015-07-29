@@ -12,3 +12,4 @@
 @interface SettingViewController : UIViewController <SlideNavigationControllerDelegate>
 
 @end
+

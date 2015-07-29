@@ -35,7 +35,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    self.tableView.separatorColor = [UIColor lightGrayColor];
+    self.tableView.separatorColor = [UIColor clearColor];
     
     viewArray = [NSArray arrayWithObjects:
                  @"接案",
@@ -68,7 +68,7 @@
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
-    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.tableView.frame.size.width, 20)];
+    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(100, 0, self.tableView.frame.size.width, 20)];
     view.backgroundColor = [UIColor clearColor];
     return view;
 }

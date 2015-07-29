@@ -7,21 +7,21 @@
 	<key>IDESourceControlProjectIdentifier</key>
 	<string>932DB70A-BFEB-417D-9FB1-E9EC470A7754</string>
 	<key>IDESourceControlProjectName</key>
-	<string>RunErrands</string>
+	<string>project</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
 		<key>04EFD26A46E54523F403AFF20F793338A281766B</key>
-		<string>https://github.com/arthur-jinfuwang/iOS-RunErrands</string>
+		<string>https://github.com/arthur-jinfuwang/iOS-RunErrands.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>RunErrands.xcodeproj</string>
+	<string>RunErrands.xcodeproj/project.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>04EFD26A46E54523F403AFF20F793338A281766B</key>
 		<string>../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
-	<string>https://github.com/arthur-jinfuwang/iOS-RunErrands</string>
+	<string>https://github.com/arthur-jinfuwang/iOS-RunErrands.git</string>
 	<key>IDESourceControlProjectVersion</key>
 	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>

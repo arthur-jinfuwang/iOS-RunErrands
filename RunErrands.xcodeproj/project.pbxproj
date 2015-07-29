@@ -47,6 +47,9 @@
 		EA2943A11B5DF1110054DBD6 /* screen@2x(9).png in Resources */ = {isa = PBXBuildFile; fileRef = EA2943971B5DF1110054DBD6 /* screen@2x(9).png */; };
 		EA2943A21B5DF1110054DBD6 /* screen@2x(10).png in Resources */ = {isa = PBXBuildFile; fileRef = EA2943981B5DF1110054DBD6 /* screen@2x(10).png */; };
 		EA2943A81B5E06A50054DBD6 /* openViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA2943A71B5E06A50054DBD6 /* openViewController.m */; };
+		EAC0A0081B67CD8000C0A89A /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAC0A0061B67CD8000C0A89A /* FBSDKCoreKit.framework */; };
+		EAC0A0091B67CD8000C0A89A /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAC0A0071B67CD8000C0A89A /* FBSDKLoginKit.framework */; };
+		EAC0A00B1B67D68500C0A89A /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAC0A00A1B67D68500C0A89A /* FBSDKShareKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -124,6 +127,9 @@
 		EA2943981B5DF1110054DBD6 /* screen@2x(10).png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "screen@2x(10).png"; sourceTree = "<group>"; };
 		EA2943A61B5E06A50054DBD6 /* openViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = openViewController.h; sourceTree = "<group>"; };
 		EA2943A71B5E06A50054DBD6 /* openViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = openViewController.m; sourceTree = "<group>"; };
+		EAC0A0061B67CD8000C0A89A /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
+		EAC0A0071B67CD8000C0A89A /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
+		EAC0A00A1B67D68500C0A89A /* FBSDKShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKShareKit.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -131,7 +137,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EAC0A0081B67CD8000C0A89A /* FBSDKCoreKit.framework in Frameworks */,
 				BD7B81621B5D231900067D29 /* UIKit.framework in Frameworks */,
+				EAC0A0091B67CD8000C0A89A /* FBSDKLoginKit.framework in Frameworks */,
+				EAC0A00B1B67D68500C0A89A /* FBSDKShareKit.framework in Frameworks */,
 				BD7B81601B5D22E000067D29 /* Foundation.framework in Frameworks */,
 				BD7B815E1B5D208000067D29 /* CoreLocation.framework in Frameworks */,
 				BD7B815C1B5D202A00067D29 /* MapKit.framework in Frameworks */,
@@ -151,6 +160,9 @@
 		BD7B81291B5D1FA900067D29 = {
 			isa = PBXGroup;
 			children = (
+				EAC0A0061B67CD8000C0A89A /* FBSDKCoreKit.framework */,
+				EAC0A0071B67CD8000C0A89A /* FBSDKLoginKit.framework */,
+				EAC0A00A1B67D68500C0A89A /* FBSDKShareKit.framework */,
 				BD7B81611B5D231800067D29 /* UIKit.framework */,
 				BD7B815F1B5D22E000067D29 /* Foundation.framework */,
 				BD7B815D1B5D208000067D29 /* CoreLocation.framework */,
@@ -554,8 +566,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = RunErrands/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -564,8 +581,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = RunErrands/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
