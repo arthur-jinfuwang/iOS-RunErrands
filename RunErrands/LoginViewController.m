@@ -9,6 +9,7 @@
 #import "LoginViewController.h"
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
 #import <FBSDKLoginKit/FBSDKLoginKit.h>
+#import "LeftMenuViewController.h"
 
 @interface LoginViewController ()
 
@@ -48,6 +49,13 @@
              }];
             
         }];
+        
+        //Change the slider menu text from login to logout
+        LeftMenuViewController *leftMenu =(LeftMenuViewController *)[SlideNavigationController sharedInstance].leftMenu;
+        [leftMenu setLoginStatus:USERLOGIN];
+        
+        //Turn to map view menu
+
         UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle: nil];
         UIViewController *lc ;
         
@@ -55,14 +63,8 @@
         [[SlideNavigationController sharedInstance] switchToViewController:lc withCompletion:nil ];
         
 
-        
-        
         NSLog(@"not");
     }
-    
-    
-    
-    
 }
 
 - (void)viewDidLoad {

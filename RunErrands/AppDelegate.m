@@ -25,13 +25,21 @@
     
     LeftMenuViewController *leftMenu = (LeftMenuViewController*)[mainStoryboard instantiateViewControllerWithIdentifier: @"LeftMenuViewController"];
     
-    //LeftMenuViewController *leftMenu = [[LeftMenuViewController alloc] init];
+    BOOL fbRes = [[FBSDKApplicationDelegate sharedInstance] application:application
+                                          didFinishLaunchingWithOptions:launchOptions];
+//    if (fbRes) {
+        if ([FBSDKAccessToken currentAccessToken]){
+            NSLog(@"FB already login.");
+            [leftMenu setLoginStatus:USERLOGIN];
+        }else{
+            NSLog(@"FB already logout.");
+            [leftMenu setLoginStatus:USERLOGIN];
+        }
+//    }else{
+//        NSLog(@"FB SDK error!");
+//    }
     
     [SlideNavigationController sharedInstance].leftMenu = leftMenu;
-    
-    return [[FBSDKApplicationDelegate sharedInstance] application:application
-                                    didFinishLaunchingWithOptions:launchOptions];
-    
     return YES;
 }
 
