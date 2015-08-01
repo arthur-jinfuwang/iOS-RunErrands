@@ -157,6 +157,7 @@
         {
             cell.textLabel.text = @"登入";
         }
+        NSLog(@"cellArray is ok");
     }
     
     loginStatus = status;

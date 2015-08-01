@@ -13,6 +13,7 @@
 @interface SetLocationViewController ()<MKMapViewDelegate, CLLocationManagerDelegate>
 {
     CLLocationManager *locationManager;
+    BOOL isFirstLocationReceived;
 }
 @property (weak, nonatomic) IBOutlet MKMapView *theMapView;
 
@@ -46,25 +47,30 @@
 #pragma mark - CLLocationManager Delegate Methods
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations{
-    CLLocation *currentLocation = locations.lastObject;
     
-    MKCoordinateRegion region = _theMapView.region;
-    region.center = currentLocation.coordinate;
-    region.span.latitudeDelta = 0.1;
-    region.span.longitudeDelta = 0.1;
-    [_theMapView setRegion:region animated:true];
-    
-    CLLocationCoordinate2D coordicate = currentLocation.coordinate;
-    MKPointAnnotation *annotation = [MKPointAnnotation new];
-    annotation.coordinate = coordicate;
-    [_theMapView addAnnotation: annotation];
-
+    if (isFirstLocationReceived == false) {
+        CLLocation *currentLocation = locations.lastObject;
+        
+        MKCoordinateRegion region = _theMapView.region;
+        region.center = currentLocation.coordinate;
+        region.span.latitudeDelta = 0.1;
+        region.span.longitudeDelta = 0.1;
+        [_theMapView setRegion:region animated:true];
+        
+        CLLocationCoordinate2D coordicate = currentLocation.coordinate;
+        
+        MKPointAnnotation *annotation = [MKPointAnnotation new];
+        annotation.coordinate = coordicate;
+        [_theMapView addAnnotation: annotation];
+        
+        isFirstLocationReceived =true;
+    }
 }
 
 - (MKAnnotationView*)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation{
     
-    //if (annotation == mapView.userLocation)
-    //    return nil;
+    if (annotation == mapView.userLocation)
+        return nil;
     
     MKPinAnnotationView *resultView = (MKPinAnnotationView*)[mapView dequeueReusableAnnotationViewWithIdentifier:@"Case"];
     

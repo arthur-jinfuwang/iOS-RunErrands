@@ -36,6 +36,7 @@
 		BD80403F1B6390A600B1DCC1 /* SettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BD80403E1B6390A600B1DCC1 /* SettingViewController.m */; };
 		BD8BF4601B6115D60020FBAA /* CaseListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BD8BF45F1B6115D50020FBAA /* CaseListTableViewController.m */; };
 		BD8BF4631B61551E0020FBAA /* PostCastViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BD8BF4621B61551E0020FBAA /* PostCastViewController.m */; };
+		BDD7C19C1B6CEC80009A9E84 /* SelectAnnoation.m in Sources */ = {isa = PBXBuildFile; fileRef = BDD7C19B1B6CEC80009A9E84 /* SelectAnnoation.m */; };
 		BDDFD2501B5F9DCE005D481E /* LeftMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BDDFD24F1B5F9DCE005D481E /* LeftMenuViewController.m */; };
 		EA2943991B5DF1110054DBD6 /* screen@2x(1).png in Resources */ = {isa = PBXBuildFile; fileRef = EA29438F1B5DF1110054DBD6 /* screen@2x(1).png */; };
 		EA29439A1B5DF1110054DBD6 /* screen@2x(2).png in Resources */ = {isa = PBXBuildFile; fileRef = EA2943901B5DF1110054DBD6 /* screen@2x(2).png */; };
@@ -118,6 +119,8 @@
 		BD8BF45F1B6115D50020FBAA /* CaseListTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CaseListTableViewController.m; sourceTree = "<group>"; };
 		BD8BF4611B61551E0020FBAA /* PostCastViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostCastViewController.h; sourceTree = "<group>"; };
 		BD8BF4621B61551E0020FBAA /* PostCastViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostCastViewController.m; sourceTree = "<group>"; };
+		BDD7C19A1B6CEC80009A9E84 /* SelectAnnoation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectAnnoation.h; sourceTree = "<group>"; };
+		BDD7C19B1B6CEC80009A9E84 /* SelectAnnoation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectAnnoation.m; sourceTree = "<group>"; };
 		BDDFD24E1B5F9DCE005D481E /* LeftMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeftMenuViewController.h; sourceTree = "<group>"; };
 		BDDFD24F1B5F9DCE005D481E /* LeftMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeftMenuViewController.m; sourceTree = "<group>"; };
 		EA29438F1B5DF1110054DBD6 /* screen@2x(1).png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "screen@2x(1).png"; sourceTree = "<group>"; };
@@ -214,6 +217,8 @@
 				BD8BF45F1B6115D50020FBAA /* CaseListTableViewController.m */,
 				BD337CBC1B66321A00D8E9F9 /* CaseDetailsTableViewController.h */,
 				BD337CBD1B66321A00D8E9F9 /* CaseDetailsTableViewController.m */,
+				BDD7C19A1B6CEC80009A9E84 /* SelectAnnoation.h */,
+				BDD7C19B1B6CEC80009A9E84 /* SelectAnnoation.m */,
 				BD3618E91B67E35200A13CA9 /* SetLocationViewController.h */,
 				BD3618EA1B67E35200A13CA9 /* SetLocationViewController.m */,
 				BD7B817D1B5D2A9600067D29 /* MapViewController.h */,
@@ -454,6 +459,7 @@
 				BD7B81781B5D248D00067D29 /* SlideNavigationContorllerAnimatorSlide.m in Sources */,
 				BDDFD2501B5F9DCE005D481E /* LeftMenuViewController.m in Sources */,
 				EA2943A81B5E06A50054DBD6 /* openViewController.m in Sources */,
+				BDD7C19C1B6CEC80009A9E84 /* SelectAnnoation.m in Sources */,
 				BD8BF4631B61551E0020FBAA /* PostCastViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
