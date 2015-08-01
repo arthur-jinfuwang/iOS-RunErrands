@@ -9,6 +9,7 @@
 #import "SetLocationViewController.h"
 #import <MapKit/MapKit.h>
 #import <CoreLocation/CoreLocation.h>
+#import "SelectAnnotation.h"
 
 @interface SetLocationViewController ()<MKMapViewDelegate, CLLocationManagerDelegate>
 {
@@ -59,7 +60,7 @@
         
         CLLocationCoordinate2D coordicate = currentLocation.coordinate;
         
-        MKPointAnnotation *annotation = [MKPointAnnotation new];
+        SelectAnnotation *annotation = [[SelectAnnotation alloc] initWithLocation:coordicate];
         annotation.coordinate = coordicate;
         [_theMapView addAnnotation: annotation];
         
@@ -88,6 +89,12 @@
     resultView.pinColor = MKPinAnnotationColorGreen;
     
     return resultView;
+}
+
+- (void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view didChangeDragState:(MKAnnotationViewDragState)newState fromOldState:(MKAnnotationViewDragState)oldState{
+    if (newState == MKAnnotationViewDragStateEnding) {
+        view.canShowCallout = YES;
+    }
 }
 
 - (void)viewDidDisappear:(BOOL)animated

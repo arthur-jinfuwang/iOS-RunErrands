@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <MapKit/MapKit.h>
 
-@interface SelectAnnoation : NSObject <MKAnnotation>
+@interface SelectAnnotation : NSObject <MKAnnotation>
 
 // Center latitude and longitude of the annotation view.
 // The implementation of this property must be KVO compliant.

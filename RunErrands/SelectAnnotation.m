@@ -6,9 +6,9 @@
 //  Copyright (c) 2015年 Jinfu Wang. All rights reserved.
 //
 
-#import "SelectAnnoation.h"
+#import "SelectAnnotation.h"
 
-@implementation SelectAnnoation
+@implementation SelectAnnotation
 
 @synthesize coordinate, title, subtitle;
 
