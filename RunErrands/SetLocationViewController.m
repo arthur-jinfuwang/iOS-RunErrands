@@ -44,6 +44,10 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void)viewDidDisappear:(BOOL)animated
+{
+    [locationManager stopUpdatingLocation];
+}
 
 #pragma mark - CLLocationManager Delegate Methods
 
@@ -94,12 +98,22 @@
 - (void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view didChangeDragState:(MKAnnotationViewDragState)newState fromOldState:(MKAnnotationViewDragState)oldState{
     if (newState == MKAnnotationViewDragStateEnding) {
         view.canShowCallout = YES;
+        UIButton *rightButton = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
+        
+        [rightButton addTarget:self action:@selector(buttonPressed:) forControlEvents:UIControlEventTouchUpInside];
+        view.rightCalloutAccessoryView = rightButton;
+        
+        //return resultView;
     }
 }
 
-- (void)viewDidDisappear:(BOOL)animated
-{
-    [locationManager stopUpdatingLocation];
+- (void) buttonPressed:(id)sender {
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil message:@"Callout button pressed" preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction *ok = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
+    [alert addAction:ok];
+    
+    [self presentViewController:alert animated:true completion:nil];
 }
 
 /*
