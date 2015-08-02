@@ -10,7 +10,7 @@
 #import <FBSDKLoginKit/FBSDKLoginKit.h>
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
 
-@interface HeaderView : UIView
-@property (weak, nonatomic) IBOutlet UILabel *NameLabel;
+@interface HeaderView : UIView<FBSDKLoginButtonDelegate>
+
 
 @end

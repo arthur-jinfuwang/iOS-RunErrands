@@ -10,6 +10,7 @@
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
 #import <FBSDKLoginKit/FBSDKLoginKit.h>
 
+
 @interface LoginViewController ()
 
 @end
@@ -44,6 +45,12 @@
              startWithCompletionHandler:^(FBSDKGraphRequestConnection *connection, NSDictionary *results, NSError *error) {
                  NSLog(@"%@",results);
                  NSLog(@"%@",[results objectForKey:@"email"]);
+                 
+                 NSString *path = [NSHomeDirectory() stringByAppendingString:@"/Documents/mydata.txt"];
+//                 [@"fields":@"email,name,gender,locale" writeToFile:path
+//                                                        automically:YES
+//                                                           encoding:NSUTF8StringEncoding
+//                                                              error:nil];
                  
              }];
             

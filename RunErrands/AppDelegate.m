@@ -29,8 +29,14 @@
     
     [SlideNavigationController sharedInstance].leftMenu = leftMenu;
     
-    return [[FBSDKApplicationDelegate sharedInstance] application:application
+    BOOL res =  [[FBSDKApplicationDelegate sharedInstance] application:application
                                     didFinishLaunchingWithOptions:launchOptions];
+    if (res == YES) {
+        NSLog(@"true");
+    }else{
+        NSLog(@"false");
+    }
+        
     
     return YES;
 }

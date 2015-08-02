@@ -36,14 +36,14 @@
     // Do any additional setup after loading the view.
     
     self.tableView.separatorColor = [UIColor clearColor];
-    
     viewArray = [NSArray arrayWithObjects:
-                 @"接案",
-                 @"發案",
-                 @"追蹤",
-                 @"訊息",
-                 @"設定",
-                 @"登入",nil];
+                 @"👍🏿接案",
+                 @"💳發案",
+                 @"🌟追蹤",
+                 @"👥訊息",
+                 @"🔧設定",
+                 @"☑️登入",
+                   nil];
     viewControllerArroy = [NSArray arrayWithObjects:
                            @"MapViewController",
                            @"PostCastViewController",
@@ -72,16 +72,16 @@
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
-//    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(100, 0, self.tableView.frame.size.width, 0)];
-    //view.backgroundColor = [UIColor clearColor];
-//    view.backgroundColor = [UIColor greenColor];
-//    return view;
+////   UIView *_view = [[UIView alloc] initWithFrame:CGRectMake(100, 0, self.tableView.frame.size.width, 0)];
+//    _view.backgroundColor = [UIColor clearColor];
+//    _view.backgroundColor = [UIColor greenColor];
+//    return _view;
     return self.headerView;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
-    return 150;
+    return 140;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -91,6 +91,10 @@
     cell.textLabel.text = viewArray[indexPath.row];
     
     cell.backgroundColor = [UIColor clearColor];
+    
+    [cell setTextColor:[UIColor colorWithRed:255/255.0f green:78/255.0f blue:0/255.0f alpha:1]];
+    
+    
     
     return cell;
 }
