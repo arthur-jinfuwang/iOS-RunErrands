@@ -9,10 +9,13 @@
 #import "SetLocationViewController.h"
 #import <MapKit/MapKit.h>
 #import <CoreLocation/CoreLocation.h>
+#import "SelectAnnotation.h"
+#import "SlideNavigationController.h"
 
 @interface SetLocationViewController ()<MKMapViewDelegate, CLLocationManagerDelegate>
 {
     CLLocationManager *locationManager;
+    BOOL isFirstLocationReceived;
 }
 @property (weak, nonatomic) IBOutlet MKMapView *theMapView;
 
@@ -42,29 +45,38 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void)viewDidDisappear:(BOOL)animated
+{
+    [locationManager stopUpdatingLocation];
+}
 
 #pragma mark - CLLocationManager Delegate Methods
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations{
-    CLLocation *currentLocation = locations.lastObject;
     
-    MKCoordinateRegion region = _theMapView.region;
-    region.center = currentLocation.coordinate;
-    region.span.latitudeDelta = 0.1;
-    region.span.longitudeDelta = 0.1;
-    [_theMapView setRegion:region animated:true];
-    
-    CLLocationCoordinate2D coordicate = currentLocation.coordinate;
-    MKPointAnnotation *annotation = [MKPointAnnotation new];
-    annotation.coordinate = coordicate;
-    [_theMapView addAnnotation: annotation];
-
+    if (isFirstLocationReceived == false) {
+        CLLocation *currentLocation = locations.lastObject;
+        
+        MKCoordinateRegion region = _theMapView.region;
+        region.center = currentLocation.coordinate;
+        region.span.latitudeDelta = 0.1;
+        region.span.longitudeDelta = 0.1;
+        [_theMapView setRegion:region animated:true];
+        
+        CLLocationCoordinate2D coordicate = currentLocation.coordinate;
+        
+        SelectAnnotation *annotation = [[SelectAnnotation alloc] initWithLocation:coordicate];
+        annotation.coordinate = coordicate;
+        [_theMapView addAnnotation: annotation];
+        
+        isFirstLocationReceived =true;
+    }
 }
 
 - (MKAnnotationView*)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation{
     
-    //if (annotation == mapView.userLocation)
-    //    return nil;
+    if (annotation == mapView.userLocation)
+        return nil;
     
     MKPinAnnotationView *resultView = (MKPinAnnotationView*)[mapView dequeueReusableAnnotationViewWithIdentifier:@"Case"];
     
@@ -84,9 +96,38 @@
     return resultView;
 }
 
-- (void)viewDidDisappear:(BOOL)animated
-{
-    [locationManager stopUpdatingLocation];
+- (void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view didChangeDragState:(MKAnnotationViewDragState)newState fromOldState:(MKAnnotationViewDragState)oldState{
+    if (newState == MKAnnotationViewDragStateEnding) {
+        view.canShowCallout = YES;
+        UIButton *rightButton = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
+        
+        [rightButton addTarget:self action:@selector(buttonPressed:) forControlEvents:UIControlEventTouchUpInside];
+        view.rightCalloutAccessoryView = rightButton;
+        
+        //return resultView;
+    }
+}
+
+- (void) buttonPressed:(id)sender {
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"確認" message:@"請確認你指定的位置" preferredStyle:UIAlertControllerStyleAlert];
+
+    UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        [self dismissViewControllerAnimated:true completion:nil];
+    }];
+    [alert addAction:cancel];
+    
+    UIAlertAction *ok = [UIAlertAction actionWithTitle:@"確定" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle: nil];
+        
+        UIViewController *vc ;
+        
+        vc = [mainStoryboard instantiateViewControllerWithIdentifier: @"PostCastViewController"];
+
+        [[SlideNavigationController sharedInstance] popAllAndSwitchToViewController:vc withCompletion:nil];
+    }];
+    [alert addAction:ok];
+    
+    [self presentViewController:alert animated:true completion:nil];
 }
 
 /*

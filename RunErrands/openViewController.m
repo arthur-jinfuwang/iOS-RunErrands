@@ -70,7 +70,8 @@
     
     vc = [mainStoryboard instantiateViewControllerWithIdentifier: @"MapViewController"];
     
-    [[SlideNavigationController sharedInstance] switchToViewController:vc withCompletion:nil ];
+    //[[SlideNavigationController sharedInstance] switchToViewController:vc withCompletion:nil ];
+    [[SlideNavigationController sharedInstance] popAllAndSwitchToViewController:vc withCompletion:nil];
 
 }
 

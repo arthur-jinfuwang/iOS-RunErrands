@@ -17,6 +17,7 @@
 {
     NSArray *viewArray;
     NSArray *viewControllerArroy;
+    USERLOGINSTATUS loginStatus;
 }
 
 @property (strong,nonatomic) UIView * headerView;
@@ -86,10 +87,19 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"leftMenuCell"];
-    
-    cell.textLabel.text = viewArray[indexPath.row];
-    
+    UITableViewCell *cell= [tableView dequeueReusableCellWithIdentifier:@"leftMenuCell"];
+
+    if (indexPath.row == LOGINMENU) {
+        if (loginStatus == USERLOGIN) {
+            cell.textLabel.text = @"登出";
+        }else
+        {
+            cell.textLabel.text = @"登入";
+        }
+    }else{
+        cell.textLabel.text = viewArray[indexPath.row];
+    }
+
     cell.backgroundColor = [UIColor clearColor];
     
     [cell setTextColor:[UIColor colorWithRed:255/255.0f green:78/255.0f blue:0/255.0f alpha:1]];
@@ -133,6 +143,28 @@
     
     [[SlideNavigationController sharedInstance] popToRootAndSwitchToViewController:vc withSlideOutAnimation:self.slideOutAnimationEnabled andCompletion:nil];
 
+}
+
+
+- (void) setLoginStatus:(USERLOGINSTATUS)status{
+    
+    NSArray *cellArray = [_tableView visibleCells];
+    
+    if (cellArray == nil) {
+        NSLog(@"cellArray is nil");
+    }else
+    {
+        UITableViewCell *cell = cellArray[LOGINMENU];
+        if (status == USERLOGIN) {
+            cell.textLabel.text = @"登出";
+        }else
+        {
+            cell.textLabel.text = @"登入";
+        }
+        NSLog(@"cellArray is ok");
+    }
+    
+    loginStatus = status;
 }
 
 

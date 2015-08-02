@@ -9,9 +9,26 @@
 #import <UIKit/UIKit.h>
 #import "SlideNavigationController.h"
 
+typedef NS_ENUM(NSInteger, FUMCTIONMENUS){
+    MAPVIEWMENU = 0,
+    POSTCASTMENU,
+    FOLLOWMENU,
+    MESSAGEMENU,
+    SETTINGMENU,
+    LOGINMENU,
+    CASELISTMENU,
+};
+
+typedef NS_ENUM(NSInteger, USERLOGINSTATUS){
+    USERLOGOUT= 0,
+    USERLOGIN,
+};
+
 @interface LeftMenuViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
 
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic, assign) BOOL slideOutAnimationEnabled;
+
+- (void) setLoginStatus:(USERLOGINSTATUS)status;
 
 @end
