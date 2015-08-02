@@ -35,7 +35,7 @@
             CLPlacemark *topResult = [placemarks objectAtIndex:0];
             
             //NSString *message = [NSString stringWithFormat:@"%@", topResult.addressDictionary];
-            NSLog(@"%@,  %@,  %@, %@", topResult.country,topResult.subAdministrativeArea, topResult.locality, topResult.name);
+            NSLog(@"%@ %@ %@ %@", topResult.country,topResult.subAdministrativeArea, topResult.locality, topResult.name);
             subtitle = [[NSString alloc] initWithFormat:@"%@%@%@", topResult.subAdministrativeArea,topResult.locality, topResult.name];
         }
     }];

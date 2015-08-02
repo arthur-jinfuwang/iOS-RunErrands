@@ -10,6 +10,7 @@
 #import <MapKit/MapKit.h>
 #import <CoreLocation/CoreLocation.h>
 #import "SelectAnnotation.h"
+#import "SlideNavigationController.h"
 
 @interface SetLocationViewController ()<MKMapViewDelegate, CLLocationManagerDelegate>
 {
@@ -108,9 +109,22 @@
 }
 
 - (void) buttonPressed:(id)sender {
-    UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil message:@"Callout button pressed" preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"確認" message:@"請確認你指定的位置" preferredStyle:UIAlertControllerStyleAlert];
+
+    UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        [self dismissViewControllerAnimated:true completion:nil];
+    }];
+    [alert addAction:cancel];
     
-    UIAlertAction *ok = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
+    UIAlertAction *ok = [UIAlertAction actionWithTitle:@"確定" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle: nil];
+        
+        UIViewController *vc ;
+        
+        vc = [mainStoryboard instantiateViewControllerWithIdentifier: @"PostCastViewController"];
+
+        [[SlideNavigationController sharedInstance] popAllAndSwitchToViewController:vc withCompletion:nil];
+    }];
     [alert addAction:ok];
     
     [self presentViewController:alert animated:true completion:nil];
