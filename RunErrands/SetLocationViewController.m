@@ -67,6 +67,7 @@
         
         SelectAnnotation *annotation = [[SelectAnnotation alloc] initWithLocation:coordicate];
         annotation.coordinate = coordicate;
+        
         [_theMapView addAnnotation: annotation];
         
         isFirstLocationReceived =true;
@@ -74,9 +75,12 @@
 }
 
 - (MKAnnotationView*)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation{
-    
-    if (annotation == mapView.userLocation)
+//    
+//    if (annotation == mapView.userLocation)
+//        return nil;
+    if([annotation isKindOfClass:[MKUserLocation class]]){
         return nil;
+    }
     
     MKPinAnnotationView *resultView = (MKPinAnnotationView*)[mapView dequeueReusableAnnotationViewWithIdentifier:@"Case"];
     
@@ -91,6 +95,7 @@
     //resultView.canShowCallout = true;
     resultView.draggable = YES;
     resultView.animatesDrop = true;
+    resultView.canShowCallout = YES;
     resultView.pinColor = MKPinAnnotationColorGreen;
     
     return resultView;
