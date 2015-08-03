@@ -47,7 +47,7 @@
                    nil];
     viewControllerArroy = [NSArray arrayWithObjects:
                            @"MapViewController",
-                           @"PostCastViewController",
+                           @"PostListTableViewController",
                            @"FollowTableViewController",
                            @"MessageTableViewController",
                            @"SettingViewController",

@@ -83,6 +83,37 @@
             </objects>
             <point key="canvasLocation" x="909" y="1691"/>
         </scene>
+        <!--Post List Table View Controller-->
+        <scene sceneID="LmQ-IK-ald">
+            <objects>
+                <tableViewController storyboardIdentifier="PostListTableViewController" id="cvW-lI-9AP" customClass="PostListTableViewController" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="gPI-x0-jUA">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="postListCell" id="ggC-cc-d2F">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ggC-cc-d2F" id="rOK-fI-ZYk">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="a8Z-Vk-n8J" kind="show" id="hgS-zi-VFA"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="cvW-lI-9AP" id="4jN-k3-c3c"/>
+                            <outlet property="delegate" destination="cvW-lI-9AP" id="kJH-eA-chX"/>
+                        </connections>
+                    </tableView>
+                    <toolbarItems/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="FYD-bw-FQa" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2938" y="1008"/>
+        </scene>
         <!--Post Cast View Controller-->
         <scene sceneID="p5X-AI-7Rf">
             <objects>
@@ -95,7 +126,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sSp-2y-eW2">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sSp-2y-eW2">
                                 <rect key="frame" x="272" y="108" width="56" height="30"/>
                                 <state key="normal" title="Go Map">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -104,7 +135,7 @@
                                     <segue destination="Ky8-dS-vnj" kind="show" id="C6V-7b-eYo"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="發案" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LJR-gY-uCd">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="發案" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LJR-gY-uCd">
                                 <rect key="frame" x="283" y="72" width="34" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -467,11 +498,11 @@
                         <outlet property="openanimation" destination="uoN-CR-l2E" id="nbD-JI-5bU"/>
                         <segue destination="BYZ-38-t0r" kind="show" id="hFi-3l-ee4"/>
                         <segue destination="RDe-YY-nqR" kind="show" id="ybq-Ux-EmN"/>
-                        <segue destination="I4W-PH-hkS" kind="show" id="hah-gk-YmX"/>
                         <segue destination="Kni-yZ-eIA" kind="show" id="H3j-dN-CsR"/>
                         <segue destination="bdK-Kz-k82" kind="show" id="3WS-i7-eDO"/>
                         <segue destination="WI7-ka-zyH" kind="show" id="NTl-uH-4ti"/>
                         <segue destination="Hxh-Ij-hUN" kind="show" id="Qm6-IN-eos"/>
+                        <segue destination="cvW-lI-9AP" kind="show" id="ABb-XE-CVy"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Na8-HS-G0l" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -540,8 +571,8 @@
         <image name="Rectangle 2 + Facebook.png" width="283" height="92"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="hFi-3l-ee4"/>
+        <segue reference="hgS-zi-VFA"/>
         <segue reference="FES-Lo-JZM"/>
-        <segue reference="QqX-jx-IWm"/>
-        <segue reference="Taw-Pu-oyh"/>
     </inferredMetricsTieBreakers>
 </document>
