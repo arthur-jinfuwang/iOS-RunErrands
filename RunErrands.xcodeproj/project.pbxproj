@@ -38,6 +38,7 @@
 		BD834A081B6E0D1600E7D79D /* CaseListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BD834A071B6E0D1600E7D79D /* CaseListCell.m */; };
 		BD8BF4601B6115D60020FBAA /* CaseListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BD8BF45F1B6115D50020FBAA /* CaseListTableViewController.m */; };
 		BD8BF4631B61551E0020FBAA /* PostCastViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BD8BF4621B61551E0020FBAA /* PostCastViewController.m */; };
+		BDA28E2C1B6F610E0029F82A /* PostListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BDA28E2B1B6F610E0029F82A /* PostListTableViewController.m */; };
 		BDD7C19C1B6CEC80009A9E84 /* SelectAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = BDD7C19B1B6CEC80009A9E84 /* SelectAnnotation.m */; };
 		BDDFD2501B5F9DCE005D481E /* LeftMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BDDFD24F1B5F9DCE005D481E /* LeftMenuViewController.m */; };
 		EA2943991B5DF1110054DBD6 /* screen@2x(1).png in Resources */ = {isa = PBXBuildFile; fileRef = EA29438F1B5DF1110054DBD6 /* screen@2x(1).png */; };
@@ -131,6 +132,8 @@
 		BD8BF45F1B6115D50020FBAA /* CaseListTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CaseListTableViewController.m; sourceTree = "<group>"; };
 		BD8BF4611B61551E0020FBAA /* PostCastViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostCastViewController.h; sourceTree = "<group>"; };
 		BD8BF4621B61551E0020FBAA /* PostCastViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostCastViewController.m; sourceTree = "<group>"; };
+		BDA28E2A1B6F610E0029F82A /* PostListTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostListTableViewController.h; sourceTree = "<group>"; };
+		BDA28E2B1B6F610E0029F82A /* PostListTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostListTableViewController.m; sourceTree = "<group>"; };
 		BDD7C19A1B6CEC80009A9E84 /* SelectAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectAnnotation.h; sourceTree = "<group>"; };
 		BDD7C19B1B6CEC80009A9E84 /* SelectAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectAnnotation.m; sourceTree = "<group>"; };
 		BDDFD24E1B5F9DCE005D481E /* LeftMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeftMenuViewController.h; sourceTree = "<group>"; };
@@ -249,6 +252,8 @@
 				BDD7C19B1B6CEC80009A9E84 /* SelectAnnotation.m */,
 				BD3618E91B67E35200A13CA9 /* SetLocationViewController.h */,
 				BD3618EA1B67E35200A13CA9 /* SetLocationViewController.m */,
+				BDA28E2A1B6F610E0029F82A /* PostListTableViewController.h */,
+				BDA28E2B1B6F610E0029F82A /* PostListTableViewController.m */,
 				BD8BF4611B61551E0020FBAA /* PostCastViewController.h */,
 				BD8BF4621B61551E0020FBAA /* PostCastViewController.m */,
 				BD7B817D1B5D2A9600067D29 /* MapViewController.h */,
@@ -485,6 +490,7 @@
 				BD337CBB1B66312E00D8E9F9 /* ResumeViewController.m in Sources */,
 				BD7B817F1B5D2A9600067D29 /* MapViewController.m in Sources */,
 				BD8040361B637E1400B1DCC1 /* LoginViewController.m in Sources */,
+				BDA28E2C1B6F610E0029F82A /* PostListTableViewController.m in Sources */,
 				BD337CBE1B66321A00D8E9F9 /* CaseDetailsTableViewController.m in Sources */,
 				BD7B813B1B5D1FA900067D29 /* AppDelegate.m in Sources */,
 				BD7B81751B5D248D00067D29 /* SlideNavigationContorllerAnimatorFade.m in Sources */,
