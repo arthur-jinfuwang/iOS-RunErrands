@@ -7,6 +7,7 @@
 //
 
 #import "CaseListTableViewController.h"
+#import "CaseListCell.h"
 
 @interface CaseListTableViewController ()
 
@@ -45,17 +46,31 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 #warning Incomplete method implementation.
     // Return the number of rows in the section.
-    return 1;
+    return 3;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"caseCell"];
-    cell.textLabel.text = [NSString stringWithFormat:@"case %ld", (long)indexPath.row];
+    CaseListCell *cell = [tableView dequeueReusableCellWithIdentifier:@"caseCell"];
+    //cell.textLabel.text = [NSString stringWithFormat:@"case %ld", (long)indexPath.row];
+    
+    NSArray *view = [[NSBundle mainBundle] loadNibNamed:@"CaseListCell" owner:nil options:nil];
+    cell = (CaseListCell *)[view lastObject];
+    
     return cell;
 }
 
-
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    
+    
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    NSString* viewType = @"CaseDetailsTableViewController";
+    UIViewController* viewController = [storyboard instantiateViewControllerWithIdentifier:viewType];
+    
+    [self.navigationController pushViewController:viewController animated:YES];
+    
+}
 
 /*
 // Override to support conditional editing of the table view.

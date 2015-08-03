@@ -9,6 +9,9 @@
 #import "CaseDetailsTableViewController.h"
 
 @interface CaseDetailsTableViewController ()
+{
+    NSMutableArray *listDetails;
+}
 
 @end
 
@@ -22,6 +25,13 @@
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    
+    listDetails = [[NSMutableArray alloc]initWithObjects:
+                   @"日期",@"時間",@"供餐",@"酬勞",@"地點",@"內容",
+                   @"統一編號",@"單位名稱",@"單位地址",@"聯絡人",@"聯絡電話",
+                   @"Email",@"需求人數",@"截止日期",
+                   nil];
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -40,13 +50,14 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 #warning Incomplete method implementation.
     // Return the number of rows in the section.
-    return 1;
+    return listDetails.count;
 }
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"caseDetailCell" forIndexPath:indexPath];
-    cell.textLabel.text = [NSString stringWithFormat:@"detail case %ld", (long)indexPath.row];
+    
+    cell.textLabel.text = listDetails[indexPath.row];
     // Configure the cell...
     
     return cell;

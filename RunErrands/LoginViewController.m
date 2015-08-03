@@ -20,20 +20,19 @@
 - (IBAction)FaceookLoginBtn:(id)sender {
     
     FBSDKLoginManager *loginManager = [[FBSDKLoginManager alloc] init];
+    LeftMenuViewController *leftMenu =(LeftMenuViewController *)[SlideNavigationController sharedInstance].leftMenu;
     
     if ([FBSDKAccessToken currentAccessToken]) {
         // User is logged in, do work such as go to next view controller.
         
         
         NSLog(@"已登入");
+        [leftMenu setLoginStatus:USERLOGOUT];
         
         
-        
-        //轉至其它畫面...
-        
-        
+        //轉至其它畫面...        //Change the slider menu text from login to logout
 
-        
+
     }else{
         
         //未登入
@@ -58,7 +57,6 @@
         }];
         
         //Change the slider menu text from login to logout
-        LeftMenuViewController *leftMenu =(LeftMenuViewController *)[SlideNavigationController sharedInstance].leftMenu;
         [leftMenu setLoginStatus:USERLOGIN];
         
         //Turn to map view menu

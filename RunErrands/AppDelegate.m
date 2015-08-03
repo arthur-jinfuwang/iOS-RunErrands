@@ -33,7 +33,7 @@
             [leftMenu setLoginStatus:USERLOGIN];
         }else{
             NSLog(@"FB already logout.");
-            [leftMenu setLoginStatus:USERLOGIN];
+            [leftMenu setLoginStatus:USERLOGOUT];
         }
 //    }else{
 //        NSLog(@"FB SDK error!");
