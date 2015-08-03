@@ -53,8 +53,9 @@
 		EA45E6E71B6A5C6400BB86BE /* HeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = EA45E6E61B6A5C6400BB86BE /* HeaderView.m */; };
 		EA45E6E91B6B4FF400BB86BE /* Natural-Green-Background-Vector-Graphic.jpg in Resources */ = {isa = PBXBuildFile; fileRef = EA45E6E81B6B4FF400BB86BE /* Natural-Green-Background-Vector-Graphic.jpg */; };
 		EA45E6EB1B6B525A00BB86BE /* Orange.png in Resources */ = {isa = PBXBuildFile; fileRef = EA45E6EA1B6B525A00BB86BE /* Orange.png */; };
-		EA45E73C1B6D1C8200BB86BE /* Rectangle 2 + Facebook.png in Resources */ = {isa = PBXBuildFile; fileRef = EA45E73A1B6D1C8200BB86BE /* Rectangle 2 + Facebook.png */; };
-		EA45E73D1B6D1C8200BB86BE /* Rectangle 1 + Login + Register.png in Resources */ = {isa = PBXBuildFile; fileRef = EA45E73B1B6D1C8200BB86BE /* Rectangle 1 + Login + Register.png */; };
+		EA9E55BA1B6F1926009BDF25 /* Rectangle 2 + Cancel.png in Resources */ = {isa = PBXBuildFile; fileRef = EA9E55B81B6F1926009BDF25 /* Rectangle 2 + Cancel.png */; };
+		EA9E55BB1B6F1926009BDF25 /* Rectangle 1 + Login + Register.png in Resources */ = {isa = PBXBuildFile; fileRef = EA9E55B91B6F1926009BDF25 /* Rectangle 1 + Login + Register.png */; };
+		EA9E55C31B6F3683009BDF25 /* Facebook Login Button.png in Resources */ = {isa = PBXBuildFile; fileRef = EA9E55C21B6F3683009BDF25 /* Facebook Login Button.png */; };
 		EAC0A0081B67CD8000C0A89A /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAC0A0061B67CD8000C0A89A /* FBSDKCoreKit.framework */; };
 		EAC0A0091B67CD8000C0A89A /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAC0A0071B67CD8000C0A89A /* FBSDKLoginKit.framework */; };
 		EAC0A00B1B67D68500C0A89A /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAC0A00A1B67D68500C0A89A /* FBSDKShareKit.framework */; };
@@ -144,8 +145,9 @@
 		EA45E6E61B6A5C6400BB86BE /* HeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HeaderView.m; sourceTree = "<group>"; };
 		EA45E6E81B6B4FF400BB86BE /* Natural-Green-Background-Vector-Graphic.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Natural-Green-Background-Vector-Graphic.jpg"; sourceTree = "<group>"; };
 		EA45E6EA1B6B525A00BB86BE /* Orange.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Orange.png; sourceTree = "<group>"; };
-		EA45E73A1B6D1C8200BB86BE /* Rectangle 2 + Facebook.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Rectangle 2 + Facebook.png"; sourceTree = "<group>"; };
-		EA45E73B1B6D1C8200BB86BE /* Rectangle 1 + Login + Register.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Rectangle 1 + Login + Register.png"; sourceTree = "<group>"; };
+		EA9E55B81B6F1926009BDF25 /* Rectangle 2 + Cancel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Rectangle 2 + Cancel.png"; sourceTree = "<group>"; };
+		EA9E55B91B6F1926009BDF25 /* Rectangle 1 + Login + Register.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Rectangle 1 + Login + Register.png"; sourceTree = "<group>"; };
+		EA9E55C21B6F3683009BDF25 /* Facebook Login Button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Facebook Login Button.png"; sourceTree = "<group>"; };
 		EAC0A0061B67CD8000C0A89A /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
 		EAC0A0071B67CD8000C0A89A /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
 		EAC0A00A1B67D68500C0A89A /* FBSDKShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKShareKit.framework; sourceTree = "<group>"; };
@@ -240,8 +242,9 @@
 				BD7B813F1B5D1FA900067D29 /* Main.storyboard */,
 				EA45E6DE1B6A56CF00BB86BE /* HeaderView.xib */,
 				BD7B81421B5D1FA900067D29 /* Images.xcassets */,
-				EA45E73A1B6D1C8200BB86BE /* Rectangle 2 + Facebook.png */,
-				EA45E73B1B6D1C8200BB86BE /* Rectangle 1 + Login + Register.png */,
+				EA9E55C21B6F3683009BDF25 /* Facebook Login Button.png */,
+				EA9E55B81B6F1926009BDF25 /* Rectangle 2 + Cancel.png */,
+				EA9E55B91B6F1926009BDF25 /* Rectangle 1 + Login + Register.png */,
 				EA45E6E81B6B4FF400BB86BE /* Natural-Green-Background-Vector-Graphic.jpg */,
 				EA45E6EA1B6B525A00BB86BE /* Orange.png */,
 				EA2D963E1B5E752200C18197 /* picture */,
@@ -420,14 +423,15 @@
 				BD7B817A1B5D248D00067D29 /* menu-button.png in Resources */,
 				EA29439B1B5DF1110054DBD6 /* screen@2x(3).png in Resources */,
 				BD7B81411B5D1FA900067D29 /* Main.storyboard in Resources */,
-				EA45E73D1B6D1C8200BB86BE /* Rectangle 1 + Login + Register.png in Resources */,
+				EA9E55BB1B6F1926009BDF25 /* Rectangle 1 + Login + Register.png in Resources */,
 				EA45E6DF1B6A56CF00BB86BE /* HeaderView.xib in Resources */,
 				EA2943A11B5DF1110054DBD6 /* screen@2x(9).png in Resources */,
-				EA45E73C1B6D1C8200BB86BE /* Rectangle 2 + Facebook.png in Resources */,
 				BD7B81461B5D1FA900067D29 /* LaunchScreen.xib in Resources */,
+				EA9E55BA1B6F1926009BDF25 /* Rectangle 2 + Cancel.png in Resources */,
 				EA29439A1B5DF1110054DBD6 /* screen@2x(2).png in Resources */,
 				EA2943A01B5DF1110054DBD6 /* screen@2x(8).png in Resources */,
 				EA2943A21B5DF1110054DBD6 /* screen@2x(10).png in Resources */,
+				EA9E55C31B6F3683009BDF25 /* Facebook Login Button.png in Resources */,
 				EA45E6E91B6B4FF400BB86BE /* Natural-Green-Background-Vector-Graphic.jpg in Resources */,
 				EA29439F1B5DF1110054DBD6 /* screen@2x(7).png in Resources */,
 				EA29439E1B5DF1110054DBD6 /* screen@2x(6).png in Resources */,

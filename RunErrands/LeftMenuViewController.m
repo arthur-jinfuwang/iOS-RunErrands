@@ -156,10 +156,10 @@
     {
         UITableViewCell *cell = cellArray[LOGINMENU];
         if (status == USERLOGIN) {
-            cell.textLabel.text = @"登出";
+            cell.textLabel.text = @"☑️登出";
         }else
         {
-            cell.textLabel.text = @"登入";
+            cell.textLabel.text = @"☑️登入";
         }
         NSLog(@"cellArray is ok");
     }
