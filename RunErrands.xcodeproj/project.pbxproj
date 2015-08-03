@@ -55,9 +55,11 @@
 		EA45E6E71B6A5C6400BB86BE /* HeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = EA45E6E61B6A5C6400BB86BE /* HeaderView.m */; };
 		EA45E6E91B6B4FF400BB86BE /* Natural-Green-Background-Vector-Graphic.jpg in Resources */ = {isa = PBXBuildFile; fileRef = EA45E6E81B6B4FF400BB86BE /* Natural-Green-Background-Vector-Graphic.jpg */; };
 		EA45E6EB1B6B525A00BB86BE /* Orange.png in Resources */ = {isa = PBXBuildFile; fileRef = EA45E6EA1B6B525A00BB86BE /* Orange.png */; };
-		EA9E55BA1B6F1926009BDF25 /* Rectangle 2 + Cancel.png in Resources */ = {isa = PBXBuildFile; fileRef = EA9E55B81B6F1926009BDF25 /* Rectangle 2 + Cancel.png */; };
-		EA9E55BB1B6F1926009BDF25 /* Rectangle 1 + Login + Register.png in Resources */ = {isa = PBXBuildFile; fileRef = EA9E55B91B6F1926009BDF25 /* Rectangle 1 + Login + Register.png */; };
-		EA9E55C31B6F3683009BDF25 /* Facebook Login Button.png in Resources */ = {isa = PBXBuildFile; fileRef = EA9E55C21B6F3683009BDF25 /* Facebook Login Button.png */; };
+		EA9E55C51B6F4DDA009BDF25 /* MessageListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA9E55C41B6F4DDA009BDF25 /* MessageListCell.xib */; };
+		EA9E55C81B6F4E60009BDF25 /* MessageListCellTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = EA9E55C71B6F4E60009BDF25 /* MessageListCellTableView.m */; };
+		EA9E55CB1B6F67A5009BDF25 /* Rectangle 2 + Facebook.png in Resources */ = {isa = PBXBuildFile; fileRef = EA9E55C91B6F67A5009BDF25 /* Rectangle 2 + Facebook.png */; };
+		EA9E55D01B6F690A009BDF25 /* Rectangle 1 + Login + Login.png in Resources */ = {isa = PBXBuildFile; fileRef = EA9E55CF1B6F690A009BDF25 /* Rectangle 1 + Login + Login.png */; };
+		EA9E55D21B6F6B98009BDF25 /* Button 1.png in Resources */ = {isa = PBXBuildFile; fileRef = EA9E55D11B6F6B98009BDF25 /* Button 1.png */; };
 		EAC0A0081B67CD8000C0A89A /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAC0A0061B67CD8000C0A89A /* FBSDKCoreKit.framework */; };
 		EAC0A0091B67CD8000C0A89A /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAC0A0071B67CD8000C0A89A /* FBSDKLoginKit.framework */; };
 		EAC0A00B1B67D68500C0A89A /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAC0A00A1B67D68500C0A89A /* FBSDKShareKit.framework */; };
@@ -150,9 +152,12 @@
 		EA45E6E61B6A5C6400BB86BE /* HeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HeaderView.m; sourceTree = "<group>"; };
 		EA45E6E81B6B4FF400BB86BE /* Natural-Green-Background-Vector-Graphic.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Natural-Green-Background-Vector-Graphic.jpg"; sourceTree = "<group>"; };
 		EA45E6EA1B6B525A00BB86BE /* Orange.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Orange.png; sourceTree = "<group>"; };
-		EA9E55B81B6F1926009BDF25 /* Rectangle 2 + Cancel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Rectangle 2 + Cancel.png"; sourceTree = "<group>"; };
-		EA9E55B91B6F1926009BDF25 /* Rectangle 1 + Login + Register.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Rectangle 1 + Login + Register.png"; sourceTree = "<group>"; };
-		EA9E55C21B6F3683009BDF25 /* Facebook Login Button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Facebook Login Button.png"; sourceTree = "<group>"; };
+		EA9E55C41B6F4DDA009BDF25 /* MessageListCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MessageListCell.xib; sourceTree = "<group>"; };
+		EA9E55C61B6F4E60009BDF25 /* MessageListCellTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageListCellTableView.h; sourceTree = "<group>"; };
+		EA9E55C71B6F4E60009BDF25 /* MessageListCellTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageListCellTableView.m; sourceTree = "<group>"; };
+		EA9E55C91B6F67A5009BDF25 /* Rectangle 2 + Facebook.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Rectangle 2 + Facebook.png"; sourceTree = "<group>"; };
+		EA9E55CF1B6F690A009BDF25 /* Rectangle 1 + Login + Login.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Rectangle 1 + Login + Login.png"; sourceTree = "<group>"; };
+		EA9E55D11B6F6B98009BDF25 /* Button 1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Button 1.png"; sourceTree = "<group>"; };
 		EAC0A0061B67CD8000C0A89A /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
 		EAC0A0071B67CD8000C0A89A /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
 		EAC0A00A1B67D68500C0A89A /* FBSDKShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKShareKit.framework; sourceTree = "<group>"; };
@@ -224,6 +229,9 @@
 				BD337CB71B65FF5900D8E9F9 /* RegisterViewController.m */,
 				BD337CB91B66312E00D8E9F9 /* ResumeViewController.h */,
 				BD337CBA1B66312E00D8E9F9 /* ResumeViewController.m */,
+				EA9E55C41B6F4DDA009BDF25 /* MessageListCell.xib */,
+				EA9E55C61B6F4E60009BDF25 /* MessageListCellTableView.h */,
+				EA9E55C71B6F4E60009BDF25 /* MessageListCellTableView.m */,
 				BD80403A1B638C7A00B1DCC1 /* MessageTableViewController.h */,
 				BD80403B1B638C7A00B1DCC1 /* MessageTableViewController.m */,
 				BD8040371B63840600B1DCC1 /* FollowTableViewController.h */,
@@ -250,9 +258,9 @@
 				BD7B813F1B5D1FA900067D29 /* Main.storyboard */,
 				EA45E6DE1B6A56CF00BB86BE /* HeaderView.xib */,
 				BD7B81421B5D1FA900067D29 /* Images.xcassets */,
-				EA9E55C21B6F3683009BDF25 /* Facebook Login Button.png */,
-				EA9E55B81B6F1926009BDF25 /* Rectangle 2 + Cancel.png */,
-				EA9E55B91B6F1926009BDF25 /* Rectangle 1 + Login + Register.png */,
+				EA9E55D11B6F6B98009BDF25 /* Button 1.png */,
+				EA9E55C91B6F67A5009BDF25 /* Rectangle 2 + Facebook.png */,
+				EA9E55CF1B6F690A009BDF25 /* Rectangle 1 + Login + Login.png */,
 				EA45E6E81B6B4FF400BB86BE /* Natural-Green-Background-Vector-Graphic.jpg */,
 				EA45E6EA1B6B525A00BB86BE /* Orange.png */,
 				EA2D963E1B5E752200C18197 /* picture */,
@@ -432,24 +440,25 @@
 				EA29439B1B5DF1110054DBD6 /* screen@2x(3).png in Resources */,
 				BD834A051B6E0C4800E7D79D /* CaseListCell.xib in Resources */,
 				BD7B81411B5D1FA900067D29 /* Main.storyboard in Resources */,
-				EA9E55BB1B6F1926009BDF25 /* Rectangle 1 + Login + Register.png in Resources */,
+				EA9E55C51B6F4DDA009BDF25 /* MessageListCell.xib in Resources */,
 				EA45E6DF1B6A56CF00BB86BE /* HeaderView.xib in Resources */,
 				EA2943A11B5DF1110054DBD6 /* screen@2x(9).png in Resources */,
 				BD7B81461B5D1FA900067D29 /* LaunchScreen.xib in Resources */,
-				EA9E55BA1B6F1926009BDF25 /* Rectangle 2 + Cancel.png in Resources */,
 				EA29439A1B5DF1110054DBD6 /* screen@2x(2).png in Resources */,
 				EA2943A01B5DF1110054DBD6 /* screen@2x(8).png in Resources */,
 				EA2943A21B5DF1110054DBD6 /* screen@2x(10).png in Resources */,
-				EA9E55C31B6F3683009BDF25 /* Facebook Login Button.png in Resources */,
+				EA9E55CB1B6F67A5009BDF25 /* Rectangle 2 + Facebook.png in Resources */,
 				EA45E6E91B6B4FF400BB86BE /* Natural-Green-Background-Vector-Graphic.jpg in Resources */,
 				EA29439F1B5DF1110054DBD6 /* screen@2x(7).png in Resources */,
 				EA29439E1B5DF1110054DBD6 /* screen@2x(6).png in Resources */,
 				BD7B817B1B5D248D00067D29 /* menu-button@2x.png in Resources */,
 				BD7B81431B5D1FA900067D29 /* Images.xcassets in Resources */,
 				EA2943991B5DF1110054DBD6 /* screen@2x(1).png in Resources */,
+				EA9E55D01B6F690A009BDF25 /* Rectangle 1 + Login + Login.png in Resources */,
 				EA29439C1B5DF1110054DBD6 /* screen@2x(4).png in Resources */,
 				EA29439D1B5DF1110054DBD6 /* screen@2x(5).png in Resources */,
 				EA45E6EB1B6B525A00BB86BE /* Orange.png in Resources */,
+				EA9E55D21B6F6B98009BDF25 /* Button 1.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -488,6 +497,7 @@
 				EA45E6E71B6A5C6400BB86BE /* HeaderView.m in Sources */,
 				BD7B81781B5D248D00067D29 /* SlideNavigationContorllerAnimatorSlide.m in Sources */,
 				BDDFD2501B5F9DCE005D481E /* LeftMenuViewController.m in Sources */,
+				EA9E55C81B6F4E60009BDF25 /* MessageListCellTableView.m in Sources */,
 				EA2943A81B5E06A50054DBD6 /* openViewController.m in Sources */,
 				BDD7C19C1B6CEC80009A9E84 /* SelectAnnotation.m in Sources */,
 				BD8BF4631B61551E0020FBAA /* PostCastViewController.m in Sources */,
