@@ -222,7 +222,7 @@
         <!--Resume View Controller-->
         <scene sceneID="ngk-Xi-zFf">
             <objects>
-                <viewController id="nHn-aG-dWH" customClass="ResumeViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ResumeViewController" id="nHn-aG-dWH" customClass="ResumeViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="MaT-Sa-nkB"/>
                         <viewControllerLayoutGuide type="bottom" id="mOb-bI-Hkq"/>
@@ -337,16 +337,6 @@
                                     <rect key="frame" x="32" y="443" width="171" height="48"/>
                                 </variation>
                             </button>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="OR" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QaR-Hq-nCb">
-                                <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
-                                <color key="tintColor" red="0.098039217289999994" green="0.098039217289999994" blue="0.098039217289999994" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                                <variation key="widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="188" y="456" width="25" height="21"/>
-                                </variation>
-                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="帳號：" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JYb-NH-a5p">
                                 <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -393,6 +383,16 @@
                                     <segue destination="Aix-ra-ibn" kind="show" id="uKd-Wd-KXG"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="OR" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QaR-Hq-nCb">
+                                <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
+                                <color key="tintColor" red="0.098039217289999994" green="0.098039217289999994" blue="0.098039217289999994" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="188" y="456" width="25" height="21"/>
+                                </variation>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <variation key="default">
@@ -400,11 +400,11 @@
                                 <exclude reference="ANz-Jq-ouw"/>
                                 <exclude reference="xuU-tS-IHh"/>
                                 <exclude reference="Vzi-Uy-yZA"/>
-                                <exclude reference="QaR-Hq-nCb"/>
                                 <exclude reference="JYb-NH-a5p"/>
                                 <exclude reference="TOe-3x-NwR"/>
                                 <exclude reference="tMN-vs-8cL"/>
                                 <exclude reference="4y5-2w-Fna"/>
+                                <exclude reference="QaR-Hq-nCb"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
@@ -412,11 +412,11 @@
                                 <include reference="ANz-Jq-ouw"/>
                                 <include reference="xuU-tS-IHh"/>
                                 <include reference="Vzi-Uy-yZA"/>
-                                <include reference="QaR-Hq-nCb"/>
                                 <include reference="JYb-NH-a5p"/>
                                 <include reference="TOe-3x-NwR"/>
                                 <include reference="tMN-vs-8cL"/>
                                 <include reference="4y5-2w-Fna"/>
+                                <include reference="QaR-Hq-nCb"/>
                             </mask>
                         </variation>
                     </view>
@@ -440,9 +440,17 @@
                             <imageView userInteractionEnabled="NO" alpha="0.69999999999999973" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Natural-Green-Background-Vector-Graphic.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="jcE-Hc-OXp">
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                                 <variation key="widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="0.0" y="64" width="571" height="600"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="571" height="600"/>
                                 </variation>
                             </imageView>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="DfD-X0-za8">
+                                <rect key="frame" x="0.0" y="-30" width="97" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="10" y="10" width="274" height="30"/>
+                                </variation>
+                            </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BYD-9h-EnN">
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
                                 <state key="normal" title="Button" image="Rectangle 2 + Cancel.png">
@@ -474,7 +482,7 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="fdb-Fn-S67">
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                                 <variation key="widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="26" y="117" width="159" height="156"/>
+                                    <rect key="frame" x="26" y="121" width="159" height="156"/>
                                 </variation>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="姓名：" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0uj-EI-iM6">
@@ -492,7 +500,7 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                                 <variation key="widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="26" y="309" width="73" height="26"/>
+                                    <rect key="frame" x="26" y="354" width="97" height="35"/>
                                 </variation>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="電話：" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8VX-vy-4QJ">
@@ -501,7 +509,7 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                                 <variation key="widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="26" y="363" width="73" height="26"/>
+                                    <rect key="frame" x="26" y="314" width="73" height="26"/>
                                 </variation>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="密碼：" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0xO-5g-8iI">
@@ -519,7 +527,7 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                                 <variation key="widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="26" y="463" width="90" height="34"/>
+                                    <rect key="frame" x="21" y="463" width="107" height="34"/>
                                 </variation>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="性別：" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nq5-VB-kyJ">
@@ -531,29 +539,64 @@
                                     <rect key="frame" x="210" y="239" width="60" height="25"/>
                                 </variation>
                             </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="LWQ-X6-h4v">
+                                <rect key="frame" x="0.0" y="-30" width="97" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="128" y="312" width="256" height="30"/>
+                                </variation>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ssj-yK-C5R">
+                                <rect key="frame" x="0.0" y="-30" width="97" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="128" y="359" width="256" height="30"/>
+                                </variation>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rQV-fe-plb">
+                                <rect key="frame" x="0.0" y="-30" width="97" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="128" y="412" width="256" height="30"/>
+                                </variation>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Omx-yE-sjo">
+                                <rect key="frame" x="0.0" y="-30" width="97" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="128" y="463" width="256" height="30"/>
+                                </variation>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DT9-p9-lS6">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <state key="normal" title="📷">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="142" y="239" width="43" height="37"/>
+                                </variation>
+                                <connections>
+                                    <action selector="TakePictureButton:" destination="Aix-ra-ibn" eventType="touchUpInside" id="i12-lT-K5R"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QGX-d2-anE">
+                                <rect key="frame" x="435" y="424" width="30" height="30"/>
+                                <state key="normal" image="Rectangle 1 + Login + Register.png">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pxu-4r-CB6">
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
                                 <state key="normal" title="Button">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <variation key="widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="110" y="527" width="46" height="30"/>
+                                    <rect key="frame" x="177" y="529" width="46" height="30"/>
                                 </variation>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NYR-WR-ihV">
-                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
-                                <state key="normal" title="Button">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <variation key="widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="217" y="527" width="46" height="30"/>
-                                </variation>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QGX-d2-anE">
-                                <rect key="frame" x="435" y="424" width="30" height="30"/>
-                                <state key="normal" image="Rectangle 1 + Login + Register.png">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -564,6 +607,7 @@
                         <variation key="default">
                             <mask key="subviews">
                                 <exclude reference="jcE-Hc-OXp"/>
+                                <exclude reference="DfD-X0-za8"/>
                                 <exclude reference="BYD-9h-EnN"/>
                                 <exclude reference="G00-DP-1gt"/>
                                 <exclude reference="tU6-Fe-Fek"/>
@@ -574,14 +618,19 @@
                                 <exclude reference="0xO-5g-8iI"/>
                                 <exclude reference="dHm-Pa-gt4"/>
                                 <exclude reference="Nq5-VB-kyJ"/>
-                                <exclude reference="pxu-4r-CB6"/>
-                                <exclude reference="NYR-WR-ihV"/>
+                                <exclude reference="LWQ-X6-h4v"/>
+                                <exclude reference="ssj-yK-C5R"/>
+                                <exclude reference="rQV-fe-plb"/>
+                                <exclude reference="Omx-yE-sjo"/>
+                                <exclude reference="DT9-p9-lS6"/>
                                 <exclude reference="QGX-d2-anE"/>
+                                <exclude reference="pxu-4r-CB6"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
                             <mask key="subviews">
                                 <include reference="jcE-Hc-OXp"/>
+                                <include reference="DfD-X0-za8"/>
                                 <exclude reference="BYD-9h-EnN"/>
                                 <include reference="G00-DP-1gt"/>
                                 <include reference="tU6-Fe-Fek"/>
@@ -592,12 +641,19 @@
                                 <include reference="0xO-5g-8iI"/>
                                 <include reference="dHm-Pa-gt4"/>
                                 <include reference="Nq5-VB-kyJ"/>
-                                <include reference="pxu-4r-CB6"/>
-                                <include reference="NYR-WR-ihV"/>
+                                <include reference="LWQ-X6-h4v"/>
+                                <include reference="ssj-yK-C5R"/>
+                                <include reference="rQV-fe-plb"/>
+                                <include reference="Omx-yE-sjo"/>
+                                <include reference="DT9-p9-lS6"/>
                                 <exclude reference="QGX-d2-anE"/>
+                                <include reference="pxu-4r-CB6"/>
                             </mask>
                         </variation>
                     </view>
+                    <connections>
+                        <outlet property="DisplayprofilePic" destination="fdb-Fn-S67" id="yuQ-vm-ChC"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="b2H-tz-hwH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -779,8 +835,8 @@
         <image name="Rectangle 2 + Facebook.png" width="268" height="75"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="hFi-3l-ee4"/>
-        <segue reference="hgS-zi-VFA"/>
+        <segue reference="Taw-Pu-oyh"/>
         <segue reference="FES-Lo-JZM"/>
+        <segue reference="QqX-jx-IWm"/>
     </inferredMetricsTieBreakers>
 </document>

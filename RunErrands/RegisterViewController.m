@@ -24,6 +24,54 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
+{
+    //取得使用者拍攝照片
+    UIImage *image = [info valueForKey:UIImagePickerControllerOriginalImage];
+    
+    //存檔
+    UIImageWriteToSavedPhotosAlbum(image,nil,nil,nil);
+    
+}
+
+- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker
+{
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (void) imagePickerController:(UIImagePickerController *)pickerdidFinishPickeringMediaWithInfo:(NSDictionary *)info
+{
+    UIImage *image = [info valueForKey:UIImagePickerControllerOriginalImage];
+    self.DisplayprofilePic.image = image;
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+- (IBAction)TakePictureButton:(id)sender {
+    
+    //檢查是否有裝配相機
+    if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera])
+    {
+        UIImagePickerController *imagePicker = [[UIImagePickerController alloc]init];
+        
+        //設定來源是否為相機
+        imagePicker.sourceType = UIImagePickerControllerSourceTypeCamera;
+        
+        //設定imagePicker的Delegate為Viewcontroller
+        imagePicker.delegate =self;
+        
+        //開啟相機介面
+        [self presentViewController:imagePicker animated:YES completion:nil];
+        
+        //UIImagePickerController *imagePicker = [UIImagePickerController new];
+        
+        
+        
+    }
+
+}
+
+
+
+
 /*
 #pragma mark - Navigation
 

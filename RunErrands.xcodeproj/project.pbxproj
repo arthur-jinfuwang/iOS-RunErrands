@@ -60,7 +60,9 @@
 		EA9E55C81B6F4E60009BDF25 /* MessageListCellTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = EA9E55C71B6F4E60009BDF25 /* MessageListCellTableView.m */; };
 		EA9E55CB1B6F67A5009BDF25 /* Rectangle 2 + Facebook.png in Resources */ = {isa = PBXBuildFile; fileRef = EA9E55C91B6F67A5009BDF25 /* Rectangle 2 + Facebook.png */; };
 		EA9E55D01B6F690A009BDF25 /* Rectangle 1 + Login + Login.png in Resources */ = {isa = PBXBuildFile; fileRef = EA9E55CF1B6F690A009BDF25 /* Rectangle 1 + Login + Login.png */; };
-		EA9E55D21B6F6B98009BDF25 /* Button 1.png in Resources */ = {isa = PBXBuildFile; fileRef = EA9E55D11B6F6B98009BDF25 /* Button 1.png */; };
+		EA9E55D41B6F82D1009BDF25 /* Button 1.png in Resources */ = {isa = PBXBuildFile; fileRef = EA9E55D31B6F82D1009BDF25 /* Button 1.png */; };
+		EA9E55D61B6FB888009BDF25 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA9E55D51B6FB888009BDF25 /* AssetsLibrary.framework */; };
+		EA9E55D81B6FB893009BDF25 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA9E55D71B6FB893009BDF25 /* MobileCoreServices.framework */; };
 		EAC0A0081B67CD8000C0A89A /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAC0A0061B67CD8000C0A89A /* FBSDKCoreKit.framework */; };
 		EAC0A0091B67CD8000C0A89A /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAC0A0071B67CD8000C0A89A /* FBSDKLoginKit.framework */; };
 		EAC0A00B1B67D68500C0A89A /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAC0A00A1B67D68500C0A89A /* FBSDKShareKit.framework */; };
@@ -160,7 +162,9 @@
 		EA9E55C71B6F4E60009BDF25 /* MessageListCellTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageListCellTableView.m; sourceTree = "<group>"; };
 		EA9E55C91B6F67A5009BDF25 /* Rectangle 2 + Facebook.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Rectangle 2 + Facebook.png"; sourceTree = "<group>"; };
 		EA9E55CF1B6F690A009BDF25 /* Rectangle 1 + Login + Login.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Rectangle 1 + Login + Login.png"; sourceTree = "<group>"; };
-		EA9E55D11B6F6B98009BDF25 /* Button 1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Button 1.png"; sourceTree = "<group>"; };
+		EA9E55D31B6F82D1009BDF25 /* Button 1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Button 1.png"; sourceTree = "<group>"; };
+		EA9E55D51B6FB888009BDF25 /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
+		EA9E55D71B6FB893009BDF25 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		EAC0A0061B67CD8000C0A89A /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
 		EAC0A0071B67CD8000C0A89A /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
 		EAC0A00A1B67D68500C0A89A /* FBSDKShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKShareKit.framework; sourceTree = "<group>"; };
@@ -171,6 +175,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EA9E55D81B6FB893009BDF25 /* MobileCoreServices.framework in Frameworks */,
+				EA9E55D61B6FB888009BDF25 /* AssetsLibrary.framework in Frameworks */,
 				EAC0A0081B67CD8000C0A89A /* FBSDKCoreKit.framework in Frameworks */,
 				BD7B81621B5D231900067D29 /* UIKit.framework in Frameworks */,
 				EAC0A0091B67CD8000C0A89A /* FBSDKLoginKit.framework in Frameworks */,
@@ -194,6 +200,8 @@
 		BD7B81291B5D1FA900067D29 = {
 			isa = PBXGroup;
 			children = (
+				EA9E55D71B6FB893009BDF25 /* MobileCoreServices.framework */,
+				EA9E55D51B6FB888009BDF25 /* AssetsLibrary.framework */,
 				EAC0A0061B67CD8000C0A89A /* FBSDKCoreKit.framework */,
 				EAC0A0071B67CD8000C0A89A /* FBSDKLoginKit.framework */,
 				EAC0A00A1B67D68500C0A89A /* FBSDKShareKit.framework */,
@@ -239,9 +247,9 @@
 				BD80403B1B638C7A00B1DCC1 /* MessageTableViewController.m */,
 				BD8040371B63840600B1DCC1 /* FollowTableViewController.h */,
 				BD8040381B63840600B1DCC1 /* FollowTableViewController.m */,
+				BD834A041B6E0C4800E7D79D /* CaseListCell.xib */,
 				BD834A061B6E0D1600E7D79D /* CaseListCell.h */,
 				BD834A071B6E0D1600E7D79D /* CaseListCell.m */,
-				BD834A041B6E0C4800E7D79D /* CaseListCell.xib */,
 				BD8BF45E1B6115D50020FBAA /* CaseListTableViewController.h */,
 				BD8BF45F1B6115D50020FBAA /* CaseListTableViewController.m */,
 				BD337CBC1B66321A00D8E9F9 /* CaseDetailsTableViewController.h */,
@@ -263,11 +271,11 @@
 				BD7B813F1B5D1FA900067D29 /* Main.storyboard */,
 				EA45E6DE1B6A56CF00BB86BE /* HeaderView.xib */,
 				BD7B81421B5D1FA900067D29 /* Images.xcassets */,
-				EA9E55D11B6F6B98009BDF25 /* Button 1.png */,
 				EA9E55C91B6F67A5009BDF25 /* Rectangle 2 + Facebook.png */,
 				EA9E55CF1B6F690A009BDF25 /* Rectangle 1 + Login + Login.png */,
 				EA45E6E81B6B4FF400BB86BE /* Natural-Green-Background-Vector-Graphic.jpg */,
 				EA45E6EA1B6B525A00BB86BE /* Orange.png */,
+				EA9E55D31B6F82D1009BDF25 /* Button 1.png */,
 				EA2D963E1B5E752200C18197 /* picture */,
 				BD7B81441B5D1FA900067D29 /* LaunchScreen.xib */,
 				BD7B81351B5D1FA900067D29 /* Supporting Files */,
@@ -463,7 +471,7 @@
 				EA29439C1B5DF1110054DBD6 /* screen@2x(4).png in Resources */,
 				EA29439D1B5DF1110054DBD6 /* screen@2x(5).png in Resources */,
 				EA45E6EB1B6B525A00BB86BE /* Orange.png in Resources */,
-				EA9E55D21B6F6B98009BDF25 /* Button 1.png in Resources */,
+				EA9E55D41B6F82D1009BDF25 /* Button 1.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

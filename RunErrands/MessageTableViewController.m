@@ -7,6 +7,7 @@
 //
 
 #import "MessageTableViewController.h"
+#import "MessageListCellTableView.h"
 
 @interface MessageTableViewController ()
 
@@ -22,6 +23,8 @@
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -39,24 +42,45 @@
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
 #warning Potentially incomplete method implementation.
     // Return the number of sections.
-    return 2;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 #warning Incomplete method implementation.
     // Return the number of rows in the section.
-    return 3;
+    return 20;
 }
-
-
+//生成另外頁面的物件
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"messageCell" forIndexPath:indexPath];
+    MessageListCellTableView *cell = [tableView dequeueReusableCellWithIdentifier:@"MessageCell"];
     
     // Configure the cell...
     cell.textLabel.text = [NSString stringWithFormat:@"message %ld", (long)indexPath.row];
-
+    
+    //cell.textLabel.text = [NSString stringWithFormat:@"case %ld", (long)indexPath.row];
+    
+    NSArray *view = [[NSBundle mainBundle] loadNibNamed:@"MessageListCell" owner:nil options:nil];
+    cell = (MessageListCellTableView *)[view lastObject];
+    
     return cell;
 }
+
+
+//點擊會去讀取下一個頁面
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    
+    
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    NSString* viewType = @"ResumeViewController";
+    UIViewController* viewController = [storyboard instantiateViewControllerWithIdentifier:viewType];
+    
+    [self.navigationController pushViewController:viewController animated:YES];
+    
+}
+
+
+
 
 
 /*

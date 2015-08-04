@@ -19,5 +19,16 @@
 
     // Configure the view for the selected state
 }
+- (BOOL)slideNavigationControllerShouldDisplayLeftMenu
+{
+    return YES;
+}
+
+
+
+
+
+
+
 
 @end
