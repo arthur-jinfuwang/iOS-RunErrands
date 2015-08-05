@@ -50,7 +50,7 @@
                            @"PostListTableViewController",
                            @"FollowTableViewController",
                            @"MessageTableViewController",
-                           @"SettingViewController",
+                           @"SettingTableViewController",
                            @"LoginViewController",nil];
     
     
