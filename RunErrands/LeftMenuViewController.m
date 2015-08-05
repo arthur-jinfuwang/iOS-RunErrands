@@ -13,14 +13,14 @@
 #import "SlideNavigationContorllerAnimatorScaleAndFade.h"
 #import "SlideNavigationContorllerAnimatorSlideAndFade.h"
 
+
 @interface LeftMenuViewController ()
 {
     NSArray *viewArray;
     NSArray *viewControllerArroy;
     USERLOGINSTATUS loginStatus;
-}
+    }
 
-@property (strong,nonatomic) UIView * headerView;
 @end
 
 @implementation LeftMenuViewController
@@ -55,7 +55,9 @@
     
     
     //讀取標題的區域
+    //self.headerView = [[[NSBundle mainBundle] loadNibNamed:@"HeaderView" owner:nil options:nil] lastObject];
     self.headerView = [[[NSBundle mainBundle] loadNibNamed:@"HeaderView" owner:nil options:nil] lastObject];
+    
     
 }
 
@@ -115,8 +117,17 @@
     
     UIViewController *vc ;
     vc = [mainStoryboard instantiateViewControllerWithIdentifier: viewControllerArroy[indexPath.row]];
+/*
+    if (indexPath.row == LOGINMENU) {
+        if (loginStatus == USERLOGIN) {
+           [self setLoginStatus:USERLOGOUT];
+            // logout function
+            NSLog(@"user logout finish");
+            return;
+        }
+    }
+*/
     
-
 /*
     switch (indexPath.row)
     {

@@ -12,15 +12,16 @@
 #import "LeftMenuViewController.h"
 
 
-@interface LoginViewController ()
-
+@interface LoginViewController (){
+LeftMenuViewController *leftMenu;
+}
 @end
 
 @implementation LoginViewController
 - (IBAction)FaceookLoginBtn:(id)sender {
     
     FBSDKLoginManager *loginManager = [[FBSDKLoginManager alloc] init];
-    LeftMenuViewController *leftMenu =(LeftMenuViewController *)[SlideNavigationController sharedInstance].leftMenu;
+    leftMenu =(LeftMenuViewController *)[SlideNavigationController sharedInstance].leftMenu;
     
     if ([FBSDKAccessToken currentAccessToken]) {
         // User is logged in, do work such as go to next view controller.
@@ -28,7 +29,7 @@
         
         NSLog(@"已登入");
         [leftMenu setLoginStatus:USERLOGOUT];
-        
+      
         
         //轉至其它畫面...        //Change the slider menu text from login to logout
 
@@ -46,7 +47,9 @@
                  NSLog(@"%@",results);
                  NSLog(@"%@",[results objectForKey:@"email"]);
                  
+                 
                  NSString *path = [NSHomeDirectory() stringByAppendingString:@"/Documents/mydata.txt"];
+                 leftMenu.headerView.displayFacebookName.text = [results objectForKey:@"name"];
 //                 [@"fields":@"email,name,gender,locale" writeToFile:path
 //                                                        automically:YES
 //                                                           encoding:NSUTF8StringEncoding
@@ -58,6 +61,7 @@
         
         //Change the slider menu text from login to logout
         [leftMenu setLoginStatus:USERLOGIN];
+
         
         //Turn to map view menu
 
@@ -82,6 +86,8 @@
         
     }else{
         NSLog(@"未登入");
+        leftMenu =(LeftMenuViewController *)[SlideNavigationController sharedInstance].leftMenu;
+        leftMenu.headerView.displayFacebookName.text = @"";
     }
 
 }

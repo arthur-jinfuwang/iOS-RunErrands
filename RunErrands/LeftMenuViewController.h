@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "SlideNavigationController.h"
+#import "HeaderView.h"
 
 typedef NS_ENUM(NSInteger, FUMCTIONMENUS){
     MAPVIEWMENU = 0,
@@ -28,6 +29,7 @@ typedef NS_ENUM(NSInteger, USERLOGINSTATUS){
 
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic, assign) BOOL slideOutAnimationEnabled;
+@property (strong,nonatomic) HeaderView * headerView;
 
 - (void) setLoginStatus:(USERLOGINSTATUS)status;
 

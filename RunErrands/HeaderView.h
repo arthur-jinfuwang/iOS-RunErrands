@@ -11,6 +11,6 @@
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
 
 @interface HeaderView : UIView<FBSDKLoginButtonDelegate>
-
+@property (weak, nonatomic) IBOutlet UILabel *displayFacebookName;
 
 @end
