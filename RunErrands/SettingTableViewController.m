@@ -9,6 +9,9 @@
 #import "SettingTableViewController.h"
 
 @interface SettingTableViewController ()
+{
+    NSMutableArray *settingDetailList;
+}
 
 @end
 
@@ -22,6 +25,10 @@
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    settingDetailList = [[NSMutableArray alloc] initWithObjects:
+                         @"姓名", @"暱稱", @"性別", @"手機", @"電子信箱",nil];
+    
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -36,6 +43,19 @@
 
 #pragma mark - Table view data source
 
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+       UIView *view = [[UIView alloc] initWithFrame:CGRectMake(100, 0, self.tableView.frame.size.width, 0)];
+        view.backgroundColor = [UIColor clearColor];
+        view.backgroundColor = [UIColor greenColor];
+        return view;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    return 140;
+}
+
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
 #warning Potentially incomplete method implementation.
     // Return the number of sections.
@@ -45,17 +65,18 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 #warning Incomplete method implementation.
     // Return the number of rows in the section.
-    return 1;
+    return settingDetailList.count;
 }
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"settingCell" forIndexPath:indexPath];
     
-    cell.textLabel.text = @"setting menu";
+    SettingTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"settingCell"];
+    NSArray *view = [[NSBundle mainBundle] loadNibNamed:@"SettingCells" owner:nil options:nil];
+    cell = (SettingTableViewCell *)[view lastObject];
     
-    // Configure the cell...
-    
+    cell.titleLable.text = settingDetailList[indexPath.row];
+
     return cell;
 }
 

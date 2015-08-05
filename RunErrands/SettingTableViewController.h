@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "SlideNavigationController.h"
+#import "SettingTableViewCell.h"
 
 @interface SettingTableViewController : UITableViewController <SlideNavigationControllerDelegate>
 
