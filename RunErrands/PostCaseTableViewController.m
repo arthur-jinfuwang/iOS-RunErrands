@@ -27,8 +27,8 @@
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     
     listDetails = [[NSMutableArray alloc]initWithObjects:
-                   @"標題",@"工作起始時間",@"設定工作時間",@"設定酬勞",@"設定地點",@"撰寫工作內容",
-                   @"撰寫聯絡方式",nil];
+                   @"標題",@"起始時間",@"結束時間",@"設定地點",@"薪資",@"詳細內容",
+                   @"需求人數",@"截止日期",@"聯絡人",@"聯絡電話",@"Email",nil];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -38,6 +38,21 @@
 
 
 #pragma mark - Table view data source
+
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+       UIView *view = [[UIView alloc] initWithFrame:CGRectMake(100, 0, self.tableView.frame.size.width, 0)];
+        view.backgroundColor = [UIColor clearColor];
+        view.backgroundColor = [UIColor greenColor];
+        return view;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    return 140;
+}
+
+
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
 #warning Potentially incomplete method implementation.
@@ -59,7 +74,16 @@
      cell.textLabel.text = listDetails[indexPath.row];
     return cell;
 }
+/*
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
 
+    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle: nil];
+    
+    UIViewController *vc ;
+    vc = [mainStoryboard instantiateViewControllerWithIdentifier: viewControllerArroy[indexPath.row]];
+}
+ */
 
 /*
 // Override to support conditional editing of the table view.

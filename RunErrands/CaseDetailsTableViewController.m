@@ -27,10 +27,8 @@
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     
     listDetails = [[NSMutableArray alloc]initWithObjects:
-                   @"日期",@"時間",@"供餐",@"酬勞",@"地點",@"內容",
-                   @"統一編號",@"單位名稱",@"單位地址",@"聯絡人",@"聯絡電話",
-                   @"Email",@"需求人數",@"截止日期",
-                   nil];
+                   @"工作起始時間",@"工作結束時間",@"薪資",@"地點",@"工作內容",@"需求人數",
+                   @"截止日期",nil];
     
 }
 
