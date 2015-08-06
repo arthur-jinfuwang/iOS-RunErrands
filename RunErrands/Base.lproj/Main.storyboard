@@ -51,12 +51,12 @@
         <scene sceneID="EwJ-E2-i3W">
             <objects>
                 <tableViewController storyboardIdentifier="CaseListTableViewController" id="RDe-YY-nqR" customClass="CaseListTableViewController" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="90" sectionHeaderHeight="22" sectionFooterHeight="22" id="Fdd-oc-u7Y">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="110" sectionHeaderHeight="22" sectionFooterHeight="22" id="Fdd-oc-u7Y">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="caseCell" rowHeight="90" id="tZp-Zq-2Cg">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="caseCell" id="tZp-Zq-2Cg">
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="tZp-Zq-2Cg" id="IBw-UP-tn7">
                                     <autoresizingMask key="autoresizingMask"/>
@@ -651,7 +651,7 @@
         <scene sceneID="3Kl-5q-wRB">
             <objects>
                 <tableViewController storyboardIdentifier="FollowTableViewController" id="bdK-Kz-k82" customClass="FollowTableViewController" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="90" sectionHeaderHeight="22" sectionFooterHeight="22" id="Koy-hM-hSo">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="110" sectionHeaderHeight="22" sectionFooterHeight="22" id="Koy-hM-hSo">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -824,7 +824,7 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="ybq-Ux-EmN"/>
+        <segue reference="Taw-Pu-oyh"/>
         <segue reference="QqX-jx-IWm"/>
-        <segue reference="1By-6M-hw7"/>
     </inferredMetricsTieBreakers>
 </document>
