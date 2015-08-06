@@ -651,7 +651,7 @@
         <scene sceneID="3Kl-5q-wRB">
             <objects>
                 <tableViewController storyboardIdentifier="FollowTableViewController" id="bdK-Kz-k82" customClass="FollowTableViewController" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="Koy-hM-hSo">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="90" sectionHeaderHeight="22" sectionFooterHeight="22" id="Koy-hM-hSo">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -823,8 +823,8 @@
         <image name="Rectangle 2 + Facebook.png" width="268" height="75"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="hFi-3l-ee4"/>
         <segue reference="ybq-Ux-EmN"/>
-        <segue reference="Taw-Pu-oyh"/>
+        <segue reference="QqX-jx-IWm"/>
+        <segue reference="1By-6M-hw7"/>
     </inferredMetricsTieBreakers>
 </document>
