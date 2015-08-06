@@ -8,7 +8,7 @@
 
 #import "SettingTableViewController.h"
 
-@interface SettingTableViewController ()
+@interface SettingTableViewController ()<UITextFieldDelegate>
 {
     NSMutableArray *settingDetailList;
 }
@@ -72,6 +72,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     SettingTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"settingCell"];
+//    cell.dataTextField.delegate = self;
     NSArray *view = [[NSBundle mainBundle] loadNibNamed:@"SettingCells" owner:nil options:nil];
     cell = (SettingTableViewCell *)[view lastObject];
     
@@ -80,6 +81,49 @@
     return cell;
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSArray *cellArray = [tableView visibleCells];
+    
+    SettingTableViewCell *cell = cellArray[indexPath.row];
+    
+    if (indexPath.row == 2) {
+        [cell.dataTextField setUserInteractionEnabled:NO];
+        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"請選擇性別" message:@"" preferredStyle: UIAlertControllerStyleActionSheet];
+        UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
+        UIAlertAction *manAction = [UIAlertAction actionWithTitle:@"男性" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+            cell.dataLabel.text = @"男性";
+            cell.dataTextField.text = @"男性";
+        }];
+        UIAlertAction *femaleAction = [UIAlertAction actionWithTitle:@"女性" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+            cell.dataLabel.text = @"女性";
+            cell.dataTextField.text = @"女性";
+        }];
+        [alertController addAction:cancelAction];
+        [alertController addAction:manAction];
+        [alertController addAction:femaleAction];
+        
+        [self presentViewController:alertController animated:YES completion:nil];
+    }
+    
+    cell.dataLabel.hidden = YES;
+    cell.dataTextField.hidden = NO;
+    
+}
+
+- (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath NS_AVAILABLE_IOS(3_0){
+    NSArray *cellArray = [tableView visibleCells];
+    
+    SettingTableViewCell *cell = cellArray[indexPath.row];
+    
+    cell.dataLabel.hidden = NO;
+    cell.dataTextField.hidden = YES;
+}
+
+//-(BOOL)textFieldShouldBeginEditing:(UITextField *)textField
+//{
+//    
+//}
 
 /*
 // Override to support conditional editing of the table view.

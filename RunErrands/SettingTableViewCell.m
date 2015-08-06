@@ -19,5 +19,12 @@
 
     // Configure the view for the selected state
 }
+- (IBAction)dataTextFieldDidEndOnExit:(id)sender {
+    [sender resignFirstResponder];
+    _dataLabel.text = _dataTextField.text;
+    _dataLabel.hidden = NO;
+    _dataTextField.hidden = YES;
+}
+
 
 @end
