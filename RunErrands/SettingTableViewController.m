@@ -75,7 +75,7 @@
     NSArray *view = [[NSBundle mainBundle] loadNibNamed:@"SettingCells" owner:nil options:nil];
     cell = (SettingTableViewCell *)[view lastObject];
     
-    cell.titleLable.text = settingDetailList[indexPath.row];
+    cell.titleLabel.text = settingDetailList[indexPath.row];
 
     return cell;
 }

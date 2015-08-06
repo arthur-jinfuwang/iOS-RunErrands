@@ -47,8 +47,9 @@
                 </constraints>
             </tableViewCellContentView>
             <connections>
+                <outlet property="dataLabel" destination="Xiz-KH-5Oc" id="Syi-SA-cYJ"/>
                 <outlet property="dataTextField" destination="kaV-8m-IQt" id="O8D-5D-3Om"/>
-                <outlet property="titleLable" destination="YJI-82-R3G" id="Jzi-Sh-uDR"/>
+                <outlet property="titleLabel" destination="YJI-82-R3G" id="qEA-1P-Yhu"/>
             </connections>
         </tableViewCell>
     </objects>
