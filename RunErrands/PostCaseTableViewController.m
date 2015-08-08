@@ -7,6 +7,7 @@
 //
 
 #import "PostCaseTableViewController.h"
+#import "SettingTableViewCell.h"
 
 @interface PostCaseTableViewController ()
 {
@@ -27,7 +28,7 @@
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     
     listDetails = [[NSMutableArray alloc]initWithObjects:
-                   @"標題",@"起始時間",@"結束時間",@"設定地點",@"薪資",@"詳細內容",
+                   @"設定標題",@"設定地點",@"詳細內容",@"起始時間",@"結束時間",@"薪資",
                    @"需求人數",@"截止日期",@"聯絡人",@"聯絡電話",@"Email",nil];
 }
 
@@ -55,35 +56,74 @@
 
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-#warning Potentially incomplete method implementation.
     // Return the number of sections.
     return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-#warning Incomplete method implementation.
     // Return the number of rows in the section.
     return listDetails.count;
 }
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"postCase" forIndexPath:indexPath];
     
-    // Configure the cell...
-     cell.textLabel.text = listDetails[indexPath.row];
+    SettingTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"settingCell"];
+    NSArray *view = [[NSBundle mainBundle] loadNibNamed:@"SettingCells" owner:nil options:nil];
+    cell = (SettingTableViewCell *)[view lastObject];
+    cell.titleLabel.text = listDetails[indexPath.row];
+    
+    if (indexPath.row == 3 || indexPath.row == 4 || indexPath.row == 7) {
+        UIDatePicker *datePicker = [[UIDatePicker alloc] initWithFrame:CGRectZero];
+        datePicker.minuteInterval = 5;
+        datePicker.backgroundColor = [UIColor whiteColor];
+        if (indexPath.row == 7) {
+            datePicker.datePickerMode = UIDatePickerModeDate;
+        }else{
+            datePicker.datePickerMode = UIDatePickerModeDateAndTime;
+        }
+        [datePicker addTarget:self action:@selector(dateUpdated:) forControlEvents:UIControlEventValueChanged];
+        cell.dataTextField.inputView = datePicker;
+    }
+    
     return cell;
 }
-/*
+
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
 
-    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle: nil];
+    NSArray *cellArray = [tableView visibleCells];
     
-    UIViewController *vc ;
-    vc = [mainStoryboard instantiateViewControllerWithIdentifier: viewControllerArroy[indexPath.row]];
+    SettingTableViewCell *cell = cellArray[indexPath.row];
+
+    cell.dataLabel.hidden = YES;
+    cell.dataTextField.hidden = NO;
 }
- */
+
+- (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath NS_AVAILABLE_IOS(3_0){
+    NSArray *cellArray = [tableView visibleCells];
+    
+    SettingTableViewCell *cell = cellArray[indexPath.row];
+    cell.dataLabel.text = cell.dataTextField.text;
+    cell.dataLabel.hidden = NO;
+    cell.dataTextField.hidden = YES;
+}
+
+
+- (void) dateUpdated:(UIDatePicker *)datePicker {
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    if (self.tableView.indexPathForSelectedRow.row == 7) {
+        [formatter setDateFormat:@"yyyy-MM-dd"];
+    }else{
+        [formatter setDateFormat:@"yyyy-MM-dd HH:mm"];
+    }
+    
+    NSArray *cellArray = [self.tableView visibleCells];
+    SettingTableViewCell *cell = cellArray[self.tableView.indexPathForSelectedRow.row];
+    cell.dataTextField.text = [formatter stringFromDate:datePicker.date];
+    NSLog(@"時間為：%@", [formatter stringFromDate:datePicker.date]);
+}
+
 
 /*
 // Override to support conditional editing of the table view.
