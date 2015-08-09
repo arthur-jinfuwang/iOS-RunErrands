@@ -49,7 +49,6 @@
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
 
-    NSLog(@"Setting menu header new");
     return avatarHeader;
 }
 

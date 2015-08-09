@@ -8,10 +8,12 @@
 
 #import "PostCaseTableViewController.h"
 #import "SettingTableViewCell.h"
+#import "TakePictureView.h"
 
-@interface PostCaseTableViewController ()
+@interface PostCaseTableViewController ()<TakePictureViewDelegate>
 {
     NSMutableArray *listDetails;
+    TakePictureView *casePicture;
 }
 
 @end
@@ -30,6 +32,9 @@
     listDetails = [[NSMutableArray alloc]initWithObjects:
                    @"設定標題",@"設定地點",@"詳細內容",@"起始時間",@"結束時間",@"薪資",
                    @"需求人數",@"截止日期",@"聯絡人",@"聯絡電話",@"Email",nil];
+    casePicture = [[[NSBundle mainBundle] loadNibNamed:@"TakePictureView" owner:nil options:nil] lastObject];
+    casePicture.thePictureLabel.text = @"設定工作相關的照片";
+    casePicture.takePicturedViewDlegate = self;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -42,15 +47,12 @@
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
-       UIView *view = [[UIView alloc] initWithFrame:CGRectMake(100, 0, self.tableView.frame.size.width, 0)];
-        view.backgroundColor = [UIColor clearColor];
-        view.backgroundColor = [UIColor greenColor];
-        return view;
+    return casePicture;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
-    return 140;
+    return 180;
 }
 
 
@@ -124,6 +126,23 @@
     NSLog(@"時間為：%@", [formatter stringFromDate:datePicker.date]);
 }
 
+- (void)changePictureView{
+    NSLog(@"Change Picture in setting menu");
+    
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"請選擇相片來源" message:@"" preferredStyle: UIAlertControllerStyleActionSheet];
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
+    UIAlertAction *manAction = [UIAlertAction actionWithTitle:@"拍張照吧" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        //
+    }];
+    UIAlertAction *femaleAction = [UIAlertAction actionWithTitle:@"從相簿選取" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        //
+    }];
+    [alertController addAction:cancelAction];
+    [alertController addAction:manAction];
+    [alertController addAction:femaleAction];
+    
+    [self presentViewController:alertController animated:YES completion:nil];
+}
 
 /*
 // Override to support conditional editing of the table view.
