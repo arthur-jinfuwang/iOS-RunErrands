@@ -7,10 +7,12 @@
 //
 
 #import "SettingTableViewController.h"
+#import "TakePictureView.h"
 
-@interface SettingTableViewController ()<UITextFieldDelegate>
+@interface SettingTableViewController ()<UITextFieldDelegate, TakePictureViewDelegate>
 {
     NSMutableArray *settingDetailList;
+    TakePictureView  *avatarHeader;
 }
 
 @end
@@ -27,8 +29,9 @@
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     settingDetailList = [[NSMutableArray alloc] initWithObjects:
                          @"姓名", @"暱稱", @"性別", @"手機", @"電子信箱",nil];
-    
-    
+    avatarHeader = [[[NSBundle mainBundle] loadNibNamed:@"TakePictureView" owner:nil options:nil] lastObject];
+    avatarHeader.thePictureLabel.text = @"設定自己的大頭貼";
+    avatarHeader.takePicturedViewDlegate = self;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -45,15 +48,14 @@
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
-       UIView *view = [[UIView alloc] initWithFrame:CGRectMake(100, 0, self.tableView.frame.size.width, 0)];
-        view.backgroundColor = [UIColor clearColor];
-        view.backgroundColor = [UIColor greenColor];
-        return view;
+
+    NSLog(@"Setting menu header new");
+    return avatarHeader;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
-    return 140;
+    return 180;
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -118,6 +120,25 @@
     
     cell.dataLabel.hidden = NO;
     cell.dataTextField.hidden = YES;
+}
+
+
+- (void)changePictureView{
+    NSLog(@"Change Picture in setting menu");
+    
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"請選擇相片來源" message:@"" preferredStyle: UIAlertControllerStyleActionSheet];
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
+    UIAlertAction *manAction = [UIAlertAction actionWithTitle:@"拍張照吧" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        //
+    }];
+    UIAlertAction *femaleAction = [UIAlertAction actionWithTitle:@"從相簿選取" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        //
+    }];
+    [alertController addAction:cancelAction];
+    [alertController addAction:manAction];
+    [alertController addAction:femaleAction];
+    
+    [self presentViewController:alertController animated:YES completion:nil];
 }
 
 //-(BOOL)textFieldShouldBeginEditing:(UITextField *)textField

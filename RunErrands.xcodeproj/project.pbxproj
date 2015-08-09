@@ -14,6 +14,8 @@
 		BD337CBB1B66312E00D8E9F9 /* ResumeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BD337CBA1B66312E00D8E9F9 /* ResumeViewController.m */; };
 		BD337CBE1B66321A00D8E9F9 /* CaseDetailsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BD337CBD1B66321A00D8E9F9 /* CaseDetailsTableViewController.m */; };
 		BD3618EB1B67E35200A13CA9 /* SetLocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BD3618EA1B67E35200A13CA9 /* SetLocationViewController.m */; };
+		BD4F48E51B77270E005DD3AC /* TakePictureView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BD4F48E41B77270E005DD3AC /* TakePictureView.xib */; };
+		BD4F48E81B77274D005DD3AC /* TakePictureView.m in Sources */ = {isa = PBXBuildFile; fileRef = BD4F48E71B77274D005DD3AC /* TakePictureView.m */; };
 		BD7B81381B5D1FA900067D29 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BD7B81371B5D1FA900067D29 /* main.m */; };
 		BD7B813B1B5D1FA900067D29 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BD7B813A1B5D1FA900067D29 /* AppDelegate.m */; };
 		BD7B81411B5D1FA900067D29 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BD7B813F1B5D1FA900067D29 /* Main.storyboard */; };
@@ -94,6 +96,9 @@
 		BD337CBD1B66321A00D8E9F9 /* CaseDetailsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CaseDetailsTableViewController.m; sourceTree = "<group>"; };
 		BD3618E91B67E35200A13CA9 /* SetLocationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SetLocationViewController.h; sourceTree = "<group>"; };
 		BD3618EA1B67E35200A13CA9 /* SetLocationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SetLocationViewController.m; sourceTree = "<group>"; };
+		BD4F48E41B77270E005DD3AC /* TakePictureView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TakePictureView.xib; sourceTree = "<group>"; };
+		BD4F48E61B77274D005DD3AC /* TakePictureView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TakePictureView.h; sourceTree = "<group>"; };
+		BD4F48E71B77274D005DD3AC /* TakePictureView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TakePictureView.m; sourceTree = "<group>"; };
 		BD7B81321B5D1FA900067D29 /* RunErrands.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RunErrands.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BD7B81361B5D1FA900067D29 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BD7B81371B5D1FA900067D29 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -277,6 +282,9 @@
 				EA45E6DE1B6A56CF00BB86BE /* HeaderView.xib */,
 				EA45E6E51B6A5C6400BB86BE /* HeaderView.h */,
 				EA45E6E61B6A5C6400BB86BE /* HeaderView.m */,
+				BD4F48E41B77270E005DD3AC /* TakePictureView.xib */,
+				BD4F48E61B77274D005DD3AC /* TakePictureView.h */,
+				BD4F48E71B77274D005DD3AC /* TakePictureView.m */,
 				BD7B813F1B5D1FA900067D29 /* Main.storyboard */,
 				BD7B81421B5D1FA900067D29 /* Images.xcassets */,
 				EA9E55C91B6F67A5009BDF25 /* Rectangle 2 + Facebook.png */,
@@ -464,6 +472,7 @@
 				BD7B81411B5D1FA900067D29 /* Main.storyboard in Resources */,
 				EA9E55C51B6F4DDA009BDF25 /* MessageListCell.xib in Resources */,
 				EA45E6DF1B6A56CF00BB86BE /* HeaderView.xib in Resources */,
+				BD4F48E51B77270E005DD3AC /* TakePictureView.xib in Resources */,
 				EA2943A11B5DF1110054DBD6 /* screen@2x(9).png in Resources */,
 				BD7B81461B5D1FA900067D29 /* LaunchScreen.xib in Resources */,
 				EA29439A1B5DF1110054DBD6 /* screen@2x(2).png in Resources */,
@@ -502,6 +511,7 @@
 				BD7B81761B5D248D00067D29 /* SlideNavigationContorllerAnimatorScale.m in Sources */,
 				BD3618EB1B67E35200A13CA9 /* SetLocationViewController.m in Sources */,
 				BD1527E31B7260E5000CFFF3 /* SettingTableViewController.m in Sources */,
+				BD4F48E81B77274D005DD3AC /* TakePictureView.m in Sources */,
 				BD7B81771B5D248D00067D29 /* SlideNavigationContorllerAnimatorScaleAndFade.m in Sources */,
 				BD80403C1B638C7A00B1DCC1 /* MessageTableViewController.m in Sources */,
 				BDE131021B711D5E006F30F6 /* PostCaseTableViewController.m in Sources */,
