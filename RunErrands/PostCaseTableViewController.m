@@ -9,6 +9,7 @@
 #import "PostCaseTableViewController.h"
 #import "SettingTableViewCell.h"
 #import "TakePictureView.h"
+#import "SetLocationViewController.h"
 
 @interface PostCaseTableViewController ()<TakePictureViewDelegate>
 {
@@ -97,9 +98,26 @@
     NSArray *cellArray = [tableView visibleCells];
     
     SettingTableViewCell *cell = cellArray[indexPath.row];
+    
+    switch(indexPath.row)
+    {
+        case 1:{
+            SetLocationViewController  *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"SetLocationViewController"];
+            [self.navigationController pushViewController:vc animated:YES];
+            break;
+        }
+        case 2:{
+            UIViewController  *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"EditCaseDetailContent"];
+            [self.navigationController pushViewController:vc animated:YES];
+        }
+        default:{
+            cell.dataLabel.hidden = YES;
+            cell.dataTextField.hidden = NO;
+            break;
+        }
+    }
 
-    cell.dataLabel.hidden = YES;
-    cell.dataTextField.hidden = NO;
+
 }
 
 - (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath NS_AVAILABLE_IOS(3_0){
@@ -109,6 +127,7 @@
     cell.dataLabel.text = cell.dataTextField.text;
     cell.dataLabel.hidden = NO;
     cell.dataTextField.hidden = YES;
+    
 }
 
 
