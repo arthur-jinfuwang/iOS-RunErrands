@@ -131,7 +131,7 @@
         [self takePictureFromCamera];
     }];
     UIAlertAction *femaleAction = [UIAlertAction actionWithTitle:@"從相簿選取" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
-        //
+        [self selectPictureFromLibrary];
     }];
     [alertController addAction:cancelAction];
     [alertController addAction:manAction];
@@ -148,7 +148,7 @@
     UIImage *image = [info valueForKey:UIImagePickerControllerOriginalImage];
     
     //存檔
-    UIImageWriteToSavedPhotosAlbum(image,nil,nil,nil);
+    //UIImageWriteToSavedPhotosAlbum(image,nil,nil,nil);
     
     avatarHeader.thePictureBtn.imageView.contentMode = UIViewContentModeScaleAspectFill;
     [avatarHeader.thePictureBtn setImage:image forState:UIControlStateNormal];
@@ -181,6 +181,27 @@
     
 }
 
+- (void)selectPictureFromLibrary{
+    
+    UIPopoverPresentationController *popover;
+    UIImagePickerController *imagePicker = [UIImagePickerController new];
+    
+    //set source of the picture is from library
+    imagePicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+    imagePicker.delegate = self;
+    
+    //set the view mode is popover
+    imagePicker.modalPresentationStyle = UIModalPresentationPopover;
+    popover = imagePicker.popoverPresentationController;
+    
+    //set popover window and view conponent have relativate
+    popover.sourceView = avatarHeader;
+    // handle the popover arrow
+    popover.sourceRect = avatarHeader.bounds;
+    popover.permittedArrowDirections = UIPopoverArrowDirectionAny;
+    
+    [self presentViewController:imagePicker animated:YES completion:nil];
+}
 //-(BOOL)textFieldShouldBeginEditing:(UITextField *)textField
 //{
 //    
