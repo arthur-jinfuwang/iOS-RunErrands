@@ -34,9 +34,19 @@
                         <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="bSd-5Z-gtq">
+                        <rect key="frame" x="8" y="7" width="30" height="30"/>
+                        <color key="backgroundColor" red="0.0" green="1" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="30" id="Laz-j1-1DT"/>
+                            <constraint firstAttribute="height" constant="30" id="xyy-VZ-Nyd"/>
+                        </constraints>
+                    </imageView>
                 </subviews>
                 <constraints>
+                    <constraint firstItem="bSd-5Z-gtq" firstAttribute="leading" secondItem="nzf-xV-dVO" secondAttribute="leadingMargin" id="Cwm-8x-Y5r"/>
                     <constraint firstItem="kaV-8m-IQt" firstAttribute="top" secondItem="nzf-xV-dVO" secondAttribute="topMargin" constant="-1" id="JMS-lO-mvf"/>
+                    <constraint firstItem="bSd-5Z-gtq" firstAttribute="top" secondItem="nzf-xV-dVO" secondAttribute="topMargin" constant="-1" id="N6U-Zf-pfq"/>
                     <constraint firstItem="Xiz-KH-5Oc" firstAttribute="trailing" secondItem="nzf-xV-dVO" secondAttribute="trailingMargin" id="SCv-dH-usS"/>
                     <constraint firstItem="YJI-82-R3G" firstAttribute="bottom" secondItem="nzf-xV-dVO" secondAttribute="bottomMargin" id="UYQ-Ye-ZkI"/>
                     <constraint firstItem="Xiz-KH-5Oc" firstAttribute="leading" secondItem="nzf-xV-dVO" secondAttribute="leadingMargin" constant="82" id="UzE-Ee-7Ya"/>
@@ -46,6 +56,7 @@
                     <constraint firstItem="Xiz-KH-5Oc" firstAttribute="leading" secondItem="YJI-82-R3G" secondAttribute="trailing" constant="8" id="foe-Kb-eAy"/>
                     <constraint firstItem="kaV-8m-IQt" firstAttribute="leading" secondItem="nzf-xV-dVO" secondAttribute="leadingMargin" constant="82" id="fwp-w1-0bT"/>
                     <constraint firstItem="YJI-82-R3G" firstAttribute="leading" secondItem="nzf-xV-dVO" secondAttribute="leadingMargin" id="pgD-Mh-UQn"/>
+                    <constraint firstAttribute="centerY" secondItem="bSd-5Z-gtq" secondAttribute="centerY" id="rSR-BJ-bmW"/>
                     <constraint firstAttribute="bottomMargin" secondItem="kaV-8m-IQt" secondAttribute="bottom" constant="-1.5" id="y5g-vc-FnM"/>
                     <constraint firstItem="YJI-82-R3G" firstAttribute="top" secondItem="nzf-xV-dVO" secondAttribute="topMargin" id="zBe-eM-qPw"/>
                 </constraints>
@@ -53,6 +64,7 @@
             <connections>
                 <outlet property="dataLabel" destination="Xiz-KH-5Oc" id="Syi-SA-cYJ"/>
                 <outlet property="dataTextField" destination="kaV-8m-IQt" id="O8D-5D-3Om"/>
+                <outlet property="iconTitle" destination="bSd-5Z-gtq" id="SVi-WA-sJL"/>
                 <outlet property="titleLabel" destination="YJI-82-R3G" id="qEA-1P-Yhu"/>
             </connections>
         </tableViewCell>

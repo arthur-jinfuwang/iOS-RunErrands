@@ -10,8 +10,10 @@
 
 @interface SettingTableViewCell : UITableViewCell
 
+//@property (weak, nonatomic) IBOutlet UIImageView *iconTiltle;
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 @property (weak, nonatomic) IBOutlet UITextField *dataTextField;
 @property (weak, nonatomic) IBOutlet UILabel *dataLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *iconTitle;
 
 @end
