@@ -10,7 +10,8 @@
 
 @interface ResumeViewController ()
 {
-    NSMutableArray *ResumeDetailList;
+    NSMutableArray *imagearray;
+    
 }
 
 @end
@@ -20,6 +21,16 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    
+    
+    
+    [imagearray addObject:[UIImage imageNamed:@"screen@2x(1).png"]];
+    [imagearray addObject:[UIImage imageNamed:@"screen@2x(2).png"]];
+    [imagearray addObject:[UIImage imageNamed:@"screen@2x(3).png"]];
+    [imagearray addObject:[UIImage imageNamed:@"screen@2x(4).png"]];
+    
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -49,6 +60,9 @@
     cell = (SettingTableViewCell *)[view lastObject];
     
     cell.titleLabel.text = [[NSString alloc] initWithFormat:@"resume cell %ld", indexPath.row];
+    cell.iconTitle.animationImages = imagearray;
+    cell.titleLabel.hidden = YES;
+    cell.iconTitle.hidden = NO;
     
     return cell;
 }

@@ -11,6 +11,5 @@
 
 @interface ResumeViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
-@property (weak, nonatomic) IBOutlet UILabel *thelabel;
 
 @end
