@@ -9,6 +9,9 @@
 #import "ResumeViewController.h"
 
 @interface ResumeViewController ()
+{
+    NSMutableArray *ResumeDetailList;
+}
 
 @end
 
@@ -23,6 +26,33 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+#pragma mark - Table view data source
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+#warning Potentially incomplete method implementation.
+    // Return the number of sections.
+    return 1;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+#warning Incomplete method implementation.
+    // Return the number of rows in the section.
+    return 4;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    SettingTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"resumeCell"];
+    //    cell.dataTextField.delegate = self;
+    NSArray *view = [[NSBundle mainBundle] loadNibNamed:@"SettingCells" owner:nil options:nil];
+    cell = (SettingTableViewCell *)[view lastObject];
+    
+    cell.titleLabel.text = [[NSString alloc] initWithFormat:@"resume cell %ld", indexPath.row];
+    
+    return cell;
+}
+
 
 /*
 #pragma mark - Navigation
