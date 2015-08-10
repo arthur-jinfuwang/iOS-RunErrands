@@ -10,6 +10,6 @@
 #import "SlideNavigationController.h"
 #import "SettingTableViewCell.h"
 
-@interface SettingTableViewController : UITableViewController <SlideNavigationControllerDelegate>
+@interface SettingTableViewController : UITableViewController <SlideNavigationControllerDelegate,UINavigationControllerDelegate,UIImagePickerControllerDelegate>
 
 @end

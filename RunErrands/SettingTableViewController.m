@@ -128,7 +128,7 @@
     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"請選擇相片來源" message:@"" preferredStyle: UIAlertControllerStyleActionSheet];
     UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
     UIAlertAction *manAction = [UIAlertAction actionWithTitle:@"拍張照吧" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
-        //
+        [self takePictureFromCamera];
     }];
     UIAlertAction *femaleAction = [UIAlertAction actionWithTitle:@"從相簿選取" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
         //
@@ -138,6 +138,47 @@
     [alertController addAction:femaleAction];
     
     [self presentViewController:alertController animated:YES completion:nil];
+}
+
+#pragma mark - Table view data source
+
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
+{
+    //取得使用者拍攝照片
+    UIImage *image = [info valueForKey:UIImagePickerControllerOriginalImage];
+    
+    //存檔
+    UIImageWriteToSavedPhotosAlbum(image,nil,nil,nil);
+    
+    avatarHeader.thePictureBtn.imageView.contentMode = UIViewContentModeScaleAspectFill;
+    [avatarHeader.thePictureBtn setImage:image forState:UIControlStateNormal];
+    
+    [self dismissViewControllerAnimated:YES completion:nil];
+    
+}
+
+- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker
+{
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (void)takePictureFromCamera{
+    
+    //檢查是否有裝配相機
+    if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera])
+    {
+        UIImagePickerController *imagePicker = [[UIImagePickerController alloc]init];
+        
+        //設定來源是否為相機
+        imagePicker.sourceType = UIImagePickerControllerSourceTypeCamera;
+        
+        //設定imagePicker的Delegate為Viewcontroller
+        imagePicker.delegate =self;
+        
+        //開啟相機介面
+        [self presentViewController:imagePicker animated:YES completion:nil];
+    }
+    
 }
 
 //-(BOOL)textFieldShouldBeginEditing:(UITextField *)textField
@@ -162,20 +203,6 @@
     } else if (editingStyle == UITableViewCellEditingStyleInsert) {
         // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
     }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
 }
 */
 

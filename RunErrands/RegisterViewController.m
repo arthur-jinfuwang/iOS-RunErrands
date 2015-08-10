@@ -31,6 +31,9 @@
     
     //存檔
     UIImageWriteToSavedPhotosAlbum(image,nil,nil,nil);
+    self.DisplayprofilePic.image = image;
+    
+    [self dismissViewControllerAnimated:YES completion:nil];
     
 }
 
@@ -39,12 +42,7 @@
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
-- (void) imagePickerController:(UIImagePickerController *)pickerdidFinishPickeringMediaWithInfo:(NSDictionary *)info
-{
-    UIImage *image = [info valueForKey:UIImagePickerControllerOriginalImage];
-    self.DisplayprofilePic.image = image;
-    [self dismissViewControllerAnimated:YES completion:nil];
-}
+
 - (IBAction)TakePictureButton:(id)sender {
     
     //檢查是否有裝配相機
@@ -83,10 +81,10 @@
 */
 
 
-- (BOOL)prefersStatusBarHidden
-{
-    return YES;
-}
+//- (BOOL)prefersStatusBarHidden
+//{
+//    return YES;
+//}
 
 
 @end
