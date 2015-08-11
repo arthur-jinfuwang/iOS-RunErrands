@@ -140,7 +140,7 @@
     [self presentViewController:alertController animated:YES completion:nil];
 }
 
-#pragma mark - Table view data source
+#pragma mark - image picker controller
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
@@ -202,10 +202,7 @@
     
     [self presentViewController:imagePicker animated:YES completion:nil];
 }
-//-(BOOL)textFieldShouldBeginEditing:(UITextField *)textField
-//{
-//    
-//}
+
 
 /*
 // Override to support conditional editing of the table view.
