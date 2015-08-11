@@ -11,7 +11,7 @@
 @interface ResumeViewController ()
 {
     NSMutableArray *imagearray;
-    
+    NSMutableArray *textarray;
 }
 
 @end
@@ -22,14 +22,10 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
+    imagearray = [[NSMutableArray alloc] initWithObjects:@"vcard_color_64x64.png",@"tumbrl_color_64x64.png",@"ffffound_color_64x64.png",@"wiki_color_64x64.png", nil];
     
-    
-    
-    [imagearray addObject:[UIImage imageNamed:@"screen@2x(1).png"]];
-    [imagearray addObject:[UIImage imageNamed:@"screen@2x(2).png"]];
-    [imagearray addObject:[UIImage imageNamed:@"screen@2x(3).png"]];
-    [imagearray addObject:[UIImage imageNamed:@"screen@2x(4).png"]];
-    
+    textarray = [[NSMutableArray alloc] initWithObjects:
+                         @"姓名", @"暱稱", @"性別", @"手機",nil];
     
 }
 
@@ -55,18 +51,25 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     SettingTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"resumeCell"];
-    //    cell.dataTextField.delegate = self;
-    NSArray *view = [[NSBundle mainBundle] loadNibNamed:@"SettingCells" owner:nil options:nil];
+    
+    //cell.dataTextField.delegate = self;
+    NSArray *view = [[NSBundle mainBundle] loadNibNamed:@"SettingCells"owner:nil options:nil];
+    
     cell = (SettingTableViewCell *)[view lastObject];
     
-    cell.titleLabel.text = [[NSString alloc] initWithFormat:@"resume cell %ld", indexPath.row];
-    cell.iconTitle.animationImages = imagearray;
+    cell.titleLabel.text = [[NSString alloc] initWithFormat:@"Resume cell %ld", indexPath.row];
+    
+    //履歷圖示初始化
+    cell.iconTitle.image = [UIImage imageNamed:imagearray[indexPath.row]];
     cell.titleLabel.hidden = YES;
     cell.iconTitle.hidden = NO;
     
+    //履歷文字初始化 index.row讀取陣列的資料
+    cell.dataLabel.text = textarray[indexPath.row];
+    
+    
     return cell;
 }
-
 
 /*
 #pragma mark - Navigation

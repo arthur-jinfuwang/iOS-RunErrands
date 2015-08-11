@@ -70,7 +70,10 @@
 		EAC0A0081B67CD8000C0A89A /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAC0A0061B67CD8000C0A89A /* FBSDKCoreKit.framework */; };
 		EAC0A0091B67CD8000C0A89A /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAC0A0071B67CD8000C0A89A /* FBSDKLoginKit.framework */; };
 		EAC0A00B1B67D68500C0A89A /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAC0A00A1B67D68500C0A89A /* FBSDKShareKit.framework */; };
-		EAEAA5761B78ADE9007D215C /* positive-smile.jpg in Resources */ = {isa = PBXBuildFile; fileRef = EAEAA5751B78ADE9007D215C /* positive-smile.jpg */; };
+		EAEAA5891B7900EA007D215C /* vcard_color_64x64.png in Resources */ = {isa = PBXBuildFile; fileRef = EAEAA5881B7900EA007D215C /* vcard_color_64x64.png */; };
+		EAEAA58B1B7901B1007D215C /* tumbrl_color_64x64.png in Resources */ = {isa = PBXBuildFile; fileRef = EAEAA58A1B7901B1007D215C /* tumbrl_color_64x64.png */; };
+		EAEAA58D1B7901EF007D215C /* ffffound_color_64x64.png in Resources */ = {isa = PBXBuildFile; fileRef = EAEAA58C1B7901EF007D215C /* ffffound_color_64x64.png */; };
+		EAEAA58F1B7901F9007D215C /* wiki_color_64x64.png in Resources */ = {isa = PBXBuildFile; fileRef = EAEAA58E1B7901F9007D215C /* wiki_color_64x64.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -179,7 +182,10 @@
 		EAC0A0061B67CD8000C0A89A /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
 		EAC0A0071B67CD8000C0A89A /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
 		EAC0A00A1B67D68500C0A89A /* FBSDKShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKShareKit.framework; sourceTree = "<group>"; };
-		EAEAA5751B78ADE9007D215C /* positive-smile.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "positive-smile.jpg"; sourceTree = "<group>"; };
+		EAEAA5881B7900EA007D215C /* vcard_color_64x64.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = vcard_color_64x64.png; sourceTree = "<group>"; };
+		EAEAA58A1B7901B1007D215C /* tumbrl_color_64x64.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tumbrl_color_64x64.png; sourceTree = "<group>"; };
+		EAEAA58C1B7901EF007D215C /* ffffound_color_64x64.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ffffound_color_64x64.png; sourceTree = "<group>"; };
+		EAEAA58E1B7901F9007D215C /* wiki_color_64x64.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wiki_color_64x64.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -240,62 +246,25 @@
 			isa = PBXGroup;
 			children = (
 				BD7B81631B5D248D00067D29 /* Source */,
-				BD7B81391B5D1FA900067D29 /* AppDelegate.h */,
-				BD7B813A1B5D1FA900067D29 /* AppDelegate.m */,
-				BDDFD24E1B5F9DCE005D481E /* LeftMenuViewController.h */,
-				BDDFD24F1B5F9DCE005D481E /* LeftMenuViewController.m */,
-				BD1527E41B7265AB000CFFF3 /* SettingCells.xib */,
-				BD1527E61B72665A000CFFF3 /* SettingTableViewCell.h */,
-				BD1527E71B72665A000CFFF3 /* SettingTableViewCell.m */,
-				BD1527E11B7260E5000CFFF3 /* SettingTableViewController.h */,
-				BD1527E21B7260E5000CFFF3 /* SettingTableViewController.m */,
-				BD8040341B637E1400B1DCC1 /* LoginViewController.h */,
-				BD8040351B637E1400B1DCC1 /* LoginViewController.m */,
-				BD337CB61B65FF5900D8E9F9 /* RegisterViewController.h */,
-				BD337CB71B65FF5900D8E9F9 /* RegisterViewController.m */,
-				BD337CB91B66312E00D8E9F9 /* ResumeViewController.h */,
-				BD337CBA1B66312E00D8E9F9 /* ResumeViewController.m */,
-				EA9E55C41B6F4DDA009BDF25 /* MessageListCell.xib */,
-				EA9E55C61B6F4E60009BDF25 /* MessageListCellTableView.h */,
-				EA9E55C71B6F4E60009BDF25 /* MessageListCellTableView.m */,
-				BD80403A1B638C7A00B1DCC1 /* MessageTableViewController.h */,
-				BD80403B1B638C7A00B1DCC1 /* MessageTableViewController.m */,
-				BD8040371B63840600B1DCC1 /* FollowTableViewController.h */,
-				BD8040381B63840600B1DCC1 /* FollowTableViewController.m */,
-				BD834A041B6E0C4800E7D79D /* CaseListCell.xib */,
-				BD834A061B6E0D1600E7D79D /* CaseListCell.h */,
-				BD834A071B6E0D1600E7D79D /* CaseListCell.m */,
-				BD8BF45E1B6115D50020FBAA /* CaseListTableViewController.h */,
-				BD8BF45F1B6115D50020FBAA /* CaseListTableViewController.m */,
-				BD337CBC1B66321A00D8E9F9 /* CaseDetailsTableViewController.h */,
-				BD337CBD1B66321A00D8E9F9 /* CaseDetailsTableViewController.m */,
-				BDD7C19A1B6CEC80009A9E84 /* SelectAnnotation.h */,
-				BDD7C19B1B6CEC80009A9E84 /* SelectAnnotation.m */,
-				BD3618E91B67E35200A13CA9 /* SetLocationViewController.h */,
-				BD3618EA1B67E35200A13CA9 /* SetLocationViewController.m */,
-				BDA28E2A1B6F610E0029F82A /* PostListTableViewController.h */,
-				BDA28E2B1B6F610E0029F82A /* PostListTableViewController.m */,
-				BDE131001B711D5E006F30F6 /* PostCaseTableViewController.h */,
-				BDE131011B711D5E006F30F6 /* PostCaseTableViewController.m */,
-				BD7B817D1B5D2A9600067D29 /* MapViewController.h */,
-				BD7B817E1B5D2A9600067D29 /* MapViewController.m */,
-				EA2943A61B5E06A50054DBD6 /* openViewController.h */,
-				EA2943A71B5E06A50054DBD6 /* openViewController.m */,
-				EA45E6DE1B6A56CF00BB86BE /* HeaderView.xib */,
-				EA45E6E51B6A5C6400BB86BE /* HeaderView.h */,
-				EA45E6E61B6A5C6400BB86BE /* HeaderView.m */,
-				BD4F48E41B77270E005DD3AC /* TakePictureView.xib */,
-				BD4F48E61B77274D005DD3AC /* TakePictureView.h */,
-				BD4F48E71B77274D005DD3AC /* TakePictureView.m */,
+				EAEAA5861B78FE16007D215C /* AppDelegate */,
+				EAEAA5771B78F8F9007D215C /* LeftMenu */,
+				EAEAA5781B78F935007D215C /* setting */,
+				EAEAA57A1B78F9AB007D215C /* RegisterView */,
+				EAEAA5791B78F953007D215C /* LoginView */,
+				EAEAA57B1B78FA44007D215C /* Resume */,
+				EAEAA57C1B78FAB2007D215C /* Message */,
+				EAEAA57D1B78FAE8007D215C /* Follow */,
+				EAEAA57E1B78FB65007D215C /* Case */,
+				EAEAA57F1B78FD49007D215C /* selectAnnotation */,
+				EAEAA5811B78FD88007D215C /* SetLocation */,
+				EAEAA5801B78FD75007D215C /* Post */,
+				EAEAA5821B78FD9F007D215C /* Map */,
+				EAEAA5831B78FDBD007D215C /* openView */,
+				EAEAA5841B78FDD4007D215C /* HeadView */,
+				EAEAA5851B78FDFB007D215C /* TakePic */,
 				BD7B813F1B5D1FA900067D29 /* Main.storyboard */,
 				BD7B81421B5D1FA900067D29 /* Images.xcassets */,
-				EAEAA5751B78ADE9007D215C /* positive-smile.jpg */,
-				EA9E55C91B6F67A5009BDF25 /* Rectangle 2 + Facebook.png */,
-				EA9E55CF1B6F690A009BDF25 /* Rectangle 1 + Login + Login.png */,
-				EA45E6E81B6B4FF400BB86BE /* Natural-Green-Background-Vector-Graphic.jpg */,
-				EA45E6EA1B6B525A00BB86BE /* Orange.png */,
-				EA9E55D31B6F82D1009BDF25 /* Button 1.png */,
-				EA2D963E1B5E752200C18197 /* picture */,
+				EA2D963E1B5E752200C18197 /* OpenAnimationPicture */,
 				BD7B81441B5D1FA900067D29 /* LaunchScreen.xib */,
 				BD7B81351B5D1FA900067D29 /* Supporting Files */,
 			);
@@ -366,7 +335,7 @@
 			path = Assets;
 			sourceTree = "<group>";
 		};
-		EA2D963E1B5E752200C18197 /* picture */ = {
+		EA2D963E1B5E752200C18197 /* OpenAnimationPicture */ = {
 			isa = PBXGroup;
 			children = (
 				EA29438F1B5DF1110054DBD6 /* screen@2x(1).png */,
@@ -380,7 +349,175 @@
 				EA2943971B5DF1110054DBD6 /* screen@2x(9).png */,
 				EA2943981B5DF1110054DBD6 /* screen@2x(10).png */,
 			);
-			name = picture;
+			name = OpenAnimationPicture;
+			sourceTree = "<group>";
+		};
+		EAEAA5771B78F8F9007D215C /* LeftMenu */ = {
+			isa = PBXGroup;
+			children = (
+				BDDFD24E1B5F9DCE005D481E /* LeftMenuViewController.h */,
+				BDDFD24F1B5F9DCE005D481E /* LeftMenuViewController.m */,
+			);
+			name = LeftMenu;
+			sourceTree = "<group>";
+		};
+		EAEAA5781B78F935007D215C /* setting */ = {
+			isa = PBXGroup;
+			children = (
+				BD1527E41B7265AB000CFFF3 /* SettingCells.xib */,
+				BD1527E61B72665A000CFFF3 /* SettingTableViewCell.h */,
+				BD1527E71B72665A000CFFF3 /* SettingTableViewCell.m */,
+				BD1527E11B7260E5000CFFF3 /* SettingTableViewController.h */,
+				BD1527E21B7260E5000CFFF3 /* SettingTableViewController.m */,
+			);
+			name = setting;
+			sourceTree = "<group>";
+		};
+		EAEAA5791B78F953007D215C /* LoginView */ = {
+			isa = PBXGroup;
+			children = (
+				BD8040341B637E1400B1DCC1 /* LoginViewController.h */,
+				BD8040351B637E1400B1DCC1 /* LoginViewController.m */,
+			);
+			name = LoginView;
+			sourceTree = "<group>";
+		};
+		EAEAA57A1B78F9AB007D215C /* RegisterView */ = {
+			isa = PBXGroup;
+			children = (
+				EA9E55C91B6F67A5009BDF25 /* Rectangle 2 + Facebook.png */,
+				EA9E55CF1B6F690A009BDF25 /* Rectangle 1 + Login + Login.png */,
+				EA45E6E81B6B4FF400BB86BE /* Natural-Green-Background-Vector-Graphic.jpg */,
+				EA9E55D31B6F82D1009BDF25 /* Button 1.png */,
+				BD337CB61B65FF5900D8E9F9 /* RegisterViewController.h */,
+				BD337CB71B65FF5900D8E9F9 /* RegisterViewController.m */,
+			);
+			name = RegisterView;
+			sourceTree = "<group>";
+		};
+		EAEAA57B1B78FA44007D215C /* Resume */ = {
+			isa = PBXGroup;
+			children = (
+				BD337CB91B66312E00D8E9F9 /* ResumeViewController.h */,
+				BD337CBA1B66312E00D8E9F9 /* ResumeViewController.m */,
+				EAEAA5881B7900EA007D215C /* vcard_color_64x64.png */,
+				EAEAA58A1B7901B1007D215C /* tumbrl_color_64x64.png */,
+				EAEAA58C1B7901EF007D215C /* ffffound_color_64x64.png */,
+				EAEAA58E1B7901F9007D215C /* wiki_color_64x64.png */,
+			);
+			name = Resume;
+			sourceTree = "<group>";
+		};
+		EAEAA57C1B78FAB2007D215C /* Message */ = {
+			isa = PBXGroup;
+			children = (
+				EA9E55C41B6F4DDA009BDF25 /* MessageListCell.xib */,
+				EA9E55C61B6F4E60009BDF25 /* MessageListCellTableView.h */,
+				EA9E55C71B6F4E60009BDF25 /* MessageListCellTableView.m */,
+				BD80403A1B638C7A00B1DCC1 /* MessageTableViewController.h */,
+				BD80403B1B638C7A00B1DCC1 /* MessageTableViewController.m */,
+			);
+			name = Message;
+			sourceTree = "<group>";
+		};
+		EAEAA57D1B78FAE8007D215C /* Follow */ = {
+			isa = PBXGroup;
+			children = (
+				BD8040371B63840600B1DCC1 /* FollowTableViewController.h */,
+				BD8040381B63840600B1DCC1 /* FollowTableViewController.m */,
+			);
+			name = Follow;
+			sourceTree = "<group>";
+		};
+		EAEAA57E1B78FB65007D215C /* Case */ = {
+			isa = PBXGroup;
+			children = (
+				BD834A041B6E0C4800E7D79D /* CaseListCell.xib */,
+				BD834A061B6E0D1600E7D79D /* CaseListCell.h */,
+				BD834A071B6E0D1600E7D79D /* CaseListCell.m */,
+				BD8BF45E1B6115D50020FBAA /* CaseListTableViewController.h */,
+				BD8BF45F1B6115D50020FBAA /* CaseListTableViewController.m */,
+				BD337CBC1B66321A00D8E9F9 /* CaseDetailsTableViewController.h */,
+				BD337CBD1B66321A00D8E9F9 /* CaseDetailsTableViewController.m */,
+			);
+			name = Case;
+			sourceTree = "<group>";
+		};
+		EAEAA57F1B78FD49007D215C /* selectAnnotation */ = {
+			isa = PBXGroup;
+			children = (
+				BDD7C19A1B6CEC80009A9E84 /* SelectAnnotation.h */,
+				BDD7C19B1B6CEC80009A9E84 /* SelectAnnotation.m */,
+			);
+			name = selectAnnotation;
+			sourceTree = "<group>";
+		};
+		EAEAA5801B78FD75007D215C /* Post */ = {
+			isa = PBXGroup;
+			children = (
+				BDA28E2A1B6F610E0029F82A /* PostListTableViewController.h */,
+				BDA28E2B1B6F610E0029F82A /* PostListTableViewController.m */,
+				BDE131001B711D5E006F30F6 /* PostCaseTableViewController.h */,
+				BDE131011B711D5E006F30F6 /* PostCaseTableViewController.m */,
+			);
+			name = Post;
+			sourceTree = "<group>";
+		};
+		EAEAA5811B78FD88007D215C /* SetLocation */ = {
+			isa = PBXGroup;
+			children = (
+				BD3618E91B67E35200A13CA9 /* SetLocationViewController.h */,
+				BD3618EA1B67E35200A13CA9 /* SetLocationViewController.m */,
+			);
+			name = SetLocation;
+			sourceTree = "<group>";
+		};
+		EAEAA5821B78FD9F007D215C /* Map */ = {
+			isa = PBXGroup;
+			children = (
+				BD7B817D1B5D2A9600067D29 /* MapViewController.h */,
+				BD7B817E1B5D2A9600067D29 /* MapViewController.m */,
+			);
+			name = Map;
+			sourceTree = "<group>";
+		};
+		EAEAA5831B78FDBD007D215C /* openView */ = {
+			isa = PBXGroup;
+			children = (
+				EA2943A61B5E06A50054DBD6 /* openViewController.h */,
+				EA2943A71B5E06A50054DBD6 /* openViewController.m */,
+			);
+			name = openView;
+			sourceTree = "<group>";
+		};
+		EAEAA5841B78FDD4007D215C /* HeadView */ = {
+			isa = PBXGroup;
+			children = (
+				EA45E6DE1B6A56CF00BB86BE /* HeaderView.xib */,
+				EA45E6EA1B6B525A00BB86BE /* Orange.png */,
+				EA45E6E51B6A5C6400BB86BE /* HeaderView.h */,
+				EA45E6E61B6A5C6400BB86BE /* HeaderView.m */,
+			);
+			name = HeadView;
+			sourceTree = "<group>";
+		};
+		EAEAA5851B78FDFB007D215C /* TakePic */ = {
+			isa = PBXGroup;
+			children = (
+				BD4F48E41B77270E005DD3AC /* TakePictureView.xib */,
+				BD4F48E61B77274D005DD3AC /* TakePictureView.h */,
+				BD4F48E71B77274D005DD3AC /* TakePictureView.m */,
+			);
+			name = TakePic;
+			sourceTree = "<group>";
+		};
+		EAEAA5861B78FE16007D215C /* AppDelegate */ = {
+			isa = PBXGroup;
+			children = (
+				BD7B81391B5D1FA900067D29 /* AppDelegate.h */,
+				BD7B813A1B5D1FA900067D29 /* AppDelegate.m */,
+			);
+			name = AppDelegate;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -475,17 +612,20 @@
 				BD7B81411B5D1FA900067D29 /* Main.storyboard in Resources */,
 				EA9E55C51B6F4DDA009BDF25 /* MessageListCell.xib in Resources */,
 				EA45E6DF1B6A56CF00BB86BE /* HeaderView.xib in Resources */,
-				EAEAA5761B78ADE9007D215C /* positive-smile.jpg in Resources */,
 				BD4F48E51B77270E005DD3AC /* TakePictureView.xib in Resources */,
+				EAEAA58F1B7901F9007D215C /* wiki_color_64x64.png in Resources */,
 				EA2943A11B5DF1110054DBD6 /* screen@2x(9).png in Resources */,
 				BD7B81461B5D1FA900067D29 /* LaunchScreen.xib in Resources */,
 				EA29439A1B5DF1110054DBD6 /* screen@2x(2).png in Resources */,
 				EA2943A01B5DF1110054DBD6 /* screen@2x(8).png in Resources */,
 				EA2943A21B5DF1110054DBD6 /* screen@2x(10).png in Resources */,
+				EAEAA5891B7900EA007D215C /* vcard_color_64x64.png in Resources */,
 				EA9E55CB1B6F67A5009BDF25 /* Rectangle 2 + Facebook.png in Resources */,
 				EA45E6E91B6B4FF400BB86BE /* Natural-Green-Background-Vector-Graphic.jpg in Resources */,
 				EA29439F1B5DF1110054DBD6 /* screen@2x(7).png in Resources */,
 				EA29439E1B5DF1110054DBD6 /* screen@2x(6).png in Resources */,
+				EAEAA58D1B7901EF007D215C /* ffffound_color_64x64.png in Resources */,
+				EAEAA58B1B7901B1007D215C /* tumbrl_color_64x64.png in Resources */,
 				BD7B817B1B5D248D00067D29 /* menu-button@2x.png in Resources */,
 				BD7B81431B5D1FA900067D29 /* Images.xcassets in Resources */,
 				EA2943991B5DF1110054DBD6 /* screen@2x(1).png in Resources */,
