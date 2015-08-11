@@ -43,9 +43,8 @@
                     </label>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="bSd-5Z-gtq" firstAttribute="leading" secondItem="nzf-xV-dVO" secondAttribute="leadingMargin" id="Cwm-8x-Y5r"/>
                     <constraint firstItem="kaV-8m-IQt" firstAttribute="top" secondItem="nzf-xV-dVO" secondAttribute="topMargin" constant="-1" id="JMS-lO-mvf"/>
-                    <constraint firstItem="bSd-5Z-gtq" firstAttribute="top" secondItem="nzf-xV-dVO" secondAttribute="topMargin" constant="-1" id="N6U-Zf-pfq"/>
+                    <constraint firstItem="bSd-5Z-gtq" firstAttribute="leading" secondItem="nzf-xV-dVO" secondAttribute="leadingMargin" id="S48-74-xBL"/>
                     <constraint firstItem="Xiz-KH-5Oc" firstAttribute="trailing" secondItem="nzf-xV-dVO" secondAttribute="trailingMargin" id="SCv-dH-usS"/>
                     <constraint firstItem="YJI-82-R3G" firstAttribute="bottom" secondItem="nzf-xV-dVO" secondAttribute="bottomMargin" id="UYQ-Ye-ZkI"/>
                     <constraint firstItem="Xiz-KH-5Oc" firstAttribute="leading" secondItem="nzf-xV-dVO" secondAttribute="leadingMargin" constant="82" id="UzE-Ee-7Ya"/>

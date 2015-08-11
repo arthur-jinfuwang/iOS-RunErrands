@@ -95,6 +95,9 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
 
+    if (indexPath.row > (listDetails.count - 1)) {
+        return;
+    }
     NSArray *cellArray = [tableView visibleCells];
     
     SettingTableViewCell *cell = cellArray[indexPath.row];
@@ -121,6 +124,9 @@
 }
 
 - (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath NS_AVAILABLE_IOS(3_0){
+    if (indexPath.row > (listDetails.count - 1)) {
+        return;
+    }
     NSArray *cellArray = [tableView visibleCells];
     
     SettingTableViewCell *cell = cellArray[indexPath.row];
