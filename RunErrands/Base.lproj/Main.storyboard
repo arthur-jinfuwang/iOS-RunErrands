@@ -938,20 +938,36 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bUV-bR-DO0">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="dWf-rc-r3S">
+                                <rect key="frame" x="140" y="64" width="320" height="180"/>
+                                <color key="backgroundColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="180" id="7fU-Ts-oHT"/>
+                                    <constraint firstAttribute="width" constant="320" id="Pab-M7-FFs"/>
+                                </constraints>
+                            </imageView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Lorem ipsum dolor sit er elit lamet, consectetaur cillium  " translatesAutoresizingMaskIntoConstraints="NO" id="S9N-bK-opf">
+                                <rect key="frame" x="0.0" y="252" width="600" height="348"/>
+                                <color key="backgroundColor" red="1" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="bUV-bR-DO0" firstAttribute="leading" secondItem="fMZ-cH-wo0" secondAttribute="leadingMargin" constant="-16" id="GbX-ii-dAQ"/>
-                            <constraint firstItem="7zR-y7-Z1C" firstAttribute="top" secondItem="bUV-bR-DO0" secondAttribute="bottom" id="JhV-0J-nCs"/>
-                            <constraint firstItem="bUV-bR-DO0" firstAttribute="top" secondItem="fMZ-cH-wo0" secondAttribute="topMargin" id="uHB-8m-ZsP"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="bUV-bR-DO0" secondAttribute="trailing" constant="-16" id="wWx-RS-3p6"/>
+                            <constraint firstItem="7zR-y7-Z1C" firstAttribute="top" secondItem="S9N-bK-opf" secondAttribute="bottom" id="0hT-5S-8p0"/>
+                            <constraint firstItem="S9N-bK-opf" firstAttribute="top" secondItem="dWf-rc-r3S" secondAttribute="bottom" constant="8" id="1yA-jO-b7F"/>
+                            <constraint firstItem="dWf-rc-r3S" firstAttribute="top" secondItem="1V2-eV-9io" secondAttribute="bottom" constant="8" id="Rq9-9Z-WWn"/>
+                            <constraint firstAttribute="centerX" secondItem="dWf-rc-r3S" secondAttribute="centerX" id="T56-Kc-qXO"/>
+                            <constraint firstItem="S9N-bK-opf" firstAttribute="leading" secondItem="fMZ-cH-wo0" secondAttribute="leadingMargin" constant="-16" id="WaV-uk-h1y"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="S9N-bK-opf" secondAttribute="trailing" constant="-16" id="hkC-pw-BZW"/>
+                            <constraint firstItem="dWf-rc-r3S" firstAttribute="top" secondItem="1V2-eV-9io" secondAttribute="bottom" id="qnG-pE-C4m"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="Rq9-9Z-WWn"/>
+                            </mask>
+                        </variation>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9JH-7K-DMa" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -970,33 +986,17 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uoN-CR-l2E">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="uoN-CR-l2E">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="trailingMargin" secondItem="uoN-CR-l2E" secondAttribute="trailing" constant="-16" id="OZ5-Xe-3sE"/>
-                            <constraint firstItem="uoN-CR-l2E" firstAttribute="top" secondItem="AMT-IZ-JFh" secondAttribute="topMargin" id="kSG-yQ-dJS"/>
-                            <constraint firstItem="k8C-TX-22C" firstAttribute="top" secondItem="uoN-CR-l2E" secondAttribute="bottom" id="uX4-e3-ezg"/>
-                            <constraint firstItem="uoN-CR-l2E" firstAttribute="leading" secondItem="AMT-IZ-JFh" secondAttribute="leadingMargin" constant="-16" id="vYK-6L-NiU"/>
+                            <constraint firstItem="k8C-TX-22C" firstAttribute="top" secondItem="uoN-CR-l2E" secondAttribute="bottom" id="GHt-3E-ZLk"/>
+                            <constraint firstItem="uoN-CR-l2E" firstAttribute="top" secondItem="AMT-IZ-JFh" secondAttribute="topMargin" id="eWc-Zd-S1Q"/>
+                            <constraint firstItem="uoN-CR-l2E" firstAttribute="leading" secondItem="AMT-IZ-JFh" secondAttribute="leadingMargin" constant="-16" id="nGV-Vr-5qG"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="uoN-CR-l2E" secondAttribute="trailing" constant="-16" id="xKX-km-37k"/>
                         </constraints>
-                        <variation key="default">
-                            <mask key="constraints">
-                                <exclude reference="OZ5-Xe-3sE"/>
-                                <exclude reference="kSG-yQ-dJS"/>
-                                <exclude reference="vYK-6L-NiU"/>
-                                <exclude reference="uX4-e3-ezg"/>
-                            </mask>
-                        </variation>
-                        <variation key="widthClass=compact">
-                            <mask key="constraints">
-                                <include reference="OZ5-Xe-3sE"/>
-                                <include reference="kSG-yQ-dJS"/>
-                                <include reference="vYK-6L-NiU"/>
-                                <include reference="uX4-e3-ezg"/>
-                            </mask>
-                        </variation>
                     </view>
                     <navigationItem key="navigationItem" id="QMF-qG-ozp"/>
                     <connections>
@@ -1078,7 +1078,7 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="ybq-Ux-EmN"/>
+        <segue reference="hFi-3l-ee4"/>
         <segue reference="Taw-Pu-oyh"/>
-        <segue reference="QqX-jx-IWm"/>
     </inferredMetricsTieBreakers>
 </document>
