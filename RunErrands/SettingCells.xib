@@ -21,7 +21,7 @@
                             <action selector="dataTextFieldDidEndOnExit:" destination="emy-4h-EWw" eventType="editingDidEndOnExit" id="t9B-N7-8i7"/>
                         </connections>
                     </textField>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="尚未填入資料" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xiz-KH-5Oc">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="尚未填入資料" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xiz-KH-5Oc">
                         <rect key="frame" x="90" y="8" width="222" height="28"/>
                         <accessibility key="accessibilityConfiguration" hint="尚未填入資料"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>

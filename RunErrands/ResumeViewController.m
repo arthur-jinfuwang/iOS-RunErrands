@@ -22,10 +22,10 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    imagearray = [[NSMutableArray alloc] initWithObjects:@"vcard_color_64x64.png",@"tumbrl_color_64x64.png",@"ffffound_color_64x64.png",@"wiki_color_64x64.png", nil];
+    imagearray = [[NSMutableArray alloc] initWithObjects:@"vcard_color_64x64.png",@"ffffound_color_64x64.png",@"tumbrl_color_64x64.png",@"wiki_color_64x64.png", nil];
     
     textarray = [[NSMutableArray alloc] initWithObjects:
-                         @"姓名", @"聯絡方式", @"生日", @"工作經驗",nil];
+                         @"姓名", @"生日", @"聯絡方式", @"工作經驗",nil];
     
 }
 
