@@ -15,6 +15,7 @@
 {
     NSMutableArray *listDetails;
     TakePictureView *casePicture;
+    UIDatePicker *datePicker;
 }
 
 @end
@@ -77,7 +78,7 @@
     cell.titleLabel.text = listDetails[indexPath.row];
     
     if (indexPath.row == 3 || indexPath.row == 4 || indexPath.row == 7) {
-        UIDatePicker *datePicker = [[UIDatePicker alloc] initWithFrame:CGRectZero];
+        datePicker = [[UIDatePicker alloc] initWithFrame:CGRectZero];
         datePicker.minuteInterval = 5;
         datePicker.backgroundColor = [UIColor whiteColor];
         if (indexPath.row == 7) {
@@ -85,8 +86,19 @@
         }else{
             datePicker.datePickerMode = UIDatePickerModeDateAndTime;
         }
-        [datePicker addTarget:self action:@selector(dateUpdated:) forControlEvents:UIControlEventValueChanged];
+
         cell.dataTextField.inputView = datePicker;
+        
+        UIToolbar *toolBar=[[UIToolbar alloc]initWithFrame:CGRectMake(0, 0, 320, 44)];
+        [toolBar setTintColor:[UIColor colorWithRed: 1.0 green: 0.5781 blue: 0.0 alpha: 1.0]];
+        [toolBar setTranslucent:YES];
+        [toolBar setBackgroundColor:[UIColor colorWithRed: 1.0 green: 1.0 blue: 1.0 alpha: 1.0]];
+        UIBarButtonItem *doneBtn=[[UIBarButtonItem alloc]initWithTitle:@"完成" style:UIBarButtonItemStyleDone target:self action:@selector(finishDataUpdate)];
+        
+        
+        UIBarButtonItem *space=[[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
+        [toolBar setItems:[NSArray arrayWithObjects:space,doneBtn, nil]];
+        [cell.dataTextField setInputAccessoryView:toolBar];
     }
     
     return cell;
@@ -136,20 +148,21 @@
     
 }
 
-
-- (void) dateUpdated:(UIDatePicker *)datePicker {
+- (void) finishDataUpdate
+{
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     if (self.tableView.indexPathForSelectedRow.row == 7) {
         [formatter setDateFormat:@"yyyy-MM-dd"];
     }else{
         [formatter setDateFormat:@"yyyy-MM-dd HH:mm"];
     }
-    
     NSArray *cellArray = [self.tableView visibleCells];
     SettingTableViewCell *cell = cellArray[self.tableView.indexPathForSelectedRow.row];
     cell.dataTextField.text = [formatter stringFromDate:datePicker.date];
+    [cell.dataTextField resignFirstResponder];
     NSLog(@"時間為：%@", [formatter stringFromDate:datePicker.date]);
 }
+
 
 - (void)changePictureView{
     NSLog(@"Change Picture in setting menu");
