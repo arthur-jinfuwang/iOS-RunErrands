@@ -267,9 +267,9 @@
 				EAEAA5831B78FDBD007D215C /* openView */,
 				EAEAA5841B78FDD4007D215C /* HeadView */,
 				EAEAA5851B78FDFB007D215C /* TakePic */,
-				BD7B813F1B5D1FA900067D29 /* Main.storyboard */,
-				BD7B81421B5D1FA900067D29 /* Images.xcassets */,
 				EA2D963E1B5E752200C18197 /* OpenAnimationPicture */,
+				BD7B81421B5D1FA900067D29 /* Images.xcassets */,
+				BD7B813F1B5D1FA900067D29 /* Main.storyboard */,
 				BD7B81441B5D1FA900067D29 /* LaunchScreen.xib */,
 				BD7B81351B5D1FA900067D29 /* Supporting Files */,
 			);
@@ -820,6 +820,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -835,6 +836,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
