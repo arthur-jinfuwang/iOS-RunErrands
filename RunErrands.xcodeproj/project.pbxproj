@@ -10,6 +10,7 @@
 		BD1527E31B7260E5000CFFF3 /* SettingTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BD1527E21B7260E5000CFFF3 /* SettingTableViewController.m */; };
 		BD1527E51B7265AB000CFFF3 /* SettingCells.xib in Resources */ = {isa = PBXBuildFile; fileRef = BD1527E41B7265AB000CFFF3 /* SettingCells.xib */; };
 		BD1527E81B72665A000CFFF3 /* SettingTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BD1527E71B72665A000CFFF3 /* SettingTableViewCell.m */; };
+		BD1DA16B1B7C19E900BC2EF5 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = BD1DA16A1B7C19E900BC2EF5 /* Reachability.m */; };
 		BD337CB81B65FF5900D8E9F9 /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BD337CB71B65FF5900D8E9F9 /* RegisterViewController.m */; };
 		BD337CBB1B66312E00D8E9F9 /* ResumeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BD337CBA1B66312E00D8E9F9 /* ResumeViewController.m */; };
 		BD337CBE1B66321A00D8E9F9 /* CaseDetailsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BD337CBD1B66321A00D8E9F9 /* CaseDetailsTableViewController.m */; };
@@ -92,6 +93,8 @@
 		BD1527E41B7265AB000CFFF3 /* SettingCells.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingCells.xib; sourceTree = "<group>"; };
 		BD1527E61B72665A000CFFF3 /* SettingTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingTableViewCell.h; sourceTree = "<group>"; };
 		BD1527E71B72665A000CFFF3 /* SettingTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingTableViewCell.m; sourceTree = "<group>"; };
+		BD1DA1691B7C19E900BC2EF5 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
+		BD1DA16A1B7C19E900BC2EF5 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		BD337CB61B65FF5900D8E9F9 /* RegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterViewController.h; sourceTree = "<group>"; };
 		BD337CB71B65FF5900D8E9F9 /* RegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterViewController.m; sourceTree = "<group>"; };
 		BD337CB91B66312E00D8E9F9 /* ResumeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResumeViewController.h; sourceTree = "<group>"; };
@@ -245,6 +248,8 @@
 		BD7B81341B5D1FA900067D29 /* RunErrands */ = {
 			isa = PBXGroup;
 			children = (
+				BD1DA1691B7C19E900BC2EF5 /* Reachability.h */,
+				BD1DA16A1B7C19E900BC2EF5 /* Reachability.m */,
 				BD7B81631B5D248D00067D29 /* Source */,
 				EAEAA5861B78FE16007D215C /* AppDelegate */,
 				EAEAA5771B78F8F9007D215C /* LeftMenu */,
@@ -675,6 +680,7 @@
 				BD834A081B6E0D1600E7D79D /* CaseListCell.m in Sources */,
 				EA45E6E71B6A5C6400BB86BE /* HeaderView.m in Sources */,
 				BD7B81781B5D248D00067D29 /* SlideNavigationContorllerAnimatorSlide.m in Sources */,
+				BD1DA16B1B7C19E900BC2EF5 /* Reachability.m in Sources */,
 				BDDFD2501B5F9DCE005D481E /* LeftMenuViewController.m in Sources */,
 				EA9E55C81B6F4E60009BDF25 /* MessageListCellTableView.m in Sources */,
 				EA2943A81B5E06A50054DBD6 /* openViewController.m in Sources */,
