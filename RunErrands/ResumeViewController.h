@@ -8,8 +8,14 @@
 
 #import <UIKit/UIKit.h>
 #import "SettingTableViewCell.h"
+#import <FBSDKCoreKit/FBSDKCoreKit.h>
+#import <FBSDKLoginKit/FBSDKLoginKit.h>
 
 @interface ResumeViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
+@property (weak, nonatomic) IBOutlet UIImageView *ResumeProfilePic;
+
+- (void) buttonpress:(id) sender;
+
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @end

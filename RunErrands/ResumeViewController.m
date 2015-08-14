@@ -7,6 +7,8 @@
 //
 
 #import "ResumeViewController.h"
+#import <FBSDKCoreKit/FBSDKCoreKit.h>
+#import <FBSDKLoginKit/FBSDKLoginKit.h>
 
 @interface ResumeViewController ()
 {
@@ -25,8 +27,27 @@
     imagearray = [[NSMutableArray alloc] initWithObjects:@"vcard_color_64x64.png",@"ffffound_color_64x64.png",@"tumbrl_color_64x64.png",@"wiki_color_64x64.png", nil];
     
     textarray = [[NSMutableArray alloc] initWithObjects:
-                         @"姓名", @"生日", @"聯絡方式", @"工作經驗",nil];
+                         @"姓名", @"年齡", @"聯絡方式", @"工作經驗",nil];
+   
     
+    //宣告一個按鈕
+    UIButton *button = [[UIButton alloc]init];
+    
+    //設定按鈕類型
+    button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    
+    //位置,大小
+    button.frame = CGRectMake(140,580,100,100);
+    [button setTitleColor:[UIColor whiteColor]forState:UIControlStateNormal];
+    
+    //按鈕文字
+    [button setTitle:@"確定" forState:UIControlStateNormal];
+    //攔截按鈕的訊息,並觸發button方法
+    [button addTarget:self action:@selector(buttonpress:) forControlEvents:(UIControlEventTouchUpInside)];
+    [self.view addSubview:button];
+    
+    
+
 }
 
 - (void)didReceiveMemoryWarning {
@@ -68,7 +89,14 @@
     cell.dataLabel.text = textarray[indexPath.row];
     
     
+    
+    
     return cell;
+}
+
+ -(void)buttonpress:(id)sender
+{
+    NSLog(@"button press");
 }
 
 /*
