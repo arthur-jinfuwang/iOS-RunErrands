@@ -371,6 +371,9 @@
                             <constraint firstAttribute="trailing" secondItem="74H-2r-zvy" secondAttribute="trailing" id="yTQ-NH-D7b"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="facebookLoginBtn" destination="gab-IL-2bB" id="rjC-KV-QAS"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="48r-Ap-Vfe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

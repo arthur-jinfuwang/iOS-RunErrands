@@ -17,6 +17,7 @@
 @interface LoginViewController (){
     LeftMenuViewController *leftMenu;
 }
+@property (weak, nonatomic) IBOutlet UIButton *facebookLoginBtn;
 
 @end
 
@@ -35,13 +36,16 @@
     
     if ([FBSDKAccessToken currentAccessToken]) {
         // User is logged in, do work such as go to next view controller.
-        NSLog(@"已登入");
+        NSLog(@"facebook 已登入");
+        [_facebookLoginBtn setTitle:@"登出 facebook" forState:UIControlStateNormal];
         
     }else{
-        NSLog(@"未登入");
+        NSLog(@"facebook 未登入");
+        [_facebookLoginBtn setTitle:@"登入 facebook" forState:UIControlStateNormal];
         leftMenu =(LeftMenuViewController *)[SlideNavigationController sharedInstance].leftMenu;
         leftMenu.headerView.displayFacebookName.text = @"";
     }
+
 }
 
 - (void)didReceiveMemoryWarning {
@@ -67,8 +71,8 @@
     [PFFacebookUtils logInInBackgroundWithReadPermissions:permissionsArray block:^(PFUser *user, NSError *error) {
         if (!user) {
             NSLog(@"Uh oh. The user cancelled the Facebook login.");
-        } else if (user.isNew) {
-            NSLog(@"User signed up and logged in through Facebook!");
+//        } else if (user.isNew) {
+//            NSLog(@"User signed up and logged in through Facebook!");
         } else {
             NSLog(@"User logged in through Facebook!");
             [self loadFacebookData:user];
@@ -121,7 +125,14 @@
 
 - (IBAction)facebookLoginBtnPressed:(id)sender {
     
-    [self loginWithFacebook];
+    if ([FBSDKAccessToken currentAccessToken]){
+        [self userLogOut];
+        [_facebookLoginBtn setTitle:@"登入 facebook" forState:UIControlStateNormal];
+    }else{
+
+        [self loginWithFacebook];
+        [_facebookLoginBtn setTitle:@"登出 facebook" forState:UIControlStateNormal];
+    }
 }
 
 // - (BOOL)prefersStatusBarHidden
