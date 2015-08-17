@@ -299,8 +299,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="bottom" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="登入畫面" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XjD-zZ-VTx">
-                                <rect key="frame" x="283" y="72" width="34" height="21"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Natural-Green-Background-Vector-Graphic.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="74H-2r-zvy">
+                                <rect key="frame" x="0.0" y="64" width="600" height="536"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="bottom" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="登入畫面" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XjD-zZ-VTx">
+                                <rect key="frame" x="248" y="72" width="104" height="42"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.87" colorSpace="calibratedRGB"/>
                                 <color key="highlightedColor" red="0.0" green="0.0" blue="0.0" alpha="0.87" colorSpace="calibratedRGB"/>
@@ -310,120 +313,60 @@
                                     <rect key="frame" x="151" y="72" width="99" height="41"/>
                                 </variation>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vzi-Uy-yZA">
-                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
-                                <state key="normal" title="Button" image="Rectangle 1 + Login + Login.png">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <variation key="widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="32" y="443" width="171" height="48"/>
-                                </variation>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="帳號：" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JYb-NH-a5p">
-                                <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="帳號：" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="26b-fA-hFS">
+                                <rect key="frame" x="55" y="181" width="51" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
-                                <variation key="widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="58" y="240" width="51" height="21"/>
-                                </variation>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="密碼：" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TOe-3x-NwR">
-                                <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="密碼：" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0AE-4L-met">
+                                <rect key="frame" x="55" y="255" width="51" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
-                                <variation key="widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="58" y="332" width="51" height="21"/>
-                                </variation>
                             </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tMN-vs-8cL">
-                                <rect key="frame" x="0.0" y="-30" width="97" height="30"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ME4-O7-2BX">
+                                <rect key="frame" x="99" y="178" width="402" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
-                                <variation key="widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="117" y="236" width="231" height="30"/>
-                                </variation>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4y5-2w-Fna">
-                                <rect key="frame" x="0.0" y="-30" width="97" height="30"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZGd-S2-3P7">
+                                <rect key="frame" x="99" y="246" width="402" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
-                                <variation key="widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="117" y="328" width="231" height="30"/>
-                                </variation>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4uM-dt-HnE">
-                                <rect key="frame" x="418" y="376" width="91" height="30"/>
-                                <state key="normal" image="Button 1.png">
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wCr-TP-SrN">
+                                <rect key="frame" x="322" y="324" width="179" height="36"/>
+                                <state key="normal" backgroundImage="登入按鈕.png">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
-                                <variation key="widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="82" y="524" width="237" height="41"/>
-                                </variation>
                             </button>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="OR" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QaR-Hq-nCb">
-                                <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
-                                <color key="tintColor" red="0.098039217289999994" green="0.098039217289999994" blue="0.098039217289999994" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                                <variation key="widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="188" y="456" width="25" height="21"/>
-                                </variation>
-                            </label>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xuU-tS-IHh" customClass="FBSDKLoginButton">
-                                <rect key="frame" x="24" y="421" width="214" height="45"/>
-                                <color key="backgroundColor" red="1" green="0.98274584680634414" blue="0.27575748355733509" alpha="1" colorSpace="calibratedRGB"/>
-                                <variation key="widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="117" y="382" width="177" height="39"/>
-                                </variation>
-                            </view>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Natural-Green-Background-Vector-Graphic.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="Ggn-R4-qrx">
-                                <rect key="frame" x="21" y="44" width="605" height="536"/>
-                                <variation key="widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="-145" y="64" width="545" height="536"/>
-                                </variation>
-                            </imageView>
-                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ANz-Jq-ouw">
-                                <rect key="frame" x="217" y="383" width="140" height="104"/>
-                                <rect key="contentStretch" x="0.0" y="0.0" width="0.84999999999999987" height="1"/>
-                                <state key="normal" image="Rectangle 2 + Facebook.png">
+                            <button opaque="NO" contentMode="scaleAspectFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g7k-9o-vWA">
+                                <rect key="frame" x="92" y="307" width="185" height="70"/>
+                                <state key="normal" image="註冊按鈕.png">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
-                                <variation key="widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="203" y="443" width="171" height="48"/>
-                                </variation>
-                                <connections>
-                                    <action selector="FaceookLoginBtn:" destination="Kni-yZ-eIA" eventType="touchUpInside" id="yuA-6v-6nk"/>
-                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="或者使用臉書快速登入" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SOb-77-KE9">
+                                <rect key="frame" x="215" y="385" width="170" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gab-IL-2bB">
+                                <rect key="frame" x="92" y="442" width="394" height="42"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="31"/>
+                                <state key="normal" title="dsfgsdfgsdfgsdfg" backgroundImage="臉書按鈕.png"/>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <variation key="default">
-                            <mask key="subviews">
-                                <exclude reference="Vzi-Uy-yZA"/>
-                                <exclude reference="JYb-NH-a5p"/>
-                                <exclude reference="TOe-3x-NwR"/>
-                                <exclude reference="tMN-vs-8cL"/>
-                                <exclude reference="4y5-2w-Fna"/>
-                                <exclude reference="QaR-Hq-nCb"/>
-                                <exclude reference="xuU-tS-IHh"/>
-                                <exclude reference="ANz-Jq-ouw"/>
-                            </mask>
-                        </variation>
-                        <variation key="widthClass=compact">
-                            <mask key="subviews">
-                                <include reference="Vzi-Uy-yZA"/>
-                                <include reference="JYb-NH-a5p"/>
-                                <include reference="TOe-3x-NwR"/>
-                                <include reference="tMN-vs-8cL"/>
-                                <include reference="4y5-2w-Fna"/>
-                                <include reference="QaR-Hq-nCb"/>
-                                <include reference="xuU-tS-IHh"/>
-                                <include reference="ANz-Jq-ouw"/>
-                            </mask>
-                        </variation>
+                        <constraints>
+                            <constraint firstItem="74H-2r-zvy" firstAttribute="top" secondItem="sEh-AI-gf6" secondAttribute="bottom" id="M7g-ET-WSy"/>
+                            <constraint firstItem="74H-2r-zvy" firstAttribute="bottom" secondItem="CMm-1u-Upx" secondAttribute="top" id="T54-yu-7yd"/>
+                            <constraint firstItem="74H-2r-zvy" firstAttribute="leading" secondItem="0va-ad-fGp" secondAttribute="leading" id="oHe-p2-yV6"/>
+                            <constraint firstItem="74H-2r-zvy" firstAttribute="centerX" secondItem="XjD-zZ-VTx" secondAttribute="centerX" id="yLu-Ti-Dfi"/>
+                            <constraint firstAttribute="trailing" secondItem="74H-2r-zvy" secondAttribute="trailing" id="yTQ-NH-D7b"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="48r-Ap-Vfe" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1059,13 +1002,12 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Button 1.png" width="1012" height="191"/>
         <image name="Natural-Green-Background-Vector-Graphic.jpg" width="750" height="746"/>
-        <image name="Rectangle 1 + Login + Login.png" width="268" height="75"/>
-        <image name="Rectangle 2 + Facebook.png" width="268" height="75"/>
+        <image name="登入按鈕.png" width="176" height="36"/>
+        <image name="臉書按鈕.png" width="608" height="58"/>
+        <image name="註冊按鈕.png" width="176" height="36"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="hFi-3l-ee4"/>
         <segue reference="ybq-Ux-EmN"/>
         <segue reference="hFi-3l-ee4"/>
         <segue reference="Taw-Pu-oyh"/>
