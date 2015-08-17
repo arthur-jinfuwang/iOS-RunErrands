@@ -60,6 +60,9 @@
 		BDD7C19C1B6CEC80009A9E84 /* SelectAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = BDD7C19B1B6CEC80009A9E84 /* SelectAnnotation.m */; };
 		BDDFD2501B5F9DCE005D481E /* LeftMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BDDFD24F1B5F9DCE005D481E /* LeftMenuViewController.m */; };
 		BDE131021B711D5E006F30F6 /* PostCaseTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BDE131011B711D5E006F30F6 /* PostCaseTableViewController.m */; };
+		EA19660A1B81C6CE0005FC47 /* 註冊按鈕.png in Resources */ = {isa = PBXBuildFile; fileRef = EA1966091B81C6CE0005FC47 /* 註冊按鈕.png */; };
+		EA1966101B81CD210005FC47 /* 登入按鈕.png in Resources */ = {isa = PBXBuildFile; fileRef = EA19660F1B81CD210005FC47 /* 登入按鈕.png */; };
+		EA1966121B81CD490005FC47 /* 臉書按鈕.png in Resources */ = {isa = PBXBuildFile; fileRef = EA1966111B81CD490005FC47 /* 臉書按鈕.png */; };
 		EA2943991B5DF1110054DBD6 /* screen@2x(1).png in Resources */ = {isa = PBXBuildFile; fileRef = EA29438F1B5DF1110054DBD6 /* screen@2x(1).png */; };
 		EA29439A1B5DF1110054DBD6 /* screen@2x(2).png in Resources */ = {isa = PBXBuildFile; fileRef = EA2943901B5DF1110054DBD6 /* screen@2x(2).png */; };
 		EA29439B1B5DF1110054DBD6 /* screen@2x(3).png in Resources */ = {isa = PBXBuildFile; fileRef = EA2943911B5DF1110054DBD6 /* screen@2x(3).png */; };
@@ -77,9 +80,6 @@
 		EA45E6EB1B6B525A00BB86BE /* Orange.png in Resources */ = {isa = PBXBuildFile; fileRef = EA45E6EA1B6B525A00BB86BE /* Orange.png */; };
 		EA9E55C51B6F4DDA009BDF25 /* MessageListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA9E55C41B6F4DDA009BDF25 /* MessageListCell.xib */; };
 		EA9E55C81B6F4E60009BDF25 /* MessageListCellTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = EA9E55C71B6F4E60009BDF25 /* MessageListCellTableView.m */; };
-		EA9E55CB1B6F67A5009BDF25 /* Rectangle 2 + Facebook.png in Resources */ = {isa = PBXBuildFile; fileRef = EA9E55C91B6F67A5009BDF25 /* Rectangle 2 + Facebook.png */; };
-		EA9E55D01B6F690A009BDF25 /* Rectangle 1 + Login + Login.png in Resources */ = {isa = PBXBuildFile; fileRef = EA9E55CF1B6F690A009BDF25 /* Rectangle 1 + Login + Login.png */; };
-		EA9E55D41B6F82D1009BDF25 /* Button 1.png in Resources */ = {isa = PBXBuildFile; fileRef = EA9E55D31B6F82D1009BDF25 /* Button 1.png */; };
 		EA9E55D61B6FB888009BDF25 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA9E55D51B6FB888009BDF25 /* AssetsLibrary.framework */; };
 		EA9E55D81B6FB893009BDF25 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA9E55D71B6FB893009BDF25 /* MobileCoreServices.framework */; };
 		EAC0A0081B67CD8000C0A89A /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAC0A0061B67CD8000C0A89A /* FBSDKCoreKit.framework */; };
@@ -185,6 +185,9 @@
 		BDDFD24F1B5F9DCE005D481E /* LeftMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeftMenuViewController.m; sourceTree = "<group>"; };
 		BDE131001B711D5E006F30F6 /* PostCaseTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostCaseTableViewController.h; sourceTree = "<group>"; };
 		BDE131011B711D5E006F30F6 /* PostCaseTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostCaseTableViewController.m; sourceTree = "<group>"; };
+		EA1966091B81C6CE0005FC47 /* 註冊按鈕.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "註冊按鈕.png"; sourceTree = "<group>"; };
+		EA19660F1B81CD210005FC47 /* 登入按鈕.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "登入按鈕.png"; sourceTree = "<group>"; };
+		EA1966111B81CD490005FC47 /* 臉書按鈕.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "臉書按鈕.png"; sourceTree = "<group>"; };
 		EA29438F1B5DF1110054DBD6 /* screen@2x(1).png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "screen@2x(1).png"; sourceTree = "<group>"; };
 		EA2943901B5DF1110054DBD6 /* screen@2x(2).png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "screen@2x(2).png"; sourceTree = "<group>"; };
 		EA2943911B5DF1110054DBD6 /* screen@2x(3).png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "screen@2x(3).png"; sourceTree = "<group>"; };
@@ -205,9 +208,6 @@
 		EA9E55C41B6F4DDA009BDF25 /* MessageListCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MessageListCell.xib; sourceTree = "<group>"; };
 		EA9E55C61B6F4E60009BDF25 /* MessageListCellTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageListCellTableView.h; sourceTree = "<group>"; };
 		EA9E55C71B6F4E60009BDF25 /* MessageListCellTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageListCellTableView.m; sourceTree = "<group>"; };
-		EA9E55C91B6F67A5009BDF25 /* Rectangle 2 + Facebook.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Rectangle 2 + Facebook.png"; sourceTree = "<group>"; };
-		EA9E55CF1B6F690A009BDF25 /* Rectangle 1 + Login + Login.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Rectangle 1 + Login + Login.png"; sourceTree = "<group>"; };
-		EA9E55D31B6F82D1009BDF25 /* Button 1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Button 1.png"; sourceTree = "<group>"; };
 		EA9E55D51B6FB888009BDF25 /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
 		EA9E55D71B6FB893009BDF25 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		EAC0A0061B67CD8000C0A89A /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
@@ -446,10 +446,10 @@
 		EAEAA57A1B78F9AB007D215C /* RegisterView */ = {
 			isa = PBXGroup;
 			children = (
-				EA9E55C91B6F67A5009BDF25 /* Rectangle 2 + Facebook.png */,
-				EA9E55CF1B6F690A009BDF25 /* Rectangle 1 + Login + Login.png */,
 				EA45E6E81B6B4FF400BB86BE /* Natural-Green-Background-Vector-Graphic.jpg */,
-				EA9E55D31B6F82D1009BDF25 /* Button 1.png */,
+				EA19660F1B81CD210005FC47 /* 登入按鈕.png */,
+				EA1966091B81C6CE0005FC47 /* 註冊按鈕.png */,
+				EA1966111B81CD490005FC47 /* 臉書按鈕.png */,
 				BD337CB61B65FF5900D8E9F9 /* RegisterViewController.h */,
 				BD337CB71B65FF5900D8E9F9 /* RegisterViewController.m */,
 			);
@@ -675,13 +675,14 @@
 				EA45E6DF1B6A56CF00BB86BE /* HeaderView.xib in Resources */,
 				BD4F48E51B77270E005DD3AC /* TakePictureView.xib in Resources */,
 				EAEAA58F1B7901F9007D215C /* wiki_color_64x64.png in Resources */,
+				EA1966101B81CD210005FC47 /* 登入按鈕.png in Resources */,
 				EA2943A11B5DF1110054DBD6 /* screen@2x(9).png in Resources */,
 				BD7B81461B5D1FA900067D29 /* LaunchScreen.xib in Resources */,
+				EA1966121B81CD490005FC47 /* 臉書按鈕.png in Resources */,
 				EA29439A1B5DF1110054DBD6 /* screen@2x(2).png in Resources */,
 				EA2943A01B5DF1110054DBD6 /* screen@2x(8).png in Resources */,
 				EA2943A21B5DF1110054DBD6 /* screen@2x(10).png in Resources */,
 				EAEAA5891B7900EA007D215C /* vcard_color_64x64.png in Resources */,
-				EA9E55CB1B6F67A5009BDF25 /* Rectangle 2 + Facebook.png in Resources */,
 				EA45E6E91B6B4FF400BB86BE /* Natural-Green-Background-Vector-Graphic.jpg in Resources */,
 				EA29439F1B5DF1110054DBD6 /* screen@2x(7).png in Resources */,
 				EA29439E1B5DF1110054DBD6 /* screen@2x(6).png in Resources */,
@@ -690,11 +691,10 @@
 				BD7B817B1B5D248D00067D29 /* menu-button@2x.png in Resources */,
 				BD7B81431B5D1FA900067D29 /* Images.xcassets in Resources */,
 				EA2943991B5DF1110054DBD6 /* screen@2x(1).png in Resources */,
-				EA9E55D01B6F690A009BDF25 /* Rectangle 1 + Login + Login.png in Resources */,
 				EA29439C1B5DF1110054DBD6 /* screen@2x(4).png in Resources */,
+				EA19660A1B81C6CE0005FC47 /* 註冊按鈕.png in Resources */,
 				EA29439D1B5DF1110054DBD6 /* screen@2x(5).png in Resources */,
 				EA45E6EB1B6B525A00BB86BE /* Orange.png in Resources */,
-				EA9E55D41B6F82D1009BDF25 /* Button 1.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
