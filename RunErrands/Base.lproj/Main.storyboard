@@ -357,6 +357,9 @@
                                 <rect key="frame" x="92" y="442" width="394" height="42"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="31"/>
                                 <state key="normal" title="dsfgsdfgsdfgsdfg" backgroundImage="臉書按鈕.png"/>
+                                <connections>
+                                    <action selector="facebookLoginBtnPressed:" destination="Kni-yZ-eIA" eventType="touchUpInside" id="gx3-LL-ziX"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>

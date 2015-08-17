@@ -17,7 +17,7 @@
 @interface LoginViewController (){
     LeftMenuViewController *leftMenu;
 }
-@property (weak, nonatomic) IBOutlet FBSDKLoginButton *loginButton;
+
 @end
 
 @implementation LoginViewController
@@ -30,8 +30,6 @@
 //    PFObject *testObject = [PFObject objectWithClassName:@"TestObject"];
 //    testObject[@"foo"] = @"bar";
 //    [testObject saveInBackground];
-    [FBSDKLoginButton class];
-    self.loginButton.readPermissions = @[@"public_profile", @"email", @"user_friends"];
 
     leftMenu =(LeftMenuViewController *)[SlideNavigationController sharedInstance].leftMenu;
     
@@ -74,10 +72,6 @@
         } else {
             NSLog(@"User logged in through Facebook!");
             [self loadFacebookData:user];
-            
-            
-            
-            
         }
     }];
 }
@@ -121,7 +115,7 @@
     }];
 }
 
-- (void)UserLogOut  {
+- (void)userLogOut  {
     [PFUser logOut];
 }
 
@@ -129,83 +123,6 @@
     
     [self loginWithFacebook];
 }
-
-
-
-- (IBAction)FaceookLoginBtn:(id)sender {
-    
-    FBSDKLoginManager *loginManager = [[FBSDKLoginManager alloc] init];
-    leftMenu =(LeftMenuViewController *)[SlideNavigationController sharedInstance].leftMenu;
-    
-    if ([FBSDKAccessToken currentAccessToken]) {
-        // User is logged in, do work such as go to next view controller.
-        
-        
-        NSLog(@"已登入");
-        [leftMenu setLoginStatus:USERLOGOUT];
-        
-        //轉至其它畫面...        //Change the slider menu text from login to logout
-    }else{
-        
-        //未登入
-        
-        [loginManager logInWithReadPermissions:@[@"public_profile",@"email",@"user_friends"] handler:^(FBSDKLoginManagerLoginResult *result, NSError *error) {
-            
-            NSLog(@"%@",[[[result grantedPermissions]allObjects]description]);
-            if (error) {
-                // Process error
-                NSLog(@"FB login error! %@\n",error.description);
-            } else if (result.isCancelled) {
-                // Handle cancellations
-                NSLog(@"FB canceled\n");
-            } else {
-                // If you ask for multiple permissions at once, you
-                // should check if specific permissions missing
-                if ([result.grantedPermissions containsObject:@"email"]) {
-                    // Do work
-                    NSLog(@"email is ok");
-                }
-                if ([result.grantedPermissions containsObject:@"public_profile"]) {
-                    // Do work
-                    NSLog(@"public_profile is ok");
-                }
-                if ([result.grantedPermissions containsObject:@"user_friends"]) {
-                    // Do work
-                    NSLog(@"user_friends is ok");
-                }
-            }
-
-            /*
-            NSLog(@"%@",[[[result grantedPermissions]allObjects]description]);
-            
-            [[[FBSDKGraphRequest alloc] initWithGraphPath:@"me" parameters:@{@"fields":@"email,name,gender,locale"}]
-             startWithCompletionHandler:^(FBSDKGraphRequestConnection *connection, NSDictionary *results, NSError *error) {
-                 NSLog(@"%@",results);
-                 NSLog(@"%@",[results objectForKey:@"email"]);
-                 NSString *path = [NSHomeDirectory() stringByAppendingString:@"/Documents/mydata.txt"];
-                 leftMenu.headerView.displayFacebookName.text = [results objectForKey:@"name"];
-                 
-             }];
-            */
-            
-        }];
-        
-        //Change the slider menu text from login to logout
-        [leftMenu setLoginStatus:USERLOGIN];
-        
-        //Turn to map view menu
-        
-        UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle: nil];
-        UIViewController *lc ;
-        
-        lc = [mainStoryboard instantiateViewControllerWithIdentifier: @"MapViewController"];
-        [[SlideNavigationController sharedInstance] switchToViewController:lc withCompletion:nil ];
-        
-        
-        NSLog(@"not");
-    }
-}
-
 
 // - (BOOL)prefersStatusBarHidden
 //{
