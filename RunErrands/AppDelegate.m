@@ -11,6 +11,8 @@
 #import "LeftMenuViewController.h"
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
 #import <FBSDKLoginKit/FBSDKLoginKit.h>
+#import <Parse/Parse.h>
+#import <ParseFacebookUtilsV4/PFFacebookUtils.h>
 
 @interface AppDelegate ()
 
@@ -21,37 +23,42 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    
+    
+    // init the left slide menu
     UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle: nil];
     
     LeftMenuViewController *leftMenu = (LeftMenuViewController*)[mainStoryboard instantiateViewControllerWithIdentifier: @"LeftMenuViewController"];
     
-    BOOL fbRes = [[FBSDKApplicationDelegate sharedInstance] application:application
-                                          didFinishLaunchingWithOptions:launchOptions];
-//    if (fbRes) {
-        if ([FBSDKAccessToken currentAccessToken]){
-            NSLog(@"FB already login.");
-            [leftMenu setLoginStatus:USERLOGIN];
-        }else{
-            NSLog(@"FB already logout.");
-            [leftMenu setLoginStatus:USERLOGOUT];
-        }
-//    }else{
-//        NSLog(@"FB SDK error!");
-//    }
-    
     [SlideNavigationController sharedInstance].leftMenu = leftMenu;
     
-    BOOL res =  [[FBSDKApplicationDelegate sharedInstance] application:application
-                                    didFinishLaunchingWithOptions:launchOptions];
-    if (res == YES) {
-        NSLog(@"true");
-    }else{
-        NSLog(@"false");
-    }
-        
+    // [Optional] Power your app with Local Datastore. For more info, go to
+    // https://parse.com/docs/ios_guide#localdatastore/iOS
+    [Parse enableLocalDatastore];
     
-    return YES;
+    // Initialize Parse.
+    [Parse setApplicationId:@"evjktl2gwMwsD23fJjiLHlp0pgg2asrXEOJ7p6vk"
+                  clientKey:@"7RKd0BPNHWHPtFsdIEKosnO9Fi2vHZKkezYL4fWr"];
+    
+    // [Optional] Track statistics around application opens.
+    [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
+    [PFFacebookUtils initializeFacebookWithApplicationLaunchOptions:launchOptions];
+    
+/*
+    if ([FBSDKAccessToken currentAccessToken]){
+        NSLog(@"FB already login.");
+        [leftMenu setLoginStatus:USERLOGIN];
+    }else{
+        NSLog(@"FB already logout.");
+        [leftMenu setLoginStatus:USERLOGOUT];
+    }
+*/    
+
+    
+    return [[FBSDKApplicationDelegate sharedInstance] application:application
+                                    didFinishLaunchingWithOptions:launchOptions];
 }
+
 
 - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication  annotation:(id)annotation {
     
@@ -78,6 +85,9 @@
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+    
+    //[FBAppCall handleDidBecomeActiveWithSession:[PFFacebookUtils session]];
+    [FBSDKAppEvents activateApp];
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application {
