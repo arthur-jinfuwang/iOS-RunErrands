@@ -91,10 +91,10 @@
 
     if (indexPath.row == LOGINMENU) {
         if (loginStatus == USERLOGIN) {
-            cell.textLabel.text = @"☑️登出";
+            cell.textLabel.text = @"☑️ 登出";
         }else
         {
-            cell.textLabel.text = @"☑️登入";
+            cell.textLabel.text = @"☑️ 登入";
         }
     }else{
         cell.textLabel.text = viewArray[indexPath.row];
