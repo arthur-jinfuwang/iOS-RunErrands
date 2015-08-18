@@ -19,7 +19,7 @@
     NSArray *viewArray;
     NSArray *viewControllerArroy;
     USERLOGINSTATUS loginStatus;
-    }
+}
 
 @end
 
@@ -114,13 +114,9 @@
     UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle: nil];
     
     UIViewController *vc ;
+    FUMCTIONMENUS menu = indexPath.row;
     
-    if ( indexPath.row == SETTINGMENU) {
-        
-    }
-    
-    
-    vc = [mainStoryboard instantiateViewControllerWithIdentifier: viewControllerArroy[indexPath.row]];
+    vc = [mainStoryboard instantiateViewControllerWithIdentifier: viewControllerArroy[menu]];
 /*
     if (indexPath.row == LOGINMENU) {
         if (loginStatus == USERLOGIN) {

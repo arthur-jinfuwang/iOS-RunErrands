@@ -46,27 +46,26 @@
     // [Optional] Track statistics around application opens.
     [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
     [PFFacebookUtils initializeFacebookWithApplicationLaunchOptions:launchOptions];
-    
-/*
-    if ([FBSDKAccessToken currentAccessToken]){
-        NSLog(@"FB already login.");
+    if ([PFUser currentUser]) {
+        NSLog(@"AppDelgate: You have login!");
         [leftMenu setLoginStatus:USERLOGIN];
-    }else{
-        NSLog(@"FB already logout.");
+    }else
+    {
+        NSLog(@"AppDelgate: You have logout!");
         [leftMenu setLoginStatus:USERLOGOUT];
     }
-*/    
 
-#if 0
+
     //prepare reachability
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(networkStatusChanges:) name:kReachabilityChangedNotification object:nil];
     serverReach = [Reachability reachabilityWithHostName:@"udn.com"];
     //[Reachability reachabilityForInternetConnection];
     [serverReach startNotifier];
-#endif
-    
-    return [[FBSDKApplicationDelegate sharedInstance] application:application
-                                    didFinishLaunchingWithOptions:launchOptions];
+
+
+    return YES;
+//    return [[FBSDKApplicationDelegate sharedInstance] application:application
+//                                    didFinishLaunchingWithOptions:launchOptions];
 }
 
 
