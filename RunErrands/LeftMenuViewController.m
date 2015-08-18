@@ -38,13 +38,14 @@
     
     self.tableView.separatorColor = [UIColor clearColor];
     viewArray = [NSArray arrayWithObjects:
-                 @"👍🏿接案",
-                 @"💳發案",
-                 @"🌟追蹤",
-                 @"👥訊息",
-                 @"🔧設定",
-                 @"☑️登入",
+                 @"👍🏿 接案",
+                 @"💳 發案",
+                 @"🌟 追蹤",
+                 @"👥 訊息",
+                 @"🔧 設定",
+                 @"☑️ 登入",
                    nil];
+    
     viewControllerArroy = [NSArray arrayWithObjects:
                            @"MapViewController",
                            @"PostListTableViewController",
@@ -55,7 +56,8 @@
     
     
     //讀取標題的區域
-    //self.headerView = [[[NSBundle mainBundle] loadNibNamed:@"HeaderView" owner:nil options:nil] lastObject];
+    
+    
     self.headerView = [[[NSBundle mainBundle] loadNibNamed:@"HeaderView" owner:nil options:nil] lastObject];
     
     
@@ -75,10 +77,6 @@
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
-////   UIView *_view = [[UIView alloc] initWithFrame:CGRectMake(100, 0, self.tableView.frame.size.width, 0)];
-//    _view.backgroundColor = [UIColor clearColor];
-//    _view.backgroundColor = [UIColor greenColor];
-//    return _view;
     return self.headerView;
 }
 
@@ -158,24 +156,7 @@
 
 - (void) setLoginStatus:(USERLOGINSTATUS)status{
     
-    NSArray *cellArray = [_tableView visibleCells];
-    
-    if (cellArray == nil) {
-        NSLog(@"cellArray is nil");
-    }else
-    {
-        UITableViewCell *cell = cellArray[LOGINMENU];
-        if (status == USERLOGIN) {
-            cell.textLabel.text = @"☑️登出";
-        }else
-        {
-            cell.textLabel.text = @"☑️登入";
-        }
-        NSLog(@"cellArray is ok");
-    }
-    
-    loginStatus = status;
-}
+   }
 
 
 /*
