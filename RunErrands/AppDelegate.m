@@ -13,8 +13,12 @@
 #import <FBSDKLoginKit/FBSDKLoginKit.h>
 #import <Parse/Parse.h>
 #import <ParseFacebookUtilsV4/PFFacebookUtils.h>
+#import "Reachability.h"
 
 @interface AppDelegate ()
+{
+    Reachability    *serverReach;
+}
 
 @end
 
@@ -23,7 +27,6 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
-    
     
     // init the left slide menu
     UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle: nil];
@@ -54,6 +57,13 @@
     }
 */    
 
+#if 0
+    //prepare reachability
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(networkStatusChanges:) name:kReachabilityChangedNotification object:nil];
+    serverReach = [Reachability reachabilityWithHostName:@"udn.com"];
+    //[Reachability reachabilityForInternetConnection];
+    [serverReach startNotifier];
+#endif
     
     return [[FBSDKApplicationDelegate sharedInstance] application:application
                                     didFinishLaunchingWithOptions:launchOptions];
@@ -93,5 +103,18 @@
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
+
+#pragma mark - Reachability detect
+
+-(void) networkStatusChanges:(NSNotification*)notify{
+    NetworkStatus   status = [serverReach currentReachabilityStatus];
+    if (status == NotReachable) {
+        NSLog(@"Not reachable.");
+    }else{
+        NSLog(@"Reach with: %ld", status);
+        //[self updateNewsList];
+    }
+}
+
 
 @end
