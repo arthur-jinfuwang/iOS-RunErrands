@@ -132,6 +132,7 @@
         [self loginWithFacebook];
         [_facebookLoginBtn setTitle:@"登出 facebook" forState:UIControlStateNormal];
     }
+    
 }
 
 // - (BOOL)prefersStatusBarHidden
