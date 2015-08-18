@@ -8,6 +8,8 @@
 
 #import "SettingTableViewController.h"
 #import "TakePictureView.h"
+#import <Parse/Parse.h>
+#import <Parse/PFQuery.h>
 
 @interface SettingTableViewController ()<UITextFieldDelegate, TakePictureViewDelegate>
 {
@@ -28,7 +30,7 @@
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     settingDetailList = [[NSMutableArray alloc] initWithObjects:
-                         @"姓名", @"暱稱", @"性別", @"手機", @"電子信箱",nil];
+                         @"姓名", @"暱稱", @"性別", @"生日",@"手機", @"電子信箱",nil];
     avatarHeader = [[[NSBundle mainBundle] loadNibNamed:@"TakePictureView" owner:nil options:nil] lastObject];
     avatarHeader.thePictureLabel.text = @"設定自己的大頭貼";
     avatarHeader.takePicturedViewDlegate = self;
@@ -58,13 +60,11 @@
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-#warning Potentially incomplete method implementation.
     // Return the number of sections.
     return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-#warning Incomplete method implementation.
     // Return the number of rows in the section.
     return settingDetailList.count;
 }
@@ -73,12 +73,46 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     SettingTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"settingCell"];
-//    cell.dataTextField.delegate = self;
+    //    cell.dataTextField.delegate = self;
     NSArray *view = [[NSBundle mainBundle] loadNibNamed:@"SettingCells" owner:nil options:nil];
     cell = (SettingTableViewCell *)[view lastObject];
-    
     cell.titleLabel.text = settingDetailList[indexPath.row];
-
+    PFQuery *query =  [PFUser query];
+    
+    if (query) {
+        [query getObjectInBackgroundWithId:[[PFUser currentUser]objectId] block:^(PFObject *object, NSError *error){
+            
+            
+            switch (indexPath.row) {
+                case 0:
+                    NSLog(@"%@", [object objectForKey:@"username"]);
+                    cell.dataLabel.text = [object objectForKey:@"username"];
+                    break;
+                case 1:
+                    NSLog(@"%@", [object objectForKey:@"nick_name"]);
+                    cell.dataLabel.text = [object objectForKey:@"nick_name"];
+                    break;
+                case 2:
+                    NSLog(@"%@", [object objectForKey:@"gender"]);
+                    cell.dataLabel.text = [object objectForKey:@"gender"];
+                    break;
+                case 3:
+                    NSLog(@"%@", [object objectForKey:@"birthday"]);
+                    cell.dataLabel.text = [object objectForKey:@"birthday"];
+                    break;
+                case 4:
+                    NSLog(@"%@", [object objectForKey:@"phone"]);
+                    cell.dataLabel.text = [object objectForKey:@"phone"];
+                    break;
+                case 5:
+                    NSLog(@"%@", [object objectForKey:@"email"]);
+                    cell.dataLabel.text = [object objectForKey:@"email"];
+                    break;
+                default:
+                    break;
+            }
+        }];
+    }
     return cell;
 }
 

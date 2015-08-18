@@ -101,14 +101,13 @@
             NSString *email = userData[@"email"];
             NSString *age_range = userData[@"age_range"];
             NSString *about = userData[@"about"];
-            
             NSLog(@"%@\n, %@\n, %@\n, %@\n, %@\n, %@\n, %@\n, %@\n, %@\n", facebookID, name, email,location, gender, birthday, relationship, age_range, about);
             
-            [user setObject:[facebookID length] ? facebookID : @"nil" forKey:@"facebookID"];
-            [user setObject:[name length] ? name : @"nil" forKey:@"username"];
-            [user setObject:[email length] ? email : @"nil" forKey:@"email"];
-            [user setObject:[gender length] ? gender : @"nil" forKey:@"gender"];
-            [user setObject:[birthday length] ? birthday: @"nil" forKey:@"birthday"];
+            [user setObject:facebookID forKey:@"facebookID"];
+            [user setObject:[name length] ? name : [NSNull null] forKey:@"username"];
+            [user setObject:[email length] ? email : [NSNull null] forKey:@"email"];
+            [user setObject:[gender length] ? gender : [NSNull null] forKey:@"gender"];
+            [user setObject:[birthday length] ? birthday: [NSNull null] forKey:@"birthday"];
             [user saveInBackground];
             
             //NSURL *pictureURL = [NSURL URLWithString:[NSString stringWithFormat:@"https://graph.facebook.com/%@/picture?type=large&return_ssl_resources=1", facebookID]];
