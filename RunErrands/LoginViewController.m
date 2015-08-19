@@ -76,6 +76,8 @@
         } else {
             NSLog(@"User logged in through Facebook!");
             [self loadFacebookData:user];
+            [leftMenu setLoginStatus:USERLOGIN];
+            [_facebookLoginBtn setTitle:@"登出 facebook" forState:UIControlStateNormal];
         }
     }];
 }
@@ -120,6 +122,7 @@
 
 - (void)userLogOut  {
     [PFUser logOut];
+    [leftMenu setLoginStatus:USERLOGOUT];
 }
 
 - (IBAction)facebookLoginBtnPressed:(id)sender {
@@ -130,7 +133,6 @@
     }else{
 
         [self loginWithFacebook];
-        [_facebookLoginBtn setTitle:@"登出 facebook" forState:UIControlStateNormal];
     }
     
 }

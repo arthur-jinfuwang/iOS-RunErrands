@@ -58,7 +58,7 @@
 
     //prepare reachability
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(networkStatusChanges:) name:kReachabilityChangedNotification object:nil];
-    serverReach = [Reachability reachabilityWithHostName:@"udn.com"];
+    serverReach = [Reachability reachabilityWithHostName:@"api.parse.com"];
     //[Reachability reachabilityForInternetConnection];
     [serverReach startNotifier];
 

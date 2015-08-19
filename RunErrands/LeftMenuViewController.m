@@ -158,7 +158,25 @@
 
 - (void) setLoginStatus:(USERLOGINSTATUS)status{
     
-   }
+    NSArray *cellArray = [_tableView visibleCells];
+    
+    if (cellArray == nil) {
+        NSLog(@"cellArray is nil");
+    }else
+    {
+        UITableViewCell *cell = cellArray[LOGINMENU];
+        if (status == USERLOGIN) {
+            cell.textLabel.text = @"☑️ 登出";
+        }else
+        {
+            cell.textLabel.text = @"☑️ 登入";
+        }
+        NSLog(@"cellArray is ok");
+    }
+    
+    loginStatus = status;
+    
+}
 
 
 /*
