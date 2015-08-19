@@ -106,10 +106,10 @@
             NSLog(@"%@\n, %@\n, %@\n, %@\n, %@\n, %@\n, %@\n, %@\n, %@\n", facebookID, name, email,location, gender, birthday, relationship, age_range, about);
             
             [user setObject:facebookID forKey:@"facebookID"];
-            [user setObject:[name length] ? name : [NSNull null] forKey:@"username"];
-            [user setObject:[email length] ? email : [NSNull null] forKey:@"email"];
+            [user setObject:[name length] ? name : @"" forKey:@"username"];
+            [user setObject:[email length] ? email : @"" forKey:@"email"];
             [user setObject:[gender isEqualToString:@"male"] ? @"男性" : @"女性" forKey:@"gender"];
-            [user setObject:[birthday length] ? birthday: [NSNull null] forKey:@"birthday"];
+            [user setObject:[birthday length] ? birthday: @"" forKey:@"birthday"];
             [user saveInBackground];
             
             //NSURL *pictureURL = [NSURL URLWithString:[NSString stringWithFormat:@"https://graph.facebook.com/%@/picture?type=large&return_ssl_resources=1", facebookID]];

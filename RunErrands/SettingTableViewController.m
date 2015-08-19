@@ -70,21 +70,23 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
-    return 180;
+    return 200;
 }
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
     // Return the number of sections.
     return 1;
 }
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
     // Return the number of rows in the section.
     return settingDetailList.count;
 }
 
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
     
     SettingTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"settingCell"];
     //    cell.dataTextField.delegate = self;
@@ -92,10 +94,8 @@
     cell = (SettingTableViewCell *)[view lastObject];
     cell.titleLabel.text = settingDetailList[indexPath.row];
     PFQuery *query =  [PFUser query];
-    
     if (query) {
         [query getObjectInBackgroundWithId:[[PFUser currentUser]objectId] block:^(PFObject *object, NSError *error){
-            
             
             switch (indexPath.row) {
                 case 0:
@@ -160,19 +160,18 @@
     
 }
 
-- (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath NS_AVAILABLE_IOS(3_0){
+- (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath NS_AVAILABLE_IOS(3_0)
+{
     NSArray *cellArray = [tableView visibleCells];
-    
     SettingTableViewCell *cell = cellArray[indexPath.row];
-    
     cell.dataLabel.hidden = NO;
     cell.dataTextField.hidden = YES;
 }
 
 
-- (void)changePictureView{
+- (void)changePictureView
+{
     NSLog(@"Change Picture in setting menu");
-    
     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"請選擇相片來源" message:@"" preferredStyle: UIAlertControllerStyleActionSheet];
     UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
     UIAlertAction *manAction = [UIAlertAction actionWithTitle:@"拍張照吧" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
@@ -184,7 +183,6 @@
     [alertController addAction:cancelAction];
     [alertController addAction:manAction];
     [alertController addAction:femaleAction];
-    
     [self presentViewController:alertController animated:YES completion:nil];
 }
 
