@@ -34,6 +34,20 @@
     avatarHeader = [[[NSBundle mainBundle] loadNibNamed:@"TakePictureView" owner:nil options:nil] lastObject];
     avatarHeader.thePictureLabel.text = @"設定自己的大頭貼";
     avatarHeader.takePicturedViewDlegate = self;
+
+    if ([PFUser currentUser] == nil) {
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"未登入" message:@"請先登入你的帳號" preferredStyle:UIAlertControllerStyleAlert];
+        
+        UIAlertAction *ok = [UIAlertAction actionWithTitle:@"確定" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+            UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle: nil];
+            UIViewController *vc ;
+            vc = [mainStoryboard instantiateViewControllerWithIdentifier: @"LoginViewController"];
+            [[SlideNavigationController sharedInstance] popAllAndSwitchToViewController:vc withCompletion:nil];
+        }];
+        
+        [alert addAction:ok];
+        [self presentViewController:alert animated:true completion:nil];
+    }
 }
 
 - (void)didReceiveMemoryWarning {

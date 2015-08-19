@@ -13,8 +13,12 @@
 #import <FBSDKLoginKit/FBSDKLoginKit.h>
 #import <Parse/Parse.h>
 #import <ParseFacebookUtilsV4/PFFacebookUtils.h>
+#import "Reachability.h"
 
 @interface AppDelegate ()
+{
+    Reachability    *serverReach;
+}
 
 @end
 
@@ -23,7 +27,6 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
-    
     
     // init the left slide menu
     UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle: nil];
@@ -43,20 +46,26 @@
     // [Optional] Track statistics around application opens.
     [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
     [PFFacebookUtils initializeFacebookWithApplicationLaunchOptions:launchOptions];
-    
-/*
-    if ([FBSDKAccessToken currentAccessToken]){
-        NSLog(@"FB already login.");
+    if ([PFUser currentUser]) {
+        NSLog(@"AppDelgate: You have login!");
         [leftMenu setLoginStatus:USERLOGIN];
-    }else{
-        NSLog(@"FB already logout.");
+    }else
+    {
+        NSLog(@"AppDelgate: You have logout!");
         [leftMenu setLoginStatus:USERLOGOUT];
     }
-*/    
 
-    
-    return [[FBSDKApplicationDelegate sharedInstance] application:application
-                                    didFinishLaunchingWithOptions:launchOptions];
+
+    //prepare reachability
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(networkStatusChanges:) name:kReachabilityChangedNotification object:nil];
+    serverReach = [Reachability reachabilityWithHostName:@"api.parse.com"];
+    //[Reachability reachabilityForInternetConnection];
+    [serverReach startNotifier];
+
+
+    return YES;
+//    return [[FBSDKApplicationDelegate sharedInstance] application:application
+//                                    didFinishLaunchingWithOptions:launchOptions];
 }
 
 
@@ -93,5 +102,28 @@
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
+
+#pragma mark - Reachability detect
+
+-(void) networkStatusChanges:(NSNotification*)notify{
+    NetworkStatus   status = [serverReach currentReachabilityStatus];
+    if (status == NotReachable) {
+        NSLog(@"Not reachable.");
+
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"無法連上伺服器" message:@"請檢查網路連線是否正確，本程式即將退出" preferredStyle:UIAlertControllerStyleAlert];
+        
+        UIAlertAction *ok = [UIAlertAction actionWithTitle:@"確定" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+            exit(0);
+        }];
+        
+        [alert addAction:ok];
+        [self.window.rootViewController presentViewController:alert animated:YES completion:nil];
+
+    }else{
+        NSLog(@"Reach with: %ld", status);
+        //[self updateNewsList];
+    }
+}
+
 
 @end

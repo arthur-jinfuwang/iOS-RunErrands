@@ -19,7 +19,7 @@
     NSArray *viewArray;
     NSArray *viewControllerArroy;
     USERLOGINSTATUS loginStatus;
-    }
+}
 
 @end
 
@@ -114,7 +114,9 @@
     UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle: nil];
     
     UIViewController *vc ;
-    vc = [mainStoryboard instantiateViewControllerWithIdentifier: viewControllerArroy[indexPath.row]];
+    FUMCTIONMENUS menu = indexPath.row;
+    
+    vc = [mainStoryboard instantiateViewControllerWithIdentifier: viewControllerArroy[menu]];
 /*
     if (indexPath.row == LOGINMENU) {
         if (loginStatus == USERLOGIN) {
@@ -156,7 +158,25 @@
 
 - (void) setLoginStatus:(USERLOGINSTATUS)status{
     
-   }
+    NSArray *cellArray = [_tableView visibleCells];
+    
+    if (cellArray == nil) {
+        NSLog(@"cellArray is nil");
+    }else
+    {
+        UITableViewCell *cell = cellArray[LOGINMENU];
+        if (status == USERLOGIN) {
+            cell.textLabel.text = @"☑️ 登出";
+        }else
+        {
+            cell.textLabel.text = @"☑️ 登入";
+        }
+        NSLog(@"cellArray is ok");
+    }
+    
+    loginStatus = status;
+    
+}
 
 
 /*

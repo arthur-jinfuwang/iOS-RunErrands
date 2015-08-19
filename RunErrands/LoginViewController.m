@@ -76,6 +76,8 @@
         } else {
             NSLog(@"User logged in through Facebook!");
             [self loadFacebookData:user];
+            [leftMenu setLoginStatus:USERLOGIN];
+            [_facebookLoginBtn setTitle:@"登出 facebook" forState:UIControlStateNormal];
         }
     }];
 }
@@ -106,7 +108,7 @@
             [user setObject:facebookID forKey:@"facebookID"];
             [user setObject:[name length] ? name : [NSNull null] forKey:@"username"];
             [user setObject:[email length] ? email : [NSNull null] forKey:@"email"];
-            [user setObject:[gender length] ? gender : [NSNull null] forKey:@"gender"];
+            [user setObject:[gender isEqualToString:@"male"] ? @"男性" : @"女性" forKey:@"gender"];
             [user setObject:[birthday length] ? birthday: [NSNull null] forKey:@"birthday"];
             [user saveInBackground];
             
@@ -120,6 +122,7 @@
 
 - (void)userLogOut  {
     [PFUser logOut];
+    [leftMenu setLoginStatus:USERLOGOUT];
 }
 
 - (IBAction)facebookLoginBtnPressed:(id)sender {
@@ -130,7 +133,6 @@
     }else{
 
         [self loginWithFacebook];
-        [_facebookLoginBtn setTitle:@"登出 facebook" forState:UIControlStateNormal];
     }
     
 }
