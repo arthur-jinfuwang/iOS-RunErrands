@@ -1273,8 +1273,8 @@
         <image name="註冊按鈕.png" width="176" height="36"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="ybq-Ux-EmN"/>
         <segue reference="hFi-3l-ee4"/>
-        <segue reference="Taw-Pu-oyh"/>
+        <segue reference="ybq-Ux-EmN"/>
+        <segue reference="hgS-zi-VFA"/>
     </inferredMetricsTieBreakers>
 </document>

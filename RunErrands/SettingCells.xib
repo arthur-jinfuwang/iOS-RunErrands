@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <objects>
@@ -28,14 +29,14 @@
                         <color key="textColor" red="0.0" green="0.50196081399917603" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="vcard_color_64x64.png" translatesAutoresizingMaskIntoConstraints="NO" id="bSd-5Z-gtq">
+                    <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="vcard_color_64x64.png" translatesAutoresizingMaskIntoConstraints="NO" id="bSd-5Z-gtq">
                         <rect key="frame" x="8" y="7" width="30" height="30"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="30" id="Laz-j1-1DT"/>
                             <constraint firstAttribute="height" constant="30" id="xyy-VZ-Nyd"/>
                         </constraints>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="個人資料" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YJI-82-R3G">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="個人資料" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YJI-82-R3G">
                         <rect key="frame" x="8" y="8" width="74" height="27"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -43,21 +44,41 @@
                     </label>
                 </subviews>
                 <constraints>
+                    <constraint firstAttribute="bottomMargin" secondItem="bSd-5Z-gtq" secondAttribute="bottom" constant="-3" id="5pu-6t-lat"/>
+                    <constraint firstItem="YJI-82-R3G" firstAttribute="leading" secondItem="bSd-5Z-gtq" secondAttribute="leading" id="Adh-tr-JeY"/>
+                    <constraint firstItem="YJI-82-R3G" firstAttribute="baseline" secondItem="Xiz-KH-5Oc" secondAttribute="baseline" id="CQP-kW-1ec"/>
+                    <constraint firstItem="bSd-5Z-gtq" firstAttribute="top" secondItem="kaV-8m-IQt" secondAttribute="top" id="EBe-Eg-TpO"/>
                     <constraint firstItem="kaV-8m-IQt" firstAttribute="top" secondItem="nzf-xV-dVO" secondAttribute="topMargin" constant="-1" id="JMS-lO-mvf"/>
+                    <constraint firstItem="Xiz-KH-5Oc" firstAttribute="leading" secondItem="bSd-5Z-gtq" secondAttribute="trailing" constant="52" id="NXq-We-WXF"/>
                     <constraint firstItem="bSd-5Z-gtq" firstAttribute="leading" secondItem="nzf-xV-dVO" secondAttribute="leadingMargin" id="S48-74-xBL"/>
                     <constraint firstItem="Xiz-KH-5Oc" firstAttribute="trailing" secondItem="nzf-xV-dVO" secondAttribute="trailingMargin" id="SCv-dH-usS"/>
+                    <constraint firstItem="bSd-5Z-gtq" firstAttribute="top" secondItem="nzf-xV-dVO" secondAttribute="topMargin" constant="-1" id="SS4-Oz-evb"/>
                     <constraint firstItem="YJI-82-R3G" firstAttribute="bottom" secondItem="nzf-xV-dVO" secondAttribute="bottomMargin" id="UYQ-Ye-ZkI"/>
                     <constraint firstItem="Xiz-KH-5Oc" firstAttribute="leading" secondItem="nzf-xV-dVO" secondAttribute="leadingMargin" constant="82" id="UzE-Ee-7Ya"/>
                     <constraint firstItem="kaV-8m-IQt" firstAttribute="trailing" secondItem="nzf-xV-dVO" secondAttribute="trailingMargin" id="W5z-DC-QzS"/>
+                    <constraint firstItem="Xiz-KH-5Oc" firstAttribute="leading" secondItem="YJI-82-R3G" secondAttribute="trailing" constant="8" symbolic="YES" id="WMC-EQ-3jm"/>
                     <constraint firstItem="Xiz-KH-5Oc" firstAttribute="top" secondItem="nzf-xV-dVO" secondAttribute="topMargin" id="X7Q-Im-Wec"/>
                     <constraint firstAttribute="bottomMargin" secondItem="Xiz-KH-5Oc" secondAttribute="bottom" constant="-0.5" id="eCz-3r-5yR"/>
                     <constraint firstItem="Xiz-KH-5Oc" firstAttribute="leading" secondItem="YJI-82-R3G" secondAttribute="trailing" constant="8" id="foe-Kb-eAy"/>
                     <constraint firstItem="kaV-8m-IQt" firstAttribute="leading" secondItem="nzf-xV-dVO" secondAttribute="leadingMargin" constant="82" id="fwp-w1-0bT"/>
+                    <constraint firstItem="bSd-5Z-gtq" firstAttribute="leading" secondItem="nzf-xV-dVO" secondAttribute="leadingMargin" id="iYa-hc-H10"/>
+                    <constraint firstItem="YJI-82-R3G" firstAttribute="firstBaseline" secondItem="Xiz-KH-5Oc" secondAttribute="firstBaseline" id="nrn-zk-9Ib"/>
                     <constraint firstItem="YJI-82-R3G" firstAttribute="leading" secondItem="nzf-xV-dVO" secondAttribute="leadingMargin" id="pgD-Mh-UQn"/>
                     <constraint firstAttribute="centerY" secondItem="bSd-5Z-gtq" secondAttribute="centerY" id="rSR-BJ-bmW"/>
                     <constraint firstAttribute="bottomMargin" secondItem="kaV-8m-IQt" secondAttribute="bottom" constant="-1.5" id="y5g-vc-FnM"/>
                     <constraint firstItem="YJI-82-R3G" firstAttribute="top" secondItem="nzf-xV-dVO" secondAttribute="topMargin" id="zBe-eM-qPw"/>
                 </constraints>
+                <variation key="default">
+                    <mask key="constraints">
+                        <exclude reference="5pu-6t-lat"/>
+                        <exclude reference="SS4-Oz-evb"/>
+                        <exclude reference="rSR-BJ-bmW"/>
+                        <exclude reference="UYQ-Ye-ZkI"/>
+                        <exclude reference="pgD-Mh-UQn"/>
+                        <exclude reference="zBe-eM-qPw"/>
+                        <exclude reference="foe-Kb-eAy"/>
+                    </mask>
+                </variation>
             </tableViewCellContentView>
             <connections>
                 <outlet property="dataLabel" destination="Xiz-KH-5Oc" id="Syi-SA-cYJ"/>
