@@ -59,6 +59,42 @@
 {
     return YES;
 }
+- (IBAction)RegisterBtnpressed:(id)sender
+{
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"註冊" message:@"請輸入帳號密碼" preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
+        [self dismissViewControllerAnimated:YES completion:nil];
+    }];
+    
+    UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"確定" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        NSString *uid = ((UITextField *)[alertController.textFields objectAtIndex:0]).text;
+        NSString *pwd = ((UITextField *)[alertController.textFields objectAtIndex:1]).text;
+        NSString *repwd = ((UITextField *)[alertController.textFields objectAtIndex:2]).text;
+        NSLog(@"帳號:%@",uid);
+        NSLog(@"密碼:%@",pwd);
+        NSLog(@"再次確認:%@",repwd);
+    }];
+    [alertController addTextFieldWithConfigurationHandler:^(UITextField *textField) {
+        textField.placeholder = @"電子信箱";
+    }];
+    [alertController addTextFieldWithConfigurationHandler:^(UITextField *textField) {
+        textField.placeholder = @"密碼";
+        textField.secureTextEntry = YES;
+    }];
+    [alertController addTextFieldWithConfigurationHandler:^(UITextField *textField) {
+        textField.placeholder = @"再次確認密碼";
+        textField.secureTextEntry = YES;
+//        if(repwd != pwd )
+//        {
+//            
+//        }
+    }];
+    
+    [alertController addAction:cancelAction];
+    [alertController addAction:okAction];
+    [self presentViewController:alertController animated:YES completion:nil];
+}
+
 
 
 #pragma mark Login Facebook
@@ -137,38 +173,6 @@
         [self loginWithFacebook];
     }
     
-}
-
-- (IBAction)RegisterBtnpressed:(id)sender
-{
-    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"註冊" message:@"請輸入帳號密碼" preferredStyle:UIAlertControllerStyleAlert];
-    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
-        [self dismissViewControllerAnimated:YES completion:nil];
-    }];
-    
-    UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"確定" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
-        NSString *uid = ((UITextField *)[alertController.textFields objectAtIndex:0]).text;
-        NSString *pwd = ((UITextField *)[alertController.textFields objectAtIndex:1]).text;
-        NSString *reped = ((UITextField *)[alertController.textFields objectAtIndex:2]).text;
-        NSLog(@"帳號:%@",uid);
-        NSLog(@"密碼:%@",pwd);
-        NSLog(@"再次確認:%@",reped);
-    }];
-    [alertController addTextFieldWithConfigurationHandler:^(UITextField *textField) {
-        textField.placeholder = @"電子信箱";
-    }];
-    [alertController addTextFieldWithConfigurationHandler:^(UITextField *textField) {
-        textField.placeholder = @"密碼";
-        textField.secureTextEntry = YES;
-    }];
-    [alertController addTextFieldWithConfigurationHandler:^(UITextField *textField) {
-        textField.placeholder = @"再次確認密碼";
-        textField.secureTextEntry = YES;
-    }];
-    
-    [alertController addAction:cancelAction];
-    [alertController addAction:okAction];
-    [self presentViewController:alertController animated:YES completion:nil];
 }
 
 
