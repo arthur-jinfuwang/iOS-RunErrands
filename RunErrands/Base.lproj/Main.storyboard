@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="wfi-cs-57i">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="wfi-cs-57i">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -121,7 +121,7 @@
             </objects>
             <point key="canvasLocation" x="2938" y="1008"/>
         </scene>
-        <!--Post Case Table View Controller-->
+        <!--編輯工作內容-->
         <scene sceneID="vVr-fx-yoN">
             <objects>
                 <tableViewController storyboardIdentifier="PostCaseTableViewController" id="Ynm-MY-K22" customClass="PostCaseTableViewController" sceneMemberID="viewController">
@@ -142,6 +142,13 @@
                             <outlet property="delegate" destination="Ynm-MY-K22" id="sOH-vk-7yd"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" title="編輯工作內容" id="PDw-B5-5Bu">
+                        <barButtonItem key="rightBarButtonItem" title="完成" id="FLG-xA-fe0">
+                            <connections>
+                                <action selector="finishEditBtnPressed:" destination="Ynm-MY-K22" id="LlC-4L-bTy"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Aj-0h-Pwx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -332,7 +339,7 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="密碼：" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0AE-4L-met">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="密碼：" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0AE-4L-met">
                                 <rect key="frame" x="16" y="239" width="51" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -602,15 +609,6 @@
                                 <exclude reference="gPn-I0-B3Q"/>
                                 <exclude reference="wZv-Eq-pjo"/>
                                 <exclude reference="yp3-aY-oqD"/>
-                                <exclude reference="94y-n7-7vy"/>
-                                <exclude reference="MTa-xf-0iP"/>
-                                <exclude reference="RNY-O4-6qe"/>
-                                <exclude reference="VTi-NV-LZO"/>
-                                <exclude reference="blW-hr-IEI"/>
-                                <exclude reference="iUf-dL-ePv"/>
-                                <exclude reference="iqw-0v-0ka"/>
-                                <exclude reference="sbN-Px-i0U"/>
-                                <exclude reference="yZV-pj-vXe"/>
                                 <exclude reference="0Fm-p5-uQB"/>
                                 <exclude reference="1ns-DW-Lx4"/>
                                 <exclude reference="23z-4X-lra"/>
@@ -625,6 +623,15 @@
                                 <exclude reference="nzd-nn-vba"/>
                                 <exclude reference="sbG-Ug-Jll"/>
                                 <exclude reference="z9f-0s-OTz"/>
+                                <exclude reference="94y-n7-7vy"/>
+                                <exclude reference="MTa-xf-0iP"/>
+                                <exclude reference="RNY-O4-6qe"/>
+                                <exclude reference="VTi-NV-LZO"/>
+                                <exclude reference="blW-hr-IEI"/>
+                                <exclude reference="iUf-dL-ePv"/>
+                                <exclude reference="iqw-0v-0ka"/>
+                                <exclude reference="sbN-Px-i0U"/>
+                                <exclude reference="yZV-pj-vXe"/>
                                 <exclude reference="URi-FO-L3x"/>
                                 <exclude reference="o9Q-54-YBO"/>
                             </mask>
@@ -1142,7 +1149,7 @@
                                     <constraint firstAttribute="width" constant="320" id="Pab-M7-FFs"/>
                                 </constraints>
                             </imageView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Lorem ipsum dolor sit er elit lamet, consectetaur cillium  " translatesAutoresizingMaskIntoConstraints="NO" id="S9N-bK-opf">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" editable="NO" text="Lorem ipsum dolor sit er elit lamet, consectetaur cillium  " translatesAutoresizingMaskIntoConstraints="NO" id="S9N-bK-opf">
                                 <rect key="frame" x="0.0" y="252" width="600" height="348"/>
                                 <color key="backgroundColor" red="1" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>

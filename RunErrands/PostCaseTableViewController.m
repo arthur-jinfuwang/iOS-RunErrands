@@ -10,12 +10,17 @@
 #import "SettingTableViewCell.h"
 #import "TakePictureView.h"
 #import "SetLocationViewController.h"
+#import <Parse/Parse.h>
+#import <Parse/PFQuery.h>
+
 
 @interface PostCaseTableViewController ()<TakePictureViewDelegate,UINavigationControllerDelegate,UIImagePickerControllerDelegate>
 {
     NSMutableArray *listDetails;
     TakePictureView *casePicture;
     UIDatePicker *datePicker;
+    PFObject *details;
+    PFGeoPoint *caseLocation;
 }
 
 @end
@@ -37,6 +42,17 @@
     casePicture = [[[NSBundle mainBundle] loadNibNamed:@"TakePictureView" owner:nil options:nil] lastObject];
     casePicture.thePictureLabel.text = @"設定工作相關的照片";
     casePicture.takePicturedViewDlegate = self;
+    
+    //Date Picker init
+    datePicker = [[UIDatePicker alloc] initWithFrame:CGRectZero];
+    datePicker.minuteInterval = 5;
+    datePicker.backgroundColor = [UIColor whiteColor];
+    
+    // Init the parse object "Cases"
+    details = [PFObject objectWithClassName:@"Cases"];
+    details[@"owner_id"] = [PFUser currentUser];
+    details[@"case_status"] = @"Editing";
+
 }
 
 - (void)didReceiveMemoryWarning {
@@ -77,29 +93,6 @@
     cell = (SettingTableViewCell *)[view lastObject];
     cell.titleLabel.text = listDetails[indexPath.row];
     
-    if (indexPath.row == 3 || indexPath.row == 4 || indexPath.row == 7) {
-        datePicker = [[UIDatePicker alloc] initWithFrame:CGRectZero];
-        datePicker.minuteInterval = 5;
-        datePicker.backgroundColor = [UIColor whiteColor];
-        if (indexPath.row == 7) {
-            datePicker.datePickerMode = UIDatePickerModeDate;
-        }else{
-            datePicker.datePickerMode = UIDatePickerModeDateAndTime;
-        }
-
-        cell.dataTextField.inputView = datePicker;
-        
-        UIToolbar *toolBar=[[UIToolbar alloc]initWithFrame:CGRectMake(0, 0, 320, 44)];
-        [toolBar setTintColor:[UIColor colorWithRed: 1.0 green: 0.5781 blue: 0.0 alpha: 1.0]];
-        [toolBar setTranslucent:YES];
-        [toolBar setBackgroundColor:[UIColor colorWithRed: 1.0 green: 1.0 blue: 1.0 alpha: 1.0]];
-        UIBarButtonItem *doneBtn=[[UIBarButtonItem alloc]initWithTitle:@"完成" style:UIBarButtonItemStyleDone target:self action:@selector(finishDataUpdate)];
-        
-        
-        UIBarButtonItem *space=[[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
-        [toolBar setItems:[NSArray arrayWithObjects:space,doneBtn, nil]];
-        [cell.dataTextField setInputAccessoryView:toolBar];
-    }
     
     return cell;
 }
@@ -116,20 +109,67 @@
     
     switch(indexPath.row)
     {
-        case 1:{
+        case RE_WORK_PLACE:{
+            [cell.dataTextField setUserInteractionEnabled:NO];
             SetLocationViewController  *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"SetLocationViewController"];
             [self.navigationController pushViewController:vc animated:YES];
             break;
         }
-        case 2:{
+        case RE_CASE_CONTENT:{
+            [cell.dataTextField setUserInteractionEnabled:NO];
             UIViewController  *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"EditCaseDetailContent"];
             [self.navigationController pushViewController:vc animated:YES];
+            break;
+        }
+
+        case RE_WAGE:{
+            UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"請選擇薪資類型" message:@"" preferredStyle: UIAlertControllerStyleActionSheet];
+//            UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
+            UIAlertAction *hourType = [UIAlertAction actionWithTitle:@"時薪" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+                cell.titleLabel.text = @"時薪";
+            }];
+            
+            UIAlertAction *dayType = [UIAlertAction actionWithTitle:@"日薪" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+                cell.titleLabel.text = @"日薪";
+            }];
+                
+            UIAlertAction *totalType = [UIAlertAction actionWithTitle:@"總金額" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+                    cell.titleLabel.text = @"總金額";
+            }];
+            //[alertController addAction:cancelAction];
+            [alertController addAction:hourType];
+            [alertController addAction:dayType];
+            [alertController addAction:totalType];
+            
+            [self presentViewController:alertController animated:YES completion:nil];
         }
         default:{
             cell.dataLabel.hidden = YES;
             cell.dataTextField.hidden = NO;
             break;
         }
+    }
+    
+    if (indexPath.row == RE_WORK_BEGIN_AT || indexPath.row == RE_WORK_END_AT || indexPath.row == RE_DEADLINE) {
+        
+        if (indexPath.row == RE_DEADLINE) {
+            datePicker.datePickerMode = UIDatePickerModeDate;
+        }else{
+            datePicker.datePickerMode = UIDatePickerModeDateAndTime;
+        }
+        
+        [cell.dataTextField setInputView:datePicker];
+        
+        UIToolbar *toolBar=[[UIToolbar alloc]initWithFrame:CGRectMake(0, 0, 320, 44)];
+        [toolBar setTintColor:[UIColor colorWithRed: 1.0 green: 0.5781 blue: 0.0 alpha: 1.0]];
+        [toolBar setTranslucent:YES];
+        [toolBar setBackgroundColor:[UIColor colorWithRed: 1.0 green: 1.0 blue: 1.0 alpha: 1.0]];
+        UIBarButtonItem *doneBtn=[[UIBarButtonItem alloc]initWithTitle:@"完成" style:UIBarButtonItemStyleDone target:self action:@selector(finishDataUpdate)];
+        
+        
+        UIBarButtonItem *space=[[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
+        [toolBar setItems:[NSArray arrayWithObjects:space,doneBtn, nil]];
+        [cell.dataTextField setInputAccessoryView:toolBar];
     }
 
 
@@ -140,9 +180,11 @@
         return;
     }
     NSArray *cellArray = [tableView visibleCells];
-    
     SettingTableViewCell *cell = cellArray[indexPath.row];
-    cell.dataLabel.text = cell.dataTextField.text;
+    
+    if([cell.dataTextField.text length] > 0){
+        cell.dataLabel.text = cell.dataTextField.text;
+    }
     cell.dataLabel.hidden = NO;
     cell.dataTextField.hidden = YES;
     
@@ -244,6 +286,85 @@
     [self presentViewController:imagePicker animated:YES completion:nil];
 }
 
+#pragma mark - Process data to remote server
+
+- (void) saveCaseDetailsToRemoteServer{
+    
+    NSArray *cellArray = [self.tableView visibleCells];
+    
+    SettingTableViewCell *cell = nil;
+    
+    
+    
+    for (int i=0; i < listDetails.count; i++) {
+        
+        cell = cellArray[i];
+        if( [cell.dataTextField.text length] > 0)
+        {
+            switch(i)
+            {
+                case RE_CASE_TITLE:
+                    details[@"case_title"] = cell.dataTextField.text;
+                    break;
+                case RE_WORK_PLACE:
+                    //details[@"work_GeoPoint"] =;
+                    break;
+                case RE_CASE_CONTENT:
+                    break;
+                case RE_WORK_BEGIN_AT:
+                    details[@"work_begin_at"] = cell.dataTextField.text;
+                    break;
+                case RE_WORK_END_AT:
+                    details[@"work_end_at"] = cell.dataTextField.text;
+                    break;
+                case RE_WAGE:
+                    details[@"wage"] = cell.dataTextField.text;
+                    break;
+                case RE_PERSONS:
+                    details[@"persons"] = cell.dataTextField.text;
+                    break;
+                case RE_DEADLINE:
+                    details[@"deadline"] = cell.dataTextField.text;
+                    break;
+                case RE_CONTACT_NAME:
+                    details[@"contact_name"] = cell.dataTextField.text;
+                    break;
+                case RE_CONTACT_PHONE:
+                    details[@"contact_phone"] = cell.dataTextField.text;
+                    break;
+                case RE_CONTACT_EMAIL:
+                    details[@"contact_email"] = cell.dataTextField.text;
+                    break;
+            }
+        }
+    }
+    
+    details[@"case_status"] = @"Open";
+    [details saveInBackground];
+}
+
+
+- (IBAction)finishEditBtnPressed:(id)sender {
+    
+    NSLog(@"the finishEditBtnPressed pressed\n");
+    
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"完成編輯" message:@"你是否已完成編輯工作內容？" preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction *ok = [UIAlertAction actionWithTitle:@"確定" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        //[self saveCaseDetailsToRemoteServer];
+    }];
+    
+    UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+
+    }];
+
+    [alert addAction:cancel];
+    [alert addAction:ok];
+
+    [self presentViewController:alert animated:true completion:nil];
+        
+}
+
 /*
 // Override to support conditional editing of the table view.
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -276,3 +397,4 @@
 */
 
 @end
+
