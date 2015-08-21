@@ -22,6 +22,21 @@
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    
+    if ([PFUser currentUser] == nil) {
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"未登入" message:@"請先登入你的帳號" preferredStyle:UIAlertControllerStyleAlert];
+        
+        UIAlertAction *ok = [UIAlertAction actionWithTitle:@"確定" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+            UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle: nil];
+            UIViewController *vc ;
+            vc = [mainStoryboard instantiateViewControllerWithIdentifier: @"LoginViewController"];
+            [[SlideNavigationController sharedInstance] popAllAndSwitchToViewController:vc withCompletion:nil];
+        }];
+        
+        [alert addAction:ok];
+        [self presentViewController:alert animated:true completion:nil];
+    }
+    
 }
 
 - (void)didReceiveMemoryWarning {

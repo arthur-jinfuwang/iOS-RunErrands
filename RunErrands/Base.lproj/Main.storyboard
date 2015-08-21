@@ -143,6 +143,11 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="編輯工作內容" id="PDw-B5-5Bu">
+                        <barButtonItem key="leftBarButtonItem" title="取消" id="Sog-tn-7yc">
+                            <connections>
+                                <action selector="cancelEditCaseBtnPressed:" destination="Ynm-MY-K22" id="4Yt-kA-htN"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="完成" id="FLG-xA-fe0">
                             <connections>
                                 <action selector="finishEditBtnPressed:" destination="Ynm-MY-K22" id="LlC-4L-bTy"/>

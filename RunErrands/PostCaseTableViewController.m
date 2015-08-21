@@ -10,16 +10,13 @@
 #import "SettingTableViewCell.h"
 #import "TakePictureView.h"
 #import "SetLocationViewController.h"
-#import <Parse/Parse.h>
-#import <Parse/PFQuery.h>
-
 
 @interface PostCaseTableViewController ()<TakePictureViewDelegate,UINavigationControllerDelegate,UIImagePickerControllerDelegate>
 {
     NSMutableArray *listDetails;
+    NSMutableDictionary *listDetailsData;
     TakePictureView *casePicture;
     UIDatePicker *datePicker;
-    PFObject *details;
     PFGeoPoint *caseLocation;
 }
 
@@ -39,6 +36,9 @@
     listDetails = [[NSMutableArray alloc]initWithObjects:
                    @"設定標題",@"設定地點",@"詳細內容",@"起始時間",@"結束時間",@"薪資",
                    @"需求人數",@"截止日期",@"聯絡人",@"聯絡電話",@"Email",nil];
+    
+    listDetailsData = [NSMutableDictionary new];
+    
     casePicture = [[[NSBundle mainBundle] loadNibNamed:@"TakePictureView" owner:nil options:nil] lastObject];
     casePicture.thePictureLabel.text = @"設定工作相關的照片";
     casePicture.takePicturedViewDlegate = self;
@@ -48,11 +48,27 @@
     datePicker.minuteInterval = 5;
     datePicker.backgroundColor = [UIColor whiteColor];
     
+    if ([PFUser currentUser] == nil) {
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"未登入" message:@"請先登入你的帳號" preferredStyle:UIAlertControllerStyleAlert];
+        
+        UIAlertAction *ok = [UIAlertAction actionWithTitle:@"確定" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+            UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle: nil];
+            UIViewController *vc ;
+            vc = [mainStoryboard instantiateViewControllerWithIdentifier: @"LoginViewController"];
+            [[SlideNavigationController sharedInstance] popAllAndSwitchToViewController:vc withCompletion:nil];
+        }];
+        
+        [alert addAction:ok];
+        [self presentViewController:alert animated:true completion:nil];
+    }
+    
+    
     // Init the parse object "Cases"
-    details = [PFObject objectWithClassName:@"Cases"];
-    details[@"owner_id"] = [PFUser currentUser];
-    details[@"case_status"] = @"Editing";
-
+    if (_details == nil) {
+        _details = [PFObject objectWithClassName:@"Cases"];
+        _details[@"owner_id"] = [[PFUser currentUser] objectId];
+        _details[@"case_status"] = @"Editing";
+    }
 }
 
 - (void)didReceiveMemoryWarning {
@@ -93,7 +109,26 @@
     cell = (SettingTableViewCell *)[view lastObject];
     cell.titleLabel.text = listDetails[indexPath.row];
     
-    
+    switch(indexPath.row)
+    {
+        case RE_WORK_PLACE:
+        case RE_CASE_CONTENT:
+            [cell.dataTextField setUserInteractionEnabled:NO];
+            break;
+        case RE_WAGE:
+            [cell.dataTextField setKeyboardType:UIKeyboardTypeNumberPad];
+            break;
+        case RE_PERSONS:
+            [cell.dataTextField setKeyboardType:UIKeyboardTypeNumberPad];
+            break;
+        case RE_CONTACT_PHONE:
+            [cell.dataTextField setKeyboardType:UIKeyboardTypePhonePad];
+            break;
+        case RE_CONTACT_EMAIL:
+            [cell.dataTextField setKeyboardType:UIKeyboardTypeEmailAddress];
+            break;
+    }
+
     return cell;
 }
 
@@ -110,13 +145,11 @@
     switch(indexPath.row)
     {
         case RE_WORK_PLACE:{
-            [cell.dataTextField setUserInteractionEnabled:NO];
             SetLocationViewController  *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"SetLocationViewController"];
             [self.navigationController pushViewController:vc animated:YES];
             break;
         }
         case RE_CASE_CONTENT:{
-            [cell.dataTextField setUserInteractionEnabled:NO];
             UIViewController  *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"EditCaseDetailContent"];
             [self.navigationController pushViewController:vc animated:YES];
             break;
@@ -184,7 +217,13 @@
     
     if([cell.dataTextField.text length] > 0){
         cell.dataLabel.text = cell.dataTextField.text;
+        [listDetailsData setObject:cell.dataLabel.text forKey:@(indexPath.row)];
+        
+        if(indexPath.row == RE_WAGE){
+            [listDetailsData setObject:cell.titleLabel.text forKey:@(RE_WAGE_CLASS)];
+        }
     }
+    
     cell.dataLabel.hidden = NO;
     cell.dataTextField.hidden = YES;
     
@@ -289,58 +328,54 @@
 #pragma mark - Process data to remote server
 
 - (void) saveCaseDetailsToRemoteServer{
-    
-    NSArray *cellArray = [self.tableView visibleCells];
-    
-    SettingTableViewCell *cell = nil;
-    
-    
-    
-    for (int i=0; i < listDetails.count; i++) {
+
+    NSArray * keys = [listDetailsData allKeys];
+    for (NSNumber *key in keys) {
+        NSString *data = [listDetailsData objectForKey:key];
+        NSLog(@"Key:%d value:%@",key.intValue, data);
         
-        cell = cellArray[i];
-        if( [cell.dataTextField.text length] > 0)
+        
+        
+        switch(key.intValue)
         {
-            switch(i)
-            {
-                case RE_CASE_TITLE:
-                    details[@"case_title"] = cell.dataTextField.text;
-                    break;
-                case RE_WORK_PLACE:
-                    //details[@"work_GeoPoint"] =;
-                    break;
-                case RE_CASE_CONTENT:
-                    break;
-                case RE_WORK_BEGIN_AT:
-                    details[@"work_begin_at"] = cell.dataTextField.text;
-                    break;
-                case RE_WORK_END_AT:
-                    details[@"work_end_at"] = cell.dataTextField.text;
-                    break;
-                case RE_WAGE:
-                    details[@"wage"] = cell.dataTextField.text;
-                    break;
-                case RE_PERSONS:
-                    details[@"persons"] = cell.dataTextField.text;
-                    break;
-                case RE_DEADLINE:
-                    details[@"deadline"] = cell.dataTextField.text;
-                    break;
-                case RE_CONTACT_NAME:
-                    details[@"contact_name"] = cell.dataTextField.text;
-                    break;
-                case RE_CONTACT_PHONE:
-                    details[@"contact_phone"] = cell.dataTextField.text;
-                    break;
-                case RE_CONTACT_EMAIL:
-                    details[@"contact_email"] = cell.dataTextField.text;
-                    break;
-            }
+            case RE_CASE_TITLE:
+                _details[@"case_title"] = data;
+                break;
+            case RE_WORK_PLACE:
+                //_details[@"work_GeoPoint"] =;
+                break;
+            case RE_CASE_CONTENT:
+                break;
+            case RE_WORK_BEGIN_AT:
+                _details[@"work_begin_at"] = data;
+                break;
+            case RE_WORK_END_AT:
+                _details[@"work_end_at"] = data;
+                break;
+            case RE_WAGE:
+                _details[@"wage_class"] = data;
+                _details[@"wage"] = data;
+                break;
+            case RE_PERSONS:
+                _details[@"persons"] = data;
+                break;
+            case RE_DEADLINE:
+                _details[@"deadline"] = data;
+                break;
+            case RE_CONTACT_NAME:
+                _details[@"contact_name"] = data;
+                break;
+            case RE_CONTACT_PHONE:
+                _details[@"contact_phone"] = data;
+                break;
+            case RE_CONTACT_EMAIL:
+                _details[@"contact_email"] = data;
+                break;
         }
     }
     
-    details[@"case_status"] = @"Open";
-    [details saveInBackground];
+    _details[@"case_status"] = @"Open";
+    [_details saveInBackground];
 }
 
 
@@ -351,7 +386,7 @@
     UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"完成編輯" message:@"你是否已完成編輯工作內容？" preferredStyle:UIAlertControllerStyleAlert];
     
     UIAlertAction *ok = [UIAlertAction actionWithTitle:@"確定" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
-        //[self saveCaseDetailsToRemoteServer];
+        [self saveCaseDetailsToRemoteServer];
     }];
     
     UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
@@ -363,6 +398,33 @@
 
     [self presentViewController:alert animated:true completion:nil];
         
+}
+
+- (IBAction)cancelEditCaseBtnPressed:(id)sender {
+    NSLog(@"the cancelEditCaseBtnPressed pressed\n");
+    
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"取消編輯" message:@"你是否想要取消編輯內容？" preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction *ok = [UIAlertAction actionWithTitle:@"是" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        //跳轉到下個頁面
+        UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle: nil];
+        
+        UIViewController *vc ;
+        
+        vc = [mainStoryboard instantiateViewControllerWithIdentifier: @"PostListTableViewController"];
+        
+        [[SlideNavigationController sharedInstance] popAllAndSwitchToViewController:vc withCompletion:nil];
+        
+    }];
+    
+    UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"否" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        
+    }];
+    
+    [alert addAction:cancel];
+    [alert addAction:ok];
+    
+    [self presentViewController:alert animated:true completion:nil];
 }
 
 /*

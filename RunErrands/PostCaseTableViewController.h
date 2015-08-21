@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import "SlideNavigationController.h"
+#import <Parse/Parse.h>
+#import <Parse/PFQuery.h>
 
 typedef NS_ENUM(NSInteger, RE_CASEDETAIL){
     RE_CASE_TITLE = 0 ,
@@ -20,10 +22,15 @@ typedef NS_ENUM(NSInteger, RE_CASEDETAIL){
     RE_DEADLINE,
     RE_CONTACT_NAME,
     RE_CONTACT_PHONE,
-    RE_CONTACT_EMAIL
+    RE_CONTACT_EMAIL,
+    
+    RE_WAGE_CLASS = 20,
+    
 };
 
 
 @interface PostCaseTableViewController:UITableViewController <SlideNavigationControllerDelegate>
+
+@property (nonatomic, strong)  PFObject *details;
 
 @end
