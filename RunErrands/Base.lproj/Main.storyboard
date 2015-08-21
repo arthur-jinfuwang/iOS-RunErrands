@@ -336,13 +336,13 @@
                                     <constraint firstAttribute="height" constant="21" id="rCd-1h-ktp"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="密碼：" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0AE-4L-met">
                                 <rect key="frame" x="16" y="239" width="51" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZGd-S2-3P7">
@@ -401,7 +401,7 @@
                                     <constraint firstAttribute="width" constant="170" id="yPN-3t-myI"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="italicSystem" pointSize="27"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                                 <variation key="default">
                                     <mask key="constraints">
@@ -484,6 +484,9 @@
                                         <exclude reference="uu6-75-LMJ"/>
                                     </mask>
                                 </variation>
+                                <connections>
+                                    <action selector="RegisterBtnpressed:" destination="Kni-yZ-eIA" eventType="touchUpInside" id="0Yg-sM-rgc"/>
+                                </connections>
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ME4-O7-2BX">
                                 <rect key="frame" x="61" y="165" width="516" height="30"/>
@@ -638,6 +641,7 @@
                         </variation>
                     </view>
                     <connections>
+                        <outlet property="RegisterBtnpressed" destination="g7k-9o-vWA" id="gZc-Fh-CUc"/>
                         <outlet property="facebookLoginBtn" destination="gab-IL-2bB" id="rjC-KV-QAS"/>
                     </connections>
                 </viewController>
