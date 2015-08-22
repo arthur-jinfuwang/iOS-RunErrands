@@ -148,17 +148,16 @@
             SetLocationViewController  *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"SetLocationViewController"];
             vc.returnCaseLocation = ^void(SelectAnnotation *location){
                 cell.dataTextField.text = [NSString stringWithFormat:@"%@",location.subtitle];
-                cell.dataLabel.text =[NSString stringWithFormat:@"%@",location.roadName];
-
+                cell.dataLabel.text =[NSString stringWithFormat:@"%@",location.subtitle];
+                [listDetailsData setObject:cell.dataLabel.text forKey:@(indexPath.row)];
                 NSLog(@"post menu:place---->>%@, %@", cell.dataTextField.text, location.roadName);
-                
             };
             
             [self.navigationController pushViewController:vc animated:YES];
             break;
         }
         case RE_CASE_CONTENT:{
-            UIViewController  *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"EditCaseDetailContent"];
+            UIViewController  *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"EditCaseContentViewController"];
             [self.navigationController pushViewController:vc animated:YES];
             break;
         }
@@ -395,6 +394,9 @@
     
     UIAlertAction *ok = [UIAlertAction actionWithTitle:@"確定" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
         [self saveCaseDetailsToRemoteServer];
+        UIViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier: @"PostListTableViewController"];
+        
+        [self.navigationController pushViewController:vc animated:YES];
     }];
     
     UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
@@ -415,13 +417,9 @@
     
     UIAlertAction *ok = [UIAlertAction actionWithTitle:@"是" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
         //跳轉到下個頁面
-        UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle: nil];
+        UIViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier: @"PostListTableViewController"];
         
-        UIViewController *vc ;
-        
-        vc = [mainStoryboard instantiateViewControllerWithIdentifier: @"PostListTableViewController"];
-        
-        [[SlideNavigationController sharedInstance] popAllAndSwitchToViewController:vc withCompletion:nil];
+        [self.navigationController pushViewController:vc animated:YES];
         
     }];
     

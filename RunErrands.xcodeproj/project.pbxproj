@@ -17,6 +17,7 @@
 		BD3618EB1B67E35200A13CA9 /* SetLocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BD3618EA1B67E35200A13CA9 /* SetLocationViewController.m */; };
 		BD4F48E51B77270E005DD3AC /* TakePictureView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BD4F48E41B77270E005DD3AC /* TakePictureView.xib */; };
 		BD4F48E81B77274D005DD3AC /* TakePictureView.m in Sources */ = {isa = PBXBuildFile; fileRef = BD4F48E71B77274D005DD3AC /* TakePictureView.m */; };
+		BD55339D1B886A4D00364ADC /* EditCaseContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BD55339C1B886A4D00364ADC /* EditCaseContentViewController.m */; };
 		BD7B81381B5D1FA900067D29 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BD7B81371B5D1FA900067D29 /* main.m */; };
 		BD7B813B1B5D1FA900067D29 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BD7B813A1B5D1FA900067D29 /* AppDelegate.m */; };
 		BD7B81411B5D1FA900067D29 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BD7B813F1B5D1FA900067D29 /* Main.storyboard */; };
@@ -120,6 +121,8 @@
 		BD4F48E41B77270E005DD3AC /* TakePictureView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TakePictureView.xib; sourceTree = "<group>"; };
 		BD4F48E61B77274D005DD3AC /* TakePictureView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TakePictureView.h; sourceTree = "<group>"; };
 		BD4F48E71B77274D005DD3AC /* TakePictureView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TakePictureView.m; sourceTree = "<group>"; };
+		BD55339B1B886A4D00364ADC /* EditCaseContentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditCaseContentViewController.h; sourceTree = "<group>"; };
+		BD55339C1B886A4D00364ADC /* EditCaseContentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditCaseContentViewController.m; sourceTree = "<group>"; };
 		BD7B81321B5D1FA900067D29 /* RunErrands.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RunErrands.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BD7B81361B5D1FA900067D29 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BD7B81371B5D1FA900067D29 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -510,6 +513,8 @@
 				BDA28E2B1B6F610E0029F82A /* PostListTableViewController.m */,
 				BDE131001B711D5E006F30F6 /* PostCaseTableViewController.h */,
 				BDE131011B711D5E006F30F6 /* PostCaseTableViewController.m */,
+				BD55339B1B886A4D00364ADC /* EditCaseContentViewController.h */,
+				BD55339C1B886A4D00364ADC /* EditCaseContentViewController.m */,
 			);
 			name = Post;
 			sourceTree = "<group>";
@@ -706,6 +711,7 @@
 			files = (
 				BD7B817C1B5D248D00067D29 /* SlideNavigationController.m in Sources */,
 				BD7B81761B5D248D00067D29 /* SlideNavigationContorllerAnimatorScale.m in Sources */,
+				BD55339D1B886A4D00364ADC /* EditCaseContentViewController.m in Sources */,
 				BD3618EB1B67E35200A13CA9 /* SetLocationViewController.m in Sources */,
 				BD1527E31B7260E5000CFFF3 /* SettingTableViewController.m in Sources */,
 				BD4F48E81B77274D005DD3AC /* TakePictureView.m in Sources */,

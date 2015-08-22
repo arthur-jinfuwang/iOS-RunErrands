@@ -194,10 +194,10 @@
             </objects>
             <point key="canvasLocation" x="3813" y="2677"/>
         </scene>
-        <!--View Controller-->
+        <!--Edit Case Content View Controller-->
         <scene sceneID="IYE-Ud-g7M">
             <objects>
-                <viewController storyboardIdentifier="EditCaseDetailContent" id="yfz-Fx-9cA" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="EditCaseContentViewController" id="yfz-Fx-9cA" customClass="EditCaseContentViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="PVv-sl-5ER"/>
                         <viewControllerLayoutGuide type="bottom" id="5SV-fz-7xr"/>
@@ -208,20 +208,37 @@
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DNx-u9-mDd">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <color key="backgroundColor" red="0.80000000000000004" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences" enablesReturnKeyAutomatically="YES"/>
+                                <connections>
+                                    <outlet property="delegate" destination="yfz-Fx-9cA" id="LSm-dh-rTZ"/>
+                                </connections>
                             </textView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="DNx-u9-mDd" firstAttribute="leading" secondItem="io6-qQ-wfb" secondAttribute="leadingMargin" constant="-16" id="3b6-yo-00g"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="DNx-u9-mDd" secondAttribute="trailing" constant="-16" id="g2Y-aj-1pY"/>
-                            <constraint firstItem="5SV-fz-7xr" firstAttribute="top" secondItem="DNx-u9-mDd" secondAttribute="bottom" id="lIc-Nu-gkO"/>
-                            <constraint firstItem="DNx-u9-mDd" firstAttribute="top" secondItem="io6-qQ-wfb" secondAttribute="topMargin" id="zI4-YQ-iuD"/>
+                            <constraint firstItem="DNx-u9-mDd" firstAttribute="leading" secondItem="io6-qQ-wfb" secondAttribute="leading" id="F9q-nZ-KuX"/>
+                            <constraint firstItem="DNx-u9-mDd" firstAttribute="bottom" secondItem="5SV-fz-7xr" secondAttribute="top" id="U2m-4k-Dih"/>
+                            <constraint firstAttribute="trailing" secondItem="DNx-u9-mDd" secondAttribute="trailing" id="Xa6-Rw-qb8"/>
+                            <constraint firstItem="DNx-u9-mDd" firstAttribute="top" secondItem="io6-qQ-wfb" secondAttribute="top" id="eEF-5M-XOK"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="jg9-Fg-FWq">
+                        <barButtonItem key="leftBarButtonItem" title="取消" id="rLG-Nu-DAj">
+                            <connections>
+                                <action selector="cancelEditBtnPressed:" destination="yfz-Fx-9cA" id="ioO-Ma-imD"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="完成" id="nDL-UT-UDY">
+                            <connections>
+                                <action selector="finishEditBtnPressed:" destination="yfz-Fx-9cA" id="0ai-7K-sUi"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="theEditCaseTextView" destination="DNx-u9-mDd" id="bVS-Ua-Yt5"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hbb-lh-sJA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
