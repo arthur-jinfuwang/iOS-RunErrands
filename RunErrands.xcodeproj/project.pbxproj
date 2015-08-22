@@ -316,8 +316,6 @@
 				EAEAA57C1B78FAB2007D215C /* Message */,
 				EAEAA57D1B78FAE8007D215C /* Follow */,
 				EAEAA57E1B78FB65007D215C /* Case */,
-				EAEAA57F1B78FD49007D215C /* selectAnnotation */,
-				EAEAA5811B78FD88007D215C /* SetLocation */,
 				EAEAA5801B78FD75007D215C /* Post */,
 				EAEAA5821B78FD9F007D215C /* Map */,
 				EAEAA5831B78FDBD007D215C /* openView */,
@@ -504,18 +502,10 @@
 			name = Case;
 			sourceTree = "<group>";
 		};
-		EAEAA57F1B78FD49007D215C /* selectAnnotation */ = {
-			isa = PBXGroup;
-			children = (
-				BDD7C19A1B6CEC80009A9E84 /* SelectAnnotation.h */,
-				BDD7C19B1B6CEC80009A9E84 /* SelectAnnotation.m */,
-			);
-			name = selectAnnotation;
-			sourceTree = "<group>";
-		};
 		EAEAA5801B78FD75007D215C /* Post */ = {
 			isa = PBXGroup;
 			children = (
+				EAEAA5811B78FD88007D215C /* SetLocation */,
 				BDA28E2A1B6F610E0029F82A /* PostListTableViewController.h */,
 				BDA28E2B1B6F610E0029F82A /* PostListTableViewController.m */,
 				BDE131001B711D5E006F30F6 /* PostCaseTableViewController.h */,
@@ -527,6 +517,8 @@
 		EAEAA5811B78FD88007D215C /* SetLocation */ = {
 			isa = PBXGroup;
 			children = (
+				BDD7C19A1B6CEC80009A9E84 /* SelectAnnotation.h */,
+				BDD7C19B1B6CEC80009A9E84 /* SelectAnnotation.m */,
 				BD3618E91B67E35200A13CA9 /* SetLocationViewController.h */,
 				BD3618EA1B67E35200A13CA9 /* SetLocationViewController.m */,
 			);

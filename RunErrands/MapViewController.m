@@ -40,7 +40,7 @@
     [locationManager startUpdatingLocation];
     _theMapView.userTrackingMode = MKUserTrackingModeFollow;
     
-#if 1
+
     PFQuery *query = [PFQuery queryWithClassName:@"Cases"];
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (!error) {
@@ -56,8 +56,6 @@
             NSLog(@"Error: %@ %@", error, [error userInfo]);
         }
     }];
-#endif
-    
 }
 
 - (void)didReceiveMemoryWarning {

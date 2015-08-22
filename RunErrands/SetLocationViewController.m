@@ -9,13 +9,13 @@
 #import "SetLocationViewController.h"
 #import <MapKit/MapKit.h>
 #import <CoreLocation/CoreLocation.h>
-#import "SelectAnnotation.h"
 #import "SlideNavigationController.h"
 
 @interface SetLocationViewController ()<MKMapViewDelegate, CLLocationManagerDelegate>
 {
     CLLocationManager *locationManager;
     BOOL isFirstLocationReceived;
+    SelectAnnotation *caseAnnotation;
 }
 @property (weak, nonatomic) IBOutlet MKMapView *theMapView;
 
@@ -65,10 +65,10 @@
         
         CLLocationCoordinate2D coordicate = currentLocation.coordinate;
         
-        SelectAnnotation *annotation = [[SelectAnnotation alloc] initWithLocation:coordicate];
-        annotation.coordinate = coordicate;
+        caseAnnotation = [[SelectAnnotation alloc] initWithLocation:coordicate];
+        caseAnnotation.coordinate = coordicate;
         
-        [_theMapView addAnnotation: annotation];
+        [_theMapView addAnnotation: caseAnnotation];
         
         isFirstLocationReceived =true;
     }
@@ -97,6 +97,10 @@
     resultView.animatesDrop = true;
     resultView.canShowCallout = YES;
     resultView.pinColor = MKPinAnnotationColorGreen;
+    UIButton *rightButton = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
+    
+    [rightButton addTarget:self action:@selector(buttonPressed:) forControlEvents:UIControlEventTouchUpInside];
+    resultView.rightCalloutAccessoryView = rightButton;
     
     return resultView;
 }
@@ -114,22 +118,24 @@
 }
 
 - (void) buttonPressed:(id)sender {
-    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"確認" message:@"請確認你指定的位置" preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"確認" message:@"你已指定工作地點了嗎" preferredStyle:UIAlertControllerStyleAlert];
 
     UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
         [self dismissViewControllerAnimated:true completion:nil];
     }];
-    [alert addAction:cancel];
     
     UIAlertAction *ok = [UIAlertAction actionWithTitle:@"確定" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
-        UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle: nil];
         
-        UIViewController *vc ;
+        NSLog(@"hhhhhh--->>%@\n",caseAnnotation);
+        self.returnCaseLocation(caseAnnotation);
         
-        vc = [mainStoryboard instantiateViewControllerWithIdentifier: @"PostCastViewController"];
+        
+        UIViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier: @"PostCaseTableViewController"];
 
         [[SlideNavigationController sharedInstance] popAllAndSwitchToViewController:vc withCompletion:nil];
     }];
+    
+    [alert addAction:cancel];
     [alert addAction:ok];
     
     [self presentViewController:alert animated:true completion:nil];

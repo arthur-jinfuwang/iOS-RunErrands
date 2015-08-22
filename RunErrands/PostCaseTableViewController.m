@@ -146,6 +146,14 @@
     {
         case RE_WORK_PLACE:{
             SetLocationViewController  *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"SetLocationViewController"];
+            vc.returnCaseLocation = ^void(SelectAnnotation *location){
+                cell.dataTextField.text = [NSString stringWithFormat:@"%@",location.subtitle];
+                cell.dataLabel.text =[NSString stringWithFormat:@"%@",location.roadName];
+
+                NSLog(@"post menu:place---->>%@, %@", cell.dataTextField.text, location.roadName);
+                
+            };
+            
             [self.navigationController pushViewController:vc animated:YES];
             break;
         }
