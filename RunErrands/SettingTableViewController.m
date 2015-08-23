@@ -16,8 +16,10 @@
     NSMutableArray *settingDetailList;
     NSMutableDictionary *settingDetailData;
     TakePictureView  *avatarHeader;
+    BOOL isEditing;
 }
 
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *theEditBtn;
 @end
 
 @implementation SettingTableViewController
@@ -36,6 +38,8 @@
     avatarHeader = [[[NSBundle mainBundle] loadNibNamed:@"TakePictureView" owner:nil options:nil] lastObject];
     avatarHeader.thePictureLabel.text = @"設定自己的大頭貼";
     avatarHeader.takePicturedViewDlegate = self;
+    
+    isEditing = false;
 
     if ([PFUser currentUser] == nil) {
         UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"未登入" message:@"請先登入你的帳號" preferredStyle:UIAlertControllerStyleAlert];
@@ -151,6 +155,10 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    if (isEditing == false) {
+        return;
+    }
+    
     NSArray *cellArray = [tableView visibleCells];
     
     SettingTableViewCell *cell = cellArray[indexPath.row];
@@ -181,6 +189,9 @@
 
 - (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath NS_AVAILABLE_IOS(3_0)
 {
+    if (isEditing == false) {
+        return;
+    }
     NSArray *cellArray = [tableView visibleCells];
     SettingTableViewCell *cell = cellArray[indexPath.row];
     if([cell.dataLabel.text length] > 0)
@@ -310,7 +321,32 @@
 
 - (IBAction)editBtnPressed:(id)sender {
     NSLog(@"Setting menu edit btn pressed");
-    [self saveUserDataToRemoteServer];
+    if ([self.theEditBtn.title isEqualToString:@"編輯"]) {
+        
+        [SlideNavigationController sharedInstance].leftBarButtonItem.enabled = false;
+        self.theEditBtn.title= @"完成";
+        isEditing = true;
+    }else
+    {
+        if (self.tableView.indexPathForSelectedRow != nil)
+        {
+            NSLog(@"I am comming in done btn");
+            NSArray *cellArray = [self.tableView visibleCells];
+            SettingTableViewCell *cell = cellArray[self.tableView.indexPathForSelectedRow.row];
+            [cell.dataTextField resignFirstResponder];
+            cell.dataLabel.text = cell.dataTextField.text;
+            cell.dataLabel.hidden = NO;
+            cell.dataTextField.hidden = YES;
+            if([cell.dataTextField.text length] > 0)
+            {
+                [settingDetailData setObject:cell.dataLabel.text forKey:@(self.tableView.indexPathForSelectedRow.row)];
+            }
+        }
+        //[self saveUserDataToRemoteServer];
+        self.theEditBtn.title= @"編輯";
+        isEditing = false;
+        [SlideNavigationController sharedInstance].leftBarButtonItem.enabled = true;
+    }
 }
 
 /*

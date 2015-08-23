@@ -38,13 +38,12 @@
         
         [alert addAction:ok];
         [self presentViewController:alert animated:true completion:nil];
+    }else{
+        if (caseList == nil)
+        {
+            [self loadParseDatas];
+        }
     }
-    
-    if (caseList == nil)
-    {
-        [self loadParseDatas];
-    }
-
 }
                            
 -(void) loadParseDatas

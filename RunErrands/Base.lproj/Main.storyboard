@@ -783,6 +783,9 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="theEditBtn" destination="hxO-uU-LEV" id="qMc-4h-MIA"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vnr-Z9-Lit" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
