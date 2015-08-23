@@ -19,6 +19,7 @@
     UIDatePicker *datePicker;
     PFGeoPoint *caseLocation;
 }
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *spin;
 
 @end
 
@@ -48,6 +49,7 @@
     datePicker.minuteInterval = 5;
     datePicker.backgroundColor = [UIColor whiteColor];
     
+    
     if ([PFUser currentUser] == nil) {
         UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"未登入" message:@"請先登入你的帳號" preferredStyle:UIAlertControllerStyleAlert];
         
@@ -60,15 +62,11 @@
         
         [alert addAction:ok];
         [self presentViewController:alert animated:true completion:nil];
+    }else{
+
+        [self initCaseInfoAboutUser];
     }
-    
-    
-    // Init the parse object "Cases"
-    if (_details == nil) {
-        _details = [PFObject objectWithClassName:@"Cases"];
-        _details[@"owner_id"] = [[PFUser currentUser] objectId];
-        _details[@"case_status"] = @"Editing";
-    }
+
 }
 
 - (void)didReceiveMemoryWarning {
@@ -76,6 +74,35 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void) initCaseInfoAboutUser
+{
+    PFUser *user = [PFUser currentUser];
+    
+    NSString *name = user[@"nick_name"];
+    NSString *phone = user[@"phone"];
+    NSString *email = user[@"email"];
+    if ([name length] > 0) {
+        _details[@"contact_name"] = user[@"nick_name"];
+    }else
+    {
+        name = user[@"username"];
+    }
+    
+    [listDetailsData setObject:name forKey:@(RE_CONTACT_NAME)];
+    if ([phone length] > 0) {
+        [listDetailsData setObject:phone forKey:@(RE_CONTACT_PHONE)];
+    }
+    if ([email length] > 0) {
+        [listDetailsData setObject:email forKey:@(RE_CONTACT_EMAIL)];
+    }
+    
+    // Init the parse object "Cases"
+    if (_details == nil) {
+        _details = [PFObject objectWithClassName:@"Cases"];
+        _details[@"owner_id"] = [user objectId];
+        _details[@"case_status"] = @"Editing";
+    }
+}
 
 #pragma mark - Table view data source
 
@@ -108,6 +135,12 @@
     NSArray *view = [[NSBundle mainBundle] loadNibNamed:@"SettingCells" owner:nil options:nil];
     cell = (SettingTableViewCell *)[view lastObject];
     cell.titleLabel.text = listDetails[indexPath.row];
+    
+    NSString *data = [listDetailsData objectForKey:@(indexPath.row)];
+    if ( data != nil) {
+        cell.dataLabel.text = data;
+        cell.dataTextField.text = data;
+    }
     
     switch(indexPath.row)
     {
@@ -151,6 +184,9 @@
                 cell.dataLabel.text =[NSString stringWithFormat:@"%@",location.subtitle];
                 [listDetailsData setObject:cell.dataLabel.text forKey:@(indexPath.row)];
                 NSLog(@"post menu:place---->>%@, %@", cell.dataTextField.text, location.roadName);
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [self.tableView reloadData];
+                });
             };
             
             [self.navigationController pushViewController:vc animated:YES];
@@ -382,7 +418,10 @@
     }
     
     _details[@"case_status"] = @"Open";
-    [_details saveInBackground];
+    [self.spin startAnimating];
+    
+    //[_details saveInBackground];
+    [self.spin stopAnimating];
 }
 
 
