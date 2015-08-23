@@ -57,12 +57,7 @@
 
 - (void) timernextstep{
     
-    //跳轉到下個頁面
-    /*
-    MapViewController * viewController = [self.storyboard instantiateViewControllerWithIdentifier:@"MapViewController"];
-    [self presentViewController:viewController animated:YES completion:nil];
- */
-   
+    
     //跳轉到下個頁面
     UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle: nil];
     
@@ -70,7 +65,7 @@
     
     vc = [mainStoryboard instantiateViewControllerWithIdentifier: @"MapViewController"];
     
-    //[[SlideNavigationController sharedInstance] switchToViewController:vc withCompletion:nil ];
+    
     [[SlideNavigationController sharedInstance] popAllAndSwitchToViewController:vc withCompletion:nil];
 
 }

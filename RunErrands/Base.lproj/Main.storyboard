@@ -502,11 +502,13 @@
                             <constraint firstItem="ZGd-S2-3P7" firstAttribute="leading" secondItem="ME4-O7-2BX" secondAttribute="leading" id="2mN-iX-Xzd"/>
                             <constraint firstAttribute="trailingMargin" secondItem="wCr-TP-SrN" secondAttribute="trailing" constant="7" id="3LB-VL-9CW"/>
                             <constraint firstItem="g7k-9o-vWA" firstAttribute="leading" secondItem="ZGd-S2-3P7" secondAttribute="leading" id="58w-nT-OlS"/>
+                            <constraint firstItem="74H-2r-zvy" firstAttribute="leading" secondItem="0va-ad-fGp" secondAttribute="leading" id="5MS-CM-EZD"/>
                             <constraint firstItem="XjD-zZ-VTx" firstAttribute="centerX" secondItem="0va-ad-fGp" secondAttribute="centerX" id="6QR-dd-JNv"/>
                             <constraint firstItem="ME4-O7-2BX" firstAttribute="leading" secondItem="0va-ad-fGp" secondAttribute="leadingMargin" constant="45" id="6zY-9g-AG8"/>
                             <constraint firstItem="gab-IL-2bB" firstAttribute="leading" secondItem="0va-ad-fGp" secondAttribute="leadingMargin" constant="105" id="94y-n7-7vy"/>
                             <constraint firstItem="g7k-9o-vWA" firstAttribute="top" secondItem="ZGd-S2-3P7" secondAttribute="bottom" constant="41" id="9jy-Zo-Pmb"/>
                             <constraint firstAttribute="trailingMargin" secondItem="wCr-TP-SrN" secondAttribute="trailing" constant="7" id="A2K-CW-e1Y"/>
+                            <constraint firstItem="74H-2r-zvy" firstAttribute="top" secondItem="sEh-AI-gf6" secondAttribute="bottom" id="D5R-KT-Pjc"/>
                             <constraint firstItem="SOb-77-KE9" firstAttribute="top" secondItem="wCr-TP-SrN" secondAttribute="bottom" constant="61" id="D7K-Kp-OHy"/>
                             <constraint firstItem="g7k-9o-vWA" firstAttribute="top" secondItem="0AE-4L-met" secondAttribute="bottom" constant="47" id="EcN-do-c4z"/>
                             <constraint firstItem="ZGd-S2-3P7" firstAttribute="trailing" secondItem="ME4-O7-2BX" secondAttribute="trailing" id="Fdu-lQ-Kl8"/>
@@ -543,6 +545,7 @@
                             <constraint firstItem="ZGd-S2-3P7" firstAttribute="baseline" secondItem="0AE-4L-met" secondAttribute="baseline" id="bcA-zd-FMw"/>
                             <constraint firstItem="gab-IL-2bB" firstAttribute="top" secondItem="SOb-77-KE9" secondAttribute="bottom" constant="56" id="blW-hr-IEI"/>
                             <constraint firstItem="wCr-TP-SrN" firstAttribute="leading" secondItem="g7k-9o-vWA" secondAttribute="trailing" constant="12" id="cb9-90-of0"/>
+                            <constraint firstItem="74H-2r-zvy" firstAttribute="top" secondItem="XjD-zZ-VTx" secondAttribute="top" id="ceI-Gq-Knk"/>
                             <constraint firstItem="74H-2r-zvy" firstAttribute="top" secondItem="sEh-AI-gf6" secondAttribute="bottom" id="dTV-7n-EDD"/>
                             <constraint firstItem="74H-2r-zvy" firstAttribute="top" secondItem="XjD-zZ-VTx" secondAttribute="top" id="e32-xl-Llb"/>
                             <constraint firstItem="SOb-77-KE9" firstAttribute="top" secondItem="g7k-9o-vWA" secondAttribute="bottom" constant="61" id="ebj-NN-5JI"/>
@@ -576,6 +579,9 @@
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
+                                <exclude reference="0Yb-jZ-hIe"/>
+                                <exclude reference="dTV-7n-EDD"/>
+                                <exclude reference="e32-xl-Llb"/>
                                 <exclude reference="ocB-XM-Gwi"/>
                                 <exclude reference="6QR-dd-JNv"/>
                                 <exclude reference="UdG-Fd-uBZ"/>
@@ -1146,8 +1152,8 @@
                                     <constraint firstAttribute="width" constant="320" id="Pab-M7-FFs"/>
                                 </constraints>
                             </imageView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" editable="NO" text="Lorem ipsum dolor sit er elit lamet, consectetaur cillium  " translatesAutoresizingMaskIntoConstraints="NO" id="S9N-bK-opf">
-                                <rect key="frame" x="0.0" y="252" width="600" height="348"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Lorem ipsum dolor sit er elit lamet, consectetaur cillium  " translatesAutoresizingMaskIntoConstraints="NO" id="S9N-bK-opf">
+                                <rect key="frame" x="0.0" y="252" width="600" height="304"/>
                                 <color key="backgroundColor" red="1" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>

@@ -59,8 +59,11 @@
 {
     return YES;
 }
+
+
 - (IBAction)RegisterBtnpressed:(id)sender
 {
+    //建立輸入帳號資料訊息框
     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"註冊" message:@"請輸入帳號密碼" preferredStyle:UIAlertControllerStyleAlert];
     UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
         [self dismissViewControllerAnimated:YES completion:nil];
@@ -70,10 +73,34 @@
         NSString *uid = ((UITextField *)[alertController.textFields objectAtIndex:0]).text;
         NSString *pwd = ((UITextField *)[alertController.textFields objectAtIndex:1]).text;
         NSString *repwd = ((UITextField *)[alertController.textFields objectAtIndex:2]).text;
+        
+        //建立密碼錯誤訊息框
+        if(pwd != repwd || [repwd  isEqual: @""] || [pwd  isEqual: @""])
+        {
+                       UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"錯誤訊息" message:@"密碼不符,請再輸入一次" preferredStyle:UIAlertControllerStyleAlert];
+            
+            UIAlertAction *OKAction = [UIAlertAction actionWithTitle:@"確定" style:UIAlertActionStyleDefault handler:nil];
+            [alertController addAction:OKAction];
+            [self presentViewController:alertController animated:YES completion:nil];
+
+        }
+        else
+        {
+            UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle: nil];
+            
+            UIViewController *vc ;
+            
+            vc = [mainStoryboard instantiateViewControllerWithIdentifier: @"MapViewController"];
+            
+            
+            [[SlideNavigationController sharedInstance] popAllAndSwitchToViewController:vc withCompletion:nil];
+        }
         NSLog(@"帳號:%@",uid);
         NSLog(@"密碼:%@",pwd);
         NSLog(@"再次確認:%@",repwd);
-    }];
+        
+        
+            }];
     [alertController addTextFieldWithConfigurationHandler:^(UITextField *textField) {
         textField.placeholder = @"電子信箱";
     }];
@@ -84,16 +111,28 @@
     [alertController addTextFieldWithConfigurationHandler:^(UITextField *textField) {
         textField.placeholder = @"再次確認密碼";
         textField.secureTextEntry = YES;
-//        if(repwd != pwd )
-//        {
-//            
-//        }
-    }];
+            }];
     
     [alertController addAction:cancelAction];
     [alertController addAction:okAction];
     [self presentViewController:alertController animated:YES completion:nil];
 }
+
+//- (void)myMethod {
+//    PFUser *user = [PFUser user];
+//    user.username = @"my name";
+//    user.password = @"my pass";
+//    user.email = @"email@example.com";
+//    
+//    // other fields can be set just like with PFObject
+////    user[@"phone"] = @"415-392-0202";
+//    
+//    [user signUpInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+//        if (!error) {   // Hooray! Let them use the app now.
+//        } else {   NSString *errorString = [error userInfo][@"error"];   // Show the errorString somewhere and let the user try again.
+//        }
+//    }];
+//}
 
 
 
