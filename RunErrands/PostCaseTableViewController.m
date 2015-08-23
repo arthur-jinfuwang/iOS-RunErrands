@@ -377,8 +377,6 @@
         NSString *data = [listDetailsData objectForKey:key];
         NSLog(@"Key:%d value:%@",key.intValue, data);
         
-        
-        
         switch(key.intValue)
         {
             case RE_CASE_TITLE:
@@ -420,7 +418,7 @@
     _details[@"case_status"] = @"Open";
     [self.spin startAnimating];
     
-    //[_details saveInBackground];
+    [_details saveInBackground];
     [self.spin stopAnimating];
 }
 

@@ -776,6 +776,13 @@
                             <outlet property="delegate" destination="lqr-VO-PQ8" id="E3j-KS-TdP"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" id="qaw-2v-whl">
+                        <barButtonItem key="rightBarButtonItem" title="編輯" id="hxO-uU-LEV">
+                            <connections>
+                                <action selector="editBtnPressed:" destination="lqr-VO-PQ8" id="WDM-tf-Gvm"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vnr-Z9-Lit" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
