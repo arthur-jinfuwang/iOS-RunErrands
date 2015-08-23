@@ -10,6 +10,15 @@
 #import "SlideNavigationController.h"
 #import "SettingTableViewCell.h"
 
+typedef NS_ENUM(NSInteger, RE_USER) {
+    RE_USERNAME = 0,
+    RE_USER_NICKNAME,
+    RE_USER_GENDER,
+    RE_USER_BIRTHDAY,
+    RE_USER_PHONE,
+    RE_USER_EMAIL
+};
+
 @interface SettingTableViewController : UITableViewController <SlideNavigationControllerDelegate,UINavigationControllerDelegate,UIImagePickerControllerDelegate>
 
 @end

@@ -187,6 +187,8 @@
             [user setObject:[email length] ? email : @"" forKey:@"email"];
             [user setObject:[gender isEqualToString:@"male"] ? @"男性" : @"女性" forKey:@"gender"];
             [user setObject:[birthday length] ? birthday: @"" forKey:@"birthday"];
+            [user setObject:@"" forKey:@"nickname"];
+            [user setObject:@"" forKey:@"phone"];
             [user saveInBackground];
             
             //NSURL *pictureURL = [NSURL URLWithString:[NSString stringWithFormat:@"https://graph.facebook.com/%@/picture?type=large&return_ssl_resources=1", facebookID]];

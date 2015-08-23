@@ -7,7 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SelectAnnotation.h"
+
+
+typedef void(^CaseLocation)(SelectAnnotation *location);
 
 @interface SetLocationViewController : UIViewController
+
+@property (nonatomic,strong)CaseLocation returnCaseLocation;
 
 @end

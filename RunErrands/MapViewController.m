@@ -9,11 +9,13 @@
 #import "MapViewController.h"
 #import <MapKit/MapKit.h>
 #import <CoreLocation/CoreLocation.h>
+#import <Parse/Parse.h>
 
 @interface MapViewController ()<MKMapViewDelegate, CLLocationManagerDelegate>
 {
     CLLocationManager *locationManager;
     BOOL isFirstLocationReceived;
+    NSArray *caseslist;
 }
 
 @property (weak, nonatomic) IBOutlet MKMapView *theMapView;
@@ -38,6 +40,22 @@
     [locationManager startUpdatingLocation];
     _theMapView.userTrackingMode = MKUserTrackingModeFollow;
     
+
+    PFQuery *query = [PFQuery queryWithClassName:@"Cases"];
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if (!error) {
+            // The find succeeded.
+            NSLog(@"Successfully retrieved %ld case in map view.", objects.count);
+            // Do something with the found objects
+            for (PFObject *object in objects) {
+                NSLog(@"%@", object.objectId);
+            }
+            caseslist = objects;
+        } else {
+            // Log details of the failure
+            NSLog(@"Error: %@ %@", error, [error userInfo]);
+        }
+    }];
 }
 
 - (void)didReceiveMemoryWarning {

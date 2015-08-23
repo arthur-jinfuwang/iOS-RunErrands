@@ -14,6 +14,7 @@
 @interface SettingTableViewController ()<UITextFieldDelegate, TakePictureViewDelegate>
 {
     NSMutableArray *settingDetailList;
+    NSMutableDictionary *settingDetailData;
     TakePictureView  *avatarHeader;
 }
 
@@ -31,6 +32,7 @@
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     settingDetailList = [[NSMutableArray alloc] initWithObjects:
                          @"姓名", @"暱稱", @"性別", @"生日",@"手機", @"電子信箱",nil];
+    
     avatarHeader = [[[NSBundle mainBundle] loadNibNamed:@"TakePictureView" owner:nil options:nil] lastObject];
     avatarHeader.thePictureLabel.text = @"設定自己的大頭貼";
     avatarHeader.takePicturedViewDlegate = self;
@@ -47,7 +49,30 @@
         
         [alert addAction:ok];
         [self presentViewController:alert animated:true completion:nil];
+    }else{
+        [self initUserData];
     }
+}
+
+- (void) initUserData
+{
+    PFUser *user = [PFUser currentUser];
+    if (user == nil) {
+        NSLog(@"Error! Setting menu init, user does not login!");
+        return;
+    }
+    if (settingDetailData == nil) {
+        settingDetailData = [NSMutableDictionary new];
+    }
+    
+    [settingDetailData setObject:(NSString*)user[@"username"] forKey:@(RE_USERNAME)];
+    [settingDetailData setObject:(NSString*)user[@"nickname"] forKey:@(RE_USER_NICKNAME)];
+    [settingDetailData setObject:(NSString*)user[@"gender"] forKey:@(RE_USER_GENDER)];
+    [settingDetailData setObject:(NSString*)user[@"birthday"] forKey:@(RE_USER_BIRTHDAY)];
+    [settingDetailData setObject:(NSString*)user[@"phone"]forKey:@(RE_USER_PHONE)];
+    [settingDetailData setObject:(NSString*)user[@"email"] forKey:@(RE_USER_EMAIL)];
+
+    NSLog(@"%@", settingDetailData);
 }
 
 - (void)didReceiveMemoryWarning {
@@ -93,39 +118,33 @@
     NSArray *view = [[NSBundle mainBundle] loadNibNamed:@"SettingCells" owner:nil options:nil];
     cell = (SettingTableViewCell *)[view lastObject];
     cell.titleLabel.text = settingDetailList[indexPath.row];
-    PFQuery *query =  [PFUser query];
-    if (query) {
-        [query getObjectInBackgroundWithId:[[PFUser currentUser]objectId] block:^(PFObject *object, NSError *error){
+    
+    switch (indexPath.row) {
+        case RE_USERNAME:
+            cell.dataLabel.text = [settingDetailData objectForKey:@(RE_USERNAME)];
+            cell.dataTextField.text = [settingDetailData objectForKey:@(RE_USERNAME)];
+            break;
+        case RE_USER_NICKNAME:
+            cell.dataLabel.text = [settingDetailData objectForKey:@(RE_USER_NICKNAME)];
+            cell.dataTextField.text = [settingDetailData objectForKey:@(RE_USER_NICKNAME)];
+            break;
+        case RE_USER_GENDER:
+            cell.dataLabel.text = [settingDetailData objectForKey:@(RE_USER_GENDER)];
+            cell.dataTextField.text = [settingDetailData objectForKey:@(RE_USER_GENDER)];
+            break;
+        case RE_USER_BIRTHDAY:
+            cell.dataLabel.text = [settingDetailData objectForKey:@(RE_USER_BIRTHDAY)];
+            cell.dataTextField.text = [settingDetailData objectForKey:@(RE_USER_BIRTHDAY)];
+            break;
+        case RE_USER_PHONE:
+            cell.dataLabel.text = [settingDetailData objectForKey:@(RE_USER_PHONE)];
+            cell.dataTextField.text = [settingDetailData objectForKey:@(RE_USER_PHONE)];
+            break;
+        case RE_USER_EMAIL:
+            cell.dataLabel.text = [settingDetailData objectForKey:@(RE_USER_EMAIL)];
+            cell.dataTextField.text = [settingDetailData objectForKey:@(RE_USER_EMAIL)];
+            break;
             
-            switch (indexPath.row) {
-                case 0:
-                    NSLog(@"%@", [object objectForKey:@"username"]);
-                    cell.dataLabel.text = [object objectForKey:@"username"];
-                    break;
-                case 1:
-                    NSLog(@"%@", [object objectForKey:@"nick_name"]);
-                    cell.dataLabel.text = [object objectForKey:@"nick_name"];
-                    break;
-                case 2:
-                    NSLog(@"%@", [object objectForKey:@"gender"]);
-                    cell.dataLabel.text = [object objectForKey:@"gender"];
-                    break;
-                case 3:
-                    NSLog(@"%@", [object objectForKey:@"birthday"]);
-                    cell.dataLabel.text = [object objectForKey:@"birthday"];
-                    break;
-                case 4:
-                    NSLog(@"%@", [object objectForKey:@"phone"]);
-                    cell.dataLabel.text = [object objectForKey:@"phone"];
-                    break;
-                case 5:
-                    NSLog(@"%@", [object objectForKey:@"email"]);
-                    cell.dataLabel.text = [object objectForKey:@"email"];
-                    break;
-                default:
-                    break;
-            }
-        }];
     }
     return cell;
 }
@@ -136,7 +155,7 @@
     
     SettingTableViewCell *cell = cellArray[indexPath.row];
     
-    if (indexPath.row == 2) {
+    if (indexPath.row == RE_USER_GENDER) {
         [cell.dataTextField setUserInteractionEnabled:NO];
         UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"請選擇性別" message:@"" preferredStyle: UIAlertControllerStyleActionSheet];
         UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
@@ -164,6 +183,11 @@
 {
     NSArray *cellArray = [tableView visibleCells];
     SettingTableViewCell *cell = cellArray[indexPath.row];
+    if([cell.dataLabel.text length] > 0)
+    {
+        [settingDetailData setObject:cell.dataLabel.text forKey:@(indexPath.row)];
+    }
+    
     cell.dataLabel.hidden = NO;
     cell.dataTextField.hidden = YES;
 }
@@ -249,6 +273,45 @@
     [self presentViewController:imagePicker animated:YES completion:nil];
 }
 
+- (void) saveUserDataToRemoteServer{
+    
+    PFUser *user = [PFUser currentUser];
+    NSArray * allkeys = [settingDetailData allKeys];
+    for (NSNumber *key in allkeys) {
+        NSString *data = [settingDetailData objectForKey:key];
+        NSLog(@"Key:%d value:%@",key.intValue, data);
+        
+
+        switch (key.intValue) {
+            case RE_USERNAME:
+                user[@"username"] = [settingDetailData objectForKey:@(RE_USERNAME)];
+                break;
+            case RE_USER_NICKNAME:
+                user[@"nickname"] = [settingDetailData objectForKey:@(RE_USER_NICKNAME)];
+                break;
+            case RE_USER_GENDER:
+                user[@"gender"] = [settingDetailData objectForKey:@(RE_USER_GENDER)];
+                break;
+            case RE_USER_BIRTHDAY:
+                user[@"birthday"] = [settingDetailData objectForKey:@(RE_USER_BIRTHDAY)];
+                break;
+            case RE_USER_PHONE:
+                user[@"phone"] = [settingDetailData objectForKey:@(RE_USER_PHONE)];
+                break;
+            case RE_USER_EMAIL:
+                user[@"email"] = [settingDetailData objectForKey:@(RE_USER_EMAIL)];
+                break;
+                
+        }
+    }
+    
+    [user saveInBackground];
+}
+
+- (IBAction)editBtnPressed:(id)sender {
+    NSLog(@"Setting menu edit btn pressed");
+    [self saveUserDataToRemoteServer];
+}
 
 /*
 // Override to support conditional editing of the table view.

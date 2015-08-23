@@ -21,7 +21,11 @@
 }
 - (IBAction)dataTextFieldDidEndOnExit:(id)sender {
     [sender resignFirstResponder];
-    _dataLabel.text = _dataTextField.text;
+    
+    if ([_dataTextField.text length] > 0) {
+        _dataLabel.text = _dataTextField.text;
+    }
+    
     _dataLabel.hidden = NO;
     _dataTextField.hidden = YES;
 }

@@ -10,7 +10,7 @@
 
 @implementation SelectAnnotation
 
-@synthesize coordinate, title, subtitle;
+@synthesize coordinate, title, subtitle, subAdministrativeArea, locality, roadName;
 
 - (id)initWithLocation:(CLLocationCoordinate2D)coord
 {
@@ -38,6 +38,10 @@
             
             //NSString *message = [NSString stringWithFormat:@"%@", topResult.addressDictionary];
             NSLog(@"%@ %@ %@ %@", topResult.country,topResult.subAdministrativeArea, topResult.locality, topResult.name);
+            
+            subAdministrativeArea = topResult.subAdministrativeArea;
+            locality = topResult.locality;
+            roadName = topResult.name;
             subtitle = [[NSString alloc] initWithFormat:@"%@%@%@", topResult.subAdministrativeArea,topResult.locality, topResult.name];
         }
     }];
