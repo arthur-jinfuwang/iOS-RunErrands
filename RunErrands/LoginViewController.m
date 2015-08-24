@@ -170,11 +170,13 @@
     [PFFacebookUtils logInInBackgroundWithReadPermissions:permissionsArray block:^(PFUser *user, NSError *error) {
         if (!user) {
             NSLog(@"Uh oh. The user cancelled the Facebook login.");
-//        } else if (user.isNew) {
-//            NSLog(@"User signed up and logged in through Facebook!");
+        } else if (user.isNew) {
+            NSLog(@"User signed up and logged in through Facebook!");
+            [self loadFacebookData:user];
+            [leftMenu setLoginStatus:USERLOGIN];
+            [_facebookLoginBtn setTitle:@"登出 facebook" forState:UIControlStateNormal];
         } else {
             NSLog(@"User logged in through Facebook!");
-            [self loadFacebookData:user];
             [leftMenu setLoginStatus:USERLOGIN];
             [_facebookLoginBtn setTitle:@"登出 facebook" forState:UIControlStateNormal];
         }
@@ -209,7 +211,7 @@
             [user setObject:[email length] ? email : @"" forKey:@"email"];
             [user setObject:[gender isEqualToString:@"male"] ? @"男性" : @"女性" forKey:@"gender"];
             [user setObject:[birthday length] ? birthday: @"" forKey:@"birthday"];
-            [user setObject:@"" forKey:@"nickname"];
+            [user setObject:[name length] ? name : @"" forKey:@"nickname"];
             [user setObject:@"" forKey:@"phone"];
             [user saveInBackground];
             

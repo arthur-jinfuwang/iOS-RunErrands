@@ -7,7 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <Parse/Parse.h>
+
 
 @interface CaseDetailsTableViewController : UITableViewController
+
+@property (nonatomic,strong)PFObject *caseObject;
+@property (nonatomic,assign)BOOL isEnableFollow;
 
 @end

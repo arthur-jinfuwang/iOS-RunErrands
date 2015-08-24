@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "SlideNavigationController.h"
 #import "PostCaseTableViewController.h"
+#import "CaseDetailsTableViewController.h"
 
 @interface PostListTableViewController : UITableViewController <SlideNavigationControllerDelegate>
 

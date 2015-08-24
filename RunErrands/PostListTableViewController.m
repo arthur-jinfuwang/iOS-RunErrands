@@ -38,13 +38,12 @@
         
         [alert addAction:ok];
         [self presentViewController:alert animated:true completion:nil];
+    }else{
+        if (caseList == nil)
+        {
+            [self loadParseDatas];
+        }
     }
-    
-    if (caseList == nil)
-    {
-        [self loadParseDatas];
-    }
-
 }
                            
 -(void) loadParseDatas
@@ -158,7 +157,6 @@
     }   
 }
 
-
 /*
 // Override to support rearranging the table view.
 - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
@@ -173,14 +171,22 @@
 }
 */
 
-/*
 #pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
+    if ([segue.identifier isEqualToString:@"editCaseContent"])
+    {
+        return;
+    }else
+    {
+        CaseDetailsTableViewController * vc = segue.destinationViewController;
+        NSInteger row = [self.tableView indexPathForSelectedRow].row;
+        PFObject * item = caseList[row];
+        
+        vc.caseObject = item;
+    }
 }
-*/
 
 @end
