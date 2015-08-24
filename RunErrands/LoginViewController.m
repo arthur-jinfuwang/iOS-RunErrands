@@ -61,6 +61,8 @@
 }
 
 
+
+
 - (IBAction)RegisterBtnpressed:(id)sender
 {
     //建立輸入帳號資料訊息框
@@ -74,27 +76,62 @@
         NSString *pwd = ((UITextField *)[alertController.textFields objectAtIndex:1]).text;
         NSString *repwd = ((UITextField *)[alertController.textFields objectAtIndex:2]).text;
         
-        //建立密碼錯誤訊息框
-        if(pwd != repwd || [repwd  isEqual: @""] || [pwd  isEqual: @""])
-        {
-                       UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"錯誤訊息" message:@"密碼不符,請再輸入一次" preferredStyle:UIAlertControllerStyleAlert];
-            
-            UIAlertAction *OKAction = [UIAlertAction actionWithTitle:@"確定" style:UIAlertActionStyleDefault handler:nil];
-            [alertController addAction:OKAction];
-            [self presentViewController:alertController animated:YES completion:nil];
+        PFUser *user = [PFUser user];
+        user.username = uid;
+        user.password = pwd;
+        [user setObject:uid forKey:@"email"];
+        [user setObject:@""forKey:@"gender"];
+        [user setObject:@""forKey:@"birthday"];
+        [user setObject:@"" forKey:@"nickname"];
+        [user setObject:@"" forKey:@"phone"];
+        //[user saveInBackground];
+        
+        
+        //登入成功後
+        [user signUpInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+            if (!error) {
+                
+                UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"註冊訊息" message:@"登入成功" preferredStyle:UIAlertControllerStyleAlert];
+                
+                UIAlertAction *ok = [UIAlertAction actionWithTitle:@"確定" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+                    
+                    UIViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier: @"SettingTableViewController"];
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        [[SlideNavigationController sharedInstance] popAllAndSwitchToViewController:vc withCompletion:nil];
+                    });
+                }];
+                [alert addAction:ok];
+                [self presentViewController:alert animated:true completion:nil];
+            } else {
+                if(pwd != repwd)
+                {
+                    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"註冊訊息" message:@"密碼不符,請重新輸入" preferredStyle:UIAlertControllerStyleAlert];
+                    
+                    UIAlertAction *ok = [UIAlertAction actionWithTitle:@"確定" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+                        
+                    }];
+                    
+                    [alert addAction:ok];
+                    [self presentViewController:alert animated:true completion:nil];
 
-        }
-        else
-        {
-            UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle: nil];
-            
-            UIViewController *vc ;
-            
-            vc = [mainStoryboard instantiateViewControllerWithIdentifier: @"MapViewController"];
-            
-            
-            [[SlideNavigationController sharedInstance] popAllAndSwitchToViewController:vc withCompletion:nil];
-        }
+                }
+                
+                UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"註冊訊息" message:@"資料不符,請重新輸入" preferredStyle:UIAlertControllerStyleAlert];
+                
+                            UIAlertAction *ok = [UIAlertAction actionWithTitle:@"確定" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+                
+                            }];
+                
+                            [alert addAction:ok];
+                            [self presentViewController:alert animated:true completion:nil];
+
+                NSString *errorString = [error userInfo][@"error"];
+                NSLog(@"error:%@",[error userInfo]);
+              
+            }
+        }];
+
+        
         NSLog(@"帳號:%@",uid);
         NSLog(@"密碼:%@",pwd);
         NSLog(@"再次確認:%@",repwd);
@@ -118,21 +155,6 @@
     [self presentViewController:alertController animated:YES completion:nil];
 }
 
-//- (void)myMethod {
-//    PFUser *user = [PFUser user];
-//    user.username = @"my name";
-//    user.password = @"my pass";
-//    user.email = @"email@example.com";
-//    
-//    // other fields can be set just like with PFObject
-////    user[@"phone"] = @"415-392-0202";
-//    
-//    [user signUpInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-//        if (!error) {   // Hooray! Let them use the app now.
-//        } else {   NSString *errorString = [error userInfo][@"error"];   // Show the errorString somewhere and let the user try again.
-//        }
-//    }];
-//}
 
 
 
@@ -215,9 +237,6 @@
     }
     
 }
-
-
-
 
 
 // - (BOOL)prefersStatusBarHidden
