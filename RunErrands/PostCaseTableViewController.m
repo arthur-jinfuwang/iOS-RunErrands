@@ -180,13 +180,19 @@
         case RE_WORK_PLACE:{
             SetLocationViewController  *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"SetLocationViewController"];
             vc.returnCaseLocation = ^void(SelectAnnotation *location){
-                cell.dataTextField.text = [NSString stringWithFormat:@"%@",location.subtitle];
-                cell.dataLabel.text =[NSString stringWithFormat:@"%@",location.subtitle];
+//                cell.dataTextField.text = [NSString stringWithFormat:@"%@",location.subtitle];
+//                cell.dataLabel.text =[NSString stringWithFormat:@"%@",location.subtitle];
+                
+                cell.dataTextField.text = location.subtitle;
+                cell.dataLabel.text =location.subtitle;
                 [listDetailsData setObject:cell.dataLabel.text forKey:@(indexPath.row)];
+                
                 NSLog(@"post menu:place---->>%@, %@", cell.dataTextField.text, location.roadName);
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    [tableView reloadData];
-                });
+                
+                [listDetailsData setObject:location.subAdministrativeArea forKey:@(RE_WORK_CITY)];
+                [listDetailsData setObject:location.locality forKey:@(RE_WORK_DIST)];
+                [listDetailsData setObject:location.roadName forKey:@(RE_WORK_ROAD)];
+                caseLocation = [PFGeoPoint geoPointWithLatitude:location.coordinate.latitude longitude:location.coordinate.longitude];
             };
             
             [self.navigationController pushViewController:vc animated:YES];
@@ -252,10 +258,12 @@
 }
 
 - (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath NS_AVAILABLE_IOS(3_0){
-    if (indexPath.row > (listDetails.count - 1)) {
-        return;
-    }
+    
+        if (indexPath.row > (listDetails.count - 1)) {
+            return;
+        }
     NSArray *cellArray = [tableView visibleCells];
+
     SettingTableViewCell *cell = cellArray[indexPath.row];
     
     if([cell.dataTextField.text length] > 0){
@@ -269,7 +277,6 @@
     
     cell.dataLabel.hidden = NO;
     cell.dataTextField.hidden = YES;
-    
 }
 
 - (void) finishDataUpdate
@@ -383,7 +390,7 @@
                 _details[@"case_title"] = data;
                 break;
             case RE_WORK_PLACE:
-                //_details[@"work_GeoPoint"] =;
+                _details[@"work_GeoPoint"] =caseLocation;
                 break;
             case RE_CASE_CONTENT:
                 break;
@@ -413,6 +420,15 @@
                 break;
             case RE_CONTACT_EMAIL:
                 _details[@"contact_email"] = data;
+                break;
+            case RE_WORK_CITY:
+                _details[@"work_city"] = data;
+                break;
+            case RE_WORK_DIST:
+                _details[@"work_dist"] = data;
+                break;
+            case RE_WORK_ROAD:
+                _details[@"work_road"] = data;
                 break;
         }
     }

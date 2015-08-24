@@ -159,9 +159,7 @@
         return;
     }
     
-    NSArray *cellArray = [tableView visibleCells];
-    
-    SettingTableViewCell *cell = cellArray[indexPath.row];
+    SettingTableViewCell *cell = (SettingTableViewCell*)[tableView cellForRowAtIndexPath:indexPath];
     
     if (indexPath.row == RE_USER_GENDER) {
         [cell.dataTextField setUserInteractionEnabled:NO];
@@ -194,6 +192,7 @@
     }
     NSArray *cellArray = [tableView visibleCells];
     SettingTableViewCell *cell = cellArray[indexPath.row];
+    
     if([cell.dataLabel.text length] > 0)
     {
         [settingDetailData setObject:cell.dataLabel.text forKey:@(indexPath.row)];

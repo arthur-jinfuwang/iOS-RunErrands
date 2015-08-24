@@ -155,7 +155,7 @@
 
 }
 
-
+// Arthur warning visibleCells
 - (void) setLoginStatus:(USERLOGINSTATUS)status{
     
     NSArray *cellArray = [_tableView visibleCells];
