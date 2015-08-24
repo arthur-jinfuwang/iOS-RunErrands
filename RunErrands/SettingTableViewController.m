@@ -324,7 +324,7 @@
         
         self.theEditBtn.title= @"完成";
         isEditing = true;
-        self.navigationItem.leftBarButtonItem.enabled = NO;
+        [self isEnableLeftBarButtonItem:false];
     }else
     {
         if (self.tableView.indexPathForSelectedRow != nil)
@@ -344,8 +344,13 @@
         [self saveUserDataToRemoteServer];
         self.theEditBtn.title= @"編輯";
         isEditing = false;
-        self.navigationItem.leftBarButtonItem.enabled = YES;
+        [self isEnableLeftBarButtonItem:true];
     }
+}
+
+- (void) isEnableLeftBarButtonItem:(BOOL)flag
+{
+    self.navigationItem.leftBarButtonItem.enabled = flag;
 }
 
 /*

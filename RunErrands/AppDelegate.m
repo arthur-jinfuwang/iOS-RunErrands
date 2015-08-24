@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "SlideNavigationController.h"
+#import "SlideNavigationContorllerAnimatorScaleAndFade.h"
 #import "LeftMenuViewController.h"
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
 #import <FBSDKLoginKit/FBSDKLoginKit.h>
@@ -34,7 +35,16 @@
     LeftMenuViewController *leftMenu = (LeftMenuViewController*)[mainStoryboard instantiateViewControllerWithIdentifier: @"LeftMenuViewController"];
     
     [SlideNavigationController sharedInstance].leftMenu = leftMenu;
+    [SlideNavigationController sharedInstance].landscapeSlideOffset = 120;
+    [SlideNavigationController sharedInstance].portraitSlideOffset = 120;
     
+    id <SlideNavigationContorllerAnimator> revealAnimator = [[SlideNavigationContorllerAnimatorScaleAndFade alloc] initWithMaximumFadeAlpha:.6 fadeColor:[UIColor blackColor] andMinimumScale:.8];
+    CGFloat animationDuration = .22;
+    
+    [[SlideNavigationController sharedInstance] closeMenuWithCompletion:^{
+        [SlideNavigationController sharedInstance].menuRevealAnimationDuration = animationDuration;
+        [SlideNavigationController sharedInstance].menuRevealAnimator = revealAnimator;
+    }];
     // [Optional] Power your app with Local Datastore. For more info, go to
     // https://parse.com/docs/ios_guide#localdatastore/iOS
     [Parse enableLocalDatastore];
