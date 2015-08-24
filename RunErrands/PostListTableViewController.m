@@ -176,10 +176,17 @@
 {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
-    CaseDetailsTableViewController * vc = segue.destinationViewController;
-    NSInteger row = [self.tableView indexPathForSelectedRow].row;
-    PFObject * item = caseList[row];
-    vc.caseObject = item;
+    if ([segue.identifier isEqualToString:@"editCaseContent"])
+    {
+        return;
+    }else
+    {
+        CaseDetailsTableViewController * vc = segue.destinationViewController;
+        NSInteger row = [self.tableView indexPathForSelectedRow].row;
+        PFObject * item = caseList[row];
+        
+        vc.caseObject = item;
+    }
 }
 
 @end

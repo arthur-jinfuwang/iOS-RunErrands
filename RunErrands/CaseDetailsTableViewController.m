@@ -14,7 +14,7 @@
 }
 @property (weak, nonatomic) IBOutlet UILabel *theUserIDLabel;
 @property (weak, nonatomic) IBOutlet UILabel *thePostTimeLabel;
-@property (weak, nonatomic) IBOutlet UIButton *theTraceCaseBtn;
+@property (weak, nonatomic) IBOutlet UIButton *theFollowCaseBtn;
 @property (weak, nonatomic) IBOutlet UILabel *theCaseTitleLabel;
 @property (weak, nonatomic) IBOutlet UILabel *theWorkPlaceLabel;
 @property (weak, nonatomic) IBOutlet UILabel *theWorkContentLabel;
@@ -24,8 +24,9 @@
 @property (weak, nonatomic) IBOutlet UILabel *thePersonsLabel;
 @property (weak, nonatomic) IBOutlet UILabel *theDeadlineLabel;
 @property (weak, nonatomic) IBOutlet UILabel *theWageClassLabel;
-
-
+@property (weak, nonatomic) IBOutlet UILabel *theContactNameLabel;
+@property (weak, nonatomic) IBOutlet UILabel *theContacePhoneLabel;
+@property (weak, nonatomic) IBOutlet UILabel *theEmailLabel;
 
 @end
 
@@ -54,6 +55,18 @@
 
 - (void) initCellDetailFromCaseObject
 {
+    //For User content
+    
+        //self.theUserIDLabel.text = self.caseObject[@"nickname"];
+    // For Case object content
+    NSString *address = [NSString stringWithFormat:@"%@%@%@",
+                         self.caseObject[@"work_city"],
+                         self.caseObject[@"work_dist"],
+                         self.caseObject[@"work_road"]];
+    
+    //self.caseObject[@"work_GeoPoint"];
+    
+    self.theWorkPlaceLabel.text = address;
     
     self.theCaseTitleLabel.text = self.caseObject[@"case_title"];
 
@@ -66,17 +79,20 @@
     self.thePersonsLabel.text = self.caseObject[@"persons"];
     
     self.theDeadlineLabel.text = self.caseObject[@"deadline"];
+ 
+    self.theWorkContentLabel.text = self.caseObject[@"case_content"];
+
+    self.theContactNameLabel.text = self.caseObject[@"contact_name"];
     
-    self.theUserIDLabel.text = self.caseObject[@"nickname"];
+    self.theContacePhoneLabel.text = self.caseObject[@"contact_phone"];
     
-//    self.caseObject[@"contact_name"];
-//    
-//    self.caseObject[@"contact_phone"];
-//    
-//    self.caseObject[@"contact_email"];
+    self.theEmailLabel.text = self.caseObject[@"contact_email"];
     
-        //self.caseObject[@"wage_class"];
-        //self.caseObject[@"work_GeoPoint"];
+    self.theWageClassLabel.text = self.caseObject[@"wage_class"];
+    
+    if (self.isEnableFollow == false) {
+        self.theFollowCaseBtn.hidden = true;
+    }
 }
 
 
@@ -94,7 +110,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     // Return the number of rows in the section.
-    return 9;
+    return 12;
 }
 
 
