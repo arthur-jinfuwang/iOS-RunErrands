@@ -20,7 +20,7 @@
     // Do any additional setup after loading the view.
     
     _theEditCaseTextView.delegate = self;
-    
+    _theEditCaseTextView.text =_textContent;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -95,9 +95,10 @@
     if (content == nil) {
         _theEditCaseTextView.text = @"";
     }
+    _textContent = nil;
     NSLog(@"%@",content);
-    [_theEditCaseTextView setText:content];
-    NSLog(@"%@",_theEditCaseTextView.text);
+    _textContent = content;
+    NSLog(@"%@",_textContent);
 }
 
 /*

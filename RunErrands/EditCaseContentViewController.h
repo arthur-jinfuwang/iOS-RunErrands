@@ -13,6 +13,7 @@ typedef void(^EditedContent)(NSString *content);
 @interface EditCaseContentViewController : UIViewController <UITextViewDelegate>
 
 @property (nonatomic,strong)EditedContent editedTextContent;
+@property (nonatomic,strong)NSString *textContent;
 
 - (void)setTheEditedContent:(NSString *)content;
 @end
