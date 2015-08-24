@@ -411,6 +411,9 @@
                                         <exclude reference="t1w-xt-6l5"/>
                                     </mask>
                                 </variation>
+                                <connections>
+                                    <action selector="LoginBtnpressed:" destination="Kni-yZ-eIA" eventType="touchUpInside" id="S8X-da-pjP"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" text="OR" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SOb-77-KE9">
                                 <rect key="frame" x="281" y="387" width="39" height="33"/>
@@ -696,7 +699,9 @@
                     </view>
                     <connections>
                         <outlet property="RegisterBtnpressed" destination="g7k-9o-vWA" id="gZc-Fh-CUc"/>
+                        <outlet property="accountTextfield" destination="ME4-O7-2BX" id="ail-3K-44R"/>
                         <outlet property="facebookLoginBtn" destination="gab-IL-2bB" id="rjC-KV-QAS"/>
+                        <outlet property="passwordTextfield" destination="ZGd-S2-3P7" id="nuC-7N-vI6"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="48r-Ap-Vfe" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1451,7 +1456,7 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="hFi-3l-ee4"/>
-        <segue reference="ybq-Ux-EmN"/>
         <segue reference="1By-6M-hw7"/>
+        <segue reference="FES-Lo-JZM"/>
     </inferredMetricsTieBreakers>
 </document>
