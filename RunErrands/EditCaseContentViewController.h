@@ -8,6 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
+typedef void(^EditedContent)(NSString *content);
+
 @interface EditCaseContentViewController : UIViewController <UITextViewDelegate>
 
+@property (nonatomic,strong)EditedContent editedTextContent;
+
+- (void)setTheEditedContent:(NSString *)content;
 @end

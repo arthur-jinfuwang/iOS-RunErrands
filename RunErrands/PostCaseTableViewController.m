@@ -10,6 +10,7 @@
 #import "SettingTableViewCell.h"
 #import "TakePictureView.h"
 #import "SetLocationViewController.h"
+#import "EditCaseContentViewController.h"
 
 @interface PostCaseTableViewController ()<TakePictureViewDelegate,UINavigationControllerDelegate,UIImagePickerControllerDelegate>
 {
@@ -180,8 +181,6 @@
         case RE_WORK_PLACE:{
             SetLocationViewController  *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"SetLocationViewController"];
             vc.returnCaseLocation = ^void(SelectAnnotation *location){
-//                cell.dataTextField.text = [NSString stringWithFormat:@"%@",location.subtitle];
-//                cell.dataLabel.text =[NSString stringWithFormat:@"%@",location.subtitle];
                 
                 cell.dataTextField.text = location.subtitle;
                 cell.dataLabel.text =location.subtitle;
@@ -199,7 +198,15 @@
             break;
         }
         case RE_CASE_CONTENT:{
-            UIViewController  *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"EditCaseContentViewController"];
+            EditCaseContentViewController  *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"EditCaseContentViewController"];
+            
+            [vc setTheEditedContent:cell.dataTextField.text];
+            
+            vc.editedTextContent = ^void(NSString *content){
+                cell.dataTextField.text = content;
+                cell.dataLabel.text = content;
+                [listDetailsData setObject:content forKey:@(RE_CASE_CONTENT)];
+            };
             [self.navigationController pushViewController:vc animated:YES];
             break;
         }
