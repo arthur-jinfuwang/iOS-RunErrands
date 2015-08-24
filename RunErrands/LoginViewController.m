@@ -19,6 +19,8 @@
 }
 @property (weak, nonatomic) IBOutlet UIButton *facebookLoginBtn;
 @property (weak, nonatomic) IBOutlet UIButton *RegisterBtnpressed;
+@property (weak, nonatomic) IBOutlet UITextField *accountTextfield;
+@property (weak, nonatomic) IBOutlet UITextField *passwordTextfield;
 
 
 @end
@@ -154,6 +156,40 @@
     [alertController addAction:okAction];
     [self presentViewController:alertController animated:YES completion:nil];
 }
+- (IBAction)LoginBtnpressed:(id)sender
+{
+    [PFUser logInWithUsernameInBackground:_accountTextfield.text password:_passwordTextfield.text
+    block:^(PFUser *user, NSError *error) {
+    if (user) {
+                                            // Do stuff after successful login.
+                UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"註冊訊息" message:@"登入成功" preferredStyle:UIAlertControllerStyleAlert];
+                                            
+                UIAlertAction *ok = [UIAlertAction actionWithTitle:@"確定" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+                                                
+                UIViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier: @"MapViewController"];
+                dispatch_async(dispatch_get_main_queue(), ^{
+                [[SlideNavigationController sharedInstance] popAllAndSwitchToViewController:vc withCompletion:nil];
+                                                });
+                                            }];
+                [alert addAction:ok];
+                [self presentViewController:alert animated:true completion:nil];
+                                            
+                                        } else {
+                                            // The login failed. Check error to see why.
+                UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"登入訊息" message:@"登入失敗,請重新輸入" preferredStyle:UIAlertControllerStyleAlert];
+                                            
+                UIAlertAction *ok = [UIAlertAction actionWithTitle:@"確定" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+                                                
+                                            }];
+                                            
+                [alert addAction:ok];
+                [self presentViewController:alert animated:true completion:nil];
+                                            
+                                        }
+                                    }];
+}
+
+
 
 
 
