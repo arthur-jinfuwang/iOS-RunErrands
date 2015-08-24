@@ -854,20 +854,17 @@
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2016/08/08" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bcT-N3-faq">
-                                                    <rect key="frame" x="152" y="49" width="88" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="15:20:14" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y01-4i-7kE">
-                                                    <rect key="frame" x="248" y="49" width="67" height="21"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2016/08/08 15:30" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bcT-N3-faq">
+                                                    <rect key="frame" x="152" y="49" width="150" height="21"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="150" id="oTx-5M-HSf"/>
+                                                    </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="發表時間" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pt6-8M-V9i">
-                                                    <rect key="frame" x="76" y="49" width="68" height="21"/>
+                                                    <rect key="frame" x="76" y="49.5" width="68" height="20.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -891,14 +888,12 @@
                                                 <constraint firstItem="9Ib-hH-DYn" firstAttribute="leading" secondItem="hpY-mz-jjS" secondAttribute="leadingMargin" id="CYb-r2-9yQ"/>
                                                 <constraint firstItem="pt6-8M-V9i" firstAttribute="leading" secondItem="9Ib-hH-DYn" secondAttribute="trailing" constant="8" id="KiD-e6-Jq7"/>
                                                 <constraint firstItem="bcT-N3-faq" firstAttribute="leading" secondItem="pt6-8M-V9i" secondAttribute="trailing" constant="8" id="L0y-Bi-62e"/>
-                                                <constraint firstItem="y01-4i-7kE" firstAttribute="leading" secondItem="bcT-N3-faq" secondAttribute="trailing" constant="8" id="QDa-h2-3Zh"/>
                                                 <constraint firstAttribute="centerY" secondItem="9Ib-hH-DYn" secondAttribute="centerY" id="WMX-MY-nQZ"/>
                                                 <constraint firstAttribute="centerY" secondItem="bnc-CQ-D0h" secondAttribute="centerY" constant="19.5" id="Xfl-Co-MR4"/>
                                                 <constraint firstAttribute="centerY" secondItem="pt6-8M-V9i" secondAttribute="centerY" constant="-19.75" id="ZD6-s1-vlR"/>
                                                 <constraint firstItem="bnc-CQ-D0h" firstAttribute="leading" secondItem="9Ib-hH-DYn" secondAttribute="trailing" constant="8" id="b8I-lh-6le"/>
                                                 <constraint firstItem="D9l-zs-kzO" firstAttribute="leading" secondItem="bnc-CQ-D0h" secondAttribute="trailing" constant="8" id="cni-tV-Url"/>
-                                                <constraint firstAttribute="centerY" secondItem="bcT-N3-faq" secondAttribute="centerY" constant="-19.75" id="eJe-mY-JDO"/>
-                                                <constraint firstAttribute="centerY" secondItem="y01-4i-7kE" secondAttribute="centerY" constant="-19.75" id="hBl-M1-Go1"/>
+                                                <constraint firstAttribute="centerY" secondItem="bcT-N3-faq" secondAttribute="centerY" constant="-20" id="eJe-mY-JDO"/>
                                                 <constraint firstAttribute="centerY" secondItem="bnc-CQ-D0h" secondAttribute="centerY" constant="19.5" id="yGv-xJ-Kby"/>
                                             </constraints>
                                             <variation key="default">
@@ -1181,6 +1176,20 @@
                             <outlet property="delegate" destination="a8Z-Vk-n8J" id="Tgg-Dc-IcY"/>
                         </connections>
                     </tableView>
+                    <connections>
+                        <outlet property="theCaseTitleLabel" destination="3XP-zf-XM9" id="tB4-6e-sTe"/>
+                        <outlet property="theDeadlineLabel" destination="wLc-yM-BfQ" id="jiQ-s9-9ZU"/>
+                        <outlet property="thePersonsLabel" destination="Y0Q-mT-t3h" id="xXn-oq-cIa"/>
+                        <outlet property="thePostTimeLabel" destination="bcT-N3-faq" id="Inz-jy-r4k"/>
+                        <outlet property="theTraceCaseBtn" destination="D9l-zs-kzO" id="d7W-IL-Mt9"/>
+                        <outlet property="theUserIDLabel" destination="bnc-CQ-D0h" id="t1T-rk-DJQ"/>
+                        <outlet property="theWageClassLabel" destination="Tqx-nS-52W" id="TgJ-We-eUf"/>
+                        <outlet property="theWageLabel" destination="b8q-Dh-pRc" id="P0g-uz-QhR"/>
+                        <outlet property="theWorkContentLabel" destination="sIH-gT-5Vf" id="KtB-g8-lzd"/>
+                        <outlet property="theWorkEndTimeLabel" destination="P2i-HW-4Si" id="ND7-rv-erY"/>
+                        <outlet property="theWorkPlaceLabel" destination="aOx-WC-du7" id="5my-sr-FPJ"/>
+                        <outlet property="theWorkTimeBeginLabel" destination="Qy2-lY-HRk" id="yQd-VN-aJE"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="84y-ss-n39" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

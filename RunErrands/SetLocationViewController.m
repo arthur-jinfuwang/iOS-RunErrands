@@ -129,10 +129,11 @@
         NSLog(@"hhhhhh--->>%@\n",caseAnnotation);
         self.returnCaseLocation(caseAnnotation);
         
+        NSArray * array = self.navigationController.viewControllers;
+        NSUInteger index = [array indexOfObject:self];
+        id viewcontroller = [array objectAtIndex:index-1];
+        [self.navigationController popToViewController:viewcontroller animated:YES];
         
-        UIViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier: @"PostCaseTableViewController"];
-
-        [[SlideNavigationController sharedInstance] popAllAndSwitchToViewController:vc withCompletion:nil];
     }];
     
     [alert addAction:cancel];

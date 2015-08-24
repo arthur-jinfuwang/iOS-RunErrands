@@ -148,15 +148,15 @@
         case RE_CASE_CONTENT:
             [cell.dataTextField setUserInteractionEnabled:NO];
             break;
-        case RE_WAGE:
-            [cell.dataTextField setKeyboardType:UIKeyboardTypeNumberPad];
-            break;
-        case RE_PERSONS:
-            [cell.dataTextField setKeyboardType:UIKeyboardTypeNumberPad];
-            break;
-        case RE_CONTACT_PHONE:
-            [cell.dataTextField setKeyboardType:UIKeyboardTypePhonePad];
-            break;
+//        case RE_WAGE:
+//            [cell.dataTextField setKeyboardType:UIKeyboardTypeNumberPad];
+//            break;
+//        case RE_PERSONS:
+//            [cell.dataTextField setKeyboardType:UIKeyboardTypeNumberPad];
+//            break;
+//        case RE_CONTACT_PHONE:
+//            [cell.dataTextField setKeyboardType:UIKeyboardTypePhonePad];
+//            break;
         case RE_CONTACT_EMAIL:
             [cell.dataTextField setKeyboardType:UIKeyboardTypeEmailAddress];
             break;
@@ -168,12 +168,12 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
 
-    if (indexPath.row > (listDetails.count - 1)) {
-        return;
-    }
-    NSArray *cellArray = [tableView visibleCells];
+//    if (indexPath.row > (listDetails.count - 1)) {
+//        return;
+//    }
+//    NSArray *cellArray = [tableView visibleCells];
     
-    SettingTableViewCell *cell = cellArray[indexPath.row];
+    SettingTableViewCell *cell = (SettingTableViewCell*)[tableView cellForRowAtIndexPath:indexPath];
     
     switch(indexPath.row)
     {
@@ -185,7 +185,7 @@
                 [listDetailsData setObject:cell.dataLabel.text forKey:@(indexPath.row)];
                 NSLog(@"post menu:place---->>%@, %@", cell.dataTextField.text, location.roadName);
                 dispatch_async(dispatch_get_main_queue(), ^{
-                    [self.tableView reloadData];
+                    [tableView reloadData];
                 });
             };
             
@@ -393,8 +393,10 @@
             case RE_WORK_END_AT:
                 _details[@"work_end_at"] = data;
                 break;
-            case RE_WAGE:
+            case RE_WAGE_CLASS:
                 _details[@"wage_class"] = data;
+                break;
+            case RE_WAGE:
                 _details[@"wage"] = data;
                 break;
             case RE_PERSONS:
@@ -414,8 +416,11 @@
                 break;
         }
     }
-    
+
+    NSDate *date = [NSDate date];
+    _details[@"post_at"] = date;
     _details[@"case_status"] = @"Open";
+
     [self.spin startAnimating];
     
     [_details saveInBackground];

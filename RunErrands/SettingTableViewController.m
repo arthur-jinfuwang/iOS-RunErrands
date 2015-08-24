@@ -323,7 +323,6 @@
     NSLog(@"Setting menu edit btn pressed");
     if ([self.theEditBtn.title isEqualToString:@"編輯"]) {
         
-        [SlideNavigationController sharedInstance].leftBarButtonItem.enabled = false;
         self.theEditBtn.title= @"完成";
         isEditing = true;
     }else
@@ -342,10 +341,9 @@
                 [settingDetailData setObject:cell.dataLabel.text forKey:@(self.tableView.indexPathForSelectedRow.row)];
             }
         }
-        //[self saveUserDataToRemoteServer];
+        [self saveUserDataToRemoteServer];
         self.theEditBtn.title= @"編輯";
         isEditing = false;
-        [SlideNavigationController sharedInstance].leftBarButtonItem.enabled = true;
     }
 }
 
