@@ -59,8 +59,13 @@
 {
     return YES;
 }
+
+
+
+
 - (IBAction)RegisterBtnpressed:(id)sender
 {
+    //建立輸入帳號資料訊息框
     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"註冊" message:@"請輸入帳號密碼" preferredStyle:UIAlertControllerStyleAlert];
     UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
         [self dismissViewControllerAnimated:YES completion:nil];
@@ -70,10 +75,69 @@
         NSString *uid = ((UITextField *)[alertController.textFields objectAtIndex:0]).text;
         NSString *pwd = ((UITextField *)[alertController.textFields objectAtIndex:1]).text;
         NSString *repwd = ((UITextField *)[alertController.textFields objectAtIndex:2]).text;
+        
+        PFUser *user = [PFUser user];
+        user.username = uid;
+        user.password = pwd;
+        [user setObject:uid forKey:@"email"];
+        [user setObject:@""forKey:@"gender"];
+        [user setObject:@""forKey:@"birthday"];
+        [user setObject:@"" forKey:@"nickname"];
+        [user setObject:@"" forKey:@"phone"];
+        //[user saveInBackground];
+        
+        
+        //登入成功後
+        [user signUpInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+            if (!error) {
+                
+                UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"註冊訊息" message:@"登入成功" preferredStyle:UIAlertControllerStyleAlert];
+                
+                UIAlertAction *ok = [UIAlertAction actionWithTitle:@"確定" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+                    
+                    UIViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier: @"SettingTableViewController"];
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        [[SlideNavigationController sharedInstance] popAllAndSwitchToViewController:vc withCompletion:nil];
+                    });
+                }];
+                [alert addAction:ok];
+                [self presentViewController:alert animated:true completion:nil];
+            } else {
+                if(pwd != repwd)
+                {
+                    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"註冊訊息" message:@"密碼不符,請重新輸入" preferredStyle:UIAlertControllerStyleAlert];
+                    
+                    UIAlertAction *ok = [UIAlertAction actionWithTitle:@"確定" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+                        
+                    }];
+                    
+                    [alert addAction:ok];
+                    [self presentViewController:alert animated:true completion:nil];
+
+                }
+                
+                UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"註冊訊息" message:@"資料不符,請重新輸入" preferredStyle:UIAlertControllerStyleAlert];
+                
+                            UIAlertAction *ok = [UIAlertAction actionWithTitle:@"確定" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+                
+                            }];
+                
+                            [alert addAction:ok];
+                            [self presentViewController:alert animated:true completion:nil];
+
+                NSString *errorString = [error userInfo][@"error"];
+                NSLog(@"error:%@",[error userInfo]);
+              
+            }
+        }];
+
+        
         NSLog(@"帳號:%@",uid);
         NSLog(@"密碼:%@",pwd);
         NSLog(@"再次確認:%@",repwd);
-    }];
+        
+        
+            }];
     [alertController addTextFieldWithConfigurationHandler:^(UITextField *textField) {
         textField.placeholder = @"電子信箱";
     }];
@@ -84,16 +148,13 @@
     [alertController addTextFieldWithConfigurationHandler:^(UITextField *textField) {
         textField.placeholder = @"再次確認密碼";
         textField.secureTextEntry = YES;
-//        if(repwd != pwd )
-//        {
-//            
-//        }
-    }];
+            }];
     
     [alertController addAction:cancelAction];
     [alertController addAction:okAction];
     [self presentViewController:alertController animated:YES completion:nil];
 }
+
 
 
 
@@ -178,9 +239,6 @@
     }
     
 }
-
-
-
 
 
 // - (BOOL)prefersStatusBarHidden
