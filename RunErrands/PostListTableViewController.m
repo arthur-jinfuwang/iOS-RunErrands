@@ -118,9 +118,14 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"postListCell" forIndexPath:indexPath];
     
     PFObject *item = caseList[indexPath.row];
-
-    cell.textLabel.text = [[NSString alloc] initWithFormat:@"post list %ld", (long)indexPath.row];
-    cell.detailTextLabel.text = item.objectId;
+    UIFont *font = [ UIFont fontWithName: @"Arial" size: 20.0 ];
+    [cell.textLabel setFont:font];
+    cell.textLabel.text = [[NSString alloc] initWithFormat:@"[標題] %@", item[@"case_title"]];
+    
+    UIFont *subfont = [ UIFont fontWithName: @"Arial" size: 14.0 ];
+    [cell.detailTextLabel setFont:subfont];
+    [cell.detailTextLabel setTextColor:[UIColor grayColor]];
+    cell.detailTextLabel.text = [[NSString alloc] initWithFormat:@"[截止時間] %@", item[@"deadline"]];
     NSLog(@"---SSSSS %@", item.objectId);
     // Configure the cell...
     
