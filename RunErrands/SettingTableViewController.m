@@ -75,9 +75,31 @@
     [settingDetailData setObject:(NSString*)user[@"birthday"] forKey:@(RE_USER_BIRTHDAY)];
     [settingDetailData setObject:(NSString*)user[@"phone"]forKey:@(RE_USER_PHONE)];
     [settingDetailData setObject:(NSString*)user[@"email"] forKey:@(RE_USER_EMAIL)];
+    
+    [self getUserAvatarFromRemoteServer];
 
     NSLog(@"%@", settingDetailData);
 }
+
+- (void) getUserAvatarFromRemoteServer
+{
+    PFUser *user = [PFUser currentUser];
+    PFFile *userImageFile = user[@"avatar"];
+    [userImageFile getDataInBackgroundWithBlock:^(NSData *imageData, NSError *error) {
+        if (!error) {
+            if (imageData) {
+                UIImage *image = [UIImage imageWithData:imageData];
+                avatarHeader.thePictureBtn.imageView.contentMode = UIViewContentModeScaleAspectFill;
+                [avatarHeader.thePictureBtn setImage:image forState:UIControlStateNormal];
+            }
+            
+        }else
+        {
+            NSLog(@"%@", error.description);
+        }
+    }];
+}
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -229,6 +251,15 @@
     
     //存檔
     //UIImageWriteToSavedPhotosAlbum(image,nil,nil,nil);
+    
+    //save to parse file
+    NSData *imageData = UIImageJPEGRepresentation(image, 0.5);
+
+    PFFile *imageFile = [PFFile fileWithName:@"userAvatar.jpg" data:imageData];
+    
+    PFUser *user = [PFUser currentUser];
+    user[@"avatar"] = imageFile;
+    [user saveInBackground];
     
     avatarHeader.thePictureBtn.imageView.contentMode = UIViewContentModeScaleAspectFill;
     [avatarHeader.thePictureBtn setImage:image forState:UIControlStateNormal];

@@ -13,7 +13,8 @@
 {
     NSMutableArray *listDetails;
 }
-@property (weak, nonatomic) IBOutlet UILabel *theUserIDLabel;
+
+
 @property (weak, nonatomic) IBOutlet UILabel *thePostTimeLabel;
 @property (weak, nonatomic) IBOutlet UIButton *theFollowCaseBtn;
 @property (weak, nonatomic) IBOutlet UILabel *theCaseTitleLabel;
@@ -28,6 +29,9 @@
 @property (weak, nonatomic) IBOutlet UILabel *theContactNameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *theContacePhoneLabel;
 @property (weak, nonatomic) IBOutlet UILabel *theEmailLabel;
+
+@property (weak, nonatomic) IBOutlet UIImageView *theOwnerImageView;
+@property (weak, nonatomic) IBOutlet UILabel *theUserIDLabel;
 
 @end
 
@@ -50,8 +54,34 @@
     }else
     {
         [self initCellDetailFromCaseObject];
+        [self getTheOwnerOfCase];
     }
     
+}
+
+- (void) getTheOwnerOfCase
+{
+    PFQuery * query = [PFUser query];
+    NSString *ownerID = self.caseObject[@"owner_id"];
+    [query whereKey:@"objectId" equalTo:ownerID];
+    //NSArray * results = [query findObjects];
+    
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if (!error) {
+            PFUser *owner= [objects lastObject];
+            self.theUserIDLabel.text = owner[@"nickname"];
+            PFFile *userImageFile = owner[@"avatar"];
+            [userImageFile getDataInBackgroundWithBlock:^(NSData *imageData, NSError *error) {
+                if (!error) {
+                    UIImage *image = [UIImage imageWithData:imageData];
+                    [_theOwnerImageView setImage:image];
+                }else
+                {
+                    NSLog(@"%@", error.description);
+                }
+            }];
+        }
+    }];
 }
 
 - (void) initCellDetailFromCaseObject

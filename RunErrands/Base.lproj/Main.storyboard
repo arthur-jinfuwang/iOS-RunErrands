@@ -87,12 +87,12 @@
         <scene sceneID="LmQ-IK-ald">
             <objects>
                 <tableViewController storyboardIdentifier="PostListTableViewController" id="cvW-lI-9AP" customClass="PostListTableViewController" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="gPI-x0-jUA">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="55" sectionHeaderHeight="22" sectionFooterHeight="22" id="gPI-x0-jUA">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="postListCell" textLabel="YUO-Cg-iuo" detailTextLabel="fkb-ib-qaP" rowHeight="44" style="IBUITableViewCellStyleSubtitle" id="ggC-cc-d2F">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="postListCell" textLabel="YUO-Cg-iuo" detailTextLabel="fkb-ib-qaP" rowHeight="55" style="IBUITableViewCellStyleSubtitle" id="ggC-cc-d2F">
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ggC-cc-d2F" id="rOK-fI-ZYk">
                                     <autoresizingMask key="autoresizingMask"/>
@@ -143,10 +143,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <activityIndicatorView key="tableFooterView" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="whiteLarge" id="IfW-Oe-FCf">
-                            <rect key="frame" x="0.0" y="0.0" width="600" height="37"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        </activityIndicatorView>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="postCase" rowHeight="44" id="MEo-lT-BDj">
                                 <autoresizingMask key="autoresizingMask"/>
@@ -172,9 +168,6 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
-                    <connections>
-                        <outlet property="spin" destination="IfW-Oe-FCf" id="WG2-EF-bD1"/>
-                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Aj-0h-Pwx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -358,7 +351,7 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="密碼：" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0AE-4L-met">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="密碼：" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0AE-4L-met">
                                 <rect key="frame" x="16" y="239" width="51" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -1290,6 +1283,7 @@
                         <outlet property="theDeadlineLabel" destination="wLc-yM-BfQ" id="jiQ-s9-9ZU"/>
                         <outlet property="theEmailLabel" destination="XYH-p0-g1K" id="J3p-v9-ri7"/>
                         <outlet property="theFollowCaseBtn" destination="D9l-zs-kzO" id="QaK-N8-0kP"/>
+                        <outlet property="theOwnerImageView" destination="9Ib-hH-DYn" id="1lg-f7-mWn"/>
                         <outlet property="thePersonsLabel" destination="Y0Q-mT-t3h" id="xXn-oq-cIa"/>
                         <outlet property="thePostTimeLabel" destination="bcT-N3-faq" id="Inz-jy-r4k"/>
                         <outlet property="theUserIDLabel" destination="bnc-CQ-D0h" id="t1T-rk-DJQ"/>
@@ -1317,7 +1311,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="dWf-rc-r3S">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="dWf-rc-r3S">
                                 <rect key="frame" x="140" y="64" width="320" height="180"/>
                                 <color key="backgroundColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>

@@ -20,7 +20,6 @@
     UIDatePicker *datePicker;
     PFGeoPoint *caseLocation;
 }
-@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *spin;
 
 @end
 
@@ -330,8 +329,8 @@
     //UIImageWriteToSavedPhotosAlbum(image,nil,nil,nil);
     
     //save to parse file
-    NSData *imageData = UIImagePNGRepresentation(image);
-    PFFile *imageFile = [PFFile fileWithName:@"casePhoto.png" data:imageData];
+    NSData *imageData = UIImageJPEGRepresentation(image, 0.5);
+    PFFile *imageFile = [PFFile fileWithName:@"casePhoto.jpg" data:imageData];
     _details[@"case_photo"] = imageFile;
     
     casePicture.thePictureBtn.imageView.contentMode = UIViewContentModeScaleAspectFill;
@@ -449,11 +448,13 @@
     NSDate *date = [NSDate date];
     _details[@"post_at"] = date;
     _details[@"case_status"] = @"Open";
-
-    [self.spin startAnimating];
     
-    [_details saveInBackground];
-    [self.spin stopAnimating];
+    [_details saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error){
+        if (succeeded) {
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"dataReload" object:nil];
+        }
+    }];
+
 }
 
 

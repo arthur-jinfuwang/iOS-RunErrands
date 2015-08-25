@@ -16,7 +16,8 @@ typedef NS_ENUM(NSInteger, RE_USER) {
     RE_USER_GENDER,
     RE_USER_BIRTHDAY,
     RE_USER_PHONE,
-    RE_USER_EMAIL
+    RE_USER_EMAIL,
+    RE_USER_AVATAR
 };
 
 @interface SettingTableViewController : UITableViewController <SlideNavigationControllerDelegate,UINavigationControllerDelegate,UIImagePickerControllerDelegate>
