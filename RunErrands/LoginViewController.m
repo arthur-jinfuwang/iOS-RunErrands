@@ -41,14 +41,10 @@
     
     PFUser *currentUser = [PFUser currentUser];
     if (currentUser) {
-        // do stuff with the user
-        PFUser *currentUser = [PFUser currentUser]; // this will now be nil
         [leftMenu setLoginStatus:USERLOGIN];
         [_ParseLoginMethod setTitle:@"登出"  forState:UIControlStateNormal];
         [_RegisterBtnpressed setTitle:@"已註冊" forState:UIControlStateNormal];
     } else {
-        // this will now be nil
-        PFUser *currentUser = [PFUser currentUser];
         [_ParseLoginMethod setTitle:@"登入"forState:UIControlStateNormal];
         [_RegisterBtnpressed setTitle:@"註冊" forState:UIControlStateNormal];
         
@@ -58,11 +54,11 @@
     if ([FBSDKAccessToken currentAccessToken]) {
         // User is logged in, do work such as go to next view controller.
         NSLog(@"facebook 已登入");
-        [_facebookLoginBtn setTitle:@"登出 facebook" forState:UIControlStateNormal];
+        [_facebookLoginBtn setTitle:@"facebook登出" forState:UIControlStateNormal];
         
     }else{
         NSLog(@"facebook 未登入");
-        [_facebookLoginBtn setTitle:@"登入 facebook" forState:UIControlStateNormal];
+        [_facebookLoginBtn setTitle:@"快速使用facebook登入" forState:UIControlStateNormal];
         leftMenu =(LeftMenuViewController *)[SlideNavigationController sharedInstance].leftMenu;
         leftMenu.headerView.displayFacebookName.text = @"";
     }
@@ -245,11 +241,11 @@
             NSLog(@"User signed up and logged in through Facebook!");
             [self loadFacebookData:user];
             [leftMenu setLoginStatus:USERLOGIN];
-            [_facebookLoginBtn setTitle:@"登出 facebook" forState:UIControlStateNormal];
+            [_facebookLoginBtn setTitle:@"facebook登出" forState:UIControlStateNormal];
         } else {
             NSLog(@"User logged in through Facebook!");
             [leftMenu setLoginStatus:USERLOGIN];
-            [_facebookLoginBtn setTitle:@"登出 facebook" forState:UIControlStateNormal];
+            [_facebookLoginBtn setTitle:@"facebook登出" forState:UIControlStateNormal];
         }
     }];
 }
@@ -304,7 +300,7 @@
     if ([FBSDKAccessToken currentAccessToken])
     {
         [self userLogOut];
-        [_facebookLoginBtn setTitle:@"登入 facebook" forState:UIControlStateNormal];
+        [_facebookLoginBtn setTitle:@"快速使用facebook登入" forState:UIControlStateNormal];
     }else{
 
         [self loginWithFacebook];
