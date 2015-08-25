@@ -49,7 +49,6 @@
     } else {
         // this will now be nil
         PFUser *currentUser = [PFUser currentUser];
-        [leftMenu setLoginStatus:USERLOGOUT];
         [_ParseLoginMethod setTitle:@"登入"forState:UIControlStateNormal];
         [_RegisterBtnpressed setTitle:@"註冊" forState:UIControlStateNormal];
         
@@ -119,6 +118,7 @@
                     dispatch_async(dispatch_get_main_queue(), ^{
                         [[SlideNavigationController sharedInstance] popAllAndSwitchToViewController:vc withCompletion:nil];
                         [_ParseLoginMethod setTitle:@"登出"  forState:UIControlStateNormal];
+                        [leftMenu setLoginStatus:USERLOGOUT];
                     });
                 }];
                 [alert addAction:ok];
@@ -217,6 +217,7 @@
                                             
                                         }
                                     }];
+                [leftMenu setLoginStatus:USERLOGIN];
     
     }
 }

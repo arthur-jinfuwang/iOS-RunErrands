@@ -12,6 +12,7 @@
 #import "SlideNavigationContorllerAnimatorScale.h"
 #import "SlideNavigationContorllerAnimatorScaleAndFade.h"
 #import "SlideNavigationContorllerAnimatorSlideAndFade.h"
+#import <Parse/Parse.h>
 
 
 @interface LeftMenuViewController ()
@@ -90,7 +91,9 @@
     UITableViewCell *cell= [tableView dequeueReusableCellWithIdentifier:@"leftMenuCell"];
 
     if (indexPath.row == LOGINMENU) {
-        if (loginStatus == USERLOGIN) {
+        if (loginStatus == USERLOGIN)
+        
+        {
             cell.textLabel.text = @"☑️ 登出";
         }else
         {
@@ -166,6 +169,7 @@
     {
         UITableViewCell *cell = cellArray[LOGINMENU];
         if (status == USERLOGIN)
+        
         {
             cell.textLabel.text = @"☑️ 登出";
         }
