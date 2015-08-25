@@ -45,7 +45,7 @@
         PFUser *currentUser = [PFUser currentUser]; // this will now be nil
         [leftMenu setLoginStatus:USERLOGIN];
         [_ParseLoginMethod setTitle:@"登出"  forState:UIControlStateNormal];
-        [_RegisterBtnpressed setTitle:@"註冊" forState:UIControlStateNormal];
+        [_RegisterBtnpressed setTitle:@"已註冊" forState:UIControlStateNormal];
     } else {
         // this will now be nil
         PFUser *currentUser = [PFUser currentUser];
@@ -117,8 +117,9 @@
                     UIViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier: @"SettingTableViewController"];
                     dispatch_async(dispatch_get_main_queue(), ^{
                         [[SlideNavigationController sharedInstance] popAllAndSwitchToViewController:vc withCompletion:nil];
-                        [_ParseLoginMethod setTitle:@"登出"  forState:UIControlStateNormal];
-                        [leftMenu setLoginStatus:USERLOGOUT];
+                        [_ParseLoginMethod setTitle:@"登出"      forState:UIControlStateNormal];
+                        [_RegisterBtnpressed setTitle:@"已註冊"  forState:UIControlStateNormal];
+                        [leftMenu setLoginStatus:USERLOGIN];
                     });
                 }];
                 [alert addAction:ok];
