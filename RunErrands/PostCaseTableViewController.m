@@ -10,6 +10,7 @@
 #import "SettingTableViewCell.h"
 #import "TakePictureView.h"
 #import "SetLocationViewController.h"
+#import "EditCaseContentViewController.h"
 
 @interface PostCaseTableViewController ()<TakePictureViewDelegate,UINavigationControllerDelegate,UIImagePickerControllerDelegate>
 {
@@ -180,20 +181,32 @@
         case RE_WORK_PLACE:{
             SetLocationViewController  *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"SetLocationViewController"];
             vc.returnCaseLocation = ^void(SelectAnnotation *location){
-                cell.dataTextField.text = [NSString stringWithFormat:@"%@",location.subtitle];
-                cell.dataLabel.text =[NSString stringWithFormat:@"%@",location.subtitle];
+                
+                cell.dataTextField.text = location.subtitle;
+                cell.dataLabel.text =location.subtitle;
                 [listDetailsData setObject:cell.dataLabel.text forKey:@(indexPath.row)];
+                
                 NSLog(@"post menu:place---->>%@, %@", cell.dataTextField.text, location.roadName);
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    [tableView reloadData];
-                });
+                
+                [listDetailsData setObject:location.subAdministrativeArea forKey:@(RE_WORK_CITY)];
+                [listDetailsData setObject:location.locality forKey:@(RE_WORK_DIST)];
+                [listDetailsData setObject:location.roadName forKey:@(RE_WORK_ROAD)];
+                caseLocation = [PFGeoPoint geoPointWithLatitude:location.coordinate.latitude longitude:location.coordinate.longitude];
             };
             
             [self.navigationController pushViewController:vc animated:YES];
             break;
         }
         case RE_CASE_CONTENT:{
-            UIViewController  *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"EditCaseContentViewController"];
+            EditCaseContentViewController  *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"EditCaseContentViewController"];
+            
+            [vc setTheEditedContent:cell.dataTextField.text];
+            
+            vc.editedTextContent = ^void(NSString *content){
+                cell.dataTextField.text = content;
+                cell.dataLabel.text = content;
+                [listDetailsData setObject:content forKey:@(RE_CASE_CONTENT)];
+            };
             [self.navigationController pushViewController:vc animated:YES];
             break;
         }
@@ -252,10 +265,12 @@
 }
 
 - (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath NS_AVAILABLE_IOS(3_0){
-    if (indexPath.row > (listDetails.count - 1)) {
-        return;
-    }
+    
+        if (indexPath.row > (listDetails.count - 1)) {
+            return;
+        }
     NSArray *cellArray = [tableView visibleCells];
+
     SettingTableViewCell *cell = cellArray[indexPath.row];
     
     if([cell.dataTextField.text length] > 0){
@@ -269,7 +284,6 @@
     
     cell.dataLabel.hidden = NO;
     cell.dataTextField.hidden = YES;
-    
 }
 
 - (void) finishDataUpdate
@@ -314,6 +328,11 @@
     
     //存檔
     //UIImageWriteToSavedPhotosAlbum(image,nil,nil,nil);
+    
+    //save to parse file
+    NSData *imageData = UIImagePNGRepresentation(image);
+    PFFile *imageFile = [PFFile fileWithName:@"casePhoto.png" data:imageData];
+    _details[@"case_photo"] = imageFile;
     
     casePicture.thePictureBtn.imageView.contentMode = UIViewContentModeScaleAspectFill;
     [casePicture.thePictureBtn setImage:image forState:UIControlStateNormal];
@@ -383,9 +402,10 @@
                 _details[@"case_title"] = data;
                 break;
             case RE_WORK_PLACE:
-                //_details[@"work_GeoPoint"] =;
+                _details[@"work_GeoPoint"] =caseLocation;
                 break;
             case RE_CASE_CONTENT:
+                _details[@"case_content"] = data;
                 break;
             case RE_WORK_BEGIN_AT:
                 _details[@"work_begin_at"] = data;
@@ -413,6 +433,15 @@
                 break;
             case RE_CONTACT_EMAIL:
                 _details[@"contact_email"] = data;
+                break;
+            case RE_WORK_CITY:
+                _details[@"work_city"] = data;
+                break;
+            case RE_WORK_DIST:
+                _details[@"work_dist"] = data;
+                break;
+            case RE_WORK_ROAD:
+                _details[@"work_road"] = data;
                 break;
         }
     }
@@ -475,6 +504,38 @@
     [self presentViewController:alert animated:true completion:nil];
 }
 
+#if 0
+- (void) theParseFiletest
+{
+    //upload
+    UIImage *image;
+    NSData *imageData = UIImagePNGRepresentation(image);
+    PFFile *imageFile = [PFFile fileWithName:@"image.png" data:imageData];
+    PFObject *userPhoto = [PFObject objectWithClassName:@"UserPhoto"];
+    userPhoto[@"imageName"] = @"My trip to Hawaii!";
+    userPhoto[@"imageFile"] = imageFile;
+    [userPhoto saveInBackground];
+    
+    //download
+    PFFile *userImageFile = anotherPhoto[@"imageFile"];
+    [userImageFile getDataInBackgroundWithBlock:^(NSData *imageData, NSError *error) {
+        if (!error) {
+            UIImage *image = [UIImage imageWithData:imageData];
+        }
+    }];
+
+    
+    NSData *data = [@"Working at Parse is great!" dataUsingEncoding:NSUTF8StringEncoding];
+    PFFile *file = [PFFile fileWithName:@"resume.txt" data:data];
+    [file saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+        // Handle success or failure here ...
+    } progressBlock:^(int percentDone) {
+        // Update your progress spinner here. percentDone will be between 0 and 100.
+    }];
+
+}
+
+#endif
 /*
 // Override to support conditional editing of the table view.
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {

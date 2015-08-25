@@ -159,9 +159,7 @@
         return;
     }
     
-    NSArray *cellArray = [tableView visibleCells];
-    
-    SettingTableViewCell *cell = cellArray[indexPath.row];
+    SettingTableViewCell *cell = (SettingTableViewCell*)[tableView cellForRowAtIndexPath:indexPath];
     
     if (indexPath.row == RE_USER_GENDER) {
         [cell.dataTextField setUserInteractionEnabled:NO];
@@ -194,6 +192,7 @@
     }
     NSArray *cellArray = [tableView visibleCells];
     SettingTableViewCell *cell = cellArray[indexPath.row];
+    
     if([cell.dataLabel.text length] > 0)
     {
         [settingDetailData setObject:cell.dataLabel.text forKey:@(indexPath.row)];
@@ -325,7 +324,7 @@
         
         self.theEditBtn.title= @"完成";
         isEditing = true;
-        self.navigationItem.leftBarButtonItem.enabled = NO;
+        [self isEnableLeftBarButtonItem:false];
     }else
     {
         if (self.tableView.indexPathForSelectedRow != nil)
@@ -345,8 +344,13 @@
         [self saveUserDataToRemoteServer];
         self.theEditBtn.title= @"編輯";
         isEditing = false;
-        self.navigationItem.leftBarButtonItem.enabled = YES;
+        [self isEnableLeftBarButtonItem:true];
     }
+}
+
+- (void) isEnableLeftBarButtonItem:(BOOL)flag
+{
+    self.navigationItem.leftBarButtonItem.enabled = flag;
 }
 
 /*

@@ -25,7 +25,9 @@ typedef NS_ENUM(NSInteger, RE_CASEDETAIL){
     RE_CONTACT_EMAIL,
     
     RE_WAGE_CLASS = 20,
-    
+    RE_WORK_CITY,
+    RE_WORK_DIST,
+    RE_WORK_ROAD
 };
 
 

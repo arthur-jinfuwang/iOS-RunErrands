@@ -45,6 +45,7 @@
 		BD8BF4601B6115D60020FBAA /* CaseListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BD8BF45F1B6115D50020FBAA /* CaseListTableViewController.m */; };
 		BDA28E2C1B6F610E0029F82A /* PostListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BDA28E2B1B6F610E0029F82A /* PostListTableViewController.m */; };
 		BDAEDE351B8172F800F25D67 /* ParseFacebookUtilsV4.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BDAEDE341B8172F800F25D67 /* ParseFacebookUtilsV4.framework */; };
+		BDB3A57C1B8C212C00C6AC9B /* CaseTextContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BDB3A57B1B8C212C00C6AC9B /* CaseTextContentViewController.m */; };
 		BDC17BC91B808E53008C8057 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BDC17BC81B808E53008C8057 /* Parse.framework */; };
 		BDC17BCB1B808E6A008C8057 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BDC17BCA1B808E6A008C8057 /* Bolts.framework */; };
 		BDC17BCD1B808EE2008C8057 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BDC17BCC1B808EE2008C8057 /* AudioToolbox.framework */; };
@@ -169,6 +170,8 @@
 		BDA28E2A1B6F610E0029F82A /* PostListTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostListTableViewController.h; sourceTree = "<group>"; };
 		BDA28E2B1B6F610E0029F82A /* PostListTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostListTableViewController.m; sourceTree = "<group>"; };
 		BDAEDE341B8172F800F25D67 /* ParseFacebookUtilsV4.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseFacebookUtilsV4.framework; sourceTree = "<group>"; };
+		BDB3A57A1B8C212C00C6AC9B /* CaseTextContentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CaseTextContentViewController.h; sourceTree = "<group>"; };
+		BDB3A57B1B8C212C00C6AC9B /* CaseTextContentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CaseTextContentViewController.m; sourceTree = "<group>"; };
 		BDC17BC81B808E53008C8057 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
 		BDC17BCA1B808E6A008C8057 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
 		BDC17BCC1B808EE2008C8057 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
@@ -501,6 +504,8 @@
 				BD8BF45F1B6115D50020FBAA /* CaseListTableViewController.m */,
 				BD337CBC1B66321A00D8E9F9 /* CaseDetailsTableViewController.h */,
 				BD337CBD1B66321A00D8E9F9 /* CaseDetailsTableViewController.m */,
+				BDB3A57A1B8C212C00C6AC9B /* CaseTextContentViewController.h */,
+				BDB3A57B1B8C212C00C6AC9B /* CaseTextContentViewController.m */,
 			);
 			name = Case;
 			sourceTree = "<group>";
@@ -732,6 +737,7 @@
 				BD7B81791B5D248D00067D29 /* SlideNavigationContorllerAnimatorSlideAndFade.m in Sources */,
 				BD337CB81B65FF5900D8E9F9 /* RegisterViewController.m in Sources */,
 				BD834A081B6E0D1600E7D79D /* CaseListCell.m in Sources */,
+				BDB3A57C1B8C212C00C6AC9B /* CaseTextContentViewController.m in Sources */,
 				EA45E6E71B6A5C6400BB86BE /* HeaderView.m in Sources */,
 				BD7B81781B5D248D00067D29 /* SlideNavigationContorllerAnimatorSlide.m in Sources */,
 				BD1DA16B1B7C19E900BC2EF5 /* Reachability.m in Sources */,

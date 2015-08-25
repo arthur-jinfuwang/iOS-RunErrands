@@ -20,8 +20,7 @@
     // Do any additional setup after loading the view.
     
     _theEditCaseTextView.delegate = self;
-    _theEditCaseTextView.text = @"";
-    
+    _theEditCaseTextView.text =_textContent;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -37,14 +36,14 @@
     UIAlertAction *ok = [UIAlertAction actionWithTitle:@"是" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
         //跳轉到下個頁面
 
-        UIViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier: @"PostCaseTableViewController"];
-        
-        [self.navigationController pushViewController:vc animated:YES];
-        
+        NSArray * array = self.navigationController.viewControllers;
+        NSUInteger index = [array indexOfObject:self];
+        id viewcontroller = [array objectAtIndex:index-1];
+        [self.navigationController popToViewController:viewcontroller animated:YES];
     }];
     
     UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"否" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
-        
+        [self dismissViewControllerAnimated:YES completion:nil];
     }];
     
     [alert addAction:cancel];
@@ -59,14 +58,17 @@
     UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"完成編輯" message:@"你是否已完成編輯工作內容？" preferredStyle:UIAlertControllerStyleAlert];
     
     UIAlertAction *ok = [UIAlertAction actionWithTitle:@"確定" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
-
-        UIViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier: @"PostCaseTableViewController"];
         
-        [self.navigationController pushViewController:vc animated:YES];
+        self.editedTextContent(_theEditCaseTextView.text);
+        
+        NSArray * array = self.navigationController.viewControllers;
+        NSUInteger index = [array indexOfObject:self];
+        id viewcontroller = [array objectAtIndex:index-1];
+        [self.navigationController popToViewController:viewcontroller animated:YES];
     }];
     
     UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
-        
+        [self dismissViewControllerAnimated:YES completion:nil];
     }];
     
     [alert addAction:cancel];
@@ -79,8 +81,6 @@
     
     NSLog(@"textViewShouldEndEditing:");
     
-    textView.backgroundColor = [UIColor whiteColor];
-    
     return YES;
     
 }
@@ -88,7 +88,12 @@
 - (void)textViewDidEndEditing:(UITextView *)textView{
     
     NSLog(@"textViewDidEndEditing:");
-    
+}
+
+- (void)setTheEditedContent:(NSString *)content
+{
+    _textContent = nil;
+    _textContent = content;
 }
 
 /*
