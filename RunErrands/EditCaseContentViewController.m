@@ -92,13 +92,8 @@
 
 - (void)setTheEditedContent:(NSString *)content
 {
-    if (content == nil) {
-        _theEditCaseTextView.text = @"";
-    }
     _textContent = nil;
-    NSLog(@"%@",content);
     _textContent = content;
-    NSLog(@"%@",_textContent);
 }
 
 /*

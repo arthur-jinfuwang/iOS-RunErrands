@@ -1031,7 +1031,7 @@
                                             </variation>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="cYc-jv-Jdo" kind="show" trigger="accessoryAction" id="1yb-Uh-RIW"/>
+                                            <segue destination="cYc-jv-Jdo" kind="show" identifier="showCaseContent" trigger="accessoryAction" id="1yb-Uh-RIW"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="4bz-bv-GI8">
@@ -1304,10 +1304,10 @@
             </objects>
             <point key="canvasLocation" x="909" y="2677"/>
         </scene>
-        <!--View Controller-->
+        <!--Case Text Content View Controller-->
         <scene sceneID="aO5-0Y-ezx">
             <objects>
-                <viewController id="cYc-jv-Jdo" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CaseTextContentViewController" id="cYc-jv-Jdo" customClass="CaseTextContentViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="1V2-eV-9io"/>
                         <viewControllerLayoutGuide type="bottom" id="7zR-y7-Z1C"/>
@@ -1324,17 +1324,17 @@
                                     <constraint firstAttribute="width" constant="320" id="Pab-M7-FFs"/>
                                 </constraints>
                             </imageView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" editable="NO" text="Lorem ipsum dolor sit er elit lamet, consectetaur cillium  " translatesAutoresizingMaskIntoConstraints="NO" id="S9N-bK-opf">
-                                <rect key="frame" x="0.0" y="252" width="600" height="304"/>
-                                <color key="backgroundColor" red="1" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Lorem ipsum dolor sit er elit lamet, consectetaur cillium  " translatesAutoresizingMaskIntoConstraints="NO" id="S9N-bK-opf">
+                                <rect key="frame" x="0.0" y="252" width="600" height="348"/>
+                                <color key="backgroundColor" red="0.80000000000000004" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="7zR-y7-Z1C" firstAttribute="top" secondItem="S9N-bK-opf" secondAttribute="bottom" id="0hT-5S-8p0"/>
                             <constraint firstItem="S9N-bK-opf" firstAttribute="top" secondItem="dWf-rc-r3S" secondAttribute="bottom" constant="8" id="1yA-jO-b7F"/>
+                            <constraint firstItem="7zR-y7-Z1C" firstAttribute="top" secondItem="S9N-bK-opf" secondAttribute="bottom" id="4CQ-oo-5BP"/>
                             <constraint firstItem="dWf-rc-r3S" firstAttribute="top" secondItem="1V2-eV-9io" secondAttribute="bottom" constant="8" id="Rq9-9Z-WWn"/>
                             <constraint firstAttribute="centerX" secondItem="dWf-rc-r3S" secondAttribute="centerX" id="T56-Kc-qXO"/>
                             <constraint firstItem="S9N-bK-opf" firstAttribute="leading" secondItem="fMZ-cH-wo0" secondAttribute="leadingMargin" constant="-16" id="WaV-uk-h1y"/>
@@ -1347,6 +1347,10 @@
                             </mask>
                         </variation>
                     </view>
+                    <connections>
+                        <outlet property="theCaseContentTextView" destination="S9N-bK-opf" id="bYA-JY-ZqV"/>
+                        <outlet property="theCaseImageView" destination="dWf-rc-r3S" id="ckr-Y2-Sfz"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9JH-7K-DMa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

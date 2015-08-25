@@ -329,6 +329,11 @@
     //存檔
     //UIImageWriteToSavedPhotosAlbum(image,nil,nil,nil);
     
+    //save to parse file
+    NSData *imageData = UIImagePNGRepresentation(image);
+    PFFile *imageFile = [PFFile fileWithName:@"casePhoto.png" data:imageData];
+    _details[@"case_photo"] = imageFile;
+    
     casePicture.thePictureBtn.imageView.contentMode = UIViewContentModeScaleAspectFill;
     [casePicture.thePictureBtn setImage:image forState:UIControlStateNormal];
     
@@ -400,6 +405,7 @@
                 _details[@"work_GeoPoint"] =caseLocation;
                 break;
             case RE_CASE_CONTENT:
+                _details[@"case_content"] = data;
                 break;
             case RE_WORK_BEGIN_AT:
                 _details[@"work_begin_at"] = data;
@@ -498,6 +504,38 @@
     [self presentViewController:alert animated:true completion:nil];
 }
 
+#if 0
+- (void) theParseFiletest
+{
+    //upload
+    UIImage *image;
+    NSData *imageData = UIImagePNGRepresentation(image);
+    PFFile *imageFile = [PFFile fileWithName:@"image.png" data:imageData];
+    PFObject *userPhoto = [PFObject objectWithClassName:@"UserPhoto"];
+    userPhoto[@"imageName"] = @"My trip to Hawaii!";
+    userPhoto[@"imageFile"] = imageFile;
+    [userPhoto saveInBackground];
+    
+    //download
+    PFFile *userImageFile = anotherPhoto[@"imageFile"];
+    [userImageFile getDataInBackgroundWithBlock:^(NSData *imageData, NSError *error) {
+        if (!error) {
+            UIImage *image = [UIImage imageWithData:imageData];
+        }
+    }];
+
+    
+    NSData *data = [@"Working at Parse is great!" dataUsingEncoding:NSUTF8StringEncoding];
+    PFFile *file = [PFFile fileWithName:@"resume.txt" data:data];
+    [file saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+        // Handle success or failure here ...
+    } progressBlock:^(int percentDone) {
+        // Update your progress spinner here. percentDone will be between 0 and 100.
+    }];
+
+}
+
+#endif
 /*
 // Override to support conditional editing of the table view.
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
