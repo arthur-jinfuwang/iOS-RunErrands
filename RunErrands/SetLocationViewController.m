@@ -126,7 +126,6 @@
     
     UIAlertAction *ok = [UIAlertAction actionWithTitle:@"確定" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
         
-        NSLog(@"hhhhhh--->>%@\n",caseAnnotation);
         self.returnCaseLocation(caseAnnotation);
         
         NSArray * array = self.navigationController.viewControllers;

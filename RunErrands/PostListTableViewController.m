@@ -44,6 +44,14 @@
             [self loadParseDatas];
         }
     }
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadTableView) name:@"dataReload" object:nil];
+}
+
+-(void) reloadTableView
+{
+    [self loadParseDatas];
+    [self.tableView reloadData];
 }
                            
 -(void) loadParseDatas
@@ -187,6 +195,12 @@
         
         vc.caseObject = item;
     }
+}
+
+-(void)dealloc
+{
+//    [[NSNotificationCenter defaultCenter] removeObserver:self forKeyPath:@"dataReload"];
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 @end

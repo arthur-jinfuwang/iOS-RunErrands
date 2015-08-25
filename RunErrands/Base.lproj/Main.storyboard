@@ -143,10 +143,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <activityIndicatorView key="tableFooterView" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="whiteLarge" id="IfW-Oe-FCf">
-                            <rect key="frame" x="0.0" y="0.0" width="600" height="37"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        </activityIndicatorView>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="postCase" rowHeight="44" id="MEo-lT-BDj">
                                 <autoresizingMask key="autoresizingMask"/>
@@ -172,9 +168,6 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
-                    <connections>
-                        <outlet property="spin" destination="IfW-Oe-FCf" id="WG2-EF-bD1"/>
-                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Aj-0h-Pwx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1289,6 +1282,7 @@
                         <outlet property="theDeadlineLabel" destination="wLc-yM-BfQ" id="jiQ-s9-9ZU"/>
                         <outlet property="theEmailLabel" destination="XYH-p0-g1K" id="J3p-v9-ri7"/>
                         <outlet property="theFollowCaseBtn" destination="D9l-zs-kzO" id="QaK-N8-0kP"/>
+                        <outlet property="theOwnerImageView" destination="9Ib-hH-DYn" id="1lg-f7-mWn"/>
                         <outlet property="thePersonsLabel" destination="Y0Q-mT-t3h" id="xXn-oq-cIa"/>
                         <outlet property="thePostTimeLabel" destination="bcT-N3-faq" id="Inz-jy-r4k"/>
                         <outlet property="theUserIDLabel" destination="bnc-CQ-D0h" id="t1T-rk-DJQ"/>
@@ -1316,7 +1310,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="dWf-rc-r3S">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="dWf-rc-r3S">
                                 <rect key="frame" x="140" y="64" width="320" height="180"/>
                                 <color key="backgroundColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
