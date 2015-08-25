@@ -165,9 +165,11 @@
     }else
     {
         UITableViewCell *cell = cellArray[LOGINMENU];
-        if (status == USERLOGIN) {
+        if (status == USERLOGIN)
+        {
             cell.textLabel.text = @"☑️ 登出";
-        }else
+        }
+        else
         {
             cell.textLabel.text = @"☑️ 登入";
         }
@@ -177,6 +179,8 @@
     loginStatus = status;
     
 }
+
+
 
 
 /*

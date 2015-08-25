@@ -21,6 +21,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *RegisterBtnpressed;
 @property (weak, nonatomic) IBOutlet UITextField *accountTextfield;
 @property (weak, nonatomic) IBOutlet UITextField *passwordTextfield;
+@property (weak, nonatomic) IBOutlet UIButton *ParseLoginMethod;
 
 
 @end
@@ -37,6 +38,23 @@
 //    [testObject saveInBackground];
 
     leftMenu =(LeftMenuViewController *)[SlideNavigationController sharedInstance].leftMenu;
+    
+    PFUser *currentUser = [PFUser currentUser];
+    if (currentUser) {
+        // do stuff with the user
+        PFUser *currentUser = [PFUser currentUser]; // this will now be nil
+        [leftMenu setLoginStatus:USERLOGIN];
+        [_ParseLoginMethod setTitle:@"登出"  forState:UIControlStateNormal];
+        [_RegisterBtnpressed setTitle:@"註冊" forState:UIControlStateNormal];
+    } else {
+        // this will now be nil
+        PFUser *currentUser = [PFUser currentUser];
+        [leftMenu setLoginStatus:USERLOGOUT];
+        [_ParseLoginMethod setTitle:@"登入"forState:UIControlStateNormal];
+        [_RegisterBtnpressed setTitle:@"註冊" forState:UIControlStateNormal];
+        
+    }
+
     
     if ([FBSDKAccessToken currentAccessToken]) {
         // User is logged in, do work such as go to next view controller.
@@ -63,11 +81,11 @@
 }
 
 
-
+#pragma mark parse Login and Register
 
 - (IBAction)RegisterBtnpressed:(id)sender
 {
-    //建立輸入帳號資料訊息框
+            //建立輸入帳號資料訊息框
     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"註冊" message:@"請輸入帳號密碼" preferredStyle:UIAlertControllerStyleAlert];
     UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
         [self dismissViewControllerAnimated:YES completion:nil];
@@ -89,7 +107,7 @@
         //[user saveInBackground];
         
         
-        //登入成功後
+        //註冊成功後
         [user signUpInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
             if (!error) {
                 
@@ -100,6 +118,7 @@
                     UIViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier: @"SettingTableViewController"];
                     dispatch_async(dispatch_get_main_queue(), ^{
                         [[SlideNavigationController sharedInstance] popAllAndSwitchToViewController:vc withCompletion:nil];
+                        [_ParseLoginMethod setTitle:@"登出"  forState:UIControlStateNormal];
                     });
                 }];
                 [alert addAction:ok];
@@ -152,13 +171,22 @@
         textField.secureTextEntry = YES;
             }];
     
+    
     [alertController addAction:cancelAction];
     [alertController addAction:okAction];
     [self presentViewController:alertController animated:YES completion:nil];
+    
+    
 }
 - (IBAction)LoginBtnpressed:(id)sender
 {
-    [PFUser logInWithUsernameInBackground:_accountTextfield.text password:_passwordTextfield.text
+    PFUser *currentUser = [PFUser currentUser];
+    if (currentUser)
+    {
+        [self userLogOut];
+        [_ParseLoginMethod setTitle:@"登入" forState:UIControlStateNormal];
+    }else{
+       [PFUser logInWithUsernameInBackground:_accountTextfield.text password:_passwordTextfield.text
     block:^(PFUser *user, NSError *error) {
     if (user) {
                                             // Do stuff after successful login.
@@ -173,8 +201,10 @@
                                             }];
                 [alert addAction:ok];
                 [self presentViewController:alert animated:true completion:nil];
-                                            
-                                        } else {
+                [_ParseLoginMethod setTitle:@"登出"  forState:UIControlStateNormal];
+                }
+                else
+                {
                                             // The login failed. Check error to see why.
                 UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"登入訊息" message:@"登入失敗,請重新輸入" preferredStyle:UIAlertControllerStyleAlert];
                                             
@@ -187,11 +217,14 @@
                                             
                                         }
                                     }];
+    
+    }
 }
 
-
-
-
+- (void)parseuserLogOut  {
+    [PFUser logOut];
+    [leftMenu setLoginStatus:USERLOGOUT];
+}
 
 
 #pragma mark Login Facebook
@@ -266,7 +299,8 @@
 
 - (IBAction)facebookLoginBtnPressed:(id)sender {
     
-    if ([FBSDKAccessToken currentAccessToken]){
+    if ([FBSDKAccessToken currentAccessToken])
+    {
         [self userLogOut];
         [_facebookLoginBtn setTitle:@"登入 facebook" forState:UIControlStateNormal];
     }else{
