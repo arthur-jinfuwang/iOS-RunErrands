@@ -8,6 +8,7 @@
 
 #import "CaseListTableViewController.h"
 #import "CaseListCell.h"
+#import <Parse/Parse.h>
 
 @interface CaseListTableViewController ()
 
@@ -23,6 +24,11 @@
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    if (self.caselist != nil) {
+        for ( PFObject *object in self.caselist ) {
+            NSLog(@"Case list %@", object.objectId);
+        }
+    }
 }
 
 - (void)didReceiveMemoryWarning {
@@ -32,8 +38,13 @@
 
 - (BOOL)slideNavigationControllerShouldDisplayLeftMenu
 {
-    return YES;
+    return NO;
 }
+
+//- (IBAction)backToMapBtnPressed:(UIStoryboardSegue *)segue
+//{
+//    NSLog(@"back to map!!");
+//}
 
 #pragma mark - Table view data source
 
@@ -45,7 +56,7 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 
     // Return the number of rows in the section.
-    return 20;
+    return _caselist.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -60,8 +71,6 @@
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    
-    
     
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     NSString* viewType = @"CaseDetailsTableViewController";

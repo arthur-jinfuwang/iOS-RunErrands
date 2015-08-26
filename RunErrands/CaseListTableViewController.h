@@ -11,4 +11,6 @@
 
 @interface CaseListTableViewController : UITableViewController <SlideNavigationControllerDelegate>
 
+@property (nonatomic, strong) NSArray *caselist;
+
 @end

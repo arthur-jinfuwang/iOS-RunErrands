@@ -35,7 +35,7 @@
                     <navigationItem key="navigationItem" id="Ffc-qT-130">
                         <barButtonItem key="rightBarButtonItem" title="List" id="laB-S7-m1t">
                             <connections>
-                                <segue destination="RDe-YY-nqR" kind="show" id="FES-Lo-JZM"/>
+                                <segue destination="RDe-YY-nqR" kind="show" identifier="caseListViewSegue" id="FES-Lo-JZM"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -71,13 +71,7 @@
                             <outlet property="delegate" destination="RDe-YY-nqR" id="ohb-gx-q8V"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="Pa5-IO-Uk8">
-                        <barButtonItem key="rightBarButtonItem" title="Map" id="wBE-em-F1D">
-                            <connections>
-                                <segue destination="BYZ-38-t0r" kind="show" id="QqX-jx-IWm"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" id="Pa5-IO-Uk8"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dIS-Sz-nmL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1379,7 +1373,6 @@
                     <connections>
                         <outlet property="openanimation" destination="uoN-CR-l2E" id="nbD-JI-5bU"/>
                         <segue destination="BYZ-38-t0r" kind="show" id="hFi-3l-ee4"/>
-                        <segue destination="RDe-YY-nqR" kind="show" id="ybq-Ux-EmN"/>
                         <segue destination="Kni-yZ-eIA" kind="show" id="H3j-dN-CsR"/>
                         <segue destination="bdK-Kz-k82" kind="show" id="3WS-i7-eDO"/>
                         <segue destination="WI7-ka-zyH" kind="show" id="NTl-uH-4ti"/>
@@ -1454,8 +1447,6 @@
         <image name="註冊按鈕.png" width="176" height="36"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="hFi-3l-ee4"/>
-        <segue reference="ybq-Ux-EmN"/>
-        <segue reference="1By-6M-hw7"/>
+        <segue reference="Taw-Pu-oyh"/>
     </inferredMetricsTieBreakers>
 </document>
