@@ -900,7 +900,7 @@
                                                 <constraint firstItem="bcT-N3-faq" firstAttribute="leading" secondItem="pt6-8M-V9i" secondAttribute="trailing" constant="8" id="L0y-Bi-62e"/>
                                                 <constraint firstAttribute="centerY" secondItem="9Ib-hH-DYn" secondAttribute="centerY" id="WMX-MY-nQZ"/>
                                                 <constraint firstAttribute="centerY" secondItem="bnc-CQ-D0h" secondAttribute="centerY" constant="19.5" id="Xfl-Co-MR4"/>
-                                                <constraint firstAttribute="centerY" secondItem="pt6-8M-V9i" secondAttribute="centerY" constant="-19.75" id="ZD6-s1-vlR"/>
+                                                <constraint firstAttribute="centerY" secondItem="pt6-8M-V9i" secondAttribute="centerY" constant="-21" id="ZD6-s1-vlR"/>
                                                 <constraint firstItem="bnc-CQ-D0h" firstAttribute="leading" secondItem="9Ib-hH-DYn" secondAttribute="trailing" constant="8" id="b8I-lh-6le"/>
                                                 <constraint firstItem="D9l-zs-kzO" firstAttribute="leading" secondItem="bnc-CQ-D0h" secondAttribute="trailing" constant="8" id="cni-tV-Url"/>
                                                 <constraint firstAttribute="centerY" secondItem="bcT-N3-faq" secondAttribute="centerY" constant="-20" id="eJe-mY-JDO"/>
@@ -1354,7 +1354,7 @@
         <!--Open View Controller-->
         <scene sceneID="x1S-Ej-cMx">
             <objects>
-                <viewController id="6XY-lY-f9h" customClass="openViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="OpenAnimationView" id="6XY-lY-f9h" customClass="openViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="dxr-Cm-qjS"/>
                         <viewControllerLayoutGuide type="bottom" id="k8C-TX-22C"/>
@@ -1433,7 +1433,7 @@
         <!--Slide Navigation Controller-->
         <scene sceneID="Dou-dh-ZQ0">
             <objects>
-                <navigationController id="wfi-cs-57i" customClass="SlideNavigationController" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="SlidemenuView" id="wfi-cs-57i" customClass="SlideNavigationController" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Fbp-uP-a8W">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -1455,7 +1455,7 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="hFi-3l-ee4"/>
+        <segue reference="ybq-Ux-EmN"/>
         <segue reference="1By-6M-hw7"/>
-        <segue reference="FES-Lo-JZM"/>
     </inferredMetricsTieBreakers>
 </document>
