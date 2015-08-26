@@ -10,12 +10,16 @@
 #import <MapKit/MapKit.h>
 #import <CoreLocation/CoreLocation.h>
 #import <Parse/Parse.h>
+#import "CaseDetailsTableViewController.h"
+#import "CaseMKPointAnnotation.h"
+
 
 @interface MapViewController ()<MKMapViewDelegate, CLLocationManagerDelegate>
 {
     CLLocationManager *locationManager;
     BOOL isFirstLocationReceived;
-    NSArray *caseslist;
+    NSArray *caselist;
+    PFObject *currentObject;
 }
 
 @property (weak, nonatomic) IBOutlet MKMapView *theMapView;
@@ -41,16 +45,39 @@
     _theMapView.userTrackingMode = MKUserTrackingModeFollow;
     
 
+    if ([PFUser currentUser]) {
+        [self loadCaseDatas];
+    }else
+    {
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"未登入" message:@"請先登入你的帳號" preferredStyle:UIAlertControllerStyleAlert];
+        
+        UIAlertAction *ok = [UIAlertAction actionWithTitle:@"確定" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+
+            UIViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier: @"LoginViewController"];
+            [[SlideNavigationController sharedInstance] popAllAndSwitchToViewController:vc withCompletion:nil];
+        }];
+        
+        [alert addAction:ok];
+        [self presentViewController:alert animated:true completion:nil];
+    }
+}
+
+-(void) loadCaseDatas
+{
     PFQuery *query = [PFQuery queryWithClassName:@"Cases"];
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (!error) {
             // The find succeeded.
             NSLog(@"Successfully retrieved %ld case in map view.", objects.count);
-            // Do something with the found objects
-            for (PFObject *object in objects) {
-                NSLog(@"%@", object.objectId);
+
+            if (caselist != nil) {
+                caselist = nil;
             }
-            caseslist = objects;
+            caselist = [NSArray arrayWithArray:objects];
+            for (PFObject *object in caselist) {
+                NSLog(@">>>>%@", object.objectId);
+            }
+            isFirstLocationReceived = false;
         } else {
             // Log details of the failure
             NSLog(@"Error: %@ %@", error, [error userInfo]);
@@ -74,7 +101,7 @@
     CLLocation *currentLocation = locations.lastObject;
     
     NSLog(@"Current Location: %.6f,%.6f", currentLocation.coordinate.latitude, currentLocation.coordinate.longitude);
-    
+          NSLog(@"%ld\n", [caselist count]);
     if (isFirstLocationReceived == false) {
         MKCoordinateRegion region = _theMapView.region;
         region.center = currentLocation.coordinate;
@@ -83,20 +110,26 @@
         
         [_theMapView setRegion:region animated:true];
         isFirstLocationReceived = true;
-        
-        // Add Annotation
-        CLLocationCoordinate2D coordicate = currentLocation.coordinate;
-        coordicate.longitude += 0.005;
-        coordicate.latitude += 0.005;
-        
-        MKPointAnnotation *annotation = [MKPointAnnotation new];
 
-        
-        annotation.coordinate = coordicate;
-        annotation.title = @"肯德基";
-        annotation.subtitle = @"真好吃!🍗";
-        
-        [_theMapView addAnnotation: annotation];
+        // Add Annotation
+        CLLocationCoordinate2D coordicate;
+        for (PFObject *item in caselist) {
+            PFGeoPoint *itemGeoPoint = item[@"work_GeoPoint"];
+            if (itemGeoPoint == nil) {
+                continue;
+            }
+            CaseMKPointAnnotation *annotation = [CaseMKPointAnnotation new];
+
+            coordicate.longitude = itemGeoPoint.longitude;
+            coordicate.latitude = itemGeoPoint.latitude;
+            
+            annotation.coordinate = coordicate;
+            annotation.title = [NSString stringWithFormat:@"%@:%@",item[@"wage_class"], item[@"wage"]];
+            annotation.subtitle = item[@"case_title"];
+            [annotation setCaseObject:item];
+            
+            [_theMapView addAnnotation: annotation];
+        }
         
     }
 }
@@ -119,11 +152,47 @@
     
     resultView.canShowCallout = true;
     resultView.animatesDrop = true;
-    resultView.pinColor = MKPinAnnotationColorGreen;
+    resultView.pinColor = MKPinAnnotationColorRed;
     
+    UIButton *rightButton = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
+    [rightButton addTarget:self action:@selector(buttonPressed:) forControlEvents:UIControlEventTouchUpInside];
+    resultView.rightCalloutAccessoryView = rightButton;
     
     return resultView;
 }
+
+- (void) buttonPressed:(id)sender {
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"確認" message:@"你是否要查看詳細資料" preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        [self dismissViewControllerAnimated:true completion:nil];
+    }];
+    
+    UIAlertAction *ok = [UIAlertAction actionWithTitle:@"確定" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        CaseDetailsTableViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier: @"CaseDetailsTableViewController"];
+        
+        [vc setCaseObject:currentObject];
+        [vc setIsEnableFollow:YES];
+        
+        [[SlideNavigationController sharedInstance] pushViewController:vc animated:YES];
+        
+    }];
+    
+    [alert addAction:cancel];
+    [alert addAction:ok];
+    
+    [self presentViewController:alert animated:true completion:nil];
+}
+
+- (void)mapView:(MKMapView *)mapView didSelectAnnotationView:(MKAnnotationView *)view
+{
+    CaseMKPointAnnotation *object =(CaseMKPointAnnotation *)view.annotation;
+    
+    currentObject = object.caseObject;
+    
+    NSLog(@"did select %@", currentObject[@"case_title"]);
+}
+
 
 - (void)viewDidDisappear:(BOOL)animated
 {

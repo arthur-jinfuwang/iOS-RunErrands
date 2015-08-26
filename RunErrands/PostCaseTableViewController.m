@@ -466,13 +466,12 @@
     
     UIAlertAction *ok = [UIAlertAction actionWithTitle:@"確定" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
         [self saveCaseDetailsToRemoteServer];
-        UIViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier: @"PostListTableViewController"];
-        
-        [self.navigationController pushViewController:vc animated:YES];
+        // Return to uplayer view
+        [self.navigationController popViewControllerAnimated:YES];
     }];
     
     UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
-
+        [self dismissViewControllerAnimated:true completion:nil];
     }];
 
     [alert addAction:cancel];
@@ -488,15 +487,12 @@
     UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"取消編輯" message:@"你是否想要取消編輯內容？" preferredStyle:UIAlertControllerStyleAlert];
     
     UIAlertAction *ok = [UIAlertAction actionWithTitle:@"是" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
-        //跳轉到下個頁面
-        UIViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier: @"PostListTableViewController"];
-        
-        [self.navigationController pushViewController:vc animated:YES];
-        
+        // Return to uplayer view
+        [self.navigationController popViewControllerAnimated:YES];
     }];
     
     UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"否" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
-        
+        [self dismissViewControllerAnimated:true completion:nil];
     }];
     
     [alert addAction:cancel];
@@ -505,38 +501,6 @@
     [self presentViewController:alert animated:true completion:nil];
 }
 
-#if 0
-- (void) theParseFiletest
-{
-    //upload
-    UIImage *image;
-    NSData *imageData = UIImagePNGRepresentation(image);
-    PFFile *imageFile = [PFFile fileWithName:@"image.png" data:imageData];
-    PFObject *userPhoto = [PFObject objectWithClassName:@"UserPhoto"];
-    userPhoto[@"imageName"] = @"My trip to Hawaii!";
-    userPhoto[@"imageFile"] = imageFile;
-    [userPhoto saveInBackground];
-    
-    //download
-    PFFile *userImageFile = anotherPhoto[@"imageFile"];
-    [userImageFile getDataInBackgroundWithBlock:^(NSData *imageData, NSError *error) {
-        if (!error) {
-            UIImage *image = [UIImage imageWithData:imageData];
-        }
-    }];
-
-    
-    NSData *data = [@"Working at Parse is great!" dataUsingEncoding:NSUTF8StringEncoding];
-    PFFile *file = [PFFile fileWithName:@"resume.txt" data:data];
-    [file saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-        // Handle success or failure here ...
-    } progressBlock:^(int percentDone) {
-        // Update your progress spinner here. percentDone will be between 0 and 100.
-    }];
-
-}
-
-#endif
 /*
 // Override to support conditional editing of the table view.
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
