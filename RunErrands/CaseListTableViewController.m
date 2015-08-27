@@ -9,6 +9,7 @@
 #import "CaseListTableViewController.h"
 #import "CaseListCell.h"
 #import <Parse/Parse.h>
+#import "CaseDetailsTableViewController.h"
 
 @interface CaseListTableViewController ()
 
@@ -67,6 +68,28 @@
     NSArray *view = [[NSBundle mainBundle] loadNibNamed:@"CaseListCell" owner:nil options:nil];
     cell = (CaseListCell *)[view lastObject];
     
+    PFObject *object = self.caselist[indexPath.row];
+    
+    cell.theCityLabel.text = object[@"work_city"];
+    cell.theFollowLabel.hidden = YES;
+
+    cell.thePostTimeLabel.text =object[@""];
+    cell.theTitleLabel.text = object[@"case_title"];
+    NSString *wage = [NSString stringWithFormat:@"%@: %@", object[@"wage_class"], object[@"wage"]];
+    cell.theWageLabel.text = wage;
+    cell.theUserIDLabel.text = object[@"contact_name"];
+    //download
+    PFFile *imageFile = object[@"case_photo"];
+    [imageFile getDataInBackgroundWithBlock:^(NSData *imageData, NSError *error) {
+        if (!error) {
+            UIImage *image = [UIImage imageWithData:imageData];
+            [cell.theImageView setImage:image];
+        }else
+        {
+            NSLog(@"%@", error.description);
+        }
+    }];
+    
     return cell;
 }
 
@@ -74,10 +97,12 @@
     
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     NSString* viewType = @"CaseDetailsTableViewController";
-    UIViewController* viewController = [storyboard instantiateViewControllerWithIdentifier:viewType];
+    CaseDetailsTableViewController* viewController = [storyboard instantiateViewControllerWithIdentifier:viewType];
+    
+    PFObject * object = self.caselist[indexPath.row];
+    viewController.caseObject = object;
     
     [self.navigationController pushViewController:viewController animated:YES];
-    
 }
 
 /*
@@ -123,5 +148,4 @@
     // Pass the selected object to the new view controller.
 }
 */
-
 @end

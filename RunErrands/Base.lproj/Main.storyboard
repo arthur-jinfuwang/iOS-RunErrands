@@ -61,9 +61,6 @@
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="tZp-Zq-2Cg" id="IBw-UP-tn7">
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
-                                <connections>
-                                    <segue destination="a8Z-Vk-n8J" kind="show" id="Taw-Pu-oyh"/>
-                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -1270,6 +1267,9 @@
                             <outlet property="delegate" destination="a8Z-Vk-n8J" id="Tgg-Dc-IcY"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" id="RlS-TY-LS8">
+                        <barButtonItem key="rightBarButtonItem" title="應徵" id="OKG-nH-HnO"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="theCaseTitleLabel" destination="3XP-zf-XM9" id="tB4-6e-sTe"/>
                         <outlet property="theContacePhoneLabel" destination="VZd-sj-1gR" id="iB7-pa-WFi"/>
@@ -1447,6 +1447,6 @@
         <image name="註冊按鈕.png" width="176" height="36"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Taw-Pu-oyh"/>
+        <segue reference="hgS-zi-VFA"/>
     </inferredMetricsTieBreakers>
 </document>

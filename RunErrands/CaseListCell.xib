@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -13,12 +13,6 @@
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="rsm-Te-XHt" id="q8e-N2-TG9">
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ykV-ZP-FCX">
-                        <rect key="frame" x="165" y="35" width="0.0" height="0.0"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                        <nil key="highlightedColor"/>
-                    </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2015/08/02" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g2r-um-rEr">
                         <rect key="frame" x="66" y="38" width="83" height="21"/>
                         <accessibility key="accessibilityConfiguration" hint="2015/08/02"/>
@@ -38,16 +32,6 @@
                             <constraint firstAttribute="width" constant="50" id="yqv-LB-THS"/>
                         </constraints>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="總金額10000" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5wq-2j-M7X">
-                        <rect key="frame" x="163" y="38" width="116" height="21"/>
-                        <constraints>
-                            <constraint firstAttribute="width" constant="116" id="XJa-eG-cAe"/>
-                            <constraint firstAttribute="height" constant="21" id="a81-D1-W9C"/>
-                        </constraints>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                        <nil key="highlightedColor"/>
-                    </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="台中市" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aQs-QR-4fw">
                         <rect key="frame" x="198" y="8" width="51" height="21"/>
                         <constraints>
@@ -67,6 +51,25 @@
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="誠徵清潔人員" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H6m-CR-TUF">
+                        <rect key="frame" x="8" y="66" width="396" height="30"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="30" id="PER-cw-EiK"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="總金額10000" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5wq-2j-M7X">
+                        <rect key="frame" x="163" y="38" width="116" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="116" id="XJa-eG-cAe"/>
+                            <constraint firstAttribute="height" constant="21" id="a81-D1-W9C"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="💙" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kcj-n1-6NR">
                         <rect key="frame" x="257" y="8" width="22" height="21"/>
                         <constraints>
@@ -74,15 +77,6 @@
                             <constraint firstAttribute="width" constant="22" id="al5-nt-wO7"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                        <nil key="highlightedColor"/>
-                    </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="誠徵清潔人員" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H6m-CR-TUF">
-                        <rect key="frame" x="8" y="66" width="396" height="30"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="30" id="PER-cw-EiK"/>
-                        </constraints>
-                        <fontDescription key="fontDescription" type="system" pointSize="22"/>
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
@@ -120,6 +114,15 @@
                     </mask>
                 </variation>
             </tableViewCellContentView>
+            <connections>
+                <outlet property="theCityLabel" destination="aQs-QR-4fw" id="kpG-sa-KKO"/>
+                <outlet property="theFollowLabel" destination="kcj-n1-6NR" id="IJb-1X-NYn"/>
+                <outlet property="theImageView" destination="XCi-AB-Vhl" id="ajX-Ud-U66"/>
+                <outlet property="thePostTimeLabel" destination="g2r-um-rEr" id="tad-lF-dSC"/>
+                <outlet property="theTitleLabel" destination="H6m-CR-TUF" id="oR3-sV-iT7"/>
+                <outlet property="theUserIDLabel" destination="alB-w2-MqY" id="GI2-nH-T73"/>
+                <outlet property="theWageLabel" destination="5wq-2j-M7X" id="JGn-yL-FPq"/>
+            </connections>
             <point key="canvasLocation" x="478" y="284"/>
         </tableViewCell>
     </objects>
