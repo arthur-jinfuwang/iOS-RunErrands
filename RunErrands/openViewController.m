@@ -10,7 +10,9 @@
 #import "MapViewController.h"
 #import "SlideNavigationController.h"
 
-@interface openViewController ()
+@interface openViewController (){
+    NSMutableArray *array;
+}
 
 @end
 
@@ -23,8 +25,8 @@
     // Do any additional setup after loading the view.
     
     [self.navigationController setNavigationBarHidden:YES];
-    
-    NSMutableArray *array = [[NSMutableArray alloc]init];
+
+    array = [[NSMutableArray alloc]init];
     [array addObject:[UIImage imageNamed:@"screen@2x(1).png"]];
     [array addObject:[UIImage imageNamed:@"screen@2x(2).png"]];
     [array addObject:[UIImage imageNamed:@"screen@2x(3).png"]];
@@ -38,16 +40,23 @@
     self.openanimation.contentMode = UIViewContentModeScaleAspectFill;
     self.openanimation.animationImages = array;
     
-    self.openanimation.animationDuration = 0.1;
+    self.openanimation.animationDuration = 2;
     
     self.openanimation.animationRepeatCount = 1;
     
-    [self.openanimation startAnimating];
-    
-    
-   [self performSelector:@selector(timernextstep) withObject:nil afterDelay:1.6];
+}
 
-    
+- (void) viewDidAppear:(BOOL)animated
+{
+    [self.openanimation startAnimating];
+    [self performSelector:@selector(timernextstep) withObject:nil afterDelay:2];
+}
+
+-(void) viewDidDisappear:(BOOL)animated
+{
+    [self.openanimation stopAnimating];
+    self.openanimation.animationImages = nil;
+    array = nil;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -56,7 +65,6 @@
 }
 
 - (void) timernextstep{
-    
     
     //跳轉到下個頁面
     UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle: nil];
