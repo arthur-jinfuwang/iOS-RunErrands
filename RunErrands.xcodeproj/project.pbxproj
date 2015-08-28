@@ -18,6 +18,7 @@
 		BD4F48E51B77270E005DD3AC /* TakePictureView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BD4F48E41B77270E005DD3AC /* TakePictureView.xib */; };
 		BD4F48E81B77274D005DD3AC /* TakePictureView.m in Sources */ = {isa = PBXBuildFile; fileRef = BD4F48E71B77274D005DD3AC /* TakePictureView.m */; };
 		BD55339D1B886A4D00364ADC /* EditCaseContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BD55339C1B886A4D00364ADC /* EditCaseContentViewController.m */; };
+		BD6401C81B8FFFA30096A1BB /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = BD6401C71B8FFFA30096A1BB /* MBProgressHUD.m */; };
 		BD6E27061B8DDB6A008A751D /* CaseMKPointAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = BD6E27051B8DDB6A008A751D /* CaseMKPointAnnotation.m */; };
 		BD7B81381B5D1FA900067D29 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BD7B81371B5D1FA900067D29 /* main.m */; };
 		BD7B813B1B5D1FA900067D29 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BD7B813A1B5D1FA900067D29 /* AppDelegate.m */; };
@@ -125,6 +126,8 @@
 		BD4F48E71B77274D005DD3AC /* TakePictureView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TakePictureView.m; sourceTree = "<group>"; };
 		BD55339B1B886A4D00364ADC /* EditCaseContentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditCaseContentViewController.h; sourceTree = "<group>"; };
 		BD55339C1B886A4D00364ADC /* EditCaseContentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditCaseContentViewController.m; sourceTree = "<group>"; };
+		BD6401C61B8FFFA30096A1BB /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
+		BD6401C71B8FFFA30096A1BB /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
 		BD6E27041B8DDB6A008A751D /* CaseMKPointAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CaseMKPointAnnotation.h; sourceTree = "<group>"; };
 		BD6E27051B8DDB6A008A751D /* CaseMKPointAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CaseMKPointAnnotation.m; sourceTree = "<group>"; };
 		BD7B81321B5D1FA900067D29 /* RunErrands.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RunErrands.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -313,6 +316,8 @@
 		BD7B81341B5D1FA900067D29 /* RunErrands */ = {
 			isa = PBXGroup;
 			children = (
+				BD6401C61B8FFFA30096A1BB /* MBProgressHUD.h */,
+				BD6401C71B8FFFA30096A1BB /* MBProgressHUD.m */,
 				BD1DA1691B7C19E900BC2EF5 /* Reachability.h */,
 				BD1DA16A1B7C19E900BC2EF5 /* Reachability.m */,
 				BD7B81631B5D248D00067D29 /* Source */,
@@ -723,6 +728,7 @@
 				BD7B81761B5D248D00067D29 /* SlideNavigationContorllerAnimatorScale.m in Sources */,
 				BD55339D1B886A4D00364ADC /* EditCaseContentViewController.m in Sources */,
 				BD3618EB1B67E35200A13CA9 /* SetLocationViewController.m in Sources */,
+				BD6401C81B8FFFA30096A1BB /* MBProgressHUD.m in Sources */,
 				BD1527E31B7260E5000CFFF3 /* SettingTableViewController.m in Sources */,
 				BD4F48E81B77274D005DD3AC /* TakePictureView.m in Sources */,
 				BD7B81771B5D248D00067D29 /* SlideNavigationContorllerAnimatorScaleAndFade.m in Sources */,

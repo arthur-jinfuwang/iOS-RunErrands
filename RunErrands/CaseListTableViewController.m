@@ -101,6 +101,7 @@
     
     PFObject * object = self.caselist[indexPath.row];
     viewController.caseObject = object;
+    [viewController setIsEnableFollow:YES];
     
     [self.navigationController pushViewController:viewController animated:YES];
 }

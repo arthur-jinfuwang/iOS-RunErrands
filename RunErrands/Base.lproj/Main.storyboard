@@ -40,6 +40,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="theListViewBarBtn" destination="laB-S7-m1t" id="J7S-iY-60a"/>
                         <outlet property="theMapView" destination="GIa-JO-mNv" id="FkX-Gy-Hp9"/>
                     </connections>
                 </viewController>
@@ -880,6 +881,9 @@
                                                     <state key="normal" title="加入追蹤 💙">
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
+                                                    <connections>
+                                                        <action selector="followBtnPressed:" destination="a8Z-Vk-n8J" eventType="touchUpInside" id="NWb-SG-Kvn"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                             <constraints>
@@ -1268,7 +1272,11 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="RlS-TY-LS8">
-                        <barButtonItem key="rightBarButtonItem" title="應徵" id="OKG-nH-HnO"/>
+                        <barButtonItem key="rightBarButtonItem" title="應徵" id="OKG-nH-HnO">
+                            <connections>
+                                <action selector="applyBtnPressed:" destination="a8Z-Vk-n8J" id="Ae1-zI-Ey4"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="theCaseTitleLabel" destination="3XP-zf-XM9" id="tB4-6e-sTe"/>
@@ -1313,7 +1321,7 @@
                                     <constraint firstAttribute="width" constant="320" id="Pab-M7-FFs"/>
                                 </constraints>
                             </imageView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Lorem ipsum dolor sit er elit lamet, consectetaur cillium  " translatesAutoresizingMaskIntoConstraints="NO" id="S9N-bK-opf">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" editable="NO" text="Lorem ipsum dolor sit er elit lamet, consectetaur cillium  " translatesAutoresizingMaskIntoConstraints="NO" id="S9N-bK-opf">
                                 <rect key="frame" x="0.0" y="252" width="600" height="348"/>
                                 <color key="backgroundColor" red="0.80000000000000004" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>

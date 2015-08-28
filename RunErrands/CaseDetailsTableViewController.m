@@ -123,7 +123,40 @@
     
     if (self.isEnableFollow == false) {
         self.theFollowCaseBtn.hidden = true;
+
+    }else
+    {
+        self.theFollowCaseBtn.hidden = false;
+        [self getFollowsStatus];
     }
+}
+
+- (void) getFollowsStatus
+{
+    PFUser *user = [PFUser currentUser];
+    
+    PFQuery *query = [PFQuery queryWithClassName:@"Follows"];
+    [query whereKey:@"user_id" equalTo:user.objectId];
+    [query whereKey:@"case_id" equalTo:self.caseObject.objectId];
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if (!error) {
+            // The find succeeded.
+            NSLog(@"Successfully retrieved %ld case in map view.", objects.count);
+            
+            if (objects.count > 0) {
+                PFObject *object = [objects lastObject];
+                NSString *str = object[@"status"];
+                NSLog(@"follows status: %@", str);
+                if ([str isEqualToString:@"追蹤中"]) {
+                    [_theFollowCaseBtn setTitle:@"追蹤中💚" forState:UIControlStateNormal];
+                }
+            }
+
+        } else {
+            // Log details of the failure
+            NSLog(@"Error: %@ %@", error, [error userInfo]);
+        }
+    }];
 }
 
 
@@ -144,6 +177,22 @@
     return 12;
 }
 
+- (IBAction)applyBtnPressed:(id)sender {
+
+}
+- (IBAction)followBtnPressed:(id)sender {
+    PFObject *object = [PFObject objectWithClassName:@"Follows"];
+    PFUser *user = [PFUser currentUser];
+    object[@"user_id"] = user.objectId;
+    object[@"case_id"] = self.caseObject.objectId;
+    object[@"status"] = @"追蹤中";
+    
+    [object saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error){
+        if (succeeded) {
+            NSLog(@"add follows table successed");
+        }
+    }];
+}
 
 /*
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {

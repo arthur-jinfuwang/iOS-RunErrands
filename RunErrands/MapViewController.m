@@ -13,15 +13,20 @@
 #import "CaseDetailsTableViewController.h"
 #import "CaseMKPointAnnotation.h"
 #import "CaseListTableViewController.h"
+#import "MBProgressHUD.h"
 
 
-@interface MapViewController ()<MKMapViewDelegate, CLLocationManagerDelegate>
+@interface MapViewController ()<MKMapViewDelegate, CLLocationManagerDelegate, MBProgressHUDDelegate>
 {
     CLLocationManager *locationManager;
     BOOL isFirstLocationReceived;
     NSArray *caselist;
     PFObject *currentObject;
+    MBProgressHUD *HUD;
+    
 }
+
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *theListViewBarBtn;
 
 @property (weak, nonatomic) IBOutlet MKMapView *theMapView;
 
@@ -42,9 +47,9 @@
     locationManager.desiredAccuracy = kCLLocationAccuracyBest;
     locationManager.activityType = CLActivityTypeOther;
     locationManager.delegate = self;
-    [locationManager startUpdatingLocation];
     _theMapView.userTrackingMode = MKUserTrackingModeFollow;
     
+    _theListViewBarBtn.enabled = false;
 
     if ([PFUser currentUser]) {
         [self loadCaseDatas];
@@ -66,6 +71,15 @@
 -(void) loadCaseDatas
 {
     PFQuery *query = [PFQuery queryWithClassName:@"Cases"];
+    
+    HUD = [[MBProgressHUD alloc] initWithView:self.navigationController.view];
+    [self.navigationController.view addSubview:HUD];
+    
+    HUD.delegate = self;
+    HUD.labelText = @"Loading";
+
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+ 
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (!error) {
             // The find succeeded.
@@ -76,14 +90,18 @@
             }
             caselist = [NSArray arrayWithArray:objects];
             for (PFObject *object in caselist) {
-                NSLog(@">>>>%@", object.objectId);
+                NSLog(@"Map menu view get objects%@", object.objectId);
             }
             isFirstLocationReceived = false;
+            _theListViewBarBtn.enabled = true;
+            [locationManager startUpdatingLocation];
+
         } else {
             // Log details of the failure
             NSLog(@"Error: %@ %@", error, [error userInfo]);
         }
     }];
+
 }
 
 - (void)didReceiveMemoryWarning {
@@ -130,6 +148,10 @@
             [annotation setCaseObject:item];
             
             [_theMapView addAnnotation: annotation];
+            
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [MBProgressHUD hideHUDForView:self.view animated:YES];
+            });
         }
         
     }
@@ -217,4 +239,6 @@
 }
 
 
+- (IBAction)theListViewBtn:(id)sender {
+}
 @end

@@ -78,13 +78,11 @@
 {
     PFUser *user = [PFUser currentUser];
     
-    NSString *name = user[@"nick_name"];
+    NSString *name = user[@"nickname"];
     NSString *phone = user[@"phone"];
     NSString *email = user[@"email"];
-    if ([name length] > 0) {
-        _details[@"contact_name"] = user[@"nick_name"];
-    }else
-    {
+    if ([name length] == 0) {
+        NSLog(@"name: %@", name);
         name = user[@"username"];
     }
     
@@ -101,6 +99,8 @@
         _details = [PFObject objectWithClassName:@"Cases"];
         _details[@"owner_id"] = [user objectId];
         _details[@"case_status"] = @"Editing";
+        _details[@"contact_name"] = name;
+        NSLog(@"name: %@", name);
     }
 }
 
