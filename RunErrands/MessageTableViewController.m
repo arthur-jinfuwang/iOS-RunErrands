@@ -8,8 +8,13 @@
 
 #import "MessageTableViewController.h"
 #import "MessageListCellTableView.h"
+#import <Parse/Parse.h>
 
 @interface MessageTableViewController ()
+{
+    NSMutableArray *caseList;
+    NSMutableArray *jobSeekerList;
+}
 
 @end
 
@@ -24,6 +29,24 @@
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     self.navigationItem.rightBarButtonItem = self.editButtonItem;
     
+    if ([PFUser currentUser] == nil) {
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"未登入" message:@"請先登入你的帳號" preferredStyle:UIAlertControllerStyleAlert];
+        
+        UIAlertAction *ok = [UIAlertAction actionWithTitle:@"確定" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+            UIViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier: @"LoginViewController"];
+            [[SlideNavigationController sharedInstance] popAllAndSwitchToViewController:vc withCompletion:nil];
+        }];
+        
+        [alert addAction:ok];
+        [self presentViewController:alert animated:true completion:nil];
+    }else{
+        if (jobSeekerList == nil)
+        {
+            jobSeekerList= [NSMutableArray new];
+            [self loadPostCaseDatas];
+        }
+    }
+    
     
 }
 
@@ -37,27 +60,103 @@
     return YES;
 }
 
+-(void) loadPostCaseDatas
+{
+    PFQuery *query = [PFQuery queryWithClassName:@"Cases"];
+    [query whereKey:@"owner_id" equalTo:[PFUser currentUser].objectId];
+    [query whereKey:@"case_status" equalTo:@"Open"];
+    
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if (!error) {
+            // The find succeeded.
+            NSLog(@"Post List menu retrieved %ld cases.", objects.count);
+            if (objects.count == 0) {
+                UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"提醒" message:@"你目前沒有管理任何案子" preferredStyle:UIAlertControllerStyleAlert];
+                
+                UIAlertAction *ok = [UIAlertAction actionWithTitle:@"確定" style:UIAlertActionStyleDefault handler:nil];
+                [alert addAction:ok];
+                [self presentViewController:alert animated:true completion:nil];
+            }
+            else
+            {
+                caseList = [[NSMutableArray alloc] initWithArray:objects];
+                // Do something with the found objects
+                for (PFObject *object in caseList) {
+                    NSLog(@"%@", object.objectId);
+                    [self loadJobSeekersList:object];
+                }
+
+            }
+            
+        } else {
+            // Log details of the failure
+            NSLog(@"Error: %@ %@", error, [error userInfo]);
+        }
+    }];
+}
+
+
+- (void)loadJobSeekersList:(PFObject *)object
+{
+    
+    PFRelation *relation = [object relationForKey:@"user_apply"];
+    PFQuery *query = [relation query];
+    
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if (!error) {
+            // The find succeeded.
+            NSLog(@"Post List menu retrieved %ld apply cases.", objects.count);
+            if (objects!=nil) {
+
+                [jobSeekerList addObject:objects];
+                
+            }
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self.tableView reloadData];
+            });
+            
+        } else {
+            // Log details of the failure
+            NSLog(@"Error: %@ %@", error, [error userInfo]);
+        }
+    }];
+}
+
+
+
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
 
     // Return the number of sections.
-    return 1;
+     NSLog(@"jobSeekerList.count: %ld", jobSeekerList.count);
+    return jobSeekerList.count;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 
-    // Return the number of rows in the section.
-    return 5;
+    NSInteger number;
+    NSArray *jobSeekers = jobSeekerList[section];
+    number = [jobSeekers count];
+    NSLog(@"numberOfRowsInSection: %ld, %ld", section, number);
+    
+    return number;
 }
+
+-(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+{
+    NSString *header;
+    PFObject *object = caseList[section];
+    header = object[@"case_title"];
+
+    
+    return header;
+}
+
+
 //生成另外頁面的物件
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     MessageListCellTableView *cell = [tableView dequeueReusableCellWithIdentifier:@"MessageCell"];
-    
-    // Configure the cell...
-    cell.textLabel.text = [NSString stringWithFormat:@"message %ld", (long)indexPath.row];
-    
-    //cell.textLabel.text = [NSString stringWithFormat:@"case %ld", (long)indexPath.row];
     
     NSArray *view = [[NSBundle mainBundle] loadNibNamed:@"MessageListCell" owner:nil options:nil];
     cell = (MessageListCellTableView *)[view lastObject];
@@ -68,8 +167,6 @@
 
 //點擊會去讀取下一個頁面
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    
-    
     
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     NSString* viewType = @"ResumeViewController";
