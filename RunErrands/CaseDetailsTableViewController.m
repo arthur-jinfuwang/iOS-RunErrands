@@ -8,12 +8,14 @@
 
 #import "CaseDetailsTableViewController.h"
 #import "CaseTextContentViewController.h"
+#import "MBProgressHUD.h"
 
-@interface CaseDetailsTableViewController ()
+@interface CaseDetailsTableViewController () <MBProgressHUDDelegate>
 {
     NSMutableArray *listDetails;
+    MBProgressHUD *HUD;
+    BOOL    isFollow;
 }
-
 
 @property (weak, nonatomic) IBOutlet UILabel *thePostTimeLabel;
 @property (weak, nonatomic) IBOutlet UIButton *theFollowCaseBtn;
@@ -54,12 +56,18 @@
     }else
     {
         [self initCellDetailFromCaseObject];
-        [self getTheOwnerOfCase];
+        [self getCaseOwnerInfo];
+        HUD = [[MBProgressHUD alloc] initWithView:self.navigationController.view];
+        [self.navigationController.view addSubview:HUD];
+        
+        HUD.delegate = self;
+        HUD.labelText = @"Loading";
+        [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     }
-    
 }
 
-- (void) getTheOwnerOfCase
+
+- (void) getCaseOwnerInfo
 {
     PFQuery * query = [PFUser query];
     NSString *ownerID = self.caseObject[@"owner_id"];
@@ -79,10 +87,14 @@
                 {
                     NSLog(@"%@", error.description);
                 }
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [MBProgressHUD hideHUDForView:self.view animated:YES];
+                });
             }];
         }
     }];
 }
+
 
 - (void) initCellDetailFromCaseObject
 {
@@ -127,10 +139,28 @@
     }else
     {
         self.theFollowCaseBtn.hidden = false;
-        [self getFollowsStatus];
+        [self updateFollowStatus];
     }
 }
 
+- (void) updateFollowStatus{
+    PFUser *user = [PFUser currentUser];
+    PFRelation *relation = [user relationForKey:@"user_follows"];
+    PFQuery *query = [relation query];
+    query = [query whereKey:@"objectId" equalTo:self.caseObject.objectId];
+    //NSLog(@"get is following status: %ld", [query countObjects]);
+    
+    [query countObjectsInBackgroundWithBlock:^(int count, NSError *error){
+        if (count) {
+            [_theFollowCaseBtn setTitle:@"追蹤中💚" forState:UIControlStateNormal];
+            isFollow = true;
+        }
+    }];
+
+}
+
+
+/*
 - (void) getFollowsStatus
 {
     PFUser *user = [PFUser currentUser];
@@ -158,7 +188,7 @@
         }
     }];
 }
-
+*/
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -178,9 +208,57 @@
 }
 
 - (IBAction)applyBtnPressed:(id)sender {
-
+    NSLog(@"Save the follow relations");
+    PFUser *user = [PFUser currentUser];
+    PFRelation *userFollows = [user relationForKey:@"user_follows"];
+    if (!isFollow)
+    {
+        [userFollows addObject:self.caseObject];
+        [user saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error){
+            if (succeeded) {
+                [_theFollowCaseBtn setTitle:@"追蹤中💚" forState:UIControlStateNormal];
+                isFollow = true;
+            }
+        }];
+        
+    }else
+    {
+        [userFollows removeObject:self.caseObject];
+        [user saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error){
+            if (succeeded) {
+                [_theFollowCaseBtn setTitle:@"加入追蹤💙" forState:UIControlStateNormal];
+                isFollow = false;
+            }
+        }];
+    }
+    
 }
 - (IBAction)followBtnPressed:(id)sender {
+    NSLog(@"Save the follow relations");
+    PFUser *user = [PFUser currentUser];
+    PFRelation *userFollows = [user relationForKey:@"user_follows"];
+    if (!isFollow)
+    {
+        [userFollows addObject:self.caseObject];
+        [user saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error){
+            if (succeeded) {
+                [_theFollowCaseBtn setTitle:@"追蹤中💚" forState:UIControlStateNormal];
+                isFollow = true;
+            }
+        }];
+        
+    }else
+    {
+        [userFollows removeObject:self.caseObject];
+        [user saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error){
+            if (succeeded) {
+                [_theFollowCaseBtn setTitle:@"加入追蹤💙" forState:UIControlStateNormal];
+                isFollow = false;
+            }
+        }];
+    }
+
+/*
     PFObject *object = [PFObject objectWithClassName:@"Follows"];
     PFUser *user = [PFUser currentUser];
     object[@"user_id"] = user.objectId;
@@ -192,6 +270,7 @@
             NSLog(@"add follows table successed");
         }
     }];
+ */
 }
 
 /*
@@ -222,20 +301,6 @@
     } else if (editingStyle == UITableViewCellEditingStyleInsert) {
         // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
     }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
 }
 */
 

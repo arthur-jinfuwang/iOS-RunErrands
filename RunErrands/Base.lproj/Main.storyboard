@@ -807,9 +807,6 @@
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="WL3-te-yMM" id="16G-Sk-wos">
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
-                                <connections>
-                                    <segue destination="a8Z-Vk-n8J" kind="show" id="1By-6M-hw7"/>
-                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -1454,7 +1451,4 @@
         <image name="臉書按鈕.png" width="608" height="58"/>
         <image name="註冊按鈕.png" width="176" height="36"/>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="hgS-zi-VFA"/>
-    </inferredMetricsTieBreakers>
 </document>

@@ -209,6 +209,10 @@
 
 - (void)mapView:(MKMapView *)mapView didSelectAnnotationView:(MKAnnotationView *)view
 {
+    
+    if (view.annotation == mapView.userLocation)
+        return;
+    
     CaseMKPointAnnotation *object =(CaseMKPointAnnotation *)view.annotation;
     
     currentObject = object.caseObject;
