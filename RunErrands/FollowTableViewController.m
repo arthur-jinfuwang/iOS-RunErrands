@@ -42,10 +42,47 @@
     }else{
         if (followList == nil)
         {
+            [self loadApplyRecords];
             [self loadFollowsRecords];
         }
     }
 }
+
+
+-(void) loadApplyRecords
+{
+    PFUser *user = [PFUser currentUser];
+    PFRelation *relation = [user relationForKey:@"user_apply"];
+    PFQuery *query = [relation query];
+    
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if (!error) {
+            // The find succeeded.
+            NSLog(@"Post List menu retrieved %ld apply cases.", objects.count);
+            if (objects.count == 0) {
+                UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"提醒" message:@"你目前沒有應徵任何案子" preferredStyle:UIAlertControllerStyleAlert];
+                
+                UIAlertAction *ok = [UIAlertAction actionWithTitle:@"確定" style:UIAlertActionStyleDefault handler:nil];
+                [alert addAction:ok];
+                [self presentViewController:alert animated:true completion:nil];
+            }
+            else
+            {
+                applyList = [[NSMutableArray alloc] initWithArray:objects];
+                
+            }
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self.tableView reloadData];
+            });
+            
+        } else {
+            // Log details of the failure
+            NSLog(@"Error: %@ %@", error, [error userInfo]);
+        }
+    }];
+    
+}
+
 
 -(void) loadFollowsRecords
 {
@@ -57,7 +94,7 @@
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (!error) {
             // The find succeeded.
-            NSLog(@"Post List menu retrieved %ld cases.", objects.count);
+            NSLog(@"Post List menu retrieved %ld follow cases.", objects.count);
             if (objects.count == 0) {
                 UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"提醒" message:@"你目前沒有追蹤任何案子" preferredStyle:UIAlertControllerStyleAlert];
                 
@@ -79,8 +116,6 @@
             NSLog(@"Error: %@ %@", error, [error userInfo]);
         }
     }];
-
-
 }
 
 
@@ -184,10 +219,10 @@
     NSString *header;
     switch (section) {
         case 0:
-            header = @"應徵";
+            header = @"應徵案件";
             break;
         case 1:
-            header = @"追蹤";
+            header = @"追蹤案件";
             break;
         default:
             break;
@@ -202,6 +237,27 @@
     cell = (CaseListCell *)[view lastObject];
     
     if (indexPath.section == 0) {
+        PFObject *object = applyList[indexPath.row];
+        
+        cell.theCityLabel.text = object[@"work_city"];
+        cell.theFollowLabel.hidden = YES;
+        
+        cell.thePostTimeLabel.text =object[@""];
+        cell.theTitleLabel.text = object[@"case_title"];
+        NSString *wage = [NSString stringWithFormat:@"%@: %@", object[@"wage_class"], object[@"wage"]];
+        cell.theWageLabel.text = wage;
+        cell.theUserIDLabel.text = object[@"contact_name"];
+        //download
+        PFFile *imageFile = object[@"case_photo"];
+        [imageFile getDataInBackgroundWithBlock:^(NSData *imageData, NSError *error) {
+            if (!error) {
+                UIImage *image = [UIImage imageWithData:imageData];
+                [cell.theImageView setImage:image];
+            }else
+            {
+                NSLog(@"%@", error.description);
+            }
+        }];
         
     }else
     {

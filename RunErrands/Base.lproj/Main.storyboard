@@ -1276,6 +1276,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="theApplyCaseBtn" destination="OKG-nH-HnO" id="9yM-Fx-gHa"/>
                         <outlet property="theCaseTitleLabel" destination="3XP-zf-XM9" id="tB4-6e-sTe"/>
                         <outlet property="theContacePhoneLabel" destination="VZd-sj-1gR" id="iB7-pa-WFi"/>
                         <outlet property="theContactNameLabel" destination="Se9-5f-P55" id="pzK-QQ-cFA"/>

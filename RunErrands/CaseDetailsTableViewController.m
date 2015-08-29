@@ -14,9 +14,11 @@
 {
     NSMutableArray *listDetails;
     MBProgressHUD *HUD;
-    BOOL    isFollow;
+    BOOL    toFollow;
+    BOOL    toApply;
 }
 
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *theApplyCaseBtn;
 @property (weak, nonatomic) IBOutlet UILabel *thePostTimeLabel;
 @property (weak, nonatomic) IBOutlet UIButton *theFollowCaseBtn;
 @property (weak, nonatomic) IBOutlet UILabel *theCaseTitleLabel;
@@ -153,7 +155,7 @@
     [query countObjectsInBackgroundWithBlock:^(int count, NSError *error){
         if (count) {
             [_theFollowCaseBtn setTitle:@"追蹤中💚" forState:UIControlStateNormal];
-            isFollow = true;
+            toFollow = true;
         }
     }];
 
@@ -208,42 +210,54 @@
 }
 
 - (IBAction)applyBtnPressed:(id)sender {
-    NSLog(@"Save the follow relations");
+    NSLog(@"Save the apply relations");
     PFUser *user = [PFUser currentUser];
     PFRelation *userFollows = [user relationForKey:@"user_follows"];
-    if (!isFollow)
+    PFRelation *userApply = [user relationForKey:@"user_apply"];
+    PFRelation *caseApply = [self.caseObject relationForKey:@"user_apply"];
+    if (!toApply)
     {
-        [userFollows addObject:self.caseObject];
-        [user saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error){
+        [caseApply addObject:user];
+        
+        [self.caseObject saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error){
             if (succeeded) {
-                [_theFollowCaseBtn setTitle:@"追蹤中💚" forState:UIControlStateNormal];
-                isFollow = true;
+                NSLog(@"Save in parse case successed");
+            }else
+            {
+                NSLog(@"%@", error.description);
             }
         }];
         
-    }else
-    {
+        [userApply addObject:self.caseObject];
         [userFollows removeObject:self.caseObject];
+        
         [user saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error){
             if (succeeded) {
-                [_theFollowCaseBtn setTitle:@"加入追蹤💙" forState:UIControlStateNormal];
-                isFollow = false;
+                [_theFollowCaseBtn setTitle:@"應徵中❤️" forState:UIControlStateNormal];
+                toApply = true;
+                toFollow = false;
+                _theApplyCaseBtn.enabled = false;
+            }else
+            {
+                NSLog(@"%@", error.description);
             }
         }];
     }
-    
 }
 - (IBAction)followBtnPressed:(id)sender {
     NSLog(@"Save the follow relations");
+    if (toApply) {
+        return;
+    }
     PFUser *user = [PFUser currentUser];
     PFRelation *userFollows = [user relationForKey:@"user_follows"];
-    if (!isFollow)
+    if (!toFollow)
     {
         [userFollows addObject:self.caseObject];
         [user saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error){
             if (succeeded) {
                 [_theFollowCaseBtn setTitle:@"追蹤中💚" forState:UIControlStateNormal];
-                isFollow = true;
+                toFollow = true;
             }
         }];
         
@@ -253,7 +267,7 @@
         [user saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error){
             if (succeeded) {
                 [_theFollowCaseBtn setTitle:@"加入追蹤💙" forState:UIControlStateNormal];
-                isFollow = false;
+                toFollow = false;
             }
         }];
     }
