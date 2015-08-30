@@ -10,11 +10,13 @@
 #import "MessageListCellTableView.h"
 #import "ResumeViewController.h"
 #import <Parse/Parse.h>
+#import "MBProgressHUD.h"
 
 @interface MessageTableViewController ()
 {
     NSMutableArray *caseList;
     NSMutableArray *jobSeekerList;
+    MBProgressHUD *HUD;
 }
 
 @end
@@ -41,12 +43,9 @@
         [alert addAction:ok];
         [self presentViewController:alert animated:true completion:nil];
     }else{
-        if (jobSeekerList == nil)
-        {
-            caseList = [NSMutableArray new];
-            jobSeekerList= [NSMutableArray new];
-            [self loadPostCaseDatas];
-        }
+        caseList = [NSMutableArray new];
+        jobSeekerList= [NSMutableArray new];
+        [self loadPostCaseDatas];
     }
     
     
@@ -68,6 +67,7 @@
     [query whereKey:@"owner_id" equalTo:[PFUser currentUser].objectId];
     [query whereKey:@"case_status" equalTo:@"Open"];
     
+    HUD = [[MBProgressHUD alloc] initWithView:self.navigationController.view];
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (!error) {
             // The find succeeded.
@@ -122,6 +122,7 @@
             // Log details of the failure
             NSLog(@"Error: %@ %@", error, [error userInfo]);
         }
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
     }];
 }
 

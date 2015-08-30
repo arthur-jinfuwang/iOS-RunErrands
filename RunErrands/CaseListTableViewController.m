@@ -29,6 +29,9 @@
         for ( PFObject *object in self.caselist ) {
             NSLog(@"Case list %@", object.objectId);
         }
+    }else
+    {
+        self.caselist = [NSArray new];
     }
 }
 

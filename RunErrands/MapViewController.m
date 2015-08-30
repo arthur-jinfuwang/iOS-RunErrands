@@ -51,21 +51,7 @@
     
     _theListViewBarBtn.enabled = false;
 
-    if ([PFUser currentUser]) {
-        [self loadCaseDatas];
-    }else
-    {
-        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"未登入" message:@"請先登入你的帳號" preferredStyle:UIAlertControllerStyleAlert];
-        
-        UIAlertAction *ok = [UIAlertAction actionWithTitle:@"確定" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
-
-            UIViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier: @"LoginViewController"];
-            [[SlideNavigationController sharedInstance] popAllAndSwitchToViewController:vc withCompletion:nil];
-        }];
-        
-        [alert addAction:ok];
-        [self presentViewController:alert animated:true completion:nil];
-    }
+    [self loadCaseDatas];
 }
 
 -(void) loadCaseDatas

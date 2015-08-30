@@ -9,11 +9,13 @@
 #import "FollowTableViewController.h"
 #import "CaseListCell.h"
 #import <Parse/Parse.h>
+#import "MBProgressHUD.h"
 
 @interface FollowTableViewController (){
     
     NSMutableArray  *followList;
     NSMutableArray  *applyList;
+    MBProgressHUD *HUD;
 }
 
 @end
@@ -40,11 +42,9 @@
         [alert addAction:ok];
         [self presentViewController:alert animated:true completion:nil];
     }else{
-        if (followList == nil)
-        {
-            [self loadApplyRecords];
-            [self loadFollowsRecords];
-        }
+        
+        [self loadApplyRecords];
+        [self loadFollowsRecords];
     }
 }
 
@@ -54,7 +54,7 @@
     PFUser *user = [PFUser currentUser];
     PFRelation *relation = [user relationForKey:@"user_apply"];
     PFQuery *query = [relation query];
-    
+    HUD = [[MBProgressHUD alloc] initWithView:self.navigationController.view];
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (!error) {
             // The find succeeded.
@@ -79,6 +79,7 @@
             // Log details of the failure
             NSLog(@"Error: %@ %@", error, [error userInfo]);
         }
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
     }];
     
 }
@@ -89,7 +90,8 @@
     PFUser *user = [PFUser currentUser];
     PFRelation *relation = [user relationForKey:@"user_follows"];
     PFQuery *query = [relation query];
-    //NSLog(@"get is following status: %ld", [query countObjects]);
+    
+    HUD = [[MBProgressHUD alloc] initWithView:self.navigationController.view];
     
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (!error) {
@@ -115,6 +117,7 @@
             // Log details of the failure
             NSLog(@"Error: %@ %@", error, [error userInfo]);
         }
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
     }];
 }
 

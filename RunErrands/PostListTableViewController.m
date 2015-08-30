@@ -9,10 +9,12 @@
 #import "PostListTableViewController.h"
 #import <Parse/Parse.h>
 #import <Parse/PFQuery.h>
+#import "MBProgressHUD.h"
 
 @interface PostListTableViewController ()
 {
     NSMutableArray *caseList;
+    MBProgressHUD *HUD;
 }
 
 @end
@@ -39,10 +41,7 @@
         [alert addAction:ok];
         [self presentViewController:alert animated:true completion:nil];
     }else{
-        if (caseList == nil)
-        {
-            [self loadParseDatas];
-        }
+        [self loadParseDatas];
     }
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadTableView) name:@"dataReload" object:nil];
@@ -60,6 +59,8 @@
     [query whereKey:@"owner_id" equalTo:[PFUser currentUser].objectId];
     [query whereKey:@"case_status" equalTo:@"Open"];
     
+    HUD = [[MBProgressHUD alloc] initWithView:self.navigationController.view];
+    
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (!error) {
             // The find succeeded.
@@ -73,7 +74,6 @@
             }
             else
             {
-                
                 caseList = [[NSMutableArray alloc] initWithArray:objects];
                 // Do something with the found objects
                 for (PFObject *object in caseList) {
@@ -88,6 +88,7 @@
             // Log details of the failure
             NSLog(@"Error: %@ %@", error, [error userInfo]);
         }
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
     }];
 }
 
