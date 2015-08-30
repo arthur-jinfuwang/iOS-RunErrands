@@ -15,10 +15,10 @@
     NSMutableArray *imagearray;
     NSMutableArray *textarray;
 }
-
 @end
 
 @implementation ResumeViewController
+@synthesize user;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -27,7 +27,7 @@
     imagearray = [[NSMutableArray alloc] initWithObjects:@"vcard_color_64x64.png",@"ffffound_color_64x64.png",@"tumbrl_color_64x64.png",@"wiki_color_64x64.png", nil];
     
     textarray = [[NSMutableArray alloc] initWithObjects:
-                         @"姓名", @"年齡", @"聯絡方式", @"工作經驗",nil];
+                         @"姓名", @"性別", @"生日",@"電話", @"Email",nil];
    
     
     //宣告一個按鈕
@@ -37,7 +37,7 @@
     button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     
     //位置,大小
-    button.frame = CGRectMake(140,580,100,100);
+    button.frame = CGRectMake(140,600,100,100);
     [button setTitleColor:[UIColor whiteColor]forState:UIControlStateNormal];
     
     //按鈕文字
@@ -46,8 +46,6 @@
     [button addTarget:self action:@selector(buttonpress:) forControlEvents:(UIControlEventTouchUpInside)];
     [self.view addSubview:button];
     
-    
-
 }
 
 - (void)didReceiveMemoryWarning {
@@ -64,7 +62,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     // Return the number of rows in the section.
-    return 4;
+    return 5;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -76,19 +74,34 @@
     
     cell = (SettingTableViewCell *)[view lastObject];
     
-    cell.titleLabel.text = [[NSString alloc] initWithFormat:@"Resume cell %ld", indexPath.row];
-    
     //履歷圖示初始化
-    cell.iconTitle.image = [UIImage imageNamed:imagearray[indexPath.row]];
-    cell.titleLabel.hidden = YES;
-    cell.iconTitle.hidden = NO;
+    //cell.iconTitle.image = [UIImage imageNamed:imagearray[indexPath.row]];
+    
+    cell.titleLabel.hidden = NO;
+    cell.iconTitle.hidden = YES;
     
     //履歷文字初始化 index.row讀取陣列的資料
-    cell.dataLabel.text = textarray[indexPath.row];
+    cell.titleLabel.text = textarray[indexPath.row];
     
-    
-    
-    
+    switch (indexPath.row) {
+        case RE_USER_NICKNAME:
+            cell.dataLabel.text = user[@"nickname"];
+            break;
+        case RE_USER_GENDER:
+            cell.dataLabel.text = user[@"gender"];
+            break;
+        case RE_USER_BIRTHDAY:
+            cell.dataLabel.text = user[@"birthday"];
+            break;
+        case RE_USER_PHONE:
+            cell.dataLabel.text = user[@"phone"];
+            break;
+        case RE_USER_EMAIL:
+            cell.dataLabel.text = user[@"email"];
+            break;
+        default:
+            break;
+    }
     return cell;
 }
 

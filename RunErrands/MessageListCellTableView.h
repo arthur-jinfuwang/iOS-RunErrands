@@ -9,5 +9,9 @@
 #import <UIKit/UIKit.h>
 
 @interface MessageListCellTableView : UITableViewCell
+@property (weak, nonatomic) IBOutlet UIImageView *theUserImageView;
+@property (weak, nonatomic) IBOutlet UILabel *theUserNameLabel;
+@property (weak, nonatomic) IBOutlet UILabel *theStatusLabel;
+@property (weak, nonatomic) IBOutlet UILabel *theTimeLabel;
 
 @end

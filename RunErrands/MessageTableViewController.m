@@ -8,6 +8,7 @@
 
 #import "MessageTableViewController.h"
 #import "MessageListCellTableView.h"
+#import "ResumeViewController.h"
 #import <Parse/Parse.h>
 
 @interface MessageTableViewController ()
@@ -42,6 +43,7 @@
     }else{
         if (jobSeekerList == nil)
         {
+            caseList = [NSMutableArray new];
             jobSeekerList= [NSMutableArray new];
             [self loadPostCaseDatas];
         }
@@ -79,9 +81,9 @@
             }
             else
             {
-                caseList = [[NSMutableArray alloc] initWithArray:objects];
+                //caseList = [[NSMutableArray alloc] initWithArray:objects];
                 // Do something with the found objects
-                for (PFObject *object in caseList) {
+                for (PFObject *object in objects) {
                     NSLog(@"%@", object.objectId);
                     [self loadJobSeekersList:object];
                 }
@@ -96,18 +98,19 @@
 }
 
 
-- (void)loadJobSeekersList:(PFObject *)object
+- (void)loadJobSeekersList:(PFObject *)caseObject
 {
     
-    PFRelation *relation = [object relationForKey:@"user_apply"];
+    PFRelation *relation = [caseObject relationForKey:@"user_apply"];
     PFQuery *query = [relation query];
     
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (!error) {
             // The find succeeded.
             NSLog(@"Post List menu retrieved %ld apply cases.", objects.count);
-            if (objects!=nil) {
+            if (objects.count != 0) {
 
+                [caseList addObject:caseObject];
                 [jobSeekerList addObject:objects];
                 
             }
@@ -161,6 +164,28 @@
     NSArray *view = [[NSBundle mainBundle] loadNibNamed:@"MessageListCell" owner:nil options:nil];
     cell = (MessageListCellTableView *)[view lastObject];
     
+    NSMutableArray *jobSeekersArray = jobSeekerList[indexPath.section];
+    PFUser *user = jobSeekersArray[indexPath.row];
+    
+    NSLog(@"nickname: %@", user[@"nickname"]);
+    cell.theUserNameLabel.text = user[@"nickname"];
+    //cell.theStatusLabel = @"";
+    //cell.theTimeLabel = @"";
+    
+    PFFile *userImageFile = user[@"avatar"];
+    [userImageFile getDataInBackgroundWithBlock:^(NSData *imageData, NSError *error) {
+        if (!error) {
+            if (imageData) {
+                UIImage *image = [UIImage imageWithData:imageData];
+                   cell.theUserImageView.image = image;
+            }
+            
+        }else
+        {
+            NSLog(@"%@", error.description);
+        }
+    }];
+    
     return cell;
 }
 
@@ -168,9 +193,12 @@
 //點擊會去讀取下一個頁面
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     NSString* viewType = @"ResumeViewController";
-    UIViewController* viewController = [storyboard instantiateViewControllerWithIdentifier:viewType];
+    ResumeViewController* viewController = [self.storyboard instantiateViewControllerWithIdentifier:viewType];
+    NSMutableArray *jobSeekersArray = jobSeekerList[indexPath.section];
+    PFUser *user = jobSeekersArray[indexPath.row];
+    
+    [viewController setUser:user];
     
     [self.navigationController pushViewController:viewController animated:YES];
     
