@@ -66,15 +66,38 @@
         NSLog(@"There is not any case specified object!");
     }else
     {
-        [self initCellDetailFromCaseObject];
-        [self getCaseOwnerInfo];
         HUD = [[MBProgressHUD alloc] initWithView:self.navigationController.view];
-        [self.navigationController.view addSubview:HUD];
-        
         HUD.delegate = self;
         HUD.labelText = @"Loading";
         [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        [self getApplyStatus];
+        [self initCellDetailFromCaseObject];
+        //[self getCaseOwnerInfo];
+        [self.navigationController.view addSubview:HUD];
     }
+}
+
+- (void) getApplyStatus
+{
+    PFUser *user = [PFUser currentUser];
+    PFRelation *relation = [user relationForKey:@"user_apply"];
+    PFQuery *query = [relation query];
+    query = [query whereKey:@"objectId" equalTo:self.caseObject.objectId];
+    //NSLog(@"get is following status: %ld", [query countObjects]);
+    
+    [query countObjectsInBackgroundWithBlock:^(int count, NSError *error){
+        if (count) {
+            self.enableApplyBtn = false;
+            self.theApplyCaseBtn.enabled = false;
+            [_theFollowCaseBtn setTitle:@"應徵中❤️" forState:UIControlStateNormal];
+            toApply = true;
+            toFollow = false;
+        }else
+        {
+            [self updateFollowStatus];
+        }
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
+    }];
 }
 
 
@@ -98,11 +121,13 @@
                 {
                     NSLog(@"%@", error.description);
                 }
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    [MBProgressHUD hideHUDForView:self.view animated:YES];
-                });
+                
             }];
+        }else
+        {
+            NSLog(@"getCaseOwnerInfo Error: %@", error.description);
         }
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
     }];
 }
 
@@ -144,8 +169,6 @@
     
     self.theWageClassLabel.text = self.caseObject[@"wage_class"];
     
-    [self updateFollowStatus];
-    
 }
 
 - (void) updateFollowStatus{
@@ -153,13 +176,21 @@
     PFRelation *relation = [user relationForKey:@"user_follows"];
     PFQuery *query = [relation query];
     query = [query whereKey:@"objectId" equalTo:self.caseObject.objectId];
-    //NSLog(@"get is following status: %ld", [query countObjects]);
     
     [query countObjectsInBackgroundWithBlock:^(int count, NSError *error){
         if (count) {
+            NSLog(@"get follow status is true");
             [_theFollowCaseBtn setTitle:@"追蹤中💚" forState:UIControlStateNormal];
             toFollow = true;
+        }else
+        {
+            if (error) {
+                NSLog(@"updateFollowStatus Error: %@", error.description);
+            }
         }
+        
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
+        
     }];
 
 }
@@ -218,39 +249,59 @@
 }
 
 - (IBAction)applyBtnPressed:(id)sender {
+    if (toApply) {
+        return;
+    }
+    
     NSLog(@"Save the apply relations");
     PFUser *user = [PFUser currentUser];
     PFRelation *userFollows = [user relationForKey:@"user_follows"];
     PFRelation *userApply = [user relationForKey:@"user_apply"];
     PFRelation *caseApply = [self.caseObject relationForKey:@"user_apply"];
-    if (!toApply)
-    {
-        [caseApply addObject:user];
-        
-        [self.caseObject saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error){
-            if (succeeded) {
-                NSLog(@"Save in parse case successed");
-            }else
-            {
-                NSLog(@"%@", error.description);
-            }
-        }];
-        
-        [userApply addObject:self.caseObject];
+    PFObject *applyRecord= [PFObject objectWithClassName:@"ApplyManageTable"];
+    applyRecord[@"owner_id"] = self.caseObject[@"owner_id"];
+    applyRecord[@"apply_id"] = user.objectId;
+    applyRecord[@"case_id"] = self.caseObject.objectId;
+    
+
+    [caseApply addObject:user];
+    
+    [self.caseObject saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error){
+        if (succeeded) {
+            NSLog(@"Save in parse case successed");
+        }else
+        {
+            NSLog(@"%@", error.description);
+        }
+    }];
+    
+    [userApply addObject:self.caseObject];
+    
+    if (toFollow) {
         [userFollows removeObject:self.caseObject];
-        
-        [user saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error){
-            if (succeeded) {
-                [_theFollowCaseBtn setTitle:@"應徵中❤️" forState:UIControlStateNormal];
-                toApply = true;
-                toFollow = false;
-                _theApplyCaseBtn.enabled = false;
-            }else
-            {
-                NSLog(@"%@", error.description);
-            }
-        }];
     }
+    
+    [user saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error){
+        if (succeeded) {
+            [_theFollowCaseBtn setTitle:@"應徵中❤️" forState:UIControlStateNormal];
+            toApply = true;
+            toFollow = true;
+            _theApplyCaseBtn.enabled = false;
+        }else
+        {
+            NSLog(@"%@", error.description);
+        }
+    }];
+    
+    [applyRecord saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error){
+        if (succeeded) {
+            NSLog(@"Save in parse ApplyManageTable successed");
+        }else
+        {
+            NSLog(@"%@", error.description);
+        }
+    }];
+
 }
 - (IBAction)followBtnPressed:(id)sender {
     NSLog(@"Save the follow relations");

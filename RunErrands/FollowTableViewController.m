@@ -300,7 +300,7 @@
     switch (indexPath.section) {
         case 0:
             object = applyList[indexPath.row];
-            [viewController setEnableFollowBtn:NO];
+            [viewController setEnableFollowBtn:YES];
             [viewController setEnableApplyBtn:NO];
             // Will add judage function
             [viewController setEnableContactInfo:NO];
