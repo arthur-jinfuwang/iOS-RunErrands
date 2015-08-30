@@ -53,6 +53,15 @@
     listDetails = [[NSMutableArray alloc]initWithObjects:
                    @"工作起始時間",@"工作結束時間",@"薪資",@"地點",@"工作內容",@"需求人數",
                    @"截止日期",nil];
+    
+    if (self.enableFollowBtn == false) {
+        self.theFollowCaseBtn.hidden = true;
+    }
+    if (self.enableApplyBtn == false) {
+        self.theApplyCaseBtn.enabled = false;
+        self.theApplyCaseBtn.title = @"";
+    }
+    
     if (self.caseObject == nil) {
         NSLog(@"There is not any case specified object!");
     }else
@@ -135,14 +144,8 @@
     
     self.theWageClassLabel.text = self.caseObject[@"wage_class"];
     
-    if (self.isEnableFollow == false) {
-        self.theFollowCaseBtn.hidden = true;
-
-    }else
-    {
-        self.theFollowCaseBtn.hidden = false;
-        [self updateFollowStatus];
-    }
+    [self updateFollowStatus];
+    
 }
 
 - (void) updateFollowStatus{
@@ -206,7 +209,12 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     // Return the number of rows in the section.
-    return 12;
+    if (self.enableContactInfo) {
+        return 12;
+    }else
+    {
+        return 9;
+    }
 }
 
 - (IBAction)applyBtnPressed:(id)sender {

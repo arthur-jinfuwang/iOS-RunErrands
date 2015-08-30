@@ -13,6 +13,8 @@
 @interface CaseDetailsTableViewController : UITableViewController
 
 @property (nonatomic,strong)PFObject *caseObject;
-@property (nonatomic,assign)BOOL isEnableFollow;
+@property (nonatomic,assign)BOOL enableFollowBtn;
+@property (nonatomic,assign)BOOL enableApplyBtn;
+@property (nonatomic,assign)BOOL enableContactInfo;
 
 @end

@@ -104,7 +104,9 @@
     
     PFObject * object = self.caselist[indexPath.row];
     viewController.caseObject = object;
-    [viewController setIsEnableFollow:YES];
+    [viewController setEnableFollowBtn:YES];
+    [viewController setEnableApplyBtn:YES];
+    [viewController setEnableContactInfo:NO];
     
     [self.navigationController pushViewController:viewController animated:YES];
 }

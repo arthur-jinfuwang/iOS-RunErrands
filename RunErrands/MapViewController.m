@@ -181,7 +181,9 @@
         CaseDetailsTableViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier: @"CaseDetailsTableViewController"];
         
         [vc setCaseObject:currentObject];
-        [vc setIsEnableFollow:YES];
+        [vc setEnableFollowBtn:YES];
+        [vc setEnableApplyBtn:YES];
+        [vc setEnableContactInfo:NO];
         
         [[SlideNavigationController sharedInstance] pushViewController:vc animated:YES];
         

@@ -10,6 +10,7 @@
 #import "CaseListCell.h"
 #import <Parse/Parse.h>
 #import "MBProgressHUD.h"
+#import "CaseDetailsTableViewController.h"
 
 @interface FollowTableViewController (){
     
@@ -291,10 +292,29 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
 
-    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     NSString* viewType = @"CaseDetailsTableViewController";
-    UIViewController* viewController = [storyboard instantiateViewControllerWithIdentifier:viewType];
     
+    CaseDetailsTableViewController* viewController = [self.storyboard instantiateViewControllerWithIdentifier:viewType];
+    
+    PFObject * object;
+    switch (indexPath.section) {
+        case 0:
+            object = applyList[indexPath.row];
+            [viewController setEnableFollowBtn:NO];
+            [viewController setEnableApplyBtn:NO];
+            // Will add judage function
+            [viewController setEnableContactInfo:NO];
+            break;
+        case 1:
+            object = followList[indexPath.row];
+            [viewController setEnableFollowBtn:YES];
+            [viewController setEnableApplyBtn:YES];
+            [viewController setEnableContactInfo:NO];
+            break;
+        default:
+            break;
+    }
+    viewController.caseObject = object;
     [self.navigationController pushViewController:viewController animated:YES];
     
 }

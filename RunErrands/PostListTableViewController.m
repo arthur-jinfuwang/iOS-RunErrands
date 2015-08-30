@@ -198,7 +198,9 @@
         CaseDetailsTableViewController * vc = segue.destinationViewController;
         NSInteger row = [self.tableView indexPathForSelectedRow].row;
         PFObject * item = caseList[row];
-        
+        [vc setEnableFollowBtn:NO];
+        [vc setEnableApplyBtn:NO];
+        [vc setEnableContactInfo:YES];
         vc.caseObject = item;
     }
 }
