@@ -72,7 +72,7 @@
         [MBProgressHUD showHUDAddedTo:self.view animated:YES];
         [self getApplyStatus];
         [self initCellDetailFromCaseObject];
-        //[self getCaseOwnerInfo];
+        [self getCaseOwnerInfo];
         [self.navigationController.view addSubview:HUD];
     }
 }
