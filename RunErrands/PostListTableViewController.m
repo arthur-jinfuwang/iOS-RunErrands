@@ -159,7 +159,15 @@
             if (objects.count > 0) {
                 for (PFObject *object in objects) {
                     NSLog(@"removeRelationApplyRecords: %@", object.objectId);
-                    [object deleteInBackground];
+                    [object deleteInBackgroundWithBlock:^(BOOL succeeded, NSError *error){
+                        if(succeeded)
+                        {
+                            NSLog(@"removeRelationApplyRecords: %@", object.objectId);
+                        }else
+                        {
+                            NSLog(@"removeRelationApplyRecords: %@", error.description);
+                        }
+                    }];
                 }
             }else{
                 NSLog(@"removeRelationApplyRecords: No record");
