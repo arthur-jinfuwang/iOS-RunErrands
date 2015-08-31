@@ -103,11 +103,21 @@
     CaseDetailsTableViewController* viewController = [storyboard instantiateViewControllerWithIdentifier:viewType];
     
     PFObject * object = self.caselist[indexPath.row];
+    PFUser *user = [PFUser currentUser];
+    NSString *userID = user.objectId;
     viewController.caseObject = object;
-    [viewController setEnableFollowBtn:YES];
-    [viewController setEnableApplyBtn:YES];
-    [viewController setEnableContactInfo:NO];
     
+    if ([userID isEqualToString:object[@"owner_id"]]) {
+        [viewController setEnableFollowBtn:NO];
+        [viewController setEnableApplyBtn:NO];
+        [viewController setEnableContactInfo:YES];
+        
+    }else
+    {
+        [viewController setEnableFollowBtn:YES];
+        [viewController setEnableApplyBtn:YES];
+        [viewController setEnableContactInfo:NO];
+    }
     [self.navigationController pushViewController:viewController animated:YES];
 }
 

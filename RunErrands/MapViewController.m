@@ -180,11 +180,20 @@
     UIAlertAction *ok = [UIAlertAction actionWithTitle:@"確定" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
         CaseDetailsTableViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier: @"CaseDetailsTableViewController"];
         
+        PFUser *user = [PFUser currentUser];
+        NSString *userID = user.objectId;
         [vc setCaseObject:currentObject];
-        [vc setEnableFollowBtn:YES];
-        [vc setEnableApplyBtn:YES];
-        [vc setEnableContactInfo:NO];
         
+        if ([userID isEqualToString:currentObject[@"owner_id"]]) {
+            [vc setEnableFollowBtn:NO];
+            [vc setEnableApplyBtn:NO];
+            [vc setEnableContactInfo:YES];
+        }else
+        {
+            [vc setEnableFollowBtn:YES];
+            [vc setEnableApplyBtn:YES];
+            [vc setEnableContactInfo:NO];
+        }
         [[SlideNavigationController sharedInstance] pushViewController:vc animated:YES];
         
     }];
