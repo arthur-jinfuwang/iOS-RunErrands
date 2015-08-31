@@ -53,8 +53,6 @@
         [MBProgressHUD showHUDAddedTo:self.view animated:YES];
         [self loadPostCaseDatas];
     }
-    
-    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -115,10 +113,11 @@
             // The find succeeded.
             NSLog(@"Post List menu retrieved %ld apply cases.", objects.count);
             if (objects.count != 0) {
-
-                [caseList addObject:caseObject];
-                [jobSeekerList addObject:objects];
+                NSMutableArray *array = [NSMutableArray new];
+                [array addObjectsFromArray:objects];
+                [jobSeekerList addObject:array];
                 
+                [caseList addObject:caseObject];
             }
             dispatch_async(dispatch_get_main_queue(), ^{
                 [self.tableView reloadData];
@@ -211,25 +210,45 @@
     
 }
 
-/*
+
 // Override to support conditional editing of the table view.
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
     // Return NO if you do not want the specified item to be editable.
     return YES;
 }
-*/
 
-/*
+
+
 // Override to support editing the table view.
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         // Delete the row from the data source
+
+        PFObject *caseObject = caseList[indexPath.section];
+        NSMutableArray *jobSeekers = jobSeekerList[indexPath.section];
+        PFUser *apply = jobSeekers[indexPath.row];
+        
+        PFRelation *caseApply = [caseObject relationForKey:@"user_apply"];
+        
+        [caseApply removeObject:apply];
+        
+        [caseObject saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error){
+            if (succeeded) {
+                NSLog(@"Message menu:delect a jobSeeker");
+            }else
+            {
+                NSLog(@"Message menu: %@", error.description);
+            }
+        }];
+        
+        [jobSeekers removeObjectAtIndex:indexPath.row];
+        
         [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
     } else if (editingStyle == UITableViewCellEditingStyleInsert) {
         // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
     }   
 }
-*/
+
 
 /*
 // Override to support rearranging the table view.
