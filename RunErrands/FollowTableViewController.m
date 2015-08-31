@@ -12,7 +12,8 @@
 #import "MBProgressHUD.h"
 #import "CaseDetailsTableViewController.h"
 
-@interface FollowTableViewController (){
+@interface FollowTableViewController ()<MBProgressHUDDelegate>
+{
     
     NSMutableArray  *followList;
     NSMutableArray  *applyList;
@@ -43,6 +44,12 @@
         [alert addAction:ok];
         [self presentViewController:alert animated:true completion:nil];
     }else{
+        HUD = [[MBProgressHUD alloc] initWithView:self.navigationController.view];
+        [self.navigationController.view addSubview:HUD];
+        HUD.delegate = self;
+        HUD.labelText = @"Loading";
+        
+        [MBProgressHUD showHUDAddedTo:self.view animated:YES];
         
         [self loadApplyRecords];
         [self loadFollowsRecords];
@@ -55,32 +62,32 @@
     PFUser *user = [PFUser currentUser];
     PFRelation *relation = [user relationForKey:@"user_apply"];
     PFQuery *query = [relation query];
-    HUD = [[MBProgressHUD alloc] initWithView:self.navigationController.view];
+    
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (!error) {
             // The find succeeded.
             NSLog(@"Post List menu retrieved %ld apply cases.", objects.count);
             if (objects.count == 0) {
-                UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"提醒" message:@"你目前沒有應徵任何案子" preferredStyle:UIAlertControllerStyleAlert];
-                
-                UIAlertAction *ok = [UIAlertAction actionWithTitle:@"確定" style:UIAlertActionStyleDefault handler:nil];
-                [alert addAction:ok];
-                [self presentViewController:alert animated:true completion:nil];
+//                UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"提醒" message:@"你目前沒有應徵任何案子" preferredStyle:UIAlertControllerStyleAlert];
+//                
+//                UIAlertAction *ok = [UIAlertAction actionWithTitle:@"確定" style:UIAlertActionStyleDefault handler:nil];
+//                [alert addAction:ok];
+//                [self presentViewController:alert animated:true completion:nil];
             }
             else
             {
                 applyList = [[NSMutableArray alloc] initWithArray:objects];
                 
             }
-            dispatch_async(dispatch_get_main_queue(), ^{
-                [self.tableView reloadData];
-            });
             
         } else {
             // Log details of the failure
             NSLog(@"Error: %@ %@", error, [error userInfo]);
         }
         [MBProgressHUD hideHUDForView:self.view animated:YES];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.tableView reloadData];
+        });
     }];
     
 }
@@ -92,33 +99,32 @@
     PFRelation *relation = [user relationForKey:@"user_follows"];
     PFQuery *query = [relation query];
     
-    HUD = [[MBProgressHUD alloc] initWithView:self.navigationController.view];
     
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (!error) {
             // The find succeeded.
             NSLog(@"Post List menu retrieved %ld follow cases.", objects.count);
             if (objects.count == 0) {
-                UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"提醒" message:@"你目前沒有追蹤任何案子" preferredStyle:UIAlertControllerStyleAlert];
-                
-                UIAlertAction *ok = [UIAlertAction actionWithTitle:@"確定" style:UIAlertActionStyleDefault handler:nil];
-                [alert addAction:ok];
-                [self presentViewController:alert animated:true completion:nil];
+//                UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"提醒" message:@"你目前沒有追蹤任何案子" preferredStyle:UIAlertControllerStyleAlert];
+//                
+//                UIAlertAction *ok = [UIAlertAction actionWithTitle:@"確定" style:UIAlertActionStyleDefault handler:nil];
+//                [alert addAction:ok];
+//                [self presentViewController:alert animated:true completion:nil];
             }
             else
             {
                 followList = [[NSMutableArray alloc] initWithArray:objects];
                 
             }
-            dispatch_async(dispatch_get_main_queue(), ^{
-                [self.tableView reloadData];
-            });
             
         } else {
             // Log details of the failure
             NSLog(@"Error: %@ %@", error, [error userInfo]);
         }
         [MBProgressHUD hideHUDForView:self.view animated:YES];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.tableView reloadData];
+        });
     }];
 }
 
@@ -223,10 +229,12 @@
     NSString *header;
     switch (section) {
         case 0:
-            [header initWithFormat:@"應徵案件: %ld", [applyList count]];
+            //header = @"應徵案件";
+            header = [[NSString alloc] initWithFormat:@"應徵案件: %ld", [applyList count]];
             break;
         case 1:
-            header = @"追蹤案件:";
+            //header = @"追蹤案件";
+            header = [[NSString alloc] initWithFormat:@"追蹤案件: %ld", [followList count]];
             break;
         default:
             break;
