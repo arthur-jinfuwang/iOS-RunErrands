@@ -291,7 +291,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="sWM-aB-dSr">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="nophoto.gif" translatesAutoresizingMaskIntoConstraints="NO" id="sWM-aB-dSr">
                                 <rect key="frame" x="140" y="72" width="320" height="180"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="180" id="5pS-AC-7DC"/>
@@ -354,7 +354,7 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="密碼：" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0AE-4L-met">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="密碼：" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0AE-4L-met">
                                 <rect key="frame" x="16" y="239" width="51" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -847,7 +847,7 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="NE2-3H-QBl" id="hpY-mz-jjS">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="9Ib-hH-DYn">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="nophoto.gif" translatesAutoresizingMaskIntoConstraints="NO" id="9Ib-hH-DYn">
                                                     <rect key="frame" x="8" y="10" width="60" height="60"/>
                                                     <color key="backgroundColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <constraints>
@@ -1322,7 +1322,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="dWf-rc-r3S">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="nophoto.gif" translatesAutoresizingMaskIntoConstraints="NO" id="dWf-rc-r3S">
                                 <rect key="frame" x="140" y="64" width="320" height="180"/>
                                 <color key="backgroundColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
@@ -1330,7 +1330,7 @@
                                     <constraint firstAttribute="width" constant="320" id="Pab-M7-FFs"/>
                                 </constraints>
                             </imageView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" editable="NO" text="Lorem ipsum dolor sit er elit lamet, consectetaur cillium  " translatesAutoresizingMaskIntoConstraints="NO" id="S9N-bK-opf">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Lorem ipsum dolor sit er elit lamet, consectetaur cillium  " translatesAutoresizingMaskIntoConstraints="NO" id="S9N-bK-opf">
                                 <rect key="frame" x="0.0" y="252" width="600" height="348"/>
                                 <color key="backgroundColor" red="0.80000000000000004" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
@@ -1340,7 +1340,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="S9N-bK-opf" firstAttribute="top" secondItem="dWf-rc-r3S" secondAttribute="bottom" constant="8" id="1yA-jO-b7F"/>
-                            <constraint firstItem="7zR-y7-Z1C" firstAttribute="top" secondItem="S9N-bK-opf" secondAttribute="bottom" id="4CQ-oo-5BP"/>
+                            <constraint firstItem="7zR-y7-Z1C" firstAttribute="top" secondItem="S9N-bK-opf" secondAttribute="bottom" constant="-44" id="4CQ-oo-5BP"/>
                             <constraint firstItem="dWf-rc-r3S" firstAttribute="top" secondItem="1V2-eV-9io" secondAttribute="bottom" constant="8" id="Rq9-9Z-WWn"/>
                             <constraint firstAttribute="centerX" secondItem="dWf-rc-r3S" secondAttribute="centerX" id="T56-Kc-qXO"/>
                             <constraint firstItem="S9N-bK-opf" firstAttribute="leading" secondItem="fMZ-cH-wo0" secondAttribute="leadingMargin" constant="-16" id="WaV-uk-h1y"/>
@@ -1459,6 +1459,7 @@
     </scenes>
     <resources>
         <image name="Natural-Green-Background-Vector-Graphic.jpg" width="750" height="746"/>
+        <image name="nophoto.gif" width="424" height="324"/>
         <image name="登入按鈕.png" width="176" height="36"/>
         <image name="臉書按鈕.png" width="608" height="58"/>
         <image name="註冊按鈕.png" width="176" height="36"/>
