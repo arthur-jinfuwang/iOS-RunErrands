@@ -99,6 +99,7 @@
             // Log details of the failure
             NSLog(@"Error: %@ %@", error, [error userInfo]);
         }
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
     }];
 }
 

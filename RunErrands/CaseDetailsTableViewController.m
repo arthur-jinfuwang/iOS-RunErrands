@@ -188,9 +188,7 @@
                 NSLog(@"updateFollowStatus Error: %@", error.description);
             }
         }
-        
         [MBProgressHUD hideHUDForView:self.view animated:YES];
-        
     }];
 
 }
