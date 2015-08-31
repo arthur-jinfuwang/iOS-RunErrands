@@ -31,7 +31,7 @@
     imagearray = [[NSMutableArray alloc] initWithObjects:@"vcard_color_64x64.png",@"ffffound_color_64x64.png",@"tumbrl_color_64x64.png",@"wiki_color_64x64.png", nil];
     
     textarray = [[NSMutableArray alloc] initWithObjects:
-                         @"姓名", @"性別", @"生日",@"電話", @"Email",nil];
+                         @"姓名:", @"性別:", @"生日:",@"電話:", @"信箱:",nil];
 
     HUD = [[MBProgressHUD alloc] initWithView:self.navigationController.view];
     [self.navigationController.view addSubview:HUD];

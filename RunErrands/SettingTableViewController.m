@@ -14,9 +14,10 @@
 @interface SettingTableViewController ()<UITextFieldDelegate, TakePictureViewDelegate>
 {
     NSMutableArray *settingDetailList;
+    NSMutableArray *imagearrayList;
     NSMutableDictionary *settingDetailData;
-    TakePictureView  *avatarHeader;
     UIDatePicker *datepicker;
+    TakePictureView  *avatarHeader;
     BOOL isEditing;
 }
 
@@ -34,7 +35,20 @@
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     settingDetailList = [[NSMutableArray alloc] initWithObjects:
-                         @"姓名", @"暱稱", @"性別", @"生日",@"手機", @"電子信箱",nil];
+                         @"姓名:",
+                         @"暱稱:",
+                         @"性別:",
+                         @"生日:",
+                         @"手機:",
+                         @"信箱:",nil];
+    imagearrayList = [[NSMutableArray alloc] initWithObjects:
+                      @"vcard_color_64x64.png",
+                        @"aim_color_64x64.png",
+                        @"flickr_color_64x64",
+                        @"ffffound_color_64x64.png",
+                        @"tumbrl_color_64x64.png",
+                      @"wiki_color_64x64.png",
+                  nil];
     
     avatarHeader = [[[NSBundle mainBundle] loadNibNamed:@"TakePictureView" owner:nil options:nil] lastObject];
     avatarHeader.thePictureLabel.text = @"設定自己的大頭貼";
@@ -60,7 +74,7 @@
     
     //Date Picker init
     datepicker = [[UIDatePicker alloc] initWithFrame:CGRectZero];
-    datepicker.minuteInterval = 2;
+    datepicker.minuteInterval = 5;
     datepicker.backgroundColor = [UIColor whiteColor];
 }
 
@@ -150,7 +164,8 @@
     NSArray *view = [[NSBundle mainBundle] loadNibNamed:@"SettingCells" owner:nil options:nil];
     cell = (SettingTableViewCell *)[view lastObject];
     cell.titleLabel.text = settingDetailList[indexPath.row];
-    
+    cell.iconTitle.image = [UIImage imageNamed:imagearrayList[indexPath.row]];
+    //cell.iconTitle.image = [UIImage imageNamed:imagearray[indexPath.row]];
     switch (indexPath.row) {
         case RE_USERNAME:
             cell.dataLabel.text = [settingDetailData objectForKey:@(RE_USERNAME)];
@@ -178,6 +193,8 @@
             break;
             
     }
+    cell.titleLabel.hidden = NO;
+    cell.iconTitle.hidden = NO;
     return cell;
 }
 
@@ -207,15 +224,15 @@
         
         [self presentViewController:alertController animated:YES completion:nil];
     }
-    if (indexPath.row == RE_USER_BIRTHDAY)
-        {
-            datepicker.datePickerMode = UIDatePickerModeDate;
-        }
-    else
-        {
-            datepicker.datePickerMode = UIDatePickerModeDateAndTime;
-        }
+    if (indexPath.row == RE_USER_BIRTHDAY){
         
+        datepicker.datePickerMode = UIDatePickerModeDate;
+        
+//    else
+//        {
+//            datepicker.datePickerMode = UIDatePickerModeDateAndTime;
+//        }
+    
         [cell.dataTextField setInputView:datepicker];
         
         UIToolbar *toolBar=[[UIToolbar alloc]initWithFrame:CGRectMake(0, 0, 320, 44)];
@@ -231,7 +248,7 @@
     
     
     
-
+    }
     
     cell.dataLabel.hidden = YES;
     cell.dataTextField.hidden = NO;
