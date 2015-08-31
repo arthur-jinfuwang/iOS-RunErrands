@@ -188,9 +188,7 @@
                 NSLog(@"updateFollowStatus Error: %@", error.description);
             }
         }
-        
         [MBProgressHUD hideHUDForView:self.view animated:YES];
-        
     }];
 
 }
@@ -262,6 +260,7 @@
     applyRecord[@"owner_id"] = self.caseObject[@"owner_id"];
     applyRecord[@"apply_id"] = user.objectId;
     applyRecord[@"case_id"] = self.caseObject.objectId;
+    applyRecord[@"status"] = @"應徵";
     
 
     [caseApply addObject:user];

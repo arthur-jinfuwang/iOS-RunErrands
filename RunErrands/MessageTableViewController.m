@@ -12,7 +12,7 @@
 #import <Parse/Parse.h>
 #import "MBProgressHUD.h"
 
-@interface MessageTableViewController ()
+@interface MessageTableViewController ()<MBProgressHUDDelegate>
 {
     NSMutableArray *caseList;
     NSMutableArray *jobSeekerList;
@@ -45,6 +45,12 @@
     }else{
         caseList = [NSMutableArray new];
         jobSeekerList= [NSMutableArray new];
+        
+        HUD = [[MBProgressHUD alloc] initWithView:self.navigationController.view];
+        [self.navigationController.view addSubview:HUD];
+        HUD.delegate = self;
+        HUD.labelText = @"Loading";
+        [MBProgressHUD showHUDAddedTo:self.view animated:YES];
         [self loadPostCaseDatas];
     }
     
@@ -67,7 +73,6 @@
     [query whereKey:@"owner_id" equalTo:[PFUser currentUser].objectId];
     [query whereKey:@"case_status" equalTo:@"Open"];
     
-    HUD = [[MBProgressHUD alloc] initWithView:self.navigationController.view];
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (!error) {
             // The find succeeded.
@@ -94,6 +99,7 @@
             // Log details of the failure
             NSLog(@"Error: %@ %@", error, [error userInfo]);
         }
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
     }];
 }
 
@@ -153,7 +159,6 @@
     PFObject *object = caseList[section];
     header = object[@"case_title"];
 
-    
     return header;
 }
 
@@ -190,7 +195,6 @@
     return cell;
 }
 
-
 //點擊會去讀取下一個頁面
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
@@ -198,16 +202,14 @@
     ResumeViewController* viewController = [self.storyboard instantiateViewControllerWithIdentifier:viewType];
     NSMutableArray *jobSeekersArray = jobSeekerList[indexPath.section];
     PFUser *user = jobSeekersArray[indexPath.row];
+    PFObject *object = caseList[indexPath.section];
     
     [viewController setUser:user];
+    [viewController setCaseObject:object];
     
     [self.navigationController pushViewController:viewController animated:YES];
     
 }
-
-
-
-
 
 /*
 // Override to support conditional editing of the table view.
