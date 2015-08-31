@@ -27,5 +27,6 @@ typedef NS_ENUM(NSInteger, RE_USER) {
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic, strong) PFUser *user;
+@property (nonatomic, strong) PFObject  *caseObject;
 
 @end

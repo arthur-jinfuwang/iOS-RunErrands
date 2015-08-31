@@ -9,11 +9,15 @@
 #import "ResumeViewController.h"
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
 #import <FBSDKLoginKit/FBSDKLoginKit.h>
+#import <Parse/Parse.h>
+#import "MBProgressHUD.h"
 
-@interface ResumeViewController ()
+@interface ResumeViewController ()<MBProgressHUDDelegate>
 {
     NSMutableArray *imagearray;
     NSMutableArray *textarray;
+    UIButton *button;
+    MBProgressHUD *HUD;
 }
 @end
 
@@ -28,10 +32,15 @@
     
     textarray = [[NSMutableArray alloc] initWithObjects:
                          @"姓名", @"性別", @"生日",@"電話", @"Email",nil];
-   
+
+    HUD = [[MBProgressHUD alloc] initWithView:self.navigationController.view];
+    [self.navigationController.view addSubview:HUD];
+    
+    HUD.delegate = self;
+    HUD.labelText = @"Loading";
     
     //宣告一個按鈕
-    UIButton *button = [[UIButton alloc]init];
+    button = [[UIButton alloc]init];
     
     //設定按鈕類型
     button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
@@ -41,7 +50,7 @@
     [button setTitleColor:[UIColor whiteColor]forState:UIControlStateNormal];
     
     //按鈕文字
-    [button setTitle:@"確定" forState:UIControlStateNormal];
+    [button setTitle:@"邀請" forState:UIControlStateNormal];
     //攔截按鈕的訊息,並觸發button方法
     [button addTarget:self action:@selector(buttonpress:) forControlEvents:(UIControlEventTouchUpInside)];
     [self.view addSubview:button];
@@ -108,6 +117,41 @@
  -(void)buttonpress:(id)sender
 {
     NSLog(@"button press");
+    NSString *ownerID = [PFUser currentUser].objectId;
+    NSString *jobSeekerID = self.user.objectId;
+    NSString *caseID = self.caseObject.objectId;
+    
+    PFQuery *query = [PFQuery queryWithClassName:@"ApplyManageTable"];
+    [query whereKey:@"owner_id" equalTo:ownerID];
+    [query whereKey:@"apply_id" equalTo:jobSeekerID];
+    [query whereKey:@"case_id" equalTo:caseID];
+    
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if (!error) {
+            if (objects.count == 1) {
+                PFObject *record = [objects lastObject];
+                record[@"status"] = @"邀請";
+                [record saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error){
+                    if (succeeded) {
+                        [button setTitle:@"已邀請" forState:UIControlStateNormal];
+                        button.enabled = false;
+                    }else
+                    {
+                        NSLog(@"Resume: saveInBackgroundWithBlock %@",error.description);
+                    }
+                    [MBProgressHUD hideHUDForView:self.view animated:YES];
+                }];
+            }else
+            {
+                NSLog(@"ApplyManageTable record neumber error %ld", objects.count);
+            }
+        }else
+        {
+            NSLog(@"Resume: findObjectsInBackgroundWithBlock %@",error.description);
+        }
+    }];
+
 }
 
 /*
