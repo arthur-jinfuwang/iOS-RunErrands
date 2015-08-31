@@ -147,6 +147,31 @@
 */
 
 
+- (void) removeRelationApplyRecords:(NSString *)objectID
+{
+    PFQuery *query = [PFQuery queryWithClassName:@"ApplyManageTable"];
+    NSString *ownerID = [PFUser currentUser].objectId;
+    [query whereKey:@"owner_id" equalTo:ownerID];
+    [query whereKey:@"case_id" equalTo:objectID];
+    
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error){
+        if (!error) {
+            if (objects.count > 0) {
+                for (PFObject *object in objects) {
+                    NSLog(@"removeRelationApplyRecords: %@", object.objectId);
+                    [object deleteInBackground];
+                }
+            }else{
+                NSLog(@"removeRelationApplyRecords: No record");
+            }
+        }else
+        {
+            NSLog(@"removeRelationApplyRecords: %@", error.description);
+        }
+    }];
+}
+
+
 // Override to support editing the table view.
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
@@ -157,6 +182,8 @@
         [object deleteInBackgroundWithBlock:^(BOOL succeeded, NSError *error){
             if (succeeded) {
                 NSLog(@"Remove the post case ID: %@ successfully", object.objectId);
+                [self removeRelationApplyRecords:object.objectId];
+                
             }else{
                 NSLog(@"Error: %@ %@", error, [error userInfo]);
             }
