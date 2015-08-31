@@ -29,6 +29,9 @@
         for ( PFObject *object in self.caselist ) {
             NSLog(@"Case list %@", object.objectId);
         }
+    }else
+    {
+        self.caselist = [NSArray new];
     }
 }
 
@@ -101,7 +104,9 @@
     
     PFObject * object = self.caselist[indexPath.row];
     viewController.caseObject = object;
-    [viewController setIsEnableFollow:YES];
+    [viewController setEnableFollowBtn:YES];
+    [viewController setEnableApplyBtn:YES];
+    [viewController setEnableContactInfo:NO];
     
     [self.navigationController pushViewController:viewController animated:YES];
 }

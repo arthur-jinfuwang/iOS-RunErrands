@@ -8,8 +8,16 @@
 
 #import "FollowTableViewController.h"
 #import "CaseListCell.h"
+#import <Parse/Parse.h>
+#import "MBProgressHUD.h"
+#import "CaseDetailsTableViewController.h"
 
-@interface FollowTableViewController ()
+@interface FollowTableViewController (){
+    
+    NSMutableArray  *followList;
+    NSMutableArray  *applyList;
+    MBProgressHUD *HUD;
+}
 
 @end
 
@@ -23,7 +31,157 @@
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    
+    if ([PFUser currentUser] == nil) {
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"未登入" message:@"請先登入你的帳號" preferredStyle:UIAlertControllerStyleAlert];
+        
+        UIAlertAction *ok = [UIAlertAction actionWithTitle:@"確定" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+            UIViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier: @"LoginViewController"];
+            [[SlideNavigationController sharedInstance] popAllAndSwitchToViewController:vc withCompletion:nil];
+        }];
+        
+        [alert addAction:ok];
+        [self presentViewController:alert animated:true completion:nil];
+    }else{
+        
+        [self loadApplyRecords];
+        [self loadFollowsRecords];
+    }
 }
+
+
+-(void) loadApplyRecords
+{
+    PFUser *user = [PFUser currentUser];
+    PFRelation *relation = [user relationForKey:@"user_apply"];
+    PFQuery *query = [relation query];
+    HUD = [[MBProgressHUD alloc] initWithView:self.navigationController.view];
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if (!error) {
+            // The find succeeded.
+            NSLog(@"Post List menu retrieved %ld apply cases.", objects.count);
+            if (objects.count == 0) {
+                UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"提醒" message:@"你目前沒有應徵任何案子" preferredStyle:UIAlertControllerStyleAlert];
+                
+                UIAlertAction *ok = [UIAlertAction actionWithTitle:@"確定" style:UIAlertActionStyleDefault handler:nil];
+                [alert addAction:ok];
+                [self presentViewController:alert animated:true completion:nil];
+            }
+            else
+            {
+                applyList = [[NSMutableArray alloc] initWithArray:objects];
+                
+            }
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self.tableView reloadData];
+            });
+            
+        } else {
+            // Log details of the failure
+            NSLog(@"Error: %@ %@", error, [error userInfo]);
+        }
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
+    }];
+    
+}
+
+
+-(void) loadFollowsRecords
+{
+    PFUser *user = [PFUser currentUser];
+    PFRelation *relation = [user relationForKey:@"user_follows"];
+    PFQuery *query = [relation query];
+    
+    HUD = [[MBProgressHUD alloc] initWithView:self.navigationController.view];
+    
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if (!error) {
+            // The find succeeded.
+            NSLog(@"Post List menu retrieved %ld follow cases.", objects.count);
+            if (objects.count == 0) {
+                UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"提醒" message:@"你目前沒有追蹤任何案子" preferredStyle:UIAlertControllerStyleAlert];
+                
+                UIAlertAction *ok = [UIAlertAction actionWithTitle:@"確定" style:UIAlertActionStyleDefault handler:nil];
+                [alert addAction:ok];
+                [self presentViewController:alert animated:true completion:nil];
+            }
+            else
+            {
+                followList = [[NSMutableArray alloc] initWithArray:objects];
+                
+            }
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self.tableView reloadData];
+            });
+            
+        } else {
+            // Log details of the failure
+            NSLog(@"Error: %@ %@", error, [error userInfo]);
+        }
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
+    }];
+}
+
+
+/*
+-(void) loadFollowsRecords
+{
+    PFQuery *query = [PFQuery queryWithClassName:@"Follows"];
+    [query whereKey:@"user_id" equalTo:[PFUser currentUser].objectId];
+    
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if (!error) {
+            // The find succeeded.
+            NSLog(@"Post List menu retrieved %ld cases.", objects.count);
+            if (objects.count == 0) {
+                UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"提醒" message:@"你目前沒有管理任何案子" preferredStyle:UIAlertControllerStyleAlert];
+                
+                UIAlertAction *ok = [UIAlertAction actionWithTitle:@"確定" style:UIAlertActionStyleDefault handler:nil];
+                [alert addAction:ok];
+                [self presentViewController:alert animated:true completion:nil];
+            }
+            else
+            {
+                [self loadCaseDatasfromParse:objects];
+
+            }
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self.tableView reloadData];
+            });
+            
+        } else {
+            // Log details of the failure
+            NSLog(@"Error: %@ %@", error, [error userInfo]);
+        }
+    }];
+}
+
+ 
+ 
+- (void) loadCaseDatasfromParse: (NSArray *) records
+{
+    PFQuery *query = [PFQuery queryWithClassName:@"Cases"];
+    for (PFObject *object in records) {
+        NSLog(@"%@", object[@"case_id"]);
+        [query whereKey:@"objectId" equalTo:object[@"case_id"]];
+        
+        [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error){
+            NSLog(@"Follows menu retrieved %ld cases.", objects.count);
+            if (objects.count == 0) {
+                NSLog(@"Error!! Data no sync");
+            }
+            else
+            {
+                followList = [[NSMutableArray alloc] initWithArray:objects];
+            }
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self.tableView reloadData];
+            });
+        }];
+    }
+}
+
+*/
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -39,14 +197,42 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     // Return the number of sections.
-    return 1;
+    return 2;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     // Return the number of rows in the section.
-    return 10;
+    NSInteger count;
+    
+    switch (section) {
+        case 0:
+            count = [applyList count];
+            break;
+        case 1:
+            count = [followList count];
+            break;
+        default:
+            break;
+    }
+    
+    return count;
 }
 
+-(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+{
+    NSString *header;
+    switch (section) {
+        case 0:
+            header = @"應徵案件";
+            break;
+        case 1:
+            header = @"追蹤案件";
+            break;
+        default:
+            break;
+    }
+    return header;
+}
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     CaseListCell *cell = [tableView dequeueReusableCellWithIdentifier:@"caseCell"];
@@ -54,15 +240,81 @@
     NSArray *view = [[NSBundle mainBundle] loadNibNamed:@"CaseListCell" owner:nil options:nil];
     cell = (CaseListCell *)[view lastObject];
     
+    if (indexPath.section == 0) {
+        PFObject *object = applyList[indexPath.row];
+        
+        cell.theCityLabel.text = object[@"work_city"];
+        cell.theFollowLabel.hidden = YES;
+        
+        cell.thePostTimeLabel.text =object[@""];
+        cell.theTitleLabel.text = object[@"case_title"];
+        NSString *wage = [NSString stringWithFormat:@"%@: %@", object[@"wage_class"], object[@"wage"]];
+        cell.theWageLabel.text = wage;
+        cell.theUserIDLabel.text = object[@"contact_name"];
+        //download
+        PFFile *imageFile = object[@"case_photo"];
+        [imageFile getDataInBackgroundWithBlock:^(NSData *imageData, NSError *error) {
+            if (!error) {
+                UIImage *image = [UIImage imageWithData:imageData];
+                [cell.theImageView setImage:image];
+            }else
+            {
+                NSLog(@"%@", error.description);
+            }
+        }];
+        
+    }else
+    {
+        PFObject *object = followList[indexPath.row];
+        
+        cell.theCityLabel.text = object[@"work_city"];
+        cell.theFollowLabel.hidden = YES;
+        
+        cell.thePostTimeLabel.text =object[@""];
+        cell.theTitleLabel.text = object[@"case_title"];
+        NSString *wage = [NSString stringWithFormat:@"%@: %@", object[@"wage_class"], object[@"wage"]];
+        cell.theWageLabel.text = wage;
+        cell.theUserIDLabel.text = object[@"contact_name"];
+        //download
+        PFFile *imageFile = object[@"case_photo"];
+        [imageFile getDataInBackgroundWithBlock:^(NSData *imageData, NSError *error) {
+            if (!error) {
+                UIImage *image = [UIImage imageWithData:imageData];
+                [cell.theImageView setImage:image];
+            }else
+            {
+                NSLog(@"%@", error.description);
+            }
+        }];
+    }
     return cell;
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
 
-    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     NSString* viewType = @"CaseDetailsTableViewController";
-    UIViewController* viewController = [storyboard instantiateViewControllerWithIdentifier:viewType];
     
+    CaseDetailsTableViewController* viewController = [self.storyboard instantiateViewControllerWithIdentifier:viewType];
+    
+    PFObject * object;
+    switch (indexPath.section) {
+        case 0:
+            object = applyList[indexPath.row];
+            [viewController setEnableFollowBtn:YES];
+            [viewController setEnableApplyBtn:NO];
+            // Will add judage function
+            [viewController setEnableContactInfo:NO];
+            break;
+        case 1:
+            object = followList[indexPath.row];
+            [viewController setEnableFollowBtn:YES];
+            [viewController setEnableApplyBtn:YES];
+            [viewController setEnableContactInfo:NO];
+            break;
+        default:
+            break;
+    }
+    viewController.caseObject = object;
     [self.navigationController pushViewController:viewController animated:YES];
     
 }

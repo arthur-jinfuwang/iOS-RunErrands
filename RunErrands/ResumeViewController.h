@@ -10,6 +10,15 @@
 #import "SettingTableViewCell.h"
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
 #import <FBSDKLoginKit/FBSDKLoginKit.h>
+#import <Parse/Parse.h>
+
+typedef NS_ENUM(NSInteger, RE_USER) {
+    RE_USER_NICKNAME,
+    RE_USER_GENDER,
+    RE_USER_BIRTHDAY,
+    RE_USER_PHONE,
+    RE_USER_EMAIL,
+};
 
 @interface ResumeViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UIImageView *ResumeProfilePic;
@@ -17,5 +26,6 @@
 - (void) buttonpress:(id) sender;
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (nonatomic, strong) PFUser *user;
 
 @end

@@ -51,21 +51,7 @@
     
     _theListViewBarBtn.enabled = false;
 
-    if ([PFUser currentUser]) {
-        [self loadCaseDatas];
-    }else
-    {
-        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"未登入" message:@"請先登入你的帳號" preferredStyle:UIAlertControllerStyleAlert];
-        
-        UIAlertAction *ok = [UIAlertAction actionWithTitle:@"確定" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
-
-            UIViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier: @"LoginViewController"];
-            [[SlideNavigationController sharedInstance] popAllAndSwitchToViewController:vc withCompletion:nil];
-        }];
-        
-        [alert addAction:ok];
-        [self presentViewController:alert animated:true completion:nil];
-    }
+    [self loadCaseDatas];
 }
 
 -(void) loadCaseDatas
@@ -195,7 +181,9 @@
         CaseDetailsTableViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier: @"CaseDetailsTableViewController"];
         
         [vc setCaseObject:currentObject];
-        [vc setIsEnableFollow:YES];
+        [vc setEnableFollowBtn:YES];
+        [vc setEnableApplyBtn:YES];
+        [vc setEnableContactInfo:NO];
         
         [[SlideNavigationController sharedInstance] pushViewController:vc animated:YES];
         
@@ -209,6 +197,10 @@
 
 - (void)mapView:(MKMapView *)mapView didSelectAnnotationView:(MKAnnotationView *)view
 {
+    
+    if (view.annotation == mapView.userLocation)
+        return;
+    
     CaseMKPointAnnotation *object =(CaseMKPointAnnotation *)view.annotation;
     
     currentObject = object.caseObject;
