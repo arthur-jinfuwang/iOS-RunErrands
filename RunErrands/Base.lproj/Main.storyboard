@@ -343,7 +343,7 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="密碼：" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0AE-4L-met">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="密碼：" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0AE-4L-met">
                                 <rect key="frame" x="16" y="239" width="51" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -1321,7 +1321,7 @@
                                     <constraint firstAttribute="width" constant="320" id="Pab-M7-FFs"/>
                                 </constraints>
                             </imageView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" editable="NO" text="Lorem ipsum dolor sit er elit lamet, consectetaur cillium  " translatesAutoresizingMaskIntoConstraints="NO" id="S9N-bK-opf">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Lorem ipsum dolor sit er elit lamet, consectetaur cillium  " translatesAutoresizingMaskIntoConstraints="NO" id="S9N-bK-opf">
                                 <rect key="frame" x="0.0" y="252" width="600" height="348"/>
                                 <color key="backgroundColor" red="0.80000000000000004" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
@@ -1331,7 +1331,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="S9N-bK-opf" firstAttribute="top" secondItem="dWf-rc-r3S" secondAttribute="bottom" constant="8" id="1yA-jO-b7F"/>
-                            <constraint firstItem="7zR-y7-Z1C" firstAttribute="top" secondItem="S9N-bK-opf" secondAttribute="bottom" id="4CQ-oo-5BP"/>
+                            <constraint firstItem="7zR-y7-Z1C" firstAttribute="top" secondItem="S9N-bK-opf" secondAttribute="bottom" constant="-44" id="4CQ-oo-5BP"/>
                             <constraint firstItem="dWf-rc-r3S" firstAttribute="top" secondItem="1V2-eV-9io" secondAttribute="bottom" constant="8" id="Rq9-9Z-WWn"/>
                             <constraint firstAttribute="centerX" secondItem="dWf-rc-r3S" secondAttribute="centerX" id="T56-Kc-qXO"/>
                             <constraint firstItem="S9N-bK-opf" firstAttribute="leading" secondItem="fMZ-cH-wo0" secondAttribute="leadingMargin" constant="-16" id="WaV-uk-h1y"/>
