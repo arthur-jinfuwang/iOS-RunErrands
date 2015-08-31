@@ -16,6 +16,7 @@
     NSMutableArray *settingDetailList;
     NSMutableDictionary *settingDetailData;
     TakePictureView  *avatarHeader;
+    UIDatePicker *datepicker;
     BOOL isEditing;
 }
 
@@ -56,6 +57,11 @@
     }else{
         [self initUserData];
     }
+    
+    //Date Picker init
+    datepicker = [[UIDatePicker alloc] initWithFrame:CGRectZero];
+    datepicker.minuteInterval = 2;
+    datepicker.backgroundColor = [UIColor whiteColor];
 }
 
 - (void) initUserData
@@ -183,7 +189,7 @@
     
     SettingTableViewCell *cell = (SettingTableViewCell*)[tableView cellForRowAtIndexPath:indexPath];
     
-    if (indexPath.row == RE_USER_GENDER) {
+    if (indexPath.row == RE_USER_GENDER ) {
         [cell.dataTextField setUserInteractionEnabled:NO];
         UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"請選擇性別" message:@"" preferredStyle: UIAlertControllerStyleActionSheet];
         UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
@@ -201,6 +207,31 @@
         
         [self presentViewController:alertController animated:YES completion:nil];
     }
+    if (indexPath.row == RE_USER_BIRTHDAY)
+        {
+            datepicker.datePickerMode = UIDatePickerModeDate;
+        }
+    else
+        {
+            datepicker.datePickerMode = UIDatePickerModeDateAndTime;
+        }
+        
+        [cell.dataTextField setInputView:datepicker];
+        
+        UIToolbar *toolBar=[[UIToolbar alloc]initWithFrame:CGRectMake(0, 0, 320, 44)];
+        [toolBar setTintColor:[UIColor colorWithRed: 1.0 green: 0.5781 blue: 0.0 alpha: 1.0]];
+        [toolBar setTranslucent:YES];
+        [toolBar setBackgroundColor:[UIColor colorWithRed: 1.0 green: 1.0 blue: 1.0 alpha: 1.0]];
+        UIBarButtonItem *doneBtn=[[UIBarButtonItem alloc]initWithTitle:@"完成" style:UIBarButtonItemStyleDone target:self action:@selector(finishDataUpdate)];
+        
+        
+        UIBarButtonItem *space=[[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
+        [toolBar setItems:[NSArray arrayWithObjects:space,doneBtn, nil]];
+        [cell.dataTextField setInputAccessoryView:toolBar];
+    
+    
+    
+
     
     cell.dataLabel.hidden = YES;
     cell.dataTextField.hidden = NO;
@@ -383,6 +414,22 @@
 {
     self.navigationItem.leftBarButtonItem.enabled = flag;
 }
+
+- (void) finishDataUpdate
+{
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    if (self.tableView.indexPathForSelectedRow.row == RE_USER_BIRTHDAY) {
+        [formatter setDateFormat:@"yyyy-MM-dd"];
+    }else{
+        [formatter setDateFormat:@"yyyy-MM-dd"];
+    }
+    NSArray *cellArray = [self.tableView visibleCells];
+    SettingTableViewCell *cell = cellArray[self.tableView.indexPathForSelectedRow.row];
+    cell.dataTextField.text = [formatter stringFromDate:datepicker.date];
+    [cell.dataTextField resignFirstResponder];
+    NSLog(@"生日為：%@", [formatter stringFromDate:datepicker.date]);
+}
+
 
 /*
 // Override to support conditional editing of the table view.

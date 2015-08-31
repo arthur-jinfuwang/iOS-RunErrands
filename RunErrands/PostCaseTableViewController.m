@@ -212,7 +212,7 @@
 
         case RE_WAGE:{
             UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"請選擇薪資類型" message:@"" preferredStyle: UIAlertControllerStyleActionSheet];
-//            UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
+
             UIAlertAction *hourType = [UIAlertAction actionWithTitle:@"時薪" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
                 cell.titleLabel.text = @"時薪";
             }];

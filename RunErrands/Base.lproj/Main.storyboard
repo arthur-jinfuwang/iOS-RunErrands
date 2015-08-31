@@ -291,7 +291,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="sWM-aB-dSr">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="nophoto.gif" translatesAutoresizingMaskIntoConstraints="NO" id="sWM-aB-dSr">
                                 <rect key="frame" x="140" y="72" width="320" height="180"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="180" id="5pS-AC-7DC"/>
@@ -847,7 +847,7 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="NE2-3H-QBl" id="hpY-mz-jjS">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="9Ib-hH-DYn">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="nophoto.gif" translatesAutoresizingMaskIntoConstraints="NO" id="9Ib-hH-DYn">
                                                     <rect key="frame" x="8" y="10" width="60" height="60"/>
                                                     <color key="backgroundColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <constraints>
@@ -1322,7 +1322,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="dWf-rc-r3S">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="nophoto.gif" translatesAutoresizingMaskIntoConstraints="NO" id="dWf-rc-r3S">
                                 <rect key="frame" x="140" y="64" width="320" height="180"/>
                                 <color key="backgroundColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
@@ -1459,6 +1459,7 @@
     </scenes>
     <resources>
         <image name="Natural-Green-Background-Vector-Graphic.jpg" width="750" height="746"/>
+        <image name="nophoto.gif" width="424" height="324"/>
         <image name="登入按鈕.png" width="176" height="36"/>
         <image name="臉書按鈕.png" width="608" height="58"/>
         <image name="註冊按鈕.png" width="176" height="36"/>

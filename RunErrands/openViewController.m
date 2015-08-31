@@ -40,7 +40,7 @@
     self.openanimation.contentMode = UIViewContentModeScaleAspectFill;
     self.openanimation.animationImages = array;
     
-    self.openanimation.animationDuration = 2;
+    self.openanimation.animationDuration = 0.1;
     
     self.openanimation.animationRepeatCount = 1;
     
