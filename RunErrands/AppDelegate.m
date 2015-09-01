@@ -35,8 +35,8 @@
     LeftMenuViewController *leftMenu = (LeftMenuViewController*)[mainStoryboard instantiateViewControllerWithIdentifier: @"LeftMenuViewController"];
     
     [SlideNavigationController sharedInstance].leftMenu = leftMenu;
-    [SlideNavigationController sharedInstance].landscapeSlideOffset = 120;
-    [SlideNavigationController sharedInstance].portraitSlideOffset = 120;
+    [SlideNavigationController sharedInstance].landscapeSlideOffset = 180;
+    [SlideNavigationController sharedInstance].portraitSlideOffset = 180;
     
     id <SlideNavigationContorllerAnimator> revealAnimator = [[SlideNavigationContorllerAnimatorScaleAndFade alloc] initWithMaximumFadeAlpha:.6 fadeColor:[UIColor blackColor] andMinimumScale:.8];
     CGFloat animationDuration = .22;

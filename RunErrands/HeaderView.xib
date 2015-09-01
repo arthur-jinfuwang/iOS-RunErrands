@@ -10,26 +10,28 @@
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Orange.png" translatesAutoresizingMaskIntoConstraints="NO" id="eiN-Br-3Pb">
-                    <rect key="frame" x="0.0" y="0.0" width="600" height="140"/>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Orange.png" translatesAutoresizingMaskIntoConstraints="NO" id="ceE-j3-35f">
+                    <rect key="frame" x="0.0" y="0.0" width="600" height="180"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="180" id="MJU-gz-l8d"/>
+                    </constraints>
                 </imageView>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="個人檔案" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vVC-Au-lzd">
-                    <rect key="frame" x="154" y="29" width="68" height="21"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="名字" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z7f-sG-Xm2">
-                    <rect key="frame" x="154" y="99" width="34" height="21"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WLT-gC-4Zy" customClass="FBSDKProfilePictureView">
-                    <rect key="frame" x="17" y="17" width="105" height="105"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                </view>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="IKe-nd-O6V">
+                    <rect key="frame" x="35" y="30" width="120" height="120"/>
+                    <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="120" id="uuH-Y5-giR"/>
+                        <constraint firstAttribute="width" constant="120" id="ymI-pQ-KOk"/>
+                    </constraints>
+                </imageView>
             </subviews>
+            <constraints>
+                <constraint firstItem="IKe-nd-O6V" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="30" id="4DS-pR-0pu"/>
+                <constraint firstItem="ceE-j3-35f" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="U2d-Jy-pfe"/>
+                <constraint firstItem="IKe-nd-O6V" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="35" id="bG7-KT-Pom"/>
+                <constraint firstAttribute="trailing" secondItem="ceE-j3-35f" secondAttribute="trailing" id="cr3-A0-UJq"/>
+                <constraint firstItem="ceE-j3-35f" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="pBv-WB-tky"/>
+            </constraints>
             <modalPageSheetSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <point key="canvasLocation" x="235" y="358"/>
         </view>
