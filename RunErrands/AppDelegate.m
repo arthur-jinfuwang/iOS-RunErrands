@@ -120,7 +120,7 @@
     if (status == NotReachable) {
         NSLog(@"Not reachable.");
 
-        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"無法連上伺服器" message:@"請檢查網路連線是否正確，本程式即將退出" preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"無法連上伺服器" message:@"請檢查網路連線是否正確" preferredStyle:UIAlertControllerStyleAlert];
         
         UIAlertAction *ok = [UIAlertAction actionWithTitle:@"確定" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
             //exit(0);
