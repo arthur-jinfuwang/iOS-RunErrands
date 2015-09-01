@@ -705,69 +705,6 @@
             </objects>
             <point key="canvasLocation" x="5178" y="1044"/>
         </scene>
-        <!--View Controller-->
-        <scene sceneID="kdk-jL-10e">
-            <objects>
-                <viewController id="BdU-ih-zaW" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="h6f-9e-IRw"/>
-                        <viewControllerLayoutGuide type="bottom" id="4vf-IG-S46"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="cPZ-wY-Z7Y">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Natural-Green-Background-Vector-Graphic.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="jah-Zy-ijR">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                            </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="請輸入手機號碼" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uU2-vG-7ZR">
-                                <rect key="frame" x="186" y="89" width="119" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="請輸入手機驗證碼" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5iU-yl-xyF">
-                                <rect key="frame" x="169" y="131" width="136" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iW4-fU-bhn">
-                                <rect key="frame" x="324" y="181" width="30" height="30"/>
-                                <state key="normal" title="註冊">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                            </button>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="+886 932624560" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="GBR-Cc-NEp">
-                                <rect key="frame" x="324" y="85" width="150" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7Bs-4r-MhC">
-                                <rect key="frame" x="324" y="127" width="150" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5hE-Gv-y3c">
-                                <rect key="frame" x="225" y="181" width="80" height="30"/>
-                                <state key="normal" title=" 發送驗證碼">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                            </button>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="4vf-IG-S46" firstAttribute="top" secondItem="jah-Zy-ijR" secondAttribute="bottom" id="RD6-Dc-YFQ"/>
-                            <constraint firstItem="jah-Zy-ijR" firstAttribute="top" secondItem="cPZ-wY-Z7Y" secondAttribute="topMargin" id="Ufg-Ec-Zhk"/>
-                            <constraint firstItem="jah-Zy-ijR" firstAttribute="leading" secondItem="cPZ-wY-Z7Y" secondAttribute="leadingMargin" constant="-16" id="o1V-Yl-IXa"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="jah-Zy-ijR" secondAttribute="trailing" constant="-16" id="w1t-Go-gLP"/>
-                        </constraints>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="vgk-ss-mSo" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="5178" y="1844"/>
-        </scene>
         <!--Setting Table View Controller-->
         <scene sceneID="YOM-K9-DFn">
             <objects>
