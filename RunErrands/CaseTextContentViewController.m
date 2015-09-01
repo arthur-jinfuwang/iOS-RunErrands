@@ -45,15 +45,18 @@
     
     //download
     PFFile *userImageFile = caseObject[@"case_photo"];
-    [userImageFile getDataInBackgroundWithBlock:^(NSData *imageData, NSError *error) {
-        if (!error) {
-            UIImage *image = [UIImage imageWithData:imageData];
-            [_theCaseImageView setImage:image];
-        }else
-        {
-            NSLog(@"%@", error.description);
-        }
-    }];
+    if (userImageFile != nil) {
+        
+        [userImageFile getDataInBackgroundWithBlock:^(NSData *imageData, NSError *error) {
+            if (!error) {
+                UIImage *image = [UIImage imageWithData:imageData];
+                [_theCaseImageView setImage:image];
+            }else
+            {
+                NSLog(@"%@", error.description);
+            }
+        }];
+    }
 }
 /*
 #pragma mark - Navigation

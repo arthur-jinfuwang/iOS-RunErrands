@@ -154,16 +154,19 @@
             PFUser *owner= [objects lastObject];
             self.theUserIDLabel.text = owner[@"nickname"];
             PFFile *userImageFile = owner[@"avatar"];
-            [userImageFile getDataInBackgroundWithBlock:^(NSData *imageData, NSError *error) {
-                if (!error) {
-                    UIImage *image = [UIImage imageWithData:imageData];
-                    [_theOwnerImageView setImage:image];
-                }else
-                {
-                    NSLog(@"%@", error.description);
-                }
+            if (userImageFile != nil) {
                 
-            }];
+                [userImageFile getDataInBackgroundWithBlock:^(NSData *imageData, NSError *error) {
+                    if (!error) {
+                        UIImage *image = [UIImage imageWithData:imageData];
+                        [_theOwnerImageView setImage:image];
+                    }else
+                    {
+                        NSLog(@"%@", error.description);
+                    }
+                    
+                }];
+            }
         }else
         {
             NSLog(@"getCaseOwnerInfo Error: %@", error.description);

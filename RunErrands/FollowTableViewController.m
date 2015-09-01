@@ -299,16 +299,18 @@
         cell.theUserIDLabel.text = object[@"contact_name"];
         //download
         PFFile *imageFile = object[@"case_photo"];
-        [imageFile getDataInBackgroundWithBlock:^(NSData *imageData, NSError *error) {
-            if (!error) {
-                UIImage *image = [UIImage imageWithData:imageData];
-                [cell.theImageView setImage:image];
-            }else
-            {
-                NSLog(@"%@", error.description);
-            }
-        }];
-        
+        if (imageFile != nil) {
+            [imageFile getDataInBackgroundWithBlock:^(NSData *imageData, NSError *error) {
+                if (!error) {
+                    UIImage *image = [UIImage imageWithData:imageData];
+                    [cell.theImageView setImage:image];
+                }else
+                {
+                    NSLog(@"%@", error.description);
+                }
+            }];
+        }
+
     }else
     {
         PFObject *object = followList[indexPath.row];
@@ -323,15 +325,18 @@
         cell.theUserIDLabel.text = object[@"contact_name"];
         //download
         PFFile *imageFile = object[@"case_photo"];
-        [imageFile getDataInBackgroundWithBlock:^(NSData *imageData, NSError *error) {
-            if (!error) {
-                UIImage *image = [UIImage imageWithData:imageData];
-                [cell.theImageView setImage:image];
-            }else
-            {
-                NSLog(@"%@", error.description);
-            }
-        }];
+        if (imageFile != nil) {
+            [imageFile getDataInBackgroundWithBlock:^(NSData *imageData, NSError *error) {
+                if (!error) {
+                    UIImage *image = [UIImage imageWithData:imageData];
+                    [cell.theImageView setImage:image];
+                }else
+                {
+                    NSLog(@"%@", error.description);
+                }
+            }];
+        }
+
     }
     return cell;
 }

@@ -105,19 +105,21 @@
 {
     PFUser *user = [PFUser currentUser];
     PFFile *userImageFile = user[@"avatar"];
-    [userImageFile getDataInBackgroundWithBlock:^(NSData *imageData, NSError *error) {
-        if (!error) {
-            if (imageData) {
-                UIImage *image = [UIImage imageWithData:imageData];
-                avatarHeader.thePictureBtn.imageView.contentMode = UIViewContentModeScaleAspectFill;
-                [avatarHeader.thePictureBtn setImage:image forState:UIControlStateNormal];
+    if (userImageFile != nil) {
+        [userImageFile getDataInBackgroundWithBlock:^(NSData *imageData, NSError *error) {
+            if (!error) {
+                if (imageData) {
+                    UIImage *image = [UIImage imageWithData:imageData];
+                    avatarHeader.thePictureBtn.imageView.contentMode = UIViewContentModeScaleAspectFill;
+                    [avatarHeader.thePictureBtn setImage:image forState:UIControlStateNormal];
+                }
+                
+            }else
+            {
+                NSLog(@"%@", error.description);
             }
-            
-        }else
-        {
-            NSLog(@"%@", error.description);
-        }
-    }];
+        }];
+    }
 }
 
 
