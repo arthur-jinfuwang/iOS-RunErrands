@@ -16,6 +16,7 @@
     MBProgressHUD *HUD;
     BOOL    toFollow;
     BOOL    toApply;
+    NSString *applyStatus;
 }
 
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *theApplyCaseBtn;
@@ -72,13 +73,52 @@
         HUD.delegate = self;
         HUD.labelText = @"Loading";
         [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-        [self getApplyStatus];
+        //[self getApplyStatus];
+        [self getApplyStatusRecord];
         [self initCellDetailFromCaseObject];
         [self getCaseOwnerInfo];
         [self.navigationController.view addSubview:HUD];
     }
 }
 
+- (void) getApplyStatusRecord
+{
+    PFUser *user = [PFUser currentUser];
+    PFQuery *query = [PFQuery queryWithClassName:@"ApplyManageTable"];
+    [query whereKey:@"apply_id" equalTo:user.objectId];
+    [query whereKey:@"case_id" equalTo:self.caseObject.objectId];
+    
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if (!error) {
+            if (objects.count > 0) {
+                PFObject *object = [objects lastObject];
+                applyStatus = object[@"status"];
+                self.enableApplyBtn = false;
+                self.theApplyCaseBtn.enabled = false;
+                if ([applyStatus isEqualToString:@"應徵"]) {
+                    [_theFollowCaseBtn setTitle:@"應徵中❤️" forState:UIControlStateNormal];
+                }else
+                {
+                    [_theFollowCaseBtn setTitle:@"已受邀✅" forState:UIControlStateNormal];
+                    self.enableContactInfo = YES;
+                }
+                toApply = true;
+                toFollow = false;
+            }else
+            {
+                [self updateFollowStatus];
+            }
+        }else
+        {
+            NSLog(@"CaseDetails: findObjectsInBackgroundWithBlock %@",error.description);
+        }
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.tableView reloadData];
+        });
+    }];
+}
+
+/*
 - (void) getApplyStatus
 {
     PFUser *user = [PFUser currentUser];
@@ -101,14 +141,13 @@
         [MBProgressHUD hideHUDForView:self.view animated:YES];
     }];
 }
-
+*/
 
 - (void) getCaseOwnerInfo
 {
     PFQuery * query = [PFUser query];
     NSString *ownerID = self.caseObject[@"owner_id"];
     [query whereKey:@"objectId" equalTo:ownerID];
-    //NSArray * results = [query findObjects];
     
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (!error) {
@@ -130,6 +169,9 @@
             NSLog(@"getCaseOwnerInfo Error: %@", error.description);
         }
         [MBProgressHUD hideHUDForView:self.view animated:YES];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.tableView reloadData];
+        });
     }];
 }
 

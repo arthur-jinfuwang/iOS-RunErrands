@@ -342,15 +342,31 @@
     
     CaseDetailsTableViewController* viewController = [self.storyboard instantiateViewControllerWithIdentifier:viewType];
     
+    
     PFObject * object;
     switch (indexPath.section) {
         case 0:
+        {
             object = applyList[indexPath.row];
+            NSString *caseID = object.objectId;
+            NSString *userID = [PFUser currentUser].objectId;
+            
             [viewController setEnableFollowBtn:YES];
             [viewController setEnableApplyBtn:NO];
             // Will add judage function
-            [viewController setEnableContactInfo:NO];
+            for (PFObject *status in applyStatus) {
+                if ([userID isEqualToString:status[@"apply_id"]] && [caseID isEqualToString:status[@"case_id"]]) {
+                    NSString *strStatus = status[@"status"];
+                    if ([strStatus isEqualToString:@"應徵"]) {
+                         [viewController setEnableContactInfo:NO];
+                    }else
+                    {
+                         [viewController setEnableContactInfo:YES];
+                    }
+                }
+            }
             break;
+        }
         case 1:
             object = followList[indexPath.row];
             [viewController setEnableFollowBtn:YES];
@@ -441,13 +457,13 @@
     }];
     
     PFQuery *query = [PFQuery queryWithClassName:@"ApplyManageTable"];
-    [query whereKey:@"owner_id" equalTo:caseObject[@"owner_id"]];
+    //[query whereKey:@"owner_id" equalTo:caseObject[@"owner_id"]];
     [query whereKey:@"case_id" equalTo:caseObject.objectId];
     [query whereKey:@"apply_id" equalTo:user.objectId];
     
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error){
         if (!error) {
-            if (objects.count == 1) {
+            if (objects.count > 0) {
                 for (PFObject *object in objects) {
                     [object deleteInBackgroundWithBlock:^(BOOL succeeded, NSError *error){
                         if (succeeded) {
