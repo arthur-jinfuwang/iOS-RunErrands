@@ -16,9 +16,11 @@
 {
     NSMutableArray *imagearray;
     NSMutableArray *textarray;
-    UIButton *button;
     MBProgressHUD *HUD;
+    
 }
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *displayinvitedBtn;
+
 @end
 
 @implementation ResumeViewController
@@ -28,7 +30,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    imagearray = [[NSMutableArray alloc] initWithObjects:@"vcard_color_64x64.png",@"ffffound_color_64x64.png",@"tumbrl_color_64x64.png",@"wiki_color_64x64.png","aim_color_64x64", nil];
+    imagearray = [[NSMutableArray alloc] initWithObjects:@"vcard_color_64x64.png",@"ffffound_color_64x64.png",@"tumbrl_color_64x64.png",@"wiki_color_64x64.png",@"aim_color_64x64.png", nil];
     
     textarray = [[NSMutableArray alloc] initWithObjects:
                          @"姓名:", @"性別:", @"生日:",@"電話:", @"信箱:",nil];
@@ -38,22 +40,23 @@
     
     HUD.delegate = self;
     HUD.labelText = @"Loading";
-    
-    //宣告一個按鈕
-    button = [[UIButton alloc]init];
-    
-    //設定按鈕類型
-    button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    
-    //位置,大小
-    button.frame = CGRectMake(140,600,100,100);
-    [button setTitleColor:[UIColor whiteColor]forState:UIControlStateNormal];
-    
-    //按鈕文字
-    [button setTitle:@"邀請" forState:UIControlStateNormal];
+//    
+//    //宣告一個按鈕
+//    button = [[UIButton alloc]init];
+//    
+//    //設定按鈕類型
+//    button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+//    
+//    //位置,大小
+//    button.frame = CGRectMake(115,590,150,100);
+//    [button setTitleColor:[UIColor whiteColor]forState:UIControlStateNormal];
+//    [button.titleLabel setFont:[UIFont fontWithName:@"GillSans-Light"size:21]];
+//    
+//    //按鈕文字
+//    [button setTitle:@"邀請" forState:UIControlStateNormal];
     //攔截按鈕的訊息,並觸發button方法
-    [button addTarget:self action:@selector(buttonpress:) forControlEvents:(UIControlEventTouchUpInside)];
-    [self.view addSubview:button];
+//    [button addTarget:self action:@selector(buttonpress:) forControlEvents:(UIControlEventTouchUpInside)];
+//    [self.view addSubview:button];
     
 }
 
@@ -84,10 +87,10 @@
     cell = (SettingTableViewCell *)[view lastObject];
     
     //履歷圖示初始化
-    //cell.iconTitle.image = [UIImage imageNamed:imagearray[indexPath.row]];
+    cell.iconTitle.image = [UIImage imageNamed:imagearray[indexPath.row]];
     
     cell.titleLabel.hidden = NO;
-    cell.iconTitle.hidden = YES;
+    cell.iconTitle.hidden = NO;
     
     //履歷文字初始化 index.row讀取陣列的資料
     cell.titleLabel.text = textarray[indexPath.row];
@@ -113,8 +116,7 @@
     }
     return cell;
 }
-
- -(void)buttonpress:(id)sender
+- (IBAction)InviteBtnAction:(id)sender
 {
     NSLog(@"button press");
     NSString *ownerID = [PFUser currentUser].objectId;
@@ -133,26 +135,45 @@
                 PFObject *record = [objects lastObject];
                 record[@"status"] = @"邀請";
                 [record saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error){
-                    if (succeeded) {
-                        [button setTitle:@"已邀請" forState:UIControlStateNormal];
-                        button.enabled = false;
-                    }else
+            if (succeeded) {
+                UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"應徵訊息" message:@"已發送應徵訊息" preferredStyle:UIAlertControllerStyleAlert];
+                        
+                UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"確定" style:UIAlertActionStyleDefault handler:
+                    ^(UIAlertAction *action)
+                    {
+                      self.displayinvitedBtn.enabled = false;
+                      self.displayinvitedBtn.title = @"已應徵";
+                    }];
+                      [alertController addAction:okAction];
+                      [self presentViewController:alertController animated:YES completion:nil];
+                    }
+                    else
                     {
                         NSLog(@"Resume: saveInBackgroundWithBlock %@",error.description);
                     }
                     [MBProgressHUD hideHUDForView:self.view animated:YES];
-                }];
-            }else
-            {
-                NSLog(@"ApplyManageTable record neumber error %ld", objects.count);
-            }
-        }else
-        {
+                    }];
+               }
+               else
+              {
+                NSLog(@"ApplyManageTable record neumber error %ld", (unsigned long)objects.count);
+              }
+           }
+              else
+           {
             NSLog(@"Resume: findObjectsInBackgroundWithBlock %@",error.description);
-        }
+            }
     }];
-
+    
 }
+
+
+
+
+// -(void)buttonpress:(id)sender
+//{
+//    
+//}
 
 /*
 #pragma mark - Navigation

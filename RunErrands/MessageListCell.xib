@@ -22,7 +22,7 @@
                         <color key="textColor" red="0.0" green="0.50196081399917603" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="mKd-ME-iOa">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="nophoto.gif" translatesAutoresizingMaskIntoConstraints="NO" id="mKd-ME-iOa">
                         <rect key="frame" x="8" y="8" width="50" height="50"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="50" id="d2V-TM-zSh"/>
@@ -72,4 +72,7 @@
             <point key="canvasLocation" x="365.5" y="167"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="nophoto.gif" width="424" height="324"/>
+    </resources>
 </document>

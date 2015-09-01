@@ -24,7 +24,7 @@
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="XCi-AB-Vhl">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="nophoto.gif" translatesAutoresizingMaskIntoConstraints="NO" id="XCi-AB-Vhl">
                         <rect key="frame" x="8" y="8" width="50" height="50"/>
                         <color key="backgroundColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
@@ -126,4 +126,7 @@
             <point key="canvasLocation" x="478" y="284"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="nophoto.gif" width="424" height="324"/>
+    </resources>
 </document>

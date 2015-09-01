@@ -54,10 +54,12 @@
                    @"工作起始時間",@"工作結束時間",@"薪資",@"地點",@"工作內容",@"需求人數",
                    @"截止日期",nil];
     
-    if (self.enableFollowBtn == false) {
+    if (self.enableFollowBtn == false)
+    {
         self.theFollowCaseBtn.hidden = true;
     }
-    if (self.enableApplyBtn == false) {
+    if (self.enableApplyBtn == false)
+    {
         self.theApplyCaseBtn.enabled = false;
         self.theApplyCaseBtn.title = @"";
     }
