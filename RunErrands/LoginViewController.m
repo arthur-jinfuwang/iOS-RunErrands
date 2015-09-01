@@ -27,7 +27,7 @@
 @end
 
 @implementation LoginViewController
-
+@synthesize networkBroken;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -38,6 +38,12 @@
 //    [testObject saveInBackground];
 
     leftMenu =(LeftMenuViewController *)[SlideNavigationController sharedInstance].leftMenu;
+    
+    if (networkBroken) {
+        self.facebookLoginBtn.enabled = false;
+        self.RegisterBtnpressed.enabled =false;
+        self.ParseLoginMethod.enabled= false;
+    }
     
     PFUser *currentUser = [PFUser currentUser];
     if (currentUser) {
@@ -72,7 +78,12 @@
 
 - (BOOL)slideNavigationControllerShouldDisplayLeftMenu
 {
-    return YES;
+    if (self.networkBroken) {
+        return NO;
+    }else
+    {
+        return YES;
+    }
 }
 
 

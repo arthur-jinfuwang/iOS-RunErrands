@@ -12,7 +12,6 @@
 
 @interface LoginViewController : UIViewController <SlideNavigationControllerDelegate>
 
-
-
+@property (nonatomic,assign) BOOL networkBroken;
 
 @end
