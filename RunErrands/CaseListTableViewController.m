@@ -107,16 +107,24 @@
     NSString *userID = user.objectId;
     viewController.caseObject = object;
     
-    if ([userID isEqualToString:object[@"owner_id"]]) {
+    if (user ==nil) {
         [viewController setEnableFollowBtn:NO];
         [viewController setEnableApplyBtn:NO];
-        [viewController setEnableContactInfo:YES];
-        
+        [viewController setEnableContactInfo:NO];
     }else
     {
-        [viewController setEnableFollowBtn:YES];
-        [viewController setEnableApplyBtn:YES];
-        [viewController setEnableContactInfo:NO];
+        
+        if ([userID isEqualToString:object[@"owner_id"]]) {
+            [viewController setEnableFollowBtn:NO];
+            [viewController setEnableApplyBtn:NO];
+            [viewController setEnableContactInfo:YES];
+            
+        }else
+        {
+            [viewController setEnableFollowBtn:YES];
+            [viewController setEnableApplyBtn:YES];
+            [viewController setEnableContactInfo:NO];
+        }
     }
     [self.navigationController pushViewController:viewController animated:YES];
 }

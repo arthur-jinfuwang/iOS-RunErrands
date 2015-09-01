@@ -17,6 +17,7 @@
     
     NSMutableArray  *followList;
     NSMutableArray  *applyList;
+    NSMutableArray  *applyStatus;
     MBProgressHUD *HUD;
 }
 
@@ -53,7 +54,29 @@
         
         [self loadApplyRecords];
         [self loadFollowsRecords];
+        [self loadApplyStatus];
     }
+}
+
+- (void) loadApplyStatus
+{
+    PFUser *user = [PFUser currentUser];
+    PFQuery *query = [PFQuery queryWithClassName:@"ApplyManageTable"];
+    [query whereKey:@"apply_id" equalTo:user.objectId];
+    
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if (!error) {
+            
+            applyStatus = [[NSMutableArray alloc] initWithArray:objects];
+        }else
+        {
+            NSLog(@"Resume: findObjectsInBackgroundWithBlock %@",error.description);
+        }
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.tableView reloadData];
+        });
+    }];
+
 }
 
 
@@ -250,9 +273,24 @@
     
     if (indexPath.section == 0) {
         PFObject *object = applyList[indexPath.row];
+        NSString *caseID = object.objectId;
+        NSString *userID = [PFUser currentUser].objectId;
         
-        cell.theCityLabel.text = object[@"work_city"];
-        cell.theFollowLabel.hidden = YES;
+        for (PFObject *status in applyStatus) {
+            if ([userID isEqualToString:status[@"apply_id"]] && [caseID isEqualToString:status[@"case_id"]]) {
+                NSString *strStatus = status[@"status"];
+                if ([strStatus isEqualToString:@"應徵"]) {
+                    cell.theFollowLabel.text = @"❤️";
+                    cell.theCityLabel.text = @"應徵中";
+                }else
+                {
+                    cell.theFollowLabel.text = @"✅";
+                    cell.theCityLabel.text = @"已受邀";
+                }
+            }
+        }
+        
+        //cell.theCityLabel.text = object[@"work_city"];
         
         cell.thePostTimeLabel.text =object[@""];
         cell.theTitleLabel.text = object[@"case_title"];

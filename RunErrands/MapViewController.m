@@ -184,15 +184,22 @@
         NSString *userID = user.objectId;
         [vc setCaseObject:currentObject];
         
-        if ([userID isEqualToString:currentObject[@"owner_id"]]) {
+        if (user == nil) {
             [vc setEnableFollowBtn:NO];
             [vc setEnableApplyBtn:NO];
-            [vc setEnableContactInfo:YES];
-        }else
-        {
-            [vc setEnableFollowBtn:YES];
-            [vc setEnableApplyBtn:YES];
             [vc setEnableContactInfo:NO];
+        }else{
+            
+            if ([userID isEqualToString:currentObject[@"owner_id"]]) {
+                [vc setEnableFollowBtn:NO];
+                [vc setEnableApplyBtn:NO];
+                [vc setEnableContactInfo:YES];
+            }else
+            {
+                [vc setEnableFollowBtn:YES];
+                [vc setEnableApplyBtn:YES];
+                [vc setEnableContactInfo:NO];
+            }
         }
         [[SlideNavigationController sharedInstance] pushViewController:vc animated:YES];
         
