@@ -14,11 +14,11 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2015/08/02" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g2r-um-rEr">
-                        <rect key="frame" x="66" y="38" width="83" height="21"/>
+                        <rect key="frame" x="66" y="38" width="124" height="21"/>
                         <accessibility key="accessibilityConfiguration" hint="2015/08/02"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="83" id="REx-bj-J27"/>
-                            <constraint firstAttribute="height" constant="21" id="YQS-qF-ZtL"/>
+                            <constraint firstAttribute="width" constant="124" id="fAO-0R-Lcd"/>
+                            <constraint firstAttribute="height" constant="21" id="y31-Ed-QxE"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -61,12 +61,12 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="總金額10000" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5wq-2j-M7X">
-                        <rect key="frame" x="163" y="38" width="116" height="21"/>
+                        <rect key="frame" x="179" y="38" width="100" height="21"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="116" id="XJa-eG-cAe"/>
                             <constraint firstAttribute="height" constant="21" id="a81-D1-W9C"/>
+                            <constraint firstAttribute="width" constant="100" id="oUA-Qp-mrj"/>
                         </constraints>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>

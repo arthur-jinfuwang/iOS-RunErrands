@@ -172,12 +172,35 @@
     NSMutableArray *jobSeekersArray = jobSeekerList[indexPath.section];
     PFUser *user = jobSeekersArray[indexPath.row];
     
-    NSLog(@"nickname: %@", user[@"nickname"]);
     cell.theUserNameLabel.text = user[@"nickname"];
-    //cell.theStatusLabel = @"";
-    //cell.theTimeLabel = @"";
+    PFObject *caseObject = caseList[indexPath.section];
+    
+    PFQuery *query = [PFQuery queryWithClassName:@"ApplyManageTable"];
+    [query whereKey:@"owner_id" equalTo:[PFUser currentUser].objectId];
+    [query whereKey:@"apply_id" equalTo:user.objectId];
+    [query whereKey:@"case_id" equalTo:caseObject.objectId];
+    
+
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error){
+        if (!error) {
+            PFObject *object = [objects lastObject];
+            NSString *status = object[@"status"];
+            if ([status isEqualToString:@"應徵"]) {
+                cell.theStatusLabel.text = @"應徵中❤️";
+            }else
+            {
+                cell.theStatusLabel.text = @"已邀請✅";
+            }
+            NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+            [formatter setDateFormat:@"yyyy-MM-dd HH:mm"];
+            NSDate *date = object.updatedAt;
+            cell.theTimeLabel.text = [formatter stringFromDate:date];
+        }
+
+    }];
     
     PFFile *userImageFile = user[@"avatar"];
+
     [userImageFile getDataInBackgroundWithBlock:^(NSData *imageData, NSError *error) {
         if (!error) {
             if (imageData) {

@@ -75,8 +75,12 @@
     
     cell.theCityLabel.text = object[@"work_city"];
     cell.theFollowLabel.hidden = YES;
-
-    cell.thePostTimeLabel.text =object[@""];
+    
+    NSDate *date = object[@"post_at"];
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"yyyy/MM/dd HH:mm"];
+    
+    cell.thePostTimeLabel.text = [formatter stringFromDate:date];
     cell.theTitleLabel.text = object[@"case_title"];
     NSString *wage = [NSString stringWithFormat:@"%@: %@", object[@"wage_class"], object[@"wage"]];
     cell.theWageLabel.text = wage;
@@ -103,11 +107,29 @@
     CaseDetailsTableViewController* viewController = [storyboard instantiateViewControllerWithIdentifier:viewType];
     
     PFObject * object = self.caselist[indexPath.row];
+    PFUser *user = [PFUser currentUser];
+    NSString *userID = user.objectId;
     viewController.caseObject = object;
-    [viewController setEnableFollowBtn:YES];
-    [viewController setEnableApplyBtn:YES];
-    [viewController setEnableContactInfo:NO];
     
+    if (user ==nil) {
+        [viewController setEnableFollowBtn:NO];
+        [viewController setEnableApplyBtn:NO];
+        [viewController setEnableContactInfo:NO];
+    }else
+    {
+        
+        if ([userID isEqualToString:object[@"owner_id"]]) {
+            [viewController setEnableFollowBtn:NO];
+            [viewController setEnableApplyBtn:NO];
+            [viewController setEnableContactInfo:YES];
+            
+        }else
+        {
+            [viewController setEnableFollowBtn:YES];
+            [viewController setEnableApplyBtn:YES];
+            [viewController setEnableContactInfo:NO];
+        }
+    }
     [self.navigationController pushViewController:viewController animated:YES];
 }
 
