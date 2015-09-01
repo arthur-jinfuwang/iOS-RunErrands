@@ -20,6 +20,7 @@
     
 }
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *displayinvitedBtn;
+@property (weak, nonatomic) IBOutlet UIImageView *avatarImageView;
 
 @end
 
@@ -40,6 +41,8 @@
     
     HUD.delegate = self;
     HUD.labelText = @"Loading";
+    
+    [self initResumeStatus];
 //    
 //    //宣告一個按鈕
 //    button = [[UIButton alloc]init];
@@ -59,6 +62,56 @@
 //    [self.view addSubview:button];
     
 }
+
+
+-(void) initResumeStatus
+{
+    PFQuery *query = [PFQuery queryWithClassName:@"ApplyManageTable"];
+    
+    [query whereKey:@"apply_id" equalTo:self.user.objectId];
+    [query whereKey:@"case_id" equalTo:self.caseObject.objectId];
+    
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error){
+        if (!error) {
+            PFObject *object = [objects lastObject];
+            NSString *status = object[@"status"];
+            if ([status isEqualToString:@"應徵"]) {
+                
+            }else
+            {
+                self.displayinvitedBtn.enabled = false;
+                self.displayinvitedBtn.title = @"已邀請";
+            }
+        }
+        
+    }];
+    
+    PFFile *userImageFile = self.user[@"avatar"];
+    
+    if (userImageFile != nil)
+    {
+    
+        [userImageFile getDataInBackgroundWithBlock:^(NSData *imageData, NSError *error) {
+            if (!error) {
+                if (imageData) {
+                    UIImage *image = [UIImage imageWithData:imageData];
+                    self.avatarImageView.image = image;
+                }
+                
+            }else
+            {
+                NSLog(@"%@", error.description);
+            }
+            [MBProgressHUD hideHUDForView:self.view animated:YES];
+        }];
+    }else
+    {
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
+    }
+    
+}
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -135,34 +188,34 @@
                 PFObject *record = [objects lastObject];
                 record[@"status"] = @"邀請";
                 [record saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error){
-            if (succeeded) {
-                UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"應徵訊息" message:@"已發送應徵訊息" preferredStyle:UIAlertControllerStyleAlert];
+                    if (succeeded) {
+                        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"應徵訊息" message:@"已發送應徵訊息" preferredStyle:UIAlertControllerStyleAlert];
                         
-                UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"確定" style:UIAlertActionStyleDefault handler:
-                    ^(UIAlertAction *action)
-                    {
-                      self.displayinvitedBtn.enabled = false;
-                      self.displayinvitedBtn.title = @"已應徵";
-                    }];
-                      [alertController addAction:okAction];
-                      [self presentViewController:alertController animated:YES completion:nil];
+                        UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"確定" style:UIAlertActionStyleDefault handler:
+                                                   ^(UIAlertAction *action)
+                                                   {
+                                                       self.displayinvitedBtn.enabled = false;
+                                                       self.displayinvitedBtn.title = @"已邀請";
+                                                   }];
+                        [alertController addAction:okAction];
+                        [self presentViewController:alertController animated:YES completion:nil];
                     }
                     else
                     {
                         NSLog(@"Resume: saveInBackgroundWithBlock %@",error.description);
                     }
                     [MBProgressHUD hideHUDForView:self.view animated:YES];
-                    }];
-               }
-               else
-              {
-                NSLog(@"ApplyManageTable record neumber error %ld", (unsigned long)objects.count);
-              }
-           }
-              else
-           {
-            NSLog(@"Resume: findObjectsInBackgroundWithBlock %@",error.description);
+                }];
             }
+            else
+            {
+                NSLog(@"ApplyManageTable record neumber error %ld", (unsigned long)objects.count);
+            }
+        }
+        else
+        {
+            NSLog(@"Resume: findObjectsInBackgroundWithBlock %@",error.description);
+        }
     }];
     
 }
