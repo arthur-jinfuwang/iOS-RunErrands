@@ -53,7 +53,23 @@
         [MBProgressHUD showHUDAddedTo:self.view animated:YES];
         [self loadPostCaseDatas];
     }
+    self.refreshControl = [UIRefreshControl new];
+    [self.refreshControl addTarget:self action:@selector(handleRefresh) forControlEvents:UIControlEventValueChanged];
 }
+
+- (void)handleRefresh
+{
+    [self loadPostCaseDatas];
+    [self.refreshControl endRefreshing];
+    [self.tableView reloadData];
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    self.refreshControl.attributedTitle = [[NSAttributedString alloc] initWithString:@"Loading"];
+    [self.refreshControl endRefreshing];
+}
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -81,6 +97,11 @@
                 UIAlertAction *ok = [UIAlertAction actionWithTitle:@"確定" style:UIAlertActionStyleDefault handler:nil];
                 [alert addAction:ok];
                 [self presentViewController:alert animated:true completion:nil];
+                caseList = nil;
+                caseList = [NSMutableArray new];
+                jobSeekerList = nil;
+                jobSeekerList= [NSMutableArray new];
+                
             }
             else
             {

@@ -56,6 +56,26 @@
         [self loadFollowsRecords];
         [self loadApplyStatus];
     }
+    self.refreshControl = [UIRefreshControl new];
+    [self.refreshControl addTarget:self action:@selector(handleRefresh) forControlEvents:UIControlEventValueChanged];
+
+}
+
+- (void)handleRefresh
+{
+    //[MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    [self loadApplyRecords];
+    [self loadFollowsRecords];
+    [self loadApplyStatus];
+    
+    [self.refreshControl endRefreshing];
+    [self.tableView reloadData];
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    self.refreshControl.attributedTitle = [[NSAttributedString alloc] initWithString:@"Loading"];
+    [self.refreshControl endRefreshing];
 }
 
 - (void) loadApplyStatus
@@ -66,7 +86,7 @@
     
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (!error) {
-            
+            applyStatus =nil;
             applyStatus = [[NSMutableArray alloc] initWithArray:objects];
         }else
         {
@@ -90,17 +110,9 @@
         if (!error) {
             // The find succeeded.
             NSLog(@"Post List menu retrieved %ld apply cases.", objects.count);
-            if (objects.count == 0) {
-//                UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"提醒" message:@"你目前沒有應徵任何案子" preferredStyle:UIAlertControllerStyleAlert];
-//                
-//                UIAlertAction *ok = [UIAlertAction actionWithTitle:@"確定" style:UIAlertActionStyleDefault handler:nil];
-//                [alert addAction:ok];
-//                [self presentViewController:alert animated:true completion:nil];
-            }
-            else
-            {
+            if (!error) {
+                applyList = nil;
                 applyList = [[NSMutableArray alloc] initWithArray:objects];
-                
             }
             
         } else {
@@ -127,17 +139,9 @@
         if (!error) {
             // The find succeeded.
             NSLog(@"Post List menu retrieved %ld follow cases.", objects.count);
-            if (objects.count == 0) {
-//                UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"提醒" message:@"你目前沒有追蹤任何案子" preferredStyle:UIAlertControllerStyleAlert];
-//                
-//                UIAlertAction *ok = [UIAlertAction actionWithTitle:@"確定" style:UIAlertActionStyleDefault handler:nil];
-//                [alert addAction:ok];
-//                [self presentViewController:alert animated:true completion:nil];
-            }
-            else
-            {
+            if (!error) {
+                followList = nil;
                 followList = [[NSMutableArray alloc] initWithArray:objects];
-                
             }
             
         } else {
