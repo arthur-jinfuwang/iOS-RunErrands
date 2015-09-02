@@ -142,7 +142,7 @@
                     ^(UIAlertAction *action)
                     {
                       self.displayinvitedBtn.enabled = false;
-                      self.displayinvitedBtn.title = @"已應徵";
+                      self.displayinvitedBtn.title = @"已邀請";
                     }];
                       [alertController addAction:okAction];
                       [self presentViewController:alertController animated:YES completion:nil];
