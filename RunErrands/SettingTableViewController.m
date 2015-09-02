@@ -29,6 +29,14 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+//    NSLog(@"navigation:%@",self.navigationController.presentingViewController);
+//    
+//    if (self.navigationController.presentingViewController) {
+//        self.theEditBtn.title = @"完成";
+//        self.navigationItem.rightBarButtonItem = self.theEditBtn;
+////        self.navigationItem.rightBarButtonItem.title = @"完成";
+//    }
+    
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
@@ -76,7 +84,19 @@
     datepicker = [[UIDatePicker alloc] initWithFrame:CGRectZero];
     datepicker.minuteInterval = 5;
     datepicker.backgroundColor = [UIColor whiteColor];
+    
+    if (self.startEditFromRegister) {
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"註冊訊息" message:@"請填入基本資料" preferredStyle:UIAlertControllerStyleAlert];
+        
+        UIAlertAction *ok = [UIAlertAction actionWithTitle:@"確定" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+            [self editBtnPressed:nil];
+        }];
+        
+        [alert addAction:ok];
+        [self presentViewController:alert animated:true completion:nil];
+    }
 }
+
 
 - (void) initUserData
 {
@@ -105,19 +125,22 @@
 {
     PFUser *user = [PFUser currentUser];
     PFFile *userImageFile = user[@"avatar"];
-    [userImageFile getDataInBackgroundWithBlock:^(NSData *imageData, NSError *error) {
-        if (!error) {
-            if (imageData) {
-                UIImage *image = [UIImage imageWithData:imageData];
-                avatarHeader.thePictureBtn.imageView.contentMode = UIViewContentModeScaleAspectFill;
-                [avatarHeader.thePictureBtn setImage:image forState:UIControlStateNormal];
+    if (userImageFile != nil) {
+        [userImageFile getDataInBackgroundWithBlock:^(NSData *imageData, NSError *error) {
+            if (!error) {
+                if (imageData) {
+                    UIImage *image = [UIImage imageWithData:imageData];
+                    avatarHeader.thePictureBtn.imageView.contentMode = UIViewContentModeScaleAspectFill;
+                    [avatarHeader.thePictureBtn setImage:image forState:UIControlStateNormal];
+                }
+                
+            }else
+            {
+                NSLog(@"%@", error.description);
             }
-            
-        }else
-        {
-            NSLog(@"%@", error.description);
-        }
-    }];
+        }];
+    }
+
 }
 
 
@@ -128,7 +151,12 @@
 
 - (BOOL)slideNavigationControllerShouldDisplayLeftMenu
 {
-    return YES;
+    if (self.startEditFromRegister) {
+        return  NO;
+    }else
+    {
+        return YES;
+    }
 }
 
 #pragma mark - Table view data source
@@ -406,6 +434,11 @@
         [self isEnableLeftBarButtonItem:false];
     }else
     {
+        if (self.startEditFromRegister) {
+            [self finishRegisterEdit];
+            return;
+        }
+        
         if (self.tableView.indexPathForSelectedRow != nil)
         {
             NSLog(@"I am comming in done btn");
@@ -425,6 +458,42 @@
         isEditing = false;
         [self isEnableLeftBarButtonItem:true];
     }
+}
+
+- (void) finishRegisterEdit
+{
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"註冊完成" message:@"請確認完成基本資料填寫" preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction *ok = [UIAlertAction actionWithTitle:@"確定" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        if (self.tableView.indexPathForSelectedRow != nil)
+        {
+            NSLog(@"I will finish edit");
+            NSArray *cellArray = [self.tableView visibleCells];
+            SettingTableViewCell *cell = cellArray[self.tableView.indexPathForSelectedRow.row];
+            [cell.dataTextField resignFirstResponder];
+            cell.dataLabel.text = cell.dataTextField.text;
+            cell.dataLabel.hidden = NO;
+            cell.dataTextField.hidden = YES;
+            if([cell.dataTextField.text length] > 0)
+            {
+                [settingDetailData setObject:cell.dataLabel.text forKey:@(self.tableView.indexPathForSelectedRow.row)];
+            }
+        }
+        [self saveUserDataToRemoteServer];
+        
+        UIViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier: @"MapViewController"];
+        
+        [[SlideNavigationController sharedInstance] popAllAndSwitchToViewController:vc withCompletion:nil];
+        
+    }];
+    
+    UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        [self dismissViewControllerAnimated:true completion:nil];
+    }];
+    
+    [alert addAction:cancel];
+    [alert addAction:ok];
+    [self presentViewController:alert animated:true completion:nil];
 }
 
 - (void) isEnableLeftBarButtonItem:(BOOL)flag

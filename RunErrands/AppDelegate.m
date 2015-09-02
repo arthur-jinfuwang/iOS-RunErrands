@@ -15,10 +15,12 @@
 #import <Parse/Parse.h>
 #import <ParseFacebookUtilsV4/PFFacebookUtils.h>
 #import "Reachability.h"
+#import "LoginViewController.h"
 
 @interface AppDelegate ()
 {
     Reachability    *serverReach;
+    BOOL    networkConnection;
 }
 
 @end
@@ -65,8 +67,9 @@
         [leftMenu setLoginStatus:USERLOGOUT];
     }
 
-
+    
     //prepare reachability
+    networkConnection = true;
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(networkStatusChanges:) name:kReachabilityChangedNotification object:nil];
     serverReach = [Reachability reachabilityWithHostName:@"api.parse.com"];
     //[Reachability reachabilityForInternetConnection];
@@ -119,11 +122,22 @@
     NetworkStatus   status = [serverReach currentReachabilityStatus];
     if (status == NotReachable) {
         NSLog(@"Not reachable.");
-
+        networkConnection = false;
+        
         UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"無法連上伺服器" message:@"請檢查網路連線是否正確" preferredStyle:UIAlertControllerStyleAlert];
         
         UIAlertAction *ok = [UIAlertAction actionWithTitle:@"確定" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
-            //exit(0);
+            
+            UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle: nil];
+            
+            LoginViewController *vc ;
+            
+            vc = [mainStoryboard instantiateViewControllerWithIdentifier:@"LoginViewController"];
+            
+            [vc setNetworkBroken:true];
+            
+            [[SlideNavigationController sharedInstance] popAllAndSwitchToViewController:vc withCompletion:nil];
+            
         }];
         
         [alert addAction:ok];
@@ -131,6 +145,16 @@
 
     }else{
         NSLog(@"Reach with: %ld", status);
+        
+        if (networkConnection == false){
+            networkConnection = true;
+            
+            UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle: nil];
+            UIViewController *vc = [mainStoryboard instantiateViewControllerWithIdentifier:@"MapViewController"];
+            
+            [[SlideNavigationController sharedInstance] popAllAndSwitchToViewController:vc withCompletion:nil];
+        }
+        
         //[self updateNewsList];
     }
 }

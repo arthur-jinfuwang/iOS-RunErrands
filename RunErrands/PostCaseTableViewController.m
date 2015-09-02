@@ -462,6 +462,21 @@
     
     NSLog(@"the finishEditBtnPressed pressed\n");
     
+    if (self.tableView.indexPathForSelectedRow != nil)
+    {
+        NSLog(@"I will finish edit");
+        NSArray *cellArray = [self.tableView visibleCells];
+        SettingTableViewCell *cell = cellArray[self.tableView.indexPathForSelectedRow.row];
+        [cell.dataTextField resignFirstResponder];
+        cell.dataLabel.text = cell.dataTextField.text;
+        cell.dataLabel.hidden = NO;
+        cell.dataTextField.hidden = YES;
+        if([cell.dataTextField.text length] > 0)
+        {
+            [listDetailsData setObject:cell.dataTextField.text forKey:@(self.tableView.indexPathForSelectedRow.row)];
+        }
+    }
+    
     UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"完成編輯" message:@"你是否已完成編輯工作內容？" preferredStyle:UIAlertControllerStyleAlert];
     
     UIAlertAction *ok = [UIAlertAction actionWithTitle:@"確定" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {

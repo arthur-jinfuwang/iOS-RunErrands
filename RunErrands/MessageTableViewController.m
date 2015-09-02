@@ -200,20 +200,21 @@
     }];
     
     PFFile *userImageFile = user[@"avatar"];
-
-    [userImageFile getDataInBackgroundWithBlock:^(NSData *imageData, NSError *error) {
-        if (!error) {
-            if (imageData) {
-                UIImage *image = [UIImage imageWithData:imageData];
-                   cell.theUserImageView.image = image;
+    if (userImageFile !=nil) {
+        [userImageFile getDataInBackgroundWithBlock:^(NSData *imageData, NSError *error) {
+            if (!error) {
+                if (imageData) {
+                    UIImage *image = [UIImage imageWithData:imageData];
+                    cell.theUserImageView.image = image;
+                }
+                
+            }else
+            {
+                NSLog(@"%@", error.description);
             }
-            
-        }else
-        {
-            NSLog(@"%@", error.description);
-        }
-    }];
-    
+        }];
+    }
+
     return cell;
 }
 

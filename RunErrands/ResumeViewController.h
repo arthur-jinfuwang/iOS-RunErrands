@@ -21,9 +21,6 @@ typedef NS_ENUM(NSInteger, RE_USER) {
 };
 
 @interface ResumeViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
-@property (weak, nonatomic) IBOutlet UIImageView *ResumeProfilePic;
-
-- (void) buttonpress:(id) sender;
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic, strong) PFUser *user;
