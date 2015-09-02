@@ -1040,7 +1040,7 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="qaw-2v-whl">
-                        <barButtonItem key="rightBarButtonItem" tag="1" image="EditButton.png" id="hxO-uU-LEV">
+                        <barButtonItem key="rightBarButtonItem" tag="1" title="編輯" id="hxO-uU-LEV">
                             <connections>
                                 <action selector="editBtnPressed:" destination="lqr-VO-PQ8" id="WDM-tf-Gvm"/>
                             </connections>
@@ -1707,7 +1707,6 @@
     <resources>
         <image name="AddButton.png" width="24" height="24"/>
         <image name="CancellButton.png" width="24" height="24"/>
-        <image name="EditButton.png" width="24" height="24"/>
         <image name="Fill 38.png" width="24" height="21"/>
         <image name="FinishButton.png" width="24" height="20"/>
         <image name="Natural-Green-Background-Vector-Graphic.jpg" width="750" height="746"/>
