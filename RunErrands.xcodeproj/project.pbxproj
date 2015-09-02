@@ -35,8 +35,6 @@
 		BD7B81771B5D248D00067D29 /* SlideNavigationContorllerAnimatorScaleAndFade.m in Sources */ = {isa = PBXBuildFile; fileRef = BD7B816B1B5D248D00067D29 /* SlideNavigationContorllerAnimatorScaleAndFade.m */; };
 		BD7B81781B5D248D00067D29 /* SlideNavigationContorllerAnimatorSlide.m in Sources */ = {isa = PBXBuildFile; fileRef = BD7B816D1B5D248D00067D29 /* SlideNavigationContorllerAnimatorSlide.m */; };
 		BD7B81791B5D248D00067D29 /* SlideNavigationContorllerAnimatorSlideAndFade.m in Sources */ = {isa = PBXBuildFile; fileRef = BD7B816F1B5D248D00067D29 /* SlideNavigationContorllerAnimatorSlideAndFade.m */; };
-		BD7B817A1B5D248D00067D29 /* menu-button.png in Resources */ = {isa = PBXBuildFile; fileRef = BD7B81711B5D248D00067D29 /* menu-button.png */; };
-		BD7B817B1B5D248D00067D29 /* menu-button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BD7B81721B5D248D00067D29 /* menu-button@2x.png */; };
 		BD7B817C1B5D248D00067D29 /* SlideNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = BD7B81741B5D248D00067D29 /* SlideNavigationController.m */; };
 		BD7B817F1B5D2A9600067D29 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BD7B817E1B5D2A9600067D29 /* MapViewController.m */; };
 		BD8040361B637E1400B1DCC1 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BD8040351B637E1400B1DCC1 /* LoginViewController.m */; };
@@ -67,6 +65,12 @@
 		EA1966101B81CD210005FC47 /* 登入按鈕.png in Resources */ = {isa = PBXBuildFile; fileRef = EA19660F1B81CD210005FC47 /* 登入按鈕.png */; };
 		EA1966121B81CD490005FC47 /* 臉書按鈕.png in Resources */ = {isa = PBXBuildFile; fileRef = EA1966111B81CD490005FC47 /* 臉書按鈕.png */; };
 		EA21F3CF1B83322F0055BF0A /* 註冊按鈕.png in Resources */ = {isa = PBXBuildFile; fileRef = EA21F3CE1B83322F0055BF0A /* 註冊按鈕.png */; };
+		EA2696B11B96DE370053A479 /* Fill 38.png in Resources */ = {isa = PBXBuildFile; fileRef = EA2696B01B96DE370053A479 /* Fill 38.png */; };
+		EA2696B51B96E0860053A479 /* Fill 127.png in Resources */ = {isa = PBXBuildFile; fileRef = EA2696B41B96E0860053A479 /* Fill 127.png */; };
+		EA2696B71B96E40B0053A479 /* EditButton.png in Resources */ = {isa = PBXBuildFile; fileRef = EA2696B61B96E40B0053A479 /* EditButton.png */; };
+		EA2696B91B96E52B0053A479 /* AddButton.png in Resources */ = {isa = PBXBuildFile; fileRef = EA2696B81B96E52B0053A479 /* AddButton.png */; };
+		EA2696BB1B96E60B0053A479 /* FinishButton.png in Resources */ = {isa = PBXBuildFile; fileRef = EA2696BA1B96E60B0053A479 /* FinishButton.png */; };
+		EA2696BD1B96E6670053A479 /* CancellButton.png in Resources */ = {isa = PBXBuildFile; fileRef = EA2696BC1B96E6670053A479 /* CancellButton.png */; };
 		EA2943A81B5E06A50054DBD6 /* openViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA2943A71B5E06A50054DBD6 /* openViewController.m */; };
 		EA2C7BFA1B9432EC00A79947 /* nophoto.gif in Resources */ = {isa = PBXBuildFile; fileRef = EA2C7BF91B9432EC00A79947 /* nophoto.gif */; };
 		EA2C7BFC1B945EBC00A79947 /* aim_color_64x64.png in Resources */ = {isa = PBXBuildFile; fileRef = EA2C7BFB1B945EBC00A79947 /* aim_color_64x64.png */; };
@@ -159,8 +163,6 @@
 		BD7B816D1B5D248D00067D29 /* SlideNavigationContorllerAnimatorSlide.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SlideNavigationContorllerAnimatorSlide.m; sourceTree = "<group>"; };
 		BD7B816E1B5D248D00067D29 /* SlideNavigationContorllerAnimatorSlideAndFade.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SlideNavigationContorllerAnimatorSlideAndFade.h; sourceTree = "<group>"; };
 		BD7B816F1B5D248D00067D29 /* SlideNavigationContorllerAnimatorSlideAndFade.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SlideNavigationContorllerAnimatorSlideAndFade.m; sourceTree = "<group>"; };
-		BD7B81711B5D248D00067D29 /* menu-button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu-button.png"; sourceTree = "<group>"; };
-		BD7B81721B5D248D00067D29 /* menu-button@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu-button@2x.png"; sourceTree = "<group>"; };
 		BD7B81731B5D248D00067D29 /* SlideNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SlideNavigationController.h; sourceTree = "<group>"; };
 		BD7B81741B5D248D00067D29 /* SlideNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SlideNavigationController.m; sourceTree = "<group>"; };
 		BD7B817D1B5D2A9600067D29 /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
@@ -203,6 +205,12 @@
 		EA19660F1B81CD210005FC47 /* 登入按鈕.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "登入按鈕.png"; sourceTree = "<group>"; };
 		EA1966111B81CD490005FC47 /* 臉書按鈕.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "臉書按鈕.png"; sourceTree = "<group>"; };
 		EA21F3CE1B83322F0055BF0A /* 註冊按鈕.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "註冊按鈕.png"; sourceTree = "<group>"; };
+		EA2696B01B96DE370053A479 /* Fill 38.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Fill 38.png"; path = "Animations/Fill 38.png"; sourceTree = "<group>"; };
+		EA2696B41B96E0860053A479 /* Fill 127.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Fill 127.png"; path = "Assets/Fill 127.png"; sourceTree = "<group>"; };
+		EA2696B61B96E40B0053A479 /* EditButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = EditButton.png; sourceTree = "<group>"; };
+		EA2696B81B96E52B0053A479 /* AddButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AddButton.png; sourceTree = "<group>"; };
+		EA2696BA1B96E60B0053A479 /* FinishButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FinishButton.png; sourceTree = "<group>"; };
+		EA2696BC1B96E6670053A479 /* CancellButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CancellButton.png; sourceTree = "<group>"; };
 		EA2943A61B5E06A50054DBD6 /* openViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = openViewController.h; sourceTree = "<group>"; };
 		EA2943A71B5E06A50054DBD6 /* openViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = openViewController.m; sourceTree = "<group>"; };
 		EA2C7BF91B9432EC00A79947 /* nophoto.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = nophoto.gif; sourceTree = "<group>"; };
@@ -383,6 +391,8 @@
 				BD7B81701B5D248D00067D29 /* Assets */,
 				BD7B81731B5D248D00067D29 /* SlideNavigationController.h */,
 				BD7B81741B5D248D00067D29 /* SlideNavigationController.m */,
+				EA2696B01B96DE370053A479 /* Fill 38.png */,
+				EA2696B41B96E0860053A479 /* Fill 127.png */,
 			);
 			path = Source;
 			sourceTree = "<group>";
@@ -408,8 +418,6 @@
 		BD7B81701B5D248D00067D29 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
-				BD7B81711B5D248D00067D29 /* menu-button.png */,
-				BD7B81721B5D248D00067D29 /* menu-button@2x.png */,
 			);
 			path = Assets;
 			sourceTree = "<group>";
@@ -448,6 +456,7 @@
 				BD1527E71B72665A000CFFF3 /* SettingTableViewCell.m */,
 				BD1527E11B7260E5000CFFF3 /* SettingTableViewController.h */,
 				BD1527E21B7260E5000CFFF3 /* SettingTableViewController.m */,
+				EA2696B61B96E40B0053A479 /* EditButton.png */,
 				EA2C7BF91B9432EC00A79947 /* nophoto.gif */,
 			);
 			name = setting;
@@ -537,6 +546,9 @@
 				BDE131011B711D5E006F30F6 /* PostCaseTableViewController.m */,
 				BD55339B1B886A4D00364ADC /* EditCaseContentViewController.h */,
 				BD55339C1B886A4D00364ADC /* EditCaseContentViewController.m */,
+				EA2696BC1B96E6670053A479 /* CancellButton.png */,
+				EA2696BA1B96E60B0053A479 /* FinishButton.png */,
+				EA2696B81B96E52B0053A479 /* AddButton.png */,
 			);
 			name = Post;
 			sourceTree = "<group>";
@@ -687,20 +699,22 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BD7B817A1B5D248D00067D29 /* menu-button.png in Resources */,
 				EAF57B671B906A1E00D67604 /* screen@2x(3).png in Resources */,
 				BD1527E51B7265AB000CFFF3 /* SettingCells.xib in Resources */,
 				EAF57B651B906A1E00D67604 /* screen@2x(10).png in Resources */,
 				EAF57B611B906A1E00D67604 /* screen@2x(8).png in Resources */,
+				EA2696BB1B96E60B0053A479 /* FinishButton.png in Resources */,
 				BD834A051B6E0C4800E7D79D /* CaseListCell.xib in Resources */,
 				BD7B81411B5D1FA900067D29 /* Main.storyboard in Resources */,
 				EAF57B5F1B906A1E00D67604 /* screen@2x(6).png in Resources */,
 				EAF57B601B906A1E00D67604 /* screen@2x(1).png in Resources */,
 				EA9E55C51B6F4DDA009BDF25 /* MessageListCell.xib in Resources */,
+				EA2696BD1B96E6670053A479 /* CancellButton.png in Resources */,
 				EA21F3CF1B83322F0055BF0A /* 註冊按鈕.png in Resources */,
 				EA2C7C001B9473B100A79947 /* flickr_color_64x64.png in Resources */,
 				EAF57B641B906A1E00D67604 /* screen@2x(9).png in Resources */,
 				EAF57B621B906A1E00D67604 /* screen@2x(7).png in Resources */,
+				EA2696B71B96E40B0053A479 /* EditButton.png in Resources */,
 				EA2C7BFC1B945EBC00A79947 /* aim_color_64x64.png in Resources */,
 				EA45E6DF1B6A56CF00BB86BE /* HeaderView.xib in Resources */,
 				EAF57B631B906A1E00D67604 /* screen@2x(5).png in Resources */,
@@ -712,11 +726,13 @@
 				BD7B81461B5D1FA900067D29 /* LaunchScreen.xib in Resources */,
 				EA1966121B81CD490005FC47 /* 臉書按鈕.png in Resources */,
 				EAEAA5891B7900EA007D215C /* vcard_color_64x64.png in Resources */,
+				EA2696B51B96E0860053A479 /* Fill 127.png in Resources */,
 				EA45E6E91B6B4FF400BB86BE /* Natural-Green-Background-Vector-Graphic.jpg in Resources */,
 				EAF57B681B906A1E00D67604 /* screen@2x(2).png in Resources */,
+				EA2696B11B96DE370053A479 /* Fill 38.png in Resources */,
 				EAEAA58D1B7901EF007D215C /* ffffound_color_64x64.png in Resources */,
 				EAEAA58B1B7901B1007D215C /* tumbrl_color_64x64.png in Resources */,
-				BD7B817B1B5D248D00067D29 /* menu-button@2x.png in Resources */,
+				EA2696B91B96E52B0053A479 /* AddButton.png in Resources */,
 				BD7B81431B5D1FA900067D29 /* Images.xcassets in Resources */,
 				EA45E6EB1B6B525A00BB86BE /* Orange.png in Resources */,
 			);

@@ -191,14 +191,14 @@
                     if (succeeded) {
                         UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"應徵訊息" message:@"已發送應徵訊息" preferredStyle:UIAlertControllerStyleAlert];
                         
-                UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"確定" style:UIAlertActionStyleDefault handler:
-                    ^(UIAlertAction *action)
-                    {
-                      self.displayinvitedBtn.enabled = false;
-                      self.displayinvitedBtn.title = @"已邀請";
-                    }];
-                      [alertController addAction:okAction];
-                      [self presentViewController:alertController animated:YES completion:nil];
+                        UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"確定" style:UIAlertActionStyleDefault handler:
+                                                   ^(UIAlertAction *action)
+                                                   {
+                                                       self.displayinvitedBtn.enabled = false;
+                                                       self.displayinvitedBtn.title = @"已邀請";
+                                                   }];
+                        [alertController addAction:okAction];
+                        [self presentViewController:alertController animated:YES completion:nil];
                     }
                     else
                     {

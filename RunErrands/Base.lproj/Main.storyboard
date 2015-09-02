@@ -33,7 +33,8 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Ffc-qT-130">
-                        <barButtonItem key="rightBarButtonItem" title="清單模式" id="laB-S7-m1t">
+                        <barButtonItem key="rightBarButtonItem" image="Fill 38.png" style="plain" id="laB-S7-m1t">
+                            <color key="tintColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <segue destination="RDe-YY-nqR" kind="show" identifier="caseListViewSegue" id="FES-Lo-JZM"/>
                             </connections>
@@ -115,7 +116,7 @@
                     </tableView>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="yOp-Vr-d4A">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="oWz-YQ-ZYt">
+                        <barButtonItem key="rightBarButtonItem" image="AddButton.png" id="oWz-YQ-ZYt">
                             <connections>
                                 <segue destination="Ynm-MY-K22" kind="show" identifier="editCaseContent" id="mJz-KT-CBn"/>
                             </connections>
@@ -149,12 +150,12 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="編輯工作內容" id="PDw-B5-5Bu">
-                        <barButtonItem key="leftBarButtonItem" title="取消" id="Sog-tn-7yc">
+                        <barButtonItem key="leftBarButtonItem" image="CancellButton.png" id="Sog-tn-7yc">
                             <connections>
                                 <action selector="cancelEditCaseBtnPressed:" destination="Ynm-MY-K22" id="4Yt-kA-htN"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="完成" id="FLG-xA-fe0">
+                        <barButtonItem key="rightBarButtonItem" image="FinishButton.png" id="FLG-xA-fe0">
                             <connections>
                                 <action selector="finishEditBtnPressed:" destination="Ynm-MY-K22" id="LlC-4L-bTy"/>
                             </connections>
@@ -392,19 +393,19 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Natural-Green-Background-Vector-Graphic.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="74H-2r-zvy">
                                 <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="帳號：" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="26b-fA-hFS">
-                                <rect key="frame" x="16" y="167" width="51" height="20.5"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="帳號：" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="26b-fA-hFS">
+                                <rect key="frame" x="16" y="167" width="51" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="密碼：" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0AE-4L-met">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="密碼：" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0AE-4L-met">
                                 <rect key="frame" x="16" y="239" width="51" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZGd-S2-3P7">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZGd-S2-3P7">
                                 <rect key="frame" x="73" y="234" width="504" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="hrp-lU-NGR"/>
@@ -417,7 +418,7 @@
                                     </mask>
                                 </variation>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wCr-TP-SrN">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wCr-TP-SrN">
                                 <rect key="frame" x="310" y="308" width="274" height="46"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="252" id="2KF-9P-DVT"/>
@@ -455,8 +456,8 @@
                                     <action selector="LoginBtnpressed:" destination="Kni-yZ-eIA" eventType="touchUpInside" id="S8X-da-pjP"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" text="OR" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SOb-77-KE9">
-                                <rect key="frame" x="281" y="386" width="38.5" height="32.5"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" misplaced="YES" text="OR" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SOb-77-KE9">
+                                <rect key="frame" x="281" y="386" width="39" height="33"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="170" id="Kfr-3k-oli"/>
                                     <constraint firstAttribute="height" constant="21" id="La3-oK-jT0"/>
@@ -473,7 +474,7 @@
                                     </mask>
                                 </variation>
                             </label>
-                            <button opaque="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g7k-9o-vWA">
+                            <button opaque="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="249" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g7k-9o-vWA">
                                 <rect key="frame" x="16" y="308" width="274" height="46"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="46" id="3VI-IY-q1K"/>
@@ -525,13 +526,13 @@
                                     <action selector="RegisterBtnpressed:" destination="Kni-yZ-eIA" eventType="touchUpInside" id="0Yg-sM-rgc"/>
                                 </connections>
                             </button>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ME4-O7-2BX">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ME4-O7-2BX">
                                 <rect key="frame" x="73" y="164" width="504" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="bottom" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="登入畫面" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XjD-zZ-VTx">
-                                <rect key="frame" x="266" y="79" width="68" height="20.5"/>
+                                <rect key="frame" x="266" y="79" width="68" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="104" id="daT-0y-qKY"/>
                                 </constraints>
@@ -593,8 +594,12 @@
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <state key="normal" title="隱私權條款">
+                                    <color key="titleColor" red="0.071152307625128142" green="0.362409140858441" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <segue destination="R8q-L3-hbx" kind="show" id="4cm-iD-VjW"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -776,7 +781,57 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="48r-Ap-Vfe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5178" y="1044"/>
+            <point key="canvasLocation" x="5173" y="984"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="r9S-Ib-oco">
+            <objects>
+                <viewController id="R8q-L3-hbx" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="WRe-4F-c1O"/>
+                        <viewControllerLayoutGuide type="bottom" id="xAK-X0-JNS"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="owm-ZU-QCJ">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MSA-11-uzE">
+                                <rect key="frame" x="16" y="56" width="568" height="492"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <mutableString key="text"> 跑腿幫 -(資訊及通訊傳播業)「個人資料保護法」公開聲明內容                                                          歡迎使用跑腿幫（以下稱本單位）相關服務，依據個人資料保護法（以下稱個資法）第八條第一項規定，為了確保使用者之個人資料、隱私及權益之保護，當您已閱讀並同意「跑腿幫單位個人資料保護法告知內容」時，即表示您願意以電子文件之方式行使法律所賦予同意之權利，並具有書面同意之效果，若不同意請離開此網頁，如需服務請洽本單位之服務人員。 (以下為本單位依「個人資料保護法」規定，必須向您告知的各項聲明，請您務必詳閱。)一、  個人資料蒐集目的：（一）從事資訊、通訊傳播、出版、影片服務、聲音錄製、音樂出版、傳播、節目播送、電信、電腦系統設計、資料處理及資訊供應服務等之行為均屬於本行業之個資蒐集目的。（二）上述之相關業務或其他符合營業項目所定義之工作範圍。二、  個人資料蒐集類別：（一）識別類（例如：中、英文姓名、國民身分證統一編號、識別碼、學生或員工證號、聯絡電話號碼、地址、性別、出生地、電子郵遞地址、帳戶號碼與戶名、其它識別證號或電子識別標章）、特徵類（例如：出生年月日、國籍、個人照片、筆跡與紙本文件）、社會情況類（例如：職業、學經歷）、財務細節類（例如：銀行帳號、戶名或與本蒐集目的相關之財務資訊）等。三、  個人資料利用之期間、地區、對象及方式：(一）期間：利用期間為本單位或業務所必須之保存期間。（二）地區：您的個人資料將用於本單位提供服務之地區。（三）對象：本單位之共同行銷、交互運用客戶資料公司、合作推廣單位、業務往來機構、依法有調查權機關或金融監理機關。（四）方式：電子文件、紙本，或以自動化機器或其他非自動化之利用方式。四、  依據個資法第三條規定，您就本單位保有您的個人資料得行使下列權利：（一）查詢、閱覽、複本、補充、更正、請求停止蒐集、請求停止處理、請求停止利用、請求刪除等權利。跑腿幫保有修訂本告知內容之權利，修正時亦同，以上條文參考自中華民國資料保護協會。</mutableString>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="個人資料法律聲明" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Edl-1i-pEM">
+                                <rect key="frame" x="232" y="20" width="136" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gsr-TY-HLn">
+                                <rect key="frame" x="263" y="556" width="75" height="30"/>
+                                <state key="normal" title="隱私權條款">
+                                    <color key="titleColor" red="0.071152307625128142" green="0.362409140858441" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="MSA-11-uzE" firstAttribute="centerX" secondItem="Gsr-TY-HLn" secondAttribute="centerX" id="2Gm-Dc-HMn"/>
+                            <constraint firstItem="Edl-1i-pEM" firstAttribute="centerX" secondItem="MSA-11-uzE" secondAttribute="centerX" id="8tE-RD-tSj"/>
+                            <constraint firstItem="xAK-X0-JNS" firstAttribute="top" secondItem="Gsr-TY-HLn" secondAttribute="bottom" constant="14" id="9Df-n1-5G3"/>
+                            <constraint firstItem="MSA-11-uzE" firstAttribute="leading" secondItem="owm-ZU-QCJ" secondAttribute="leadingMargin" id="HKF-Yh-6ng"/>
+                            <constraint firstItem="MSA-11-uzE" firstAttribute="top" secondItem="Edl-1i-pEM" secondAttribute="bottom" constant="15" id="PaV-zT-SMC"/>
+                            <constraint firstItem="Edl-1i-pEM" firstAttribute="top" secondItem="WRe-4F-c1O" secondAttribute="bottom" id="ap6-tw-PY6"/>
+                            <constraint firstItem="MSA-11-uzE" firstAttribute="trailing" secondItem="owm-ZU-QCJ" secondAttribute="trailingMargin" id="lBF-rE-2PJ"/>
+                            <constraint firstItem="Gsr-TY-HLn" firstAttribute="top" secondItem="MSA-11-uzE" secondAttribute="bottom" constant="8" symbolic="YES" id="ptP-bM-f2l"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="uJP-U7-n24" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5173" y="1667"/>
         </scene>
         <!--Setting Table View Controller-->
         <scene sceneID="YOM-K9-DFn">
@@ -800,7 +855,7 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="qaw-2v-whl">
-                        <barButtonItem key="rightBarButtonItem" title="編輯" id="hxO-uU-LEV">
+                        <barButtonItem key="rightBarButtonItem" tag="1" image="EditButton.png" id="hxO-uU-LEV">
                             <connections>
                                 <action selector="editBtnPressed:" destination="lqr-VO-PQ8" id="WDM-tf-Gvm"/>
                             </connections>
@@ -1468,10 +1523,16 @@
         </scene>
     </scenes>
     <resources>
+        <image name="AddButton.png" width="24" height="24"/>
+        <image name="CancellButton.png" width="24" height="24"/>
+        <image name="EditButton.png" width="24" height="24"/>
+        <image name="Fill 38.png" width="24" height="21"/>
+        <image name="FinishButton.png" width="24" height="20"/>
         <image name="Natural-Green-Background-Vector-Graphic.jpg" width="750" height="746"/>
         <image name="nophoto.gif" width="424" height="324"/>
         <image name="登入按鈕.png" width="176" height="36"/>
         <image name="臉書按鈕.png" width="608" height="58"/>
         <image name="註冊按鈕.png" width="176" height="36"/>
     </resources>
+    <color key="tintColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
 </document>

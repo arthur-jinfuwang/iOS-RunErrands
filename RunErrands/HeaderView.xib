@@ -16,7 +16,7 @@
                         <constraint firstAttribute="height" constant="180" id="MJU-gz-l8d"/>
                     </constraints>
                 </imageView>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="IKe-nd-O6V">
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Natural-Green-Background-Vector-Graphic.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="IKe-nd-O6V">
                     <rect key="frame" x="35" y="30" width="120" height="120"/>
                     <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
@@ -37,6 +37,7 @@
         </view>
     </objects>
     <resources>
+        <image name="Natural-Green-Background-Vector-Graphic.jpg" width="750" height="746"/>
         <image name="Orange.png" width="1246" height="636"/>
     </resources>
 </document>

@@ -29,19 +29,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-//    NSLog(@"navigation:%@",self.navigationController.presentingViewController);
-//    
-//    if (self.navigationController.presentingViewController) {
-//        self.theEditBtn.title = @"完成";
-//        self.navigationItem.rightBarButtonItem = self.theEditBtn;
-////        self.navigationItem.rightBarButtonItem.title = @"完成";
-//    }
-    
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
-    
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+
     settingDetailList = [[NSMutableArray alloc] initWithObjects:
                          @"姓名:",
                          @"暱稱:",
@@ -291,8 +279,8 @@
     NSArray *cellArray = [tableView visibleCells];
     SettingTableViewCell *cell = cellArray[indexPath.row];
     
-    if([cell.dataLabel.text length] > 0)
-    {
+    if([cell.dataTextField.text length] > 0){
+        cell.dataLabel.text = cell.dataTextField.text;
         [settingDetailData setObject:cell.dataLabel.text forKey:@(indexPath.row)];
     }
     
@@ -427,8 +415,9 @@
 
 - (IBAction)editBtnPressed:(id)sender {
     NSLog(@"Setting menu edit btn pressed");
+    
     if ([self.theEditBtn.title isEqualToString:@"編輯"]) {
-        
+        self.theEditBtn.image = [UIImage imageNamed:@"FinishButton.png"];
         self.theEditBtn.title= @"完成";
         isEditing = true;
         [self isEnableLeftBarButtonItem:false];
@@ -454,6 +443,7 @@
             }
         }
         [self saveUserDataToRemoteServer];
+        self.theEditBtn.image = [UIImage imageNamed:@"EditButton.png"];
         self.theEditBtn.title= @"編輯";
         isEditing = false;
         [self isEnableLeftBarButtonItem:true];
@@ -504,11 +494,7 @@
 - (void) finishDataUpdate
 {
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-    if (self.tableView.indexPathForSelectedRow.row == RE_USER_BIRTHDAY) {
-        [formatter setDateFormat:@"yyyy-MM-dd"];
-    }else{
-        [formatter setDateFormat:@"yyyy-MM-dd"];
-    }
+    [formatter setDateFormat:@"yyyy-MM-dd"];
     NSArray *cellArray = [self.tableView visibleCells];
     SettingTableViewCell *cell = cellArray[self.tableView.indexPathForSelectedRow.row];
     cell.dataTextField.text = [formatter stringFromDate:datepicker.date];
