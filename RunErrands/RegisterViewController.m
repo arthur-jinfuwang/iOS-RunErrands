@@ -61,8 +61,6 @@
         
         //UIImagePickerController *imagePicker = [UIImagePickerController new];
         
-        
-        
     }
 
 }
