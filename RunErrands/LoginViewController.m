@@ -12,6 +12,7 @@
 #import "LeftMenuViewController.h"
 #import <Parse/Parse.h>
 #import <ParseFacebookUtilsV4/PFFacebookUtils.h>
+#import "SettingTableViewController.h"
 
 
 @interface LoginViewController (){
@@ -121,9 +122,12 @@
                 
                 UIAlertAction *ok = [UIAlertAction actionWithTitle:@"確定" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
                     
-                    UIViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier: @"SettingTableViewController"];
+                    SettingTableViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier: @"SettingTableViewController"];
                     dispatch_async(dispatch_get_main_queue(), ^{
+                        [vc setStartEditFromRegister:true];
                         [[SlideNavigationController sharedInstance] popAllAndSwitchToViewController:vc withCompletion:nil];
+//                        UINavigationController * nav = [[UINavigationController alloc] initWithRootViewController:vc];
+//                        [self presentViewController:nav animated:YES completion:nil];
                         [_ParseLoginMethod setTitle:@"登出"      forState:UIControlStateNormal];
                         [_RegisterBtnpressed setTitle:@"已註冊"  forState:UIControlStateNormal];
                         [leftMenu setLoginStatus:USERLOGIN];

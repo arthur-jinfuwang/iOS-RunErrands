@@ -22,5 +22,8 @@ typedef NS_ENUM(NSInteger, RE_USER) {
 
 @interface SettingTableViewController : UITableViewController <SlideNavigationControllerDelegate,UINavigationControllerDelegate,UIImagePickerControllerDelegate>
 
-- (void) isEnableLeftBarButtonItem:(BOOL)flag;
+//- (void) isEnableLeftBarButtonItem:(BOOL)flag;
+@property (nonatomic,assign) BOOL startEditFromRegister;
+
+
 @end
