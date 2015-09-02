@@ -37,6 +37,7 @@
         </view>
     </objects>
     <resources>
+        <image name="Natural-Green-Background-Vector-Graphic.jpg" width="750" height="746"/>
         <image name="Orange.png" width="1246" height="636"/>
     </resources>
 </document>
