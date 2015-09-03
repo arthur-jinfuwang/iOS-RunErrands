@@ -84,6 +84,9 @@
 - (void) getApplyStatusRecord
 {
     PFUser *user = [PFUser currentUser];
+    if(user == nil)
+        return;
+    
     PFQuery *query = [PFQuery queryWithClassName:@"ApplyManageTable"];
     [query whereKey:@"apply_id" equalTo:user.objectId];
     [query whereKey:@"case_id" equalTo:self.caseObject.objectId];
