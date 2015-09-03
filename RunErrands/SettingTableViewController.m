@@ -73,16 +73,16 @@
     datepicker.minuteInterval = 5;
     datepicker.backgroundColor = [UIColor whiteColor];
     
-    if (self.startEditFromRegister) {
-        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"註冊訊息" message:@"請填入基本資料" preferredStyle:UIAlertControllerStyleAlert];
-        
-        UIAlertAction *ok = [UIAlertAction actionWithTitle:@"確定" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
-            [self editBtnPressed:nil];
-        }];
-        
-        [alert addAction:ok];
-        [self presentViewController:alert animated:true completion:nil];
-    }
+//    if (self.startEditFromRegister) {
+//        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"註冊訊息" message:@"請填入基本資料" preferredStyle:UIAlertControllerStyleAlert];
+//        
+//        UIAlertAction *ok = [UIAlertAction actionWithTitle:@"確定" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+//            [self editBtnPressed:nil];
+//        }];
+//        
+//        [alert addAction:ok];
+//        [self presentViewController:alert animated:true completion:nil];
+//    }
 }
 
 
@@ -417,7 +417,7 @@
     NSLog(@"Setting menu edit btn pressed");
     
     if ([self.theEditBtn.title isEqualToString:@"編輯"]) {
-        self.theEditBtn.image = [UIImage imageNamed:@"FinishButton.png"];
+//        self.theEditBtn.image = [UIImage imageNamed:@"FinishButton.png"];
         self.theEditBtn.title= @"完成";
         isEditing = true;
         [self isEnableLeftBarButtonItem:false];
