@@ -62,6 +62,7 @@
 		BDD7C19C1B6CEC80009A9E84 /* SelectAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = BDD7C19B1B6CEC80009A9E84 /* SelectAnnotation.m */; };
 		BDDFD2501B5F9DCE005D481E /* LeftMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BDDFD24F1B5F9DCE005D481E /* LeftMenuViewController.m */; };
 		BDE131021B711D5E006F30F6 /* PostCaseTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BDE131011B711D5E006F30F6 /* PostCaseTableViewController.m */; };
+		BDF437D81B97EE410026638C /* provision.html in Resources */ = {isa = PBXBuildFile; fileRef = BDF437D71B97EE410026638C /* provision.html */; };
 		EA1966101B81CD210005FC47 /* 登入按鈕.png in Resources */ = {isa = PBXBuildFile; fileRef = EA19660F1B81CD210005FC47 /* 登入按鈕.png */; };
 		EA1966121B81CD490005FC47 /* 臉書按鈕.png in Resources */ = {isa = PBXBuildFile; fileRef = EA1966111B81CD490005FC47 /* 臉書按鈕.png */; };
 		EA21F3CF1B83322F0055BF0A /* 註冊按鈕.png in Resources */ = {isa = PBXBuildFile; fileRef = EA21F3CE1B83322F0055BF0A /* 註冊按鈕.png */; };
@@ -204,6 +205,7 @@
 		BDDFD24F1B5F9DCE005D481E /* LeftMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeftMenuViewController.m; sourceTree = "<group>"; };
 		BDE131001B711D5E006F30F6 /* PostCaseTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostCaseTableViewController.h; sourceTree = "<group>"; };
 		BDE131011B711D5E006F30F6 /* PostCaseTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostCaseTableViewController.m; sourceTree = "<group>"; };
+		BDF437D71B97EE410026638C /* provision.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = provision.html; sourceTree = "<group>"; };
 		EA19660F1B81CD210005FC47 /* 登入按鈕.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "登入按鈕.png"; sourceTree = "<group>"; };
 		EA1966111B81CD490005FC47 /* 臉書按鈕.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "臉書按鈕.png"; sourceTree = "<group>"; };
 		EA21F3CE1B83322F0055BF0A /* 註冊按鈕.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "註冊按鈕.png"; sourceTree = "<group>"; };
@@ -339,6 +341,7 @@
 				BD6401C71B8FFFA30096A1BB /* MBProgressHUD.m */,
 				BD1DA1691B7C19E900BC2EF5 /* Reachability.h */,
 				BD1DA16A1B7C19E900BC2EF5 /* Reachability.m */,
+				BDF437D71B97EE410026638C /* provision.html */,
 				BD7B81631B5D248D00067D29 /* Source */,
 				EAEAA5861B78FE16007D215C /* AppDelegate */,
 				EAEAA5771B78F8F9007D215C /* LeftMenu */,
@@ -725,6 +728,7 @@
 				EAF57B621B906A1E00D67604 /* screen@2x(7).png in Resources */,
 				EA2696B71B96E40B0053A479 /* EditButton.png in Resources */,
 				EA2C7BFC1B945EBC00A79947 /* aim_color_64x64.png in Resources */,
+				BDF437D81B97EE410026638C /* provision.html in Resources */,
 				EA45E6DF1B6A56CF00BB86BE /* HeaderView.xib in Resources */,
 				EAF57B631B906A1E00D67604 /* screen@2x(5).png in Resources */,
 				BD4F48E51B77270E005DD3AC /* TakePictureView.xib in Resources */,
