@@ -448,7 +448,7 @@
             }
         }
         [self saveUserDataToRemoteServer];
-        self.theEditBtn.image = [UIImage imageNamed:@"EditButton.png"];
+        //self.theEditBtn.image = [UIImage imageNamed:@"EditButton.png"];
         self.theEditBtn.title= @"編輯";
         isEditing = false;
         [self isEnableLeftBarButtonItem:true];
