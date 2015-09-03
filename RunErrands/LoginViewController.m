@@ -124,8 +124,8 @@
                     
                     UIViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier: @"CopyrightViewController"];
                     dispatch_async(dispatch_get_main_queue(), ^{
-                        //[vc setStartEditFromRegister:true];
                         [[SlideNavigationController sharedInstance] popAllAndSwitchToViewController:vc withCompletion:nil];
+                        //[vc setStartEditFromRegister:true];
 //                        UINavigationController * nav = [[UINavigationController alloc] initWithRootViewController:vc];
 //                        [self presentViewController:nav animated:YES completion:nil];
                         [_ParseLoginMethod setTitle:@"登出"      forState:UIControlStateNormal];
