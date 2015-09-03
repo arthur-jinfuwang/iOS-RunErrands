@@ -10,4 +10,6 @@
 
 @interface CopyrightViewController : UIViewController
 
+@property (nonatomic,assign) BOOL enableConfirmBtn;
+
 @end

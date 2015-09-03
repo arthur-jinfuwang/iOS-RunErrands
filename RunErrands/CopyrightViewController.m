@@ -11,6 +11,7 @@
 #import "SettingTableViewController.h"
 
 @interface CopyrightViewController ()
+@property (weak, nonatomic) IBOutlet UIButton *theConfirmBtn;
 
 @end
 
@@ -19,28 +20,27 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    if (self.enableConfirmBtn) {
+        _theConfirmBtn.enabled = YES;
+        _theConfirmBtn.hidden = NO;
+    }else
+    {
+        _theConfirmBtn.enabled = NO;
+        _theConfirmBtn.hidden =YES;
+    }
+    
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-- (IBAction)MoveButton:(id)sender
-{
-    [self performSelector:@selector(jumppage) withObject:nil];
 
-}
 
-- (void)jumppage
-{
-    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle: nil];
-    
-    UIViewController *vc ;
-    
-    vc = [mainStoryboard instantiateViewControllerWithIdentifier: @"SettingTableViewController"];
-    
-    
-    [[SlideNavigationController sharedInstance] popAllAndSwitchToViewController:vc withCompletion:nil];
+- (IBAction)theConfirmBtnPressed:(id)sender {
+    [self.navigationController popViewControllerAnimated:YES];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"startRegister" object:nil];
 
 }
 

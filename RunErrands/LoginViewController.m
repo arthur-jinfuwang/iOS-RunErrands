@@ -13,6 +13,7 @@
 #import <Parse/Parse.h>
 #import <ParseFacebookUtilsV4/PFFacebookUtils.h>
 #import "SettingTableViewController.h"
+#import "CopyrightViewController.h"
 
 
 @interface LoginViewController (){
@@ -70,6 +71,8 @@
         leftMenu.headerView.displayFacebookName.text = @"";
     }
 
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(processRegister) name:@"startRegister" object:nil];
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -90,9 +93,10 @@
 
 #pragma mark parse Login and Register
 
-- (IBAction)RegisterBtnpressed:(id)sender
+- (void)processRegister
 {
-            //建立輸入帳號資料訊息框
+    //return;
+    //建立輸入帳號資料訊息框
     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"註冊" message:@"請輸入帳號密碼" preferredStyle:UIAlertControllerStyleAlert];
     UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
         [self dismissViewControllerAnimated:YES completion:nil];
@@ -126,8 +130,8 @@
                     dispatch_async(dispatch_get_main_queue(), ^{
                         //[vc setStartEditFromRegister:true];
                         [[SlideNavigationController sharedInstance] popAllAndSwitchToViewController:vc withCompletion:nil];
-//                        UINavigationController * nav = [[UINavigationController alloc] initWithRootViewController:vc];
-//                        [self presentViewController:nav animated:YES completion:nil];
+                        //                        UINavigationController * nav = [[UINavigationController alloc] initWithRootViewController:vc];
+                        //                        [self presentViewController:nav animated:YES completion:nil];
                         [_ParseLoginMethod setTitle:@"登出"      forState:UIControlStateNormal];
                         [_RegisterBtnpressed setTitle:@"註冊"  forState:UIControlStateNormal];
                         [leftMenu setLoginStatus:USERLOGIN];
@@ -146,31 +150,31 @@
                     
                     [alert addAction:ok];
                     [self presentViewController:alert animated:true completion:nil];
-
+                    
                 }
                 
                 UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"註冊訊息" message:@"資料不符,請重新輸入" preferredStyle:UIAlertControllerStyleAlert];
                 
-                            UIAlertAction *ok = [UIAlertAction actionWithTitle:@"確定" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+                UIAlertAction *ok = [UIAlertAction actionWithTitle:@"確定" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+                    
+                }];
                 
-                            }];
+                [alert addAction:ok];
+                [self presentViewController:alert animated:true completion:nil];
                 
-                            [alert addAction:ok];
-                            [self presentViewController:alert animated:true completion:nil];
-
                 NSString *errorString = [error userInfo][@"error"];
                 NSLog(@"error:%@",[error userInfo]);
-              
+                
             }
         }];
-
+        
         
         NSLog(@"帳號:%@",uid);
         NSLog(@"密碼:%@",pwd);
         NSLog(@"再次確認:%@",repwd);
         
         
-            }];
+    }];
     [alertController addTextFieldWithConfigurationHandler:^(UITextField *textField) {
         textField.placeholder = @"電子信箱";
     }];
@@ -181,14 +185,19 @@
     [alertController addTextFieldWithConfigurationHandler:^(UITextField *textField) {
         textField.placeholder = @"再次確認密碼";
         textField.secureTextEntry = YES;
-            }];
+    }];
     
     
     [alertController addAction:cancelAction];
     [alertController addAction:okAction];
     [self presentViewController:alertController animated:YES completion:nil];
     
-    
+}
+
+
+
+- (IBAction)RegisterBtnpressed:(id)sender
+{
 }
 - (IBAction)LoginBtnpressed:(id)sender
 {
@@ -329,14 +338,31 @@
 //    return YES;
 //}
 
-/*
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
+    if ([segue.identifier isEqualToString:@"fromRegister"])
+    {
+        CopyrightViewController * vc = segue.destinationViewController;
+        [vc setEnableConfirmBtn:YES];
+        return;
+    }
+    if ([segue.identifier isEqualToString:@"fromProvision"])
+    {
+        CopyrightViewController * vc = segue.destinationViewController;
+        [vc setEnableConfirmBtn:NO];
+        return;
+    }
+    
 }
-*/
+
+-(void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
 
 @end
