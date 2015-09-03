@@ -485,7 +485,7 @@
                                     </mask>
                                 </variation>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gab-IL-2bB">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gab-IL-2bB">
                                 <rect key="frame" x="150" y="433" width="300" height="58"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="297" id="5Mp-6P-Lj7"/>
@@ -512,7 +512,7 @@
                                     <action selector="facebookLoginBtnPressed:" destination="Kni-yZ-eIA" eventType="touchUpInside" id="gx3-LL-ziX"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="teh-cA-OHZ">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="teh-cA-OHZ">
                                 <rect key="frame" x="270" y="554" width="60" height="27"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <state key="normal" title="隱私權條款">
@@ -523,7 +523,7 @@
                                     <segue destination="R8q-L3-hbx" kind="show" identifier="fromProvision" id="0MG-uJ-7EO"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="開始使用本軟體服務，即視為您已充分了解以下各項條款之約定，並同意受以下各項條款之約束。" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g0n-ZD-kfU">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="開始使用本軟體服務，即視為您已充分了解以下各項條款之約定，並同意受以下各項條款之約束。" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g0n-ZD-kfU">
                                 <rect key="frame" x="179" y="520" width="243" height="27"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="243" id="Q7c-zy-nXs"/>
@@ -1291,7 +1291,8 @@ CiAgICAgICAgCQ
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="R9P-0q-si4">
                                 <rect key="frame" x="285" y="559" width="30" height="30"/>
-                                <state key="normal" title="確定">
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <state key="normal" title="註冊">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>

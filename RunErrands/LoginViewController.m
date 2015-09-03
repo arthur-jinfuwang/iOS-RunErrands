@@ -95,66 +95,54 @@
 
 - (void)processRegister
 {
-    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"跑腿幫 -(資訊及通訊傳播業)「個人資料保護法」公開聲明內容" message:@" 歡迎使用跑腿幫（以下稱本單位）相關服務，依據個人資料保護法（以下稱個資法）第八條第一項規定，為了確保使用者之個人資料、隱私及權益之保護，當您已閱讀並同意「跑腿幫單位個人資料保護法告知內容」時，即表示您願意以電子文件之方式行使法律所賦予同意之權利，並具有書面同意之效果，若不同意請離開此網頁，如需服務請洽本單位之服務人員。 (以下為本單位依「個人資料保護法」規定，必須向您告知的各項聲明，請您務必詳閱。)一、  個人資料蒐集目的：（一）從事資訊、通訊傳播、出版、影片服務、聲音錄製、音樂出版、傳播、節目播送、電信、電腦系統設計、資料處理及資訊供應服務等之行為均屬於本行業之個資蒐集目的。二）上述之相關業務或其他符合營業項目所定義之工作範圍。二、  個人資料蒐集類別：一）識別類（例如：中、英文姓名、國民身分證統一編號、識別碼、學生或員工證號、聯絡電話號碼、地址、性別、出生地、電子郵遞地址、帳戶號碼與戶名、其它識別證號或電子識別標章）、特徵類（例如：出生年月日、國籍、個人照片、筆跡與紙本文件）、社會情況類（例如：職業、學經歷）、財務細節類（例如：銀行帳號、戶名或與本蒐集目的相關之財務資訊）等。三、  個人資料利用之期間、地區、對象及方式：（一）期間：利用期間為本單位或業務所必須之保存期間。（二）地區：您的個人資料將用於本單位提供服務之地區。（三）對象：當您使用本服務時，本服務可能會公布或揭露給其他使用者依個人資料蒐集目的所蒐集、記錄或讀取之您的個人資料及其他資訊。四）方式：電子文件、紙本，或以自動化機器或其他非自動化之利用方式。四、  依據個資法第三條規定，您就本單位保有您的個人資料得行使下列權利：一）查詢、閱覽、複本、補充、更正、請求停止蒐集、請求停止處理、請求停止利用、請求刪除等權利。跑腿幫保有修訂本告知內容之權利，修正時亦同，以上條文參考自中華民國資料保護協會。" preferredStyle:UIAlertControllerStyleAlert];
-    UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"確定" style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
+    //return;
+    //建立輸入帳號資料訊息框
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"註冊" message:@"請輸入電子郵件帳號和密碼" preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
+        [self dismissViewControllerAnimated:YES completion:nil];
+    }];
+    
+    UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"確定" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        NSString *uid = ((UITextField *)[alertController.textFields objectAtIndex:0]).text;
+        NSString *pwd = ((UITextField *)[alertController.textFields objectAtIndex:1]).text;
+        NSString *repwd = ((UITextField *)[alertController.textFields objectAtIndex:2]).text;
         
-        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"註冊" message:@"請輸入帳號密碼" preferredStyle:UIAlertControllerStyleAlert];
-        UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
-            [self dismissViewControllerAnimated:YES completion:nil];
-        }];
-        //建立輸入帳號資料訊息框
-        UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"確定" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
-            NSString *uid = ((UITextField *)[alertController.textFields objectAtIndex:0]).text;
-            NSString *pwd = ((UITextField *)[alertController.textFields objectAtIndex:1]).text;
-            NSString *repwd = ((UITextField *)[alertController.textFields objectAtIndex:2]).text;
-            
-            PFUser *user = [PFUser user];
-            user.username = uid;
-            user.password = pwd;
-            [user setObject:uid forKey:@"email"];
-            [user setObject:@""forKey:@"gender"];
-            [user setObject:@""forKey:@"birthday"];
-            [user setObject:@"" forKey:@"nickname"];
-            [user setObject:@"" forKey:@"phone"];
-            //[user saveInBackground];
-            
-            
-            //註冊成功後
-            [user signUpInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-                if (!error) {
+        PFUser *user = [PFUser user];
+        user.username = uid;
+        user.password = pwd;
+        [user setObject:uid forKey:@"email"];
+        [user setObject:@""forKey:@"gender"];
+        [user setObject:@""forKey:@"birthday"];
+        [user setObject:uid forKey:@"nickname"];
+        [user setObject:@"" forKey:@"phone"];
+        //[user saveInBackground];
+        
+        
+        //註冊成功後
+        [user signUpInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+            if (!error) {
+                
+                UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"註冊訊息" message:@"登入成功" preferredStyle:UIAlertControllerStyleAlert];
+                
+                UIAlertAction *ok = [UIAlertAction actionWithTitle:@"確定" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
                     
-                    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"註冊訊息" message:@"登入成功" preferredStyle:UIAlertControllerStyleAlert];
-                    
-                    UIAlertAction *ok = [UIAlertAction actionWithTitle:@"確定" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
-                        
-                        UIViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier: @"CopyrightViewController"];
-                        dispatch_async(dispatch_get_main_queue(), ^{
-                            [[SlideNavigationController sharedInstance] popAllAndSwitchToViewController:vc withCompletion:nil];
-                            //[vc setStartEditFromRegister:true];
-                            //                        UINavigationController * nav = [[UINavigationController alloc] initWithRootViewController:vc];
-                            //                        [self presentViewController:nav animated:YES completion:nil];
-                            [_ParseLoginMethod setTitle:@"登出"      forState:UIControlStateNormal];
-                            [_RegisterBtnpressed setTitle:@"註冊"  forState:UIControlStateNormal];
-                            [leftMenu setLoginStatus:USERLOGIN];
-                        });
-                    }];
-                    [alert addAction:ok];
-                    [self presentViewController:alert animated:true completion:nil];
-                } else {
-                    if(pwd != repwd)
-                    {
-                        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"註冊訊息" message:@"密碼不符,請重新輸入" preferredStyle:UIAlertControllerStyleAlert];
-                        
-                        UIAlertAction *ok = [UIAlertAction actionWithTitle:@"確定" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
-                            
-                        }];
-                        
-                        [alert addAction:ok];
-                        [self presentViewController:alert animated:true completion:nil];
-                        
-                    }
-                    
-                    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"註冊訊息" message:@"資料不符,請重新輸入" preferredStyle:UIAlertControllerStyleAlert];
+                    SettingTableViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier: @"SettingTableViewController"];
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        [[SlideNavigationController sharedInstance] popAllAndSwitchToViewController:vc withCompletion:nil];
+                        [vc setStartEditFromRegister:true];
+//                        UINavigationController * nav = [[UINavigationController alloc] initWithRootViewController:vc];
+//                        [self presentViewController:nav animated:YES completion:nil];
+                        [_ParseLoginMethod setTitle:@"登出"      forState:UIControlStateNormal];
+                        [_RegisterBtnpressed setTitle:@"註冊"  forState:UIControlStateNormal];
+                        [leftMenu setLoginStatus:USERLOGIN];
+                    });
+                }];
+                [alert addAction:ok];
+                [self presentViewController:alert animated:true completion:nil];
+            } else {
+                if(pwd != repwd)
+                {
+                    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"註冊訊息" message:@"密碼不符,請重新輸入" preferredStyle:UIAlertControllerStyleAlert];
                     
                     UIAlertAction *ok = [UIAlertAction actionWithTitle:@"確定" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
                         
@@ -162,46 +150,47 @@
                     
                     [alert addAction:ok];
                     [self presentViewController:alert animated:true completion:nil];
-                    
-                    NSString *errorString = [error userInfo][@"error"];
-                    NSLog(@"error:%@",[error userInfo]);
                     
                 }
-            }];
-            
-            
-            NSLog(@"帳號:%@",uid);
-            NSLog(@"密碼:%@",pwd);
-            NSLog(@"再次確認:%@",repwd);
-            
-            
-        }];
-        [alertController addTextFieldWithConfigurationHandler:^(UITextField *textField) {
-            textField.placeholder = @"電子信箱";
-        }];
-        [alertController addTextFieldWithConfigurationHandler:^(UITextField *textField) {
-            textField.placeholder = @"密碼";
-            textField.secureTextEntry = YES;
-        }];
-        [alertController addTextFieldWithConfigurationHandler:^(UITextField *textField) {
-            textField.placeholder = @"再次確認密碼";
-            textField.secureTextEntry = YES;
+                
+                UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"註冊訊息" message:@"資料不符,請重新輸入" preferredStyle:UIAlertControllerStyleAlert];
+                
+                UIAlertAction *ok = [UIAlertAction actionWithTitle:@"確定" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+                    
+                }];
+                
+                [alert addAction:ok];
+                [self presentViewController:alert animated:true completion:nil];
+                
+                NSString *errorString = [error userInfo][@"error"];
+                NSLog(@"error:%@",[error userInfo]);
+                
+            }
         }];
         
         
-        [alertController addAction:cancelAction];
-        [alertController addAction:okAction];
-        [self presentViewController:alertController animated:YES completion:nil];
-
-        //[self dismissViewControllerAnimated:YES completion:nil];
+        NSLog(@"帳號:%@",uid);
+        NSLog(@"密碼:%@",pwd);
+        NSLog(@"再次確認:%@",repwd);
+        
+        
+    }];
+    [alertController addTextFieldWithConfigurationHandler:^(UITextField *textField) {
+        textField.placeholder = @"電子信箱";
+    }];
+    [alertController addTextFieldWithConfigurationHandler:^(UITextField *textField) {
+        textField.placeholder = @"密碼";
+        textField.secureTextEntry = YES;
+    }];
+    [alertController addTextFieldWithConfigurationHandler:^(UITextField *textField) {
+        textField.placeholder = @"再次確認密碼";
+        textField.secureTextEntry = YES;
     }];
     
     
+    [alertController addAction:cancelAction];
     [alertController addAction:okAction];
     [self presentViewController:alertController animated:YES completion:nil];
-
-
-    
     
 }
 

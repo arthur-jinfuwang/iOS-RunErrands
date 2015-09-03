@@ -37,7 +37,6 @@
 		BD7B81791B5D248D00067D29 /* SlideNavigationContorllerAnimatorSlideAndFade.m in Sources */ = {isa = PBXBuildFile; fileRef = BD7B816F1B5D248D00067D29 /* SlideNavigationContorllerAnimatorSlideAndFade.m */; };
 		BD7B817C1B5D248D00067D29 /* SlideNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = BD7B81741B5D248D00067D29 /* SlideNavigationController.m */; };
 		BD7B817F1B5D2A9600067D29 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BD7B817E1B5D2A9600067D29 /* MapViewController.m */; };
-		BD8040361B637E1400B1DCC1 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BD8040351B637E1400B1DCC1 /* LoginViewController.m */; };
 		BD8040391B63840600B1DCC1 /* FollowTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BD8040381B63840600B1DCC1 /* FollowTableViewController.m */; };
 		BD80403C1B638C7A00B1DCC1 /* MessageTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BD80403B1B638C7A00B1DCC1 /* MessageTableViewController.m */; };
 		BD834A051B6E0C4800E7D79D /* CaseListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BD834A041B6E0C4800E7D79D /* CaseListCell.xib */; };
@@ -63,6 +62,7 @@
 		BDDFD2501B5F9DCE005D481E /* LeftMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BDDFD24F1B5F9DCE005D481E /* LeftMenuViewController.m */; };
 		BDE131021B711D5E006F30F6 /* PostCaseTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BDE131011B711D5E006F30F6 /* PostCaseTableViewController.m */; };
 		BDF437D81B97EE410026638C /* provision.html in Resources */ = {isa = PBXBuildFile; fileRef = BDF437D71B97EE410026638C /* provision.html */; };
+		EA0C1B9B1B98146B00A880B0 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA0C1B9A1B98146B00A880B0 /* LoginViewController.m */; };
 		EA1966101B81CD210005FC47 /* 登入按鈕.png in Resources */ = {isa = PBXBuildFile; fileRef = EA19660F1B81CD210005FC47 /* 登入按鈕.png */; };
 		EA1966121B81CD490005FC47 /* 臉書按鈕.png in Resources */ = {isa = PBXBuildFile; fileRef = EA1966111B81CD490005FC47 /* 臉書按鈕.png */; };
 		EA21F3CF1B83322F0055BF0A /* 註冊按鈕.png in Resources */ = {isa = PBXBuildFile; fileRef = EA21F3CE1B83322F0055BF0A /* 註冊按鈕.png */; };
@@ -171,7 +171,6 @@
 		BD7B817D1B5D2A9600067D29 /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
 		BD7B817E1B5D2A9600067D29 /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
 		BD8040341B637E1400B1DCC1 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
-		BD8040351B637E1400B1DCC1 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		BD8040371B63840600B1DCC1 /* FollowTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FollowTableViewController.h; sourceTree = "<group>"; };
 		BD8040381B63840600B1DCC1 /* FollowTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FollowTableViewController.m; sourceTree = "<group>"; };
 		BD80403A1B638C7A00B1DCC1 /* MessageTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageTableViewController.h; sourceTree = "<group>"; };
@@ -206,6 +205,7 @@
 		BDE131001B711D5E006F30F6 /* PostCaseTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostCaseTableViewController.h; sourceTree = "<group>"; };
 		BDE131011B711D5E006F30F6 /* PostCaseTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostCaseTableViewController.m; sourceTree = "<group>"; };
 		BDF437D71B97EE410026638C /* provision.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = provision.html; sourceTree = "<group>"; };
+		EA0C1B9A1B98146B00A880B0 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		EA19660F1B81CD210005FC47 /* 登入按鈕.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "登入按鈕.png"; sourceTree = "<group>"; };
 		EA1966111B81CD490005FC47 /* 臉書按鈕.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "臉書按鈕.png"; sourceTree = "<group>"; };
 		EA21F3CE1B83322F0055BF0A /* 註冊按鈕.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "註冊按鈕.png"; sourceTree = "<group>"; };
@@ -476,7 +476,7 @@
 			isa = PBXGroup;
 			children = (
 				BD8040341B637E1400B1DCC1 /* LoginViewController.h */,
-				BD8040351B637E1400B1DCC1 /* LoginViewController.m */,
+				EA0C1B9A1B98146B00A880B0 /* LoginViewController.m */,
 			);
 			name = LoginView;
 			sourceTree = "<group>";
@@ -779,7 +779,6 @@
 				BD1527E81B72665A000CFFF3 /* SettingTableViewCell.m in Sources */,
 				BD6E27061B8DDB6A008A751D /* CaseMKPointAnnotation.m in Sources */,
 				BD7B817F1B5D2A9600067D29 /* MapViewController.m in Sources */,
-				BD8040361B637E1400B1DCC1 /* LoginViewController.m in Sources */,
 				BDA28E2C1B6F610E0029F82A /* PostListTableViewController.m in Sources */,
 				BD337CBE1B66321A00D8E9F9 /* CaseDetailsTableViewController.m in Sources */,
 				BD7B813B1B5D1FA900067D29 /* AppDelegate.m in Sources */,
@@ -790,6 +789,7 @@
 				BD7B81791B5D248D00067D29 /* SlideNavigationContorllerAnimatorSlideAndFade.m in Sources */,
 				BD337CB81B65FF5900D8E9F9 /* RegisterViewController.m in Sources */,
 				BD834A081B6E0D1600E7D79D /* CaseListCell.m in Sources */,
+				EA0C1B9B1B98146B00A880B0 /* LoginViewController.m in Sources */,
 				BDB3A57C1B8C212C00C6AC9B /* CaseTextContentViewController.m in Sources */,
 				EA2696C01B9748210053A479 /* CopyrightViewController.m in Sources */,
 				EA45E6E71B6A5C6400BB86BE /* HeaderView.m in Sources */,
