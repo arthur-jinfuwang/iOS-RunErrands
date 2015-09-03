@@ -73,6 +73,7 @@
 		EA2696BB1B96E60B0053A479 /* FinishButton.png in Resources */ = {isa = PBXBuildFile; fileRef = EA2696BA1B96E60B0053A479 /* FinishButton.png */; };
 		EA2696BD1B96E6670053A479 /* CancellButton.png in Resources */ = {isa = PBXBuildFile; fileRef = EA2696BC1B96E6670053A479 /* CancellButton.png */; };
 		EA2696C01B9748210053A479 /* CopyrightViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA2696BF1B9748210053A479 /* CopyrightViewController.m */; };
+		EA2696C21B97E8160053A479 /* app icon.png in Resources */ = {isa = PBXBuildFile; fileRef = EA2696C11B97E8160053A479 /* app icon.png */; };
 		EA2943A81B5E06A50054DBD6 /* openViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA2943A71B5E06A50054DBD6 /* openViewController.m */; };
 		EA2C7BFA1B9432EC00A79947 /* nophoto.gif in Resources */ = {isa = PBXBuildFile; fileRef = EA2C7BF91B9432EC00A79947 /* nophoto.gif */; };
 		EA2C7BFC1B945EBC00A79947 /* aim_color_64x64.png in Resources */ = {isa = PBXBuildFile; fileRef = EA2C7BFB1B945EBC00A79947 /* aim_color_64x64.png */; };
@@ -216,6 +217,7 @@
 		EA2696BC1B96E6670053A479 /* CancellButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CancellButton.png; sourceTree = "<group>"; };
 		EA2696BE1B9748210053A479 /* CopyrightViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CopyrightViewController.h; sourceTree = "<group>"; };
 		EA2696BF1B9748210053A479 /* CopyrightViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CopyrightViewController.m; sourceTree = "<group>"; };
+		EA2696C11B97E8160053A479 /* app icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "app icon.png"; sourceTree = "<group>"; };
 		EA2943A61B5E06A50054DBD6 /* openViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = openViewController.h; sourceTree = "<group>"; };
 		EA2943A71B5E06A50054DBD6 /* openViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = openViewController.m; sourceTree = "<group>"; };
 		EA2C7BF91B9432EC00A79947 /* nophoto.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = nophoto.gif; sourceTree = "<group>"; };
@@ -597,6 +599,7 @@
 			children = (
 				EA45E6DE1B6A56CF00BB86BE /* HeaderView.xib */,
 				EA45E6EA1B6B525A00BB86BE /* Orange.png */,
+				EA2696C11B97E8160053A479 /* app icon.png */,
 				EA45E6E51B6A5C6400BB86BE /* HeaderView.h */,
 				EA45E6E61B6A5C6400BB86BE /* HeaderView.m */,
 			);
@@ -719,6 +722,7 @@
 				EA9E55C51B6F4DDA009BDF25 /* MessageListCell.xib in Resources */,
 				EA2696BD1B96E6670053A479 /* CancellButton.png in Resources */,
 				EA21F3CF1B83322F0055BF0A /* 註冊按鈕.png in Resources */,
+				EA2696C21B97E8160053A479 /* app icon.png in Resources */,
 				EA2C7C001B9473B100A79947 /* flickr_color_64x64.png in Resources */,
 				EAF57B641B906A1E00D67604 /* screen@2x(9).png in Resources */,
 				EAF57B621B906A1E00D67604 /* screen@2x(7).png in Resources */,

@@ -128,7 +128,6 @@
                     
                     UIViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier: @"CopyrightViewController"];
                     dispatch_async(dispatch_get_main_queue(), ^{
-                        //[vc setStartEditFromRegister:true];
                         [[SlideNavigationController sharedInstance] popAllAndSwitchToViewController:vc withCompletion:nil];
                         //                        UINavigationController * nav = [[UINavigationController alloc] initWithRootViewController:vc];
                         //                        [self presentViewController:nav animated:YES completion:nil];
