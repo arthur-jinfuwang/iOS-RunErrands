@@ -207,11 +207,13 @@
         [self userLogOut];
         [_ParseLoginMethod setTitle:@"登入" forState:UIControlStateNormal];
     }else{
-       [PFUser logInWithUsernameInBackground:_accountTextfield.text password:_passwordTextfield.text
+       [PFUser logInWithUsernameInBackground:_accountTextfield.text
+                                    password:_passwordTextfield.text
     block:^(PFUser *user, NSError *error) {
     if (user) {
                                             // Do stuff after successful login.
                 UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"註冊訊息" message:@"登入成功" preferredStyle:UIAlertControllerStyleAlert];
+                
                                             
                 UIAlertAction *ok = [UIAlertAction actionWithTitle:@"確定" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
                                                 
@@ -227,7 +229,8 @@
                 else
                 {
                                             // The login failed. Check error to see why.
-                UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"登入訊息" message:@"登入失敗,請重新輸入" preferredStyle:UIAlertControllerStyleAlert];
+                UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"登入訊息" message:@"登入失敗,請重新輸入"
+                        preferredStyle:UIAlertControllerStyleAlert];
                                             
                 UIAlertAction *ok = [UIAlertAction actionWithTitle:@"確定" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
                                                 
