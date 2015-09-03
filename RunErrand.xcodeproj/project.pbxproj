@@ -140,7 +140,7 @@
 		BD6401C71B8FFFA30096A1BB /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
 		BD6E27041B8DDB6A008A751D /* CaseMKPointAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CaseMKPointAnnotation.h; sourceTree = "<group>"; };
 		BD6E27051B8DDB6A008A751D /* CaseMKPointAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CaseMKPointAnnotation.m; sourceTree = "<group>"; };
-		BD7B81321B5D1FA900067D29 /* RunErrands.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RunErrands.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		BD7B81321B5D1FA900067D29 /* RunErrand.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RunErrand.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BD7B81361B5D1FA900067D29 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BD7B81371B5D1FA900067D29 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		BD7B81391B5D1FA900067D29 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -148,7 +148,7 @@
 		BD7B81401B5D1FA900067D29 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		BD7B81421B5D1FA900067D29 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		BD7B81451B5D1FA900067D29 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		BD7B814B1B5D1FAA00067D29 /* RunErrandsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RunErrandsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		BD7B814B1B5D1FAA00067D29 /* RunErrandTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RunErrandTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BD7B81501B5D1FAA00067D29 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BD7B81511B5D1FAA00067D29 /* RunErrandsTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RunErrandsTests.m; sourceTree = "<group>"; };
 		BD7B815B1B5D202A00067D29 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
@@ -328,8 +328,8 @@
 		BD7B81331B5D1FA900067D29 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				BD7B81321B5D1FA900067D29 /* RunErrands.app */,
-				BD7B814B1B5D1FAA00067D29 /* RunErrandsTests.xctest */,
+				BD7B81321B5D1FA900067D29 /* RunErrand.app */,
+				BD7B814B1B5D1FAA00067D29 /* RunErrandTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -628,9 +628,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		BD7B81311B5D1FA900067D29 /* RunErrands */ = {
+		BD7B81311B5D1FA900067D29 /* RunErrand */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = BD7B81551B5D1FAA00067D29 /* Build configuration list for PBXNativeTarget "RunErrands" */;
+			buildConfigurationList = BD7B81551B5D1FAA00067D29 /* Build configuration list for PBXNativeTarget "RunErrand" */;
 			buildPhases = (
 				BD7B812E1B5D1FA900067D29 /* Sources */,
 				BD7B812F1B5D1FA900067D29 /* Frameworks */,
@@ -640,14 +640,14 @@
 			);
 			dependencies = (
 			);
-			name = RunErrands;
+			name = RunErrand;
 			productName = RunErrands;
-			productReference = BD7B81321B5D1FA900067D29 /* RunErrands.app */;
+			productReference = BD7B81321B5D1FA900067D29 /* RunErrand.app */;
 			productType = "com.apple.product-type.application";
 		};
-		BD7B814A1B5D1FAA00067D29 /* RunErrandsTests */ = {
+		BD7B814A1B5D1FAA00067D29 /* RunErrandTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = BD7B81581B5D1FAA00067D29 /* Build configuration list for PBXNativeTarget "RunErrandsTests" */;
+			buildConfigurationList = BD7B81581B5D1FAA00067D29 /* Build configuration list for PBXNativeTarget "RunErrandTests" */;
 			buildPhases = (
 				BD7B81471B5D1FAA00067D29 /* Sources */,
 				BD7B81481B5D1FAA00067D29 /* Frameworks */,
@@ -658,9 +658,9 @@
 			dependencies = (
 				BD7B814D1B5D1FAA00067D29 /* PBXTargetDependency */,
 			);
-			name = RunErrandsTests;
+			name = RunErrandTests;
 			productName = RunErrandsTests;
-			productReference = BD7B814B1B5D1FAA00067D29 /* RunErrandsTests.xctest */;
+			productReference = BD7B814B1B5D1FAA00067D29 /* RunErrandTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -686,7 +686,7 @@
 					};
 				};
 			};
-			buildConfigurationList = BD7B812D1B5D1FA900067D29 /* Build configuration list for PBXProject "RunErrands" */;
+			buildConfigurationList = BD7B812D1B5D1FA900067D29 /* Build configuration list for PBXProject "RunErrand" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -699,8 +699,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				BD7B81311B5D1FA900067D29 /* RunErrands */,
-				BD7B814A1B5D1FAA00067D29 /* RunErrandsTests */,
+				BD7B81311B5D1FA900067D29 /* RunErrand */,
+				BD7B814A1B5D1FAA00067D29 /* RunErrandTests */,
 			);
 		};
 /* End PBXProject section */
@@ -815,7 +815,7 @@
 /* Begin PBXTargetDependency section */
 		BD7B814D1B5D1FAA00067D29 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = BD7B81311B5D1FA900067D29 /* RunErrands */;
+			target = BD7B81311B5D1FA900067D29 /* RunErrand */;
 			targetProxy = BD7B814C1B5D1FAA00067D29 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -934,7 +934,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = RunErrand;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -951,7 +951,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = RunErrand;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -970,7 +970,7 @@
 				);
 				INFOPLIST_FILE = RunErrandsTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = RunErrandTests;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/RunErrands.app/RunErrands";
 			};
 			name = Debug;
@@ -985,7 +985,7 @@
 				);
 				INFOPLIST_FILE = RunErrandsTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = RunErrandTests;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/RunErrands.app/RunErrands";
 			};
 			name = Release;
@@ -993,7 +993,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		BD7B812D1B5D1FA900067D29 /* Build configuration list for PBXProject "RunErrands" */ = {
+		BD7B812D1B5D1FA900067D29 /* Build configuration list for PBXProject "RunErrand" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				BD7B81531B5D1FAA00067D29 /* Debug */,
@@ -1002,7 +1002,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		BD7B81551B5D1FAA00067D29 /* Build configuration list for PBXNativeTarget "RunErrands" */ = {
+		BD7B81551B5D1FAA00067D29 /* Build configuration list for PBXNativeTarget "RunErrand" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				BD7B81561B5D1FAA00067D29 /* Debug */,
@@ -1011,7 +1011,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		BD7B81581B5D1FAA00067D29 /* Build configuration list for PBXNativeTarget "RunErrandsTests" */ = {
+		BD7B81581B5D1FAA00067D29 /* Build configuration list for PBXNativeTarget "RunErrandTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				BD7B81591B5D1FAA00067D29 /* Debug */,

@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:RunErrands.xcodeproj">
+      location = "self:/Users/jinfuwang/Desktop/project/iOS-RunErrands/RunErrand.xcodeproj">
    </FileRef>
 </Workspace>
