@@ -168,10 +168,6 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
 
-//    if (indexPath.row > (listDetails.count - 1)) {
-//        return;
-//    }
-//    NSArray *cellArray = [tableView visibleCells];
     
     SettingTableViewCell *cell = (SettingTableViewCell*)[tableView cellForRowAtIndexPath:indexPath];
     
@@ -264,13 +260,8 @@
 }
 
 - (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath NS_AVAILABLE_IOS(3_0){
-    
-        if (indexPath.row > (listDetails.count - 1)) {
-            return;
-        }
-    NSArray *cellArray = [tableView visibleCells];
 
-    SettingTableViewCell *cell = cellArray[indexPath.row];
+    SettingTableViewCell *cell = (SettingTableViewCell*)[self.tableView cellForRowAtIndexPath:indexPath];
     
     if([cell.dataTextField.text length] > 0){
         cell.dataLabel.text = cell.dataTextField.text;
@@ -293,10 +284,11 @@
     }else{
         [formatter setDateFormat:@"yyyy-MM-dd HH:mm"];
     }
-    NSArray *cellArray = [self.tableView visibleCells];
-    SettingTableViewCell *cell = cellArray[self.tableView.indexPathForSelectedRow.row];
+
+    NSIndexPath * indexpath = [self.tableView indexPathForSelectedRow];
+    SettingTableViewCell *cell = (SettingTableViewCell*)[self.tableView cellForRowAtIndexPath:indexpath];
     cell.dataTextField.text = [formatter stringFromDate:datePicker.date];
-    [cell.dataTextField resignFirstResponder];
+    [self.view endEditing:YES];
     NSLog(@"時間為：%@", [formatter stringFromDate:datePicker.date]);
 }
 
@@ -465,8 +457,11 @@
     if (self.tableView.indexPathForSelectedRow != nil)
     {
         NSLog(@"I will finish edit");
-        NSArray *cellArray = [self.tableView visibleCells];
-        SettingTableViewCell *cell = cellArray[self.tableView.indexPathForSelectedRow.row];
+        //NSArray *cellArray = [self.tableView visibleCells];
+        //SettingTableViewCell *cell = cellArray[self.tableView.indexPathForSelectedRow.row];
+        NSIndexPath * indexpath = [self.tableView indexPathForSelectedRow];
+        SettingTableViewCell *cell = (SettingTableViewCell*)[self.tableView cellForRowAtIndexPath:indexpath];
+
         [cell.dataTextField resignFirstResponder];
         cell.dataLabel.text = cell.dataTextField.text;
         cell.dataLabel.hidden = NO;

@@ -182,6 +182,7 @@
     cell.titleLabel.text = settingDetailList[indexPath.row];
     cell.iconTitle.image = [UIImage imageNamed:imagearrayList[indexPath.row]];
     //cell.iconTitle.image = [UIImage imageNamed:imagearray[indexPath.row]];
+    
     switch (indexPath.row) {
         case RE_USERNAME:
             cell.dataLabel.text = [settingDetailData objectForKey:@(RE_USERNAME)];
@@ -276,12 +277,14 @@
     if (isEditing == false) {
         return;
     }
-    NSArray *cellArray = [tableView visibleCells];
-    SettingTableViewCell *cell = cellArray[indexPath.row];
+    
+    SettingTableViewCell *cell = (SettingTableViewCell*)[self.tableView cellForRowAtIndexPath:indexPath];
+
     
     if([cell.dataTextField.text length] > 0){
         cell.dataLabel.text = cell.dataTextField.text;
         [settingDetailData setObject:cell.dataLabel.text forKey:@(indexPath.row)];
+        NSLog(@"settingDetailData %@", cell.dataTextField.text);
     }
     
     cell.dataLabel.hidden = NO;
@@ -431,8 +434,10 @@
         if (self.tableView.indexPathForSelectedRow != nil)
         {
             NSLog(@"I am comming in done btn");
-            NSArray *cellArray = [self.tableView visibleCells];
-            SettingTableViewCell *cell = cellArray[self.tableView.indexPathForSelectedRow.row];
+            
+            NSIndexPath * indexpath = [self.tableView indexPathForSelectedRow];
+            SettingTableViewCell *cell = (SettingTableViewCell*)[self.tableView cellForRowAtIndexPath:indexpath];
+            
             [cell.dataTextField resignFirstResponder];
             cell.dataLabel.text = cell.dataTextField.text;
             cell.dataLabel.hidden = NO;
@@ -458,8 +463,10 @@
         if (self.tableView.indexPathForSelectedRow != nil)
         {
             NSLog(@"I will finish edit");
-            NSArray *cellArray = [self.tableView visibleCells];
-            SettingTableViewCell *cell = cellArray[self.tableView.indexPathForSelectedRow.row];
+
+            NSIndexPath * indexpath = [self.tableView indexPathForSelectedRow];
+            SettingTableViewCell *cell = (SettingTableViewCell*)[self.tableView cellForRowAtIndexPath:indexpath];
+            
             [cell.dataTextField resignFirstResponder];
             cell.dataLabel.text = cell.dataTextField.text;
             cell.dataLabel.hidden = NO;
@@ -495,8 +502,10 @@
 {
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     [formatter setDateFormat:@"yyyy-MM-dd"];
-    NSArray *cellArray = [self.tableView visibleCells];
-    SettingTableViewCell *cell = cellArray[self.tableView.indexPathForSelectedRow.row];
+
+    NSIndexPath * indexpath = [self.tableView indexPathForSelectedRow];
+    SettingTableViewCell *cell = (SettingTableViewCell*)[self.tableView cellForRowAtIndexPath:indexpath];
+    
     cell.dataTextField.text = [formatter stringFromDate:datepicker.date];
     [cell.dataTextField resignFirstResponder];
     NSLog(@"生日為：%@", [formatter stringFromDate:datepicker.date]);
