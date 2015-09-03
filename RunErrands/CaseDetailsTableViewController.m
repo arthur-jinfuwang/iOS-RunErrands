@@ -223,6 +223,8 @@
 
 - (void) updateFollowStatus{
     PFUser *user = [PFUser currentUser];
+    if(user == nil)
+        return;
     PFRelation *relation = [user relationForKey:@"user_follows"];
     PFQuery *query = [relation query];
     query = [query whereKey:@"objectId" equalTo:self.caseObject.objectId];
@@ -303,6 +305,8 @@
     
     NSLog(@"Save the apply relations");
     PFUser *user = [PFUser currentUser];
+    if(user == nil)
+        return;
     PFRelation *userFollows = [user relationForKey:@"user_follows"];
     PFRelation *userApply = [user relationForKey:@"user_apply"];
     PFRelation *caseApply = [self.caseObject relationForKey:@"user_apply"];
@@ -358,6 +362,8 @@
         return;
     }
     PFUser *user = [PFUser currentUser];
+    if(user == nil)
+        return;
     PFRelation *userFollows = [user relationForKey:@"user_follows"];
     if (!toFollow)
     {
@@ -380,19 +386,6 @@
         }];
     }
 
-/*
-    PFObject *object = [PFObject objectWithClassName:@"Follows"];
-    PFUser *user = [PFUser currentUser];
-    object[@"user_id"] = user.objectId;
-    object[@"case_id"] = self.caseObject.objectId;
-    object[@"status"] = @"追蹤中";
-    
-    [object saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error){
-        if (succeeded) {
-            NSLog(@"add follows table successed");
-        }
-    }];
- */
 }
 
 /*
