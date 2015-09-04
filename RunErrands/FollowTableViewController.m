@@ -295,8 +295,11 @@
         }
         
         //cell.theCityLabel.text = object[@"work_city"];
+        NSDate *postDate = object[@"post_at"];
+        NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+        [formatter setDateFormat:@"yyyy-MM-dd HH:mm"];
+        cell.thePostTimeLabel.text = [formatter stringFromDate:postDate];
         
-        cell.thePostTimeLabel.text =object[@""];
         cell.theTitleLabel.text = object[@"case_title"];
         NSString *wage = [NSString stringWithFormat:@"%@: %@", object[@"wage_class"], object[@"wage"]];
         cell.theWageLabel.text = wage;
@@ -322,7 +325,11 @@
         cell.theCityLabel.text = object[@"work_city"];
         cell.theFollowLabel.hidden = YES;
         
-        cell.thePostTimeLabel.text =object[@""];
+        NSDate *postDate = object[@"post_at"];
+        NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+        [formatter setDateFormat:@"yyyy-MM-dd HH:mm"];
+        cell.thePostTimeLabel.text = [formatter stringFromDate:postDate];
+        
         cell.theTitleLabel.text = object[@"case_title"];
         NSString *wage = [NSString stringWithFormat:@"%@: %@", object[@"wage_class"], object[@"wage"]];
         cell.theWageLabel.text = wage;

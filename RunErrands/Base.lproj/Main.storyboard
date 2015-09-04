@@ -280,7 +280,7 @@
             </objects>
             <point key="canvasLocation" x="3717" y="984"/>
         </scene>
-        <!--Title-->
+        <!--Resume View Controller-->
         <scene sceneID="ngk-Xi-zFf">
             <objects>
                 <viewController storyboardIdentifier="ResumeViewController" id="nHn-aG-dWH" customClass="ResumeViewController" sceneMemberID="viewController">
@@ -360,7 +360,7 @@
                         </variation>
                     </view>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" title="Title" id="RGe-Aa-AJ1">
+                    <navigationItem key="navigationItem" id="RGe-Aa-AJ1">
                         <barButtonItem key="rightBarButtonItem" title="邀請" id="zfP-yM-M0b">
                             <connections>
                                 <action selector="InviteBtnAction:" destination="nHn-aG-dWH" id="Gfu-GJ-6cR"/>
@@ -376,7 +376,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="li7-oA-Bw8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3773" y="1809"/>
+            <point key="canvasLocation" x="3717" y="1821"/>
         </scene>
         <!--Login View Controller-->
         <scene sceneID="vPd-ac-LGa">
@@ -485,7 +485,7 @@
                                     </mask>
                                 </variation>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gab-IL-2bB">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gab-IL-2bB">
                                 <rect key="frame" x="150" y="433" width="300" height="58"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="297" id="5Mp-6P-Lj7"/>
@@ -512,7 +512,7 @@
                                     <action selector="facebookLoginBtnPressed:" destination="Kni-yZ-eIA" eventType="touchUpInside" id="gx3-LL-ziX"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="teh-cA-OHZ">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="teh-cA-OHZ">
                                 <rect key="frame" x="270" y="554" width="60" height="27"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <state key="normal" title="隱私權條款">
@@ -523,7 +523,7 @@
                                     <segue destination="R8q-L3-hbx" kind="show" identifier="fromProvision" id="0MG-uJ-7EO"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="開始使用本軟體服務，即視為您已充分了解以下各項條款之約定，並同意受以下各項條款之約束。" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g0n-ZD-kfU">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="開始使用本軟體服務，即視為您已充分了解以下各項條款之約定，並同意受以下各項條款之約束。" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g0n-ZD-kfU">
                                 <rect key="frame" x="179" y="520" width="243" height="27"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="243" id="Q7c-zy-nXs"/>

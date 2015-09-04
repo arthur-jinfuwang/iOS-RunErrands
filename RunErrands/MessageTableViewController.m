@@ -107,6 +107,10 @@
             {
                 //caseList = [[NSMutableArray alloc] initWithArray:objects];
                 // Do something with the found objects
+                caseList = nil;
+                caseList = [NSMutableArray new];
+                jobSeekerList = nil;
+                jobSeekerList= [NSMutableArray new];
                 for (PFObject *object in objects) {
                     NSLog(@"%@", object.objectId);
                     [self loadJobSeekersList:object];

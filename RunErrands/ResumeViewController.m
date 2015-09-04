@@ -184,33 +184,36 @@
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (!error) {
-            if (objects.count == 1) {
-                PFObject *record = [objects lastObject];
+            NSLog(@"ApplyManageTable record neumber error %ld", (unsigned long)objects.count);
+            
+            for (int i=0; i<(objects.count - 1); i++) {
+                PFObject *record = [objects objectAtIndex:i];
                 record[@"status"] = @"邀請";
-                [record saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error){
-                    if (succeeded) {
-                        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"應徵訊息" message:@"已發送應徵訊息" preferredStyle:UIAlertControllerStyleAlert];
-                        
-                        UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"確定" style:UIAlertActionStyleDefault handler:
-                                                   ^(UIAlertAction *action)
-                                                   {
-                                                       self.displayinvitedBtn.enabled = false;
-                                                       self.displayinvitedBtn.title = @"已邀請";
-                                                   }];
-                        [alertController addAction:okAction];
-                        [self presentViewController:alertController animated:YES completion:nil];
-                    }
-                    else
-                    {
-                        NSLog(@"Resume: saveInBackgroundWithBlock %@",error.description);
-                    }
-                    [MBProgressHUD hideHUDForView:self.view animated:YES];
-                }];
+                [record saveInBackground];
             }
-            else
-            {
-                NSLog(@"ApplyManageTable record neumber error %ld", (unsigned long)objects.count);
-            }
+            
+            PFObject *record = [objects lastObject];
+            record[@"status"] = @"邀請";
+            [record saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error){
+                if (succeeded) {
+                    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"應徵訊息" message:@"已發送應徵訊息" preferredStyle:UIAlertControllerStyleAlert];
+                    
+                    UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"確定" style:UIAlertActionStyleDefault handler:
+                                               ^(UIAlertAction *action)
+                                               {
+                                                   self.displayinvitedBtn.enabled = false;
+                                                   self.displayinvitedBtn.title = @"已邀請";
+                                               }];
+                    [alertController addAction:okAction];
+                    [self presentViewController:alertController animated:YES completion:nil];
+                }
+                else
+                {
+                    NSLog(@"Resume: saveInBackgroundWithBlock %@",error.description);
+                }
+                [MBProgressHUD hideHUDForView:self.view animated:YES];
+            }];
+            
         }
         else
         {
@@ -225,7 +228,7 @@
 
 // -(void)buttonpress:(id)sender
 //{
-//    
+//
 //}
 
 /*
